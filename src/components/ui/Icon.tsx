@@ -22,7 +22,9 @@ type IconName =
   | "menu"
   | "pin"
   | "share"
-  | "external";
+  | "external"
+  | "eye"
+  | "eyeOff";
 
 export function Icon({ name, ...props }: SVGProps<SVGSVGElement> & { name: IconName }) {
   const common = {
@@ -58,6 +60,8 @@ export function Icon({ name, ...props }: SVGProps<SVGSVGElement> & { name: IconN
     pin: <><path d="M12 22s7-6.3 7-13A7 7 0 0 0 5 9c0 6.7 7 13 7 13Z" /><circle cx="12" cy="9" r="2.4" /></>,
     share: <><circle cx="18" cy="5" r="2" /><circle cx="6" cy="12" r="2" /><circle cx="18" cy="19" r="2" /><path d="m8 11 8-5M8 13l8 5" /></>,
     external: <><path d="M14 4h6v6" /><path d="m20 4-9 9" /><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" /></>,
+    eye: <><path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.6" /></>,
+    eyeOff: <><path d="M6.5 6.5 17.5 17.5" /><path d="M9.2 9.1A3.2 3.2 0 0 0 12 15.2" /><path d="M4.2 8.4C2.7 10 2.5 12 2.5 12S6 18 12 18c1.4 0 2.7-.3 3.8-.8" /><path d="M10.2 6.2C10.8 6.1 11.4 6 12 6c6 0 9.5 6 9.5 6a12 12 0 0 1-2.2 2.7" /></>,
   };
   return <svg {...common}>{paths[name]}</svg>;
 }

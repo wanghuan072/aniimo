@@ -1,0 +1,70 @@
+{
+  "index": [
+    {
+      "id": "breezy-plains",
+      "name": "Breezy Plains",
+      "tagline": "Starting region",
+      "total": 9827,
+      "href": "/map",
+      "thumb": "/images/map/tiles/breezy-plains/base.webp"
+    },
+    {
+      "id": "astra",
+      "name": "Astra",
+      "tagline": "City hub",
+      "total": 26,
+      "href": "/map?atlas=astra",
+      "thumb": "/images/map/tiles/astra/base.webp"
+    },
+    {
+      "id": "whisperwake-isles",
+      "name": "Whisperwake Isles",
+      "tagline": "Archipelago",
+      "total": 625,
+      "href": "/map?atlas=whisperwake-isles",
+      "thumb": "/images/map/tiles/whisperwake-isles/base.webp"
+    },
+    {
+      "id": "lost-islets",
+      "name": "The Lost Islets",
+      "tagline": "Outer islands",
+      "total": 1311,
+      "href": "/map?atlas=lost-islets",
+      "thumb": "/images/map/tiles/lost-islets/base.webp"
+    }
+  ],
+  "vocabulary": {
+    "times": {
+      "day": {
+        "label": "Day · 06:00–20:00",
+        "icon": "time-day"
+      },
+      "night": {
+        "label": "Night · 20:00–06:00",
+        "icon": "time-night"
+      }
+    },
+    "weather": {
+      "rain": {
+        "title": "Rain",
+        "phrase": "rain",
+        "icon": "wx-rain"
+      },
+      "thunder": {
+        "title": "Thunderstorm",
+        "phrase": "a thunderstorm",
+        "icon": "wx-thunder"
+      },
+      "snow": {
+        "title": "Snow",
+        "phrase": "snow",
+        "icon": "wx-snow"
+      },
+      "aurora": {
+        "title": "Prismana Flow",
+        "phrase": "the Prismana Flow weather",
+        "icon": "prismana-flow"
+      }
+    }
+  }
+}

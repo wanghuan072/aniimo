@@ -11,24 +11,11 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Home", href: "/" },
-  {
-    label: "Aniimo",
-    href: "/aniimo",
-    children: [
-      { label: "All Aniimo", href: "/aniimo" },
-      { label: "Elements", href: "/database/elements" },
-      { label: "Evolutions", href: "/database/evolutions" },
-      { label: "Forms", href: "/database/forms" },
-      { label: "Mobility", href: "/database/mobility" },
-      { label: "Tier List", href: "/tier-list" },
-      { label: "Compare", href: "/tools/compare" },
-    ],
-  },
+  { label: "Aniimo", href: "/aniimo" },
   {
     label: "Database",
     href: "/database",
     children: [
-      { label: "Database Overview", href: "/database" },
       { label: "Skills", href: "/database/skills" },
       { label: "Items", href: "/database/items" },
       { label: "Traits", href: "/database/traits" },

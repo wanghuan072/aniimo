@@ -24,7 +24,7 @@ export default function GuideDetailPage({ guide }: { guide: Guide }) {
         </section>)}</section>
         <section className={styles.guideActionPlan}><span>Try this next</span><h2>Next-Session Checklist</h2><ol>{guide.steps.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b><p>{step}</p></li>)}</ol></section>
       </main>
-      <aside className={styles.guideArticleAside}><span>Keep exploring</span><Link href="/aniimo"><Icon name="spark" /> All Aniimo <Icon name="arrow" /></Link><Link href="/team-builder"><Icon name="team" /> Team Builder <Icon name="arrow" /></Link><Link href="/map"><Icon name="map" /> Interactive Map <Icon name="arrow" /></Link></aside>
+      <aside className={styles.guideArticleAside}><span>Keep exploring</span><Link href="/aniimo"><Icon name="spark" /> All Aniimo <Icon name="arrow" /></Link><Link href="/team-builder"><Icon name="team" /> Team Builder <Icon name="arrow" /></Link><Link href="/map"><Icon name="map" /> Map <Icon name="arrow" /></Link></aside>
     </div>
   </article>;
 }

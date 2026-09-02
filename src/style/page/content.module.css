@@ -221,7 +221,11 @@
 .bossCardCopy .bossCardFooter em { min-width:0; margin:0; padding:0; border:0; color:#71869a; font-size:10px; font-style:normal; font-weight:700; line-height:1.25; }
 .bossCardFooter .bossReward { position:static; display:grid; flex:0 0 auto; justify-items:end; color:#446f9d; font:900 17px/1 var(--font-display); }
 .bossCardFooter .bossReward small { margin-top:2px; color:#7890a4; font:800 8px/1 var(--font-ui); letter-spacing:.05em; text-transform:uppercase; }
-@media (max-width: 768px) { .bossCardFooter { padding-top:7px; }.bossCardFooter .bossReward { font-size:15px; }.bossCardCopy .bossCardFooter em { font-size:9px; } }
+.bossCardMain { display:flex; flex:1; flex-direction:column; min-width:0; color:inherit; }
+.bossMapPin { position:absolute; z-index:2; top:16px; left:16px; display:inline-flex; align-items:center; gap:3px; padding:4px 7px; border-radius:6px; color:#1d5077; background:rgba(255,255,255,.92); font-size:9px; font-weight:900; letter-spacing:.04em; text-transform:uppercase; box-shadow:0 4px 10px rgba(29,68,96,.12); }
+.bossMapPin svg { width:12px; height:12px; }
+.bossCardFeatured .bossMapPin { top:13px; left:13px; }
+@media (max-width: 768px) { .bossCardFooter { padding-top:7px; }.bossCardFooter .bossReward { font-size:15px; }.bossCardCopy .bossCardFooter em { font-size:9px; }.bossMapPin { top:13px; left:13px; } }
 
 /* Achievements read like a badge archive: the seal is the visual anchor, while the name and goal stay easy to scan. */
 .achievementArchiveBar { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:20px; padding:13px 16px; border:1px solid #eadfbd; border-radius:14px; background:linear-gradient(100deg,#fffdf7,#fbfaf5); }

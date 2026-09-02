@@ -592,20 +592,127 @@
 .formComparisonRows footer span { width:1px; height:11px; margin:0 8px; background:#d9e5ea; }
 .formComparisonRows .currentFormComparison { border-color:#81b9e5; box-shadow:inset 3px 0 #4f9fe0,0 4px 11px rgba(69,135,188,.10); }
 
-.evolutionTree { padding:22px 26px; overflow-x:auto; background:rgba(255,255,255,.57); }
-.evolutionBranch { display:flex; align-items:center; gap:24px; width:max-content; min-width:100%; }
-.evolutionBranch > a,
-.evolutionBranch > div { display:grid; justify-items:center; min-width:104px; color:var(--ink); }
-.evolutionBranch > a > span,
-.evolutionBranch > div > span { position:relative; display:block; width:76px; height:76px; margin-bottom:6px; overflow:hidden; border:2px solid #8f91a0; clip-path:polygon(50% 0,94% 24%,94% 76%,50% 100%,6% 76%,6% 24%); background:#6b6d7d; }
-.evolutionBranch > a:hover > span { border-color:#5799dd; }
-.evolutionBranch > a.current > span { border-color:#5998dd; background:#c8e4f8; }
-.evolutionBranch img { padding:5px; object-fit:contain; }
-.evolutionBranch strong { font-size:14px; line-height:1.1; }
-.evolutionBranch small { display:table; margin-top:3px; padding:3px 8px; border-radius:999px; color:#fff; background:#5d6076; font-size:11px; font-weight:800; }
-.evolutionChildren { position:relative; display:grid !important; grid-auto-flow:row; gap:13px; padding-left:28px; }
-.evolutionChildren::before { position:absolute; top:50%; left:0; width:16px; height:1px; background:#8da2b7; content:""; }
-.evolutionChildren > .evolutionBranch::before { width:12px; height:1px; margin-right:-18px; background:#8da2b7; content:""; }
+.evolutionTree {
+  display: flex;
+  justify-content: center;
+  padding: 22px 20px 26px;
+  overflow-x: auto;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(186, 222, 248, 0.35), transparent 28%),
+    linear-gradient(180deg, #f4f9fc, #eef4f7);
+}
+.evoLane {
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+.evoCard {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 124px;
+  padding: 12px 10px 11px;
+  border: 1px solid #d4e4ee;
+  border-radius: 16px;
+  color: inherit;
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(36, 78, 108, 0.06);
+  text-align: center;
+}
+.evoCard:hover { border-color: #7eb4dd; }
+.evoCurrent {
+  border-color: #5aa3d8;
+  background: linear-gradient(180deg, #eaf5ff, #fff);
+  box-shadow: 0 0 0 1px #c5e3f6, 0 8px 16px rgba(69, 135, 188, 0.14);
+}
+.evoMedal {
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 35%, #f7fbff, #d7e7f1);
+}
+.evoMedal img { object-fit: contain; padding: 4px; }
+.evoCard strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.evoCard small {
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: #5d6f86;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.evoCard small[data-stage="1"] { background: #2f7fbf; }
+.evoCard small[data-stage="2"] { background: #4d657c; }
+.evoCard small[data-stage="3"] { background: #c4921c; }
+.evoRail {
+  position: relative;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 2px;
+  margin: 0 2px;
+  background: #6aa0c4;
+}
+.evoRail::after {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid #6aa0c4;
+  border-right: 2px solid #6aa0c4;
+  transform: translateY(-50%) rotate(45deg);
+  content: "";
+}
+.evoFork {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding-left: 20px;
+}
+.evoFork > .evoLane { position: relative; }
+.evoFork > .evoLane::before {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 20px;
+  height: 2px;
+  background: #6aa0c4;
+  transform: translateY(-50%);
+  content: "";
+}
+.evoFork > .evoLane:first-child::after,
+.evoFork > .evoLane:last-child::after,
+.evoFork > .evoLane:not(:first-child):not(:last-child)::after {
+  position: absolute;
+  left: -20px;
+  width: 2px;
+  background: #6aa0c4;
+  content: "";
+}
+.evoFork > .evoLane:first-child::after { top: 50%; bottom: -7px; }
+.evoFork > .evoLane:last-child::after { top: -7px; height: calc(50% + 7px); }
+.evoFork > .evoLane:not(:first-child):not(:last-child)::after { top: -7px; bottom: -7px; }
+.evoFork[data-count="1"] > .evoLane::after { display: none; }
+
+@media (max-width: 768px) {
+  .evolutionTree { justify-content: flex-start; padding: 16px 12px 18px; }
+  .evoCard { width: 108px; padding: 10px 8px; }
+  .evoMedal { width: 62px; height: 62px; border-radius: 15px; }
+  .evoRail { flex-basis: 28px; width: 28px; }
+}
 
 .illustrationDialog { position:fixed; z-index:50; inset:0; display:grid; place-items:center; padding:22px; background:rgba(11,31,56,.72); }
 .illustrationDialog > div { position:relative; width:min(780px,100%); overflow:hidden; border:1px solid rgba(255,255,255,.7); border-radius:18px; background:#08172a; box-shadow:0 22px 70px rgba(0,0,0,.4); }

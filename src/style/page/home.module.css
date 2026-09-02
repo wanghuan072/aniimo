@@ -186,6 +186,8 @@
 }
 
 .statItem:last-child { border-right: 0; }
+a.statItem { color: inherit; }
+a.statItem:hover strong { color: var(--blue-700); }
 
 .statIcon {
   position: relative;
@@ -278,7 +280,7 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, .35), transparent 48%);
 }
 
-.cardCopy, .creatureFan, .iconTiles, .tierPreview, .buildPreview, .mapArt, .guideTopics, .toolLinks { position: relative; z-index: 1; }
+.cardCopy, .creatureFan, .iconTiles, .tierPreview, .buildPreview, .mapAtlases, .guideTopics, .toolLinks { position: relative; z-index: 1; }
 .cardCopy { padding: 17px 15px 17px 19px; }
 
 .cardKicker {
@@ -291,7 +293,7 @@
 .cardCopy > p:not(.cardKicker) {
   margin: 0 0 11px;
   color: #5c6e82;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 560;
   line-height: 1.48;
 }
@@ -385,7 +387,7 @@
 }
 
 .iconTiles svg { width: 29px; height: 29px; stroke-width: 1.6; }
-.iconTiles a:nth-child(2) i { background: linear-gradient(145deg, #a995ef, #6552ad); }
+.iconTiles a:nth-child(2) i { background: linear-gradient(145deg, #8fce6b, #3f8a3a); }
 .iconTiles a:nth-child(3) i { background: linear-gradient(145deg, #ffc85e, #cf8126); }
 .iconTiles a:nth-child(4) i { background: linear-gradient(145deg, #8064a7, #3d285f); }
 .tierFeature { background: linear-gradient(145deg, #fffdfa, #fff9ef); }
@@ -445,22 +447,54 @@
 .buildPreview small { color: #65768a; font-size: 8px; }
 
 .mapFeature {
-  grid-template-columns: 190px 1fr;
+  grid-column: 1 / -1;
+  grid-template-columns: 220px minmax(0, 1fr);
   background: linear-gradient(145deg, #fffdfa 14%, #eef8ef 100%);
 }
 
-.mapArt { align-self: stretch; min-height: 187px; overflow: hidden; }
-
-.mapArt::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 16px 0 24px rgba(250, 250, 244, .26);
-  pointer-events: none;
+.mapAtlases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  align-self: stretch;
+  min-height: 168px;
+  padding: 12px 12px 12px 0;
 }
-
-.mapArt img { object-fit: cover; transition: transform .35s ease; }
-.mapFeature:hover .mapArt img { transform: scale(1.025); }
+.mapAtlases a {
+  position: relative;
+  overflow: hidden;
+  min-height: 148px;
+  border: 1px solid #d5e4e0;
+  border-radius: 12px;
+  color: #fff;
+  background: #154162;
+}
+.mapAtlases a[data-atlas="astra"] { background: #2a3344; }
+.mapAtlases a[data-atlas="whisperwake-isles"] { background: #163a58; }
+.mapAtlases a[data-atlas="lost-islets"] { background: #1a4a4a; }
+.mapAtlases img {
+  object-fit: contain;
+  object-position: center;
+  padding: 6px 6px 22px;
+  transition: transform .35s ease;
+}
+.mapAtlases a:hover img { transform: scale(1.03); }
+.mapAtlases b {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 7px;
+  z-index: 1;
+  overflow: hidden;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(12, 42, 68, .78);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .votePreview { display:grid; gap:6px; padding:13px 14px 13px 0; }
 .votePreview>a { display:grid; grid-template-columns:35px 54px minmax(0,1fr); align-items:center; gap:7px; min-height:52px; padding:4px 7px 4px 0; border:1px solid #e5e4d9; border-radius:9px; color:inherit; background:rgba(255,255,255,.64); }
 .votePreview>a:first-child { border-color:#ebca79; background:#fff9e9; }.votePreview b { color:#ba7c15; font:900 14px var(--font-display); text-align:center; }.votePreview>a:nth-child(2) b { color:#6f8797; }.votePreview>a:nth-child(3) b { color:#996f45; }.votePreview>a>span { position:relative; width:54px; height:44px; overflow:hidden; border-radius:7px; background:#eef5f5; }.votePreview img { object-fit:contain; padding:1px; }.votePreview strong,.votePreview small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }.votePreview strong { color:#1c4265; font-size:10px; }.votePreview small { margin-top:3px; color:#6e8493; font-size:8px; }
@@ -475,7 +509,7 @@
   background: linear-gradient(145deg, #fffdfa, #f8f6ee);
 }
 
-.toolLinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; padding: 11px 13px 11px 0; }
+.toolLinks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; padding: 11px 13px 11px 0; }
 
 .toolLinks > a {
   display: grid;
@@ -566,14 +600,15 @@
 .updateCard > a svg { width: 13px; }
 
 .sourceCard {
-  padding-right: 132px !important;
+  padding: 16px 148px 18px 16px !important;
   background: linear-gradient(145deg, #eef8ff, #eff6e4) !important;
 }
 
 .sourceCard .cardKicker, .sourceCard h2, .sourceCard > p, .sourceCard > a { position: relative; z-index: 2; }
-.sourceCard h2 { margin: 18px 0 5px; font-size: 27px; }
-.sourceCard > p:not(.cardKicker) { color: #60728a; font-size: 10px; line-height: 1.45; }
-.sourceCard > a { margin-top: 3px; }
+.sourceCard h2 { margin: 8px 0 8px; font-size: 24px; }
+.sourceCard > p:not(.cardKicker) { max-width: 34em; color: #4f6478; font-size: 12px; line-height: 1.5; }
+.sourceCard > p + p { margin: 8px 0 0; }
+.sourceCard > a { margin-top: 10px; }
 
 .sourceMascot {
   position: absolute;
@@ -601,7 +636,7 @@
   .heroCopy { margin-left: 38px; }
   .statItem { padding-inline: 14px; }
   .featureCard { grid-template-columns: 190px 1fr; }
-  .mapFeature { grid-template-columns: 185px 1fr; }
+  .mapFeature { grid-template-columns: 200px minmax(0, 1fr); }
   .toolsFeature { grid-template-columns: 190px 1fr; }
   .toolLinks > a { grid-template-columns: 76px 1fr 15px; }
   .toolArt { width: 76px; }
@@ -611,7 +646,8 @@
   .hero > img { object-position: 56% 50%; }
   .dashboardGrid { grid-template-columns: 1fr; }
   .toolsFeature { grid-column: auto; }
-  .featureCard, .mapFeature { grid-template-columns: 225px 1fr; }
+  .featureCard { grid-template-columns: 225px 1fr; }
+  .mapFeature { grid-template-columns: 1fr; }
   .lowerGrid { grid-template-columns: 1fr 1fr; }
   .sourceCard { grid-column: 1 / -1; }
   .homeGuide { grid-template-columns:1fr; gap:20px; }
@@ -651,9 +687,9 @@
   .homeBody { padding-top: 19px; }
   .featureCard, .mapFeature, .toolsFeature { grid-template-columns: 1fr; }
   .cardCopy { padding-bottom: 9px; }
-  .creatureFan, .iconTiles, .tierPreview, .buildPreview, .toolLinks { padding: 8px 14px 16px; }
+  .creatureFan, .iconTiles, .tierPreview, .buildPreview, .toolLinks, .mapAtlases { padding: 8px 14px 16px; }
   .creatureFan { min-height: 205px; }
-  .mapArt { min-height: 230px; }
+  .mapAtlases { min-height: 230px; grid-template-columns: 1fr 1fr; }
   .toolLinks { grid-template-columns: 1fr; }
   .lowerGrid { grid-template-columns: 1fr; }
   .sourceCard { grid-column: auto; }

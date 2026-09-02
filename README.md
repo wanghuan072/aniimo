@@ -22,7 +22,7 @@ Visit [aniimo.cc](https://aniimo.cc) to browse the site.
 | [All Aniimo](https://aniimo.cc/aniimo) | Browse creature profiles by element, role, stage, and form. |
 | [Database](https://aniimo.cc/database) | Explore skills, items, traits, elements, habitats, evolutions, materials, bosses, and achievements. |
 | [Tier List](https://aniimo.cc/tier-list) | Read player tier choices by role and team use. |
-| [Interactive Map](https://aniimo.cc/map) | Plan a route through habitat areas and see connected Aniimo. |
+| [Map](https://aniimo.cc/map) | Explore Idyll chests, spawns, puzzles and transporters on the interactive map. |
 | [Team Builder](https://aniimo.cc/team-builder) | Choose four Aniimo and review party coverage and base-field summaries. |
 | [Player Team Templates](https://aniimo.cc/team-builder/templates) | Open one of six player-made starting shapes, then adapt it to your own roster. |
 | [Guides](https://aniimo.cc/guides) | Read practical help for first teams, roles, elements, forms, and exploration choices. |

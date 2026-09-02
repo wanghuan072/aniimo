@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
+import { alphaBossSlugs, omegaBosses } from "@/data/editorial/encounters";
 import { aniimo, communityDatabase, getDatabaseCategory, mapLocations } from "@/lib/data";
 import { groupedSkills, groupedTraits } from "@/lib/database-relations";
+import { mapHref } from "@/lib/map-atlas";
 import { Breadcrumb } from "@/components/ui/Content";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
@@ -18,7 +20,10 @@ export default function DatabaseCategoryPage({ slug }: { slug: string }) {
   const category = getDatabaseCategory(slug)!;
   const skillRecords = groupedSkills;
   const traitRecords = groupedTraits.map((trait) => ({ id: trait.id, name: trait.name, description: trait.description, meta: trait.owners.length > 1 ? `Shared by ${trait.owners.length} Aniimo` : "Used by 1 Aniimo", image: trait.iconUrl, href: `/aniimo/${trait.owners[0].slug}`, linkLabel: trait.owners[0].name, relatedLinks: trait.owners.map((owner) => ({ label: owner.name, href: `/aniimo/${owner.slug}`, image: owner.image })) }));
-  const habitatRecords = [...new Set(aniimo.flatMap((entry) => entry.habitats))].sort().map((habitat) => ({ habitat, location: mapLocations.find((location) => location.name === habitat), entries: aniimo.filter((entry) => entry.habitats.includes(habitat)) }));
+  const habitatRecords = [...new Set(aniimo.flatMap((entry) => entry.habitats))].sort().map((habitat) => {
+    const name = habitat.replace(/[.]$/, "");
+    return { habitat: name, location: mapLocations.find((location) => location.name.replace(/[.]$/, "").toLowerCase() === name.toLowerCase()), entries: aniimo.filter((entry) => entry.habitats.includes(habitat)) };
+  });
   const aniimoByName = new Map(aniimo.map((entry) => [entry.name.replace(/[.]/g, "").toLowerCase(), entry]));
   const evolutionRecords = [...new Map(aniimo.filter((entry) => entry.evolution.length > 1).map((entry) => {
     const nodes = entry.evolution.map((node) => {
@@ -32,12 +37,6 @@ export default function DatabaseCategoryPage({ slug }: { slug: string }) {
   const formRecords = aniimo.map((entry) => ({ id: entry.slug, name: entry.name, description: entry.description, meta: `${entry.form} · ${entry.elements.join(" / ")}`, image: entry.image, href: `/aniimo/${entry.slug}`, linkLabel: "Open record" }));
   const mobilityRecords = [...new Set(aniimo.flatMap((entry) => [...entry.mobility.map((ability) => ability.name), ...entry.pathfinding]))].sort().map((ability) => ({ ability, entries: aniimo.filter((entry) => entry.mobility.some((item) => item.name === ability) || entry.pathfinding.includes(ability)), description: aniimo.flatMap((entry) => entry.mobility.filter((item) => item.name === ability).map((item) => item.description))[0] || "Published pathfinding ability." }));
   const communityRecords = communityDatabase[slug] || [];
-  const alphaBossSlugs = ["rookey", "leafy", "geoclaw", "blazen", "stellarys", "turbo", "minespine", "panpanta", "tubster", "ignitis", "irisal", "scorchhowl", "luminelle", "magmarex", "grizbo", "bouldus", "glynsera"];
-  const omegaBosses = [
-    { slug: "infergon", region: "Russet Highlands", unlock: "Warrior" },
-    { slug: "sherro", region: "Echoback Landing", unlock: "Stars and the Knight" },
-    { slug: "tuckin", region: "Mistwoods", unlock: "Binding Oath" },
-  ];
   const bossRecords: BossEncounter[] = [
     ...omegaBosses.map((boss) => { const entry = aniimo.find((record) => record.slug === boss.slug)!; return { slug: entry.slug, name: entry.name, image: entry.image, elements: entry.elements, habitats: entry.habitats, description: entry.description, rank: "Omega" as const, primegy: 50, region: boss.region, unlock: boss.unlock }; }),
     ...alphaBossSlugs.map((bossSlug) => { const entry = aniimo.find((record) => record.slug === bossSlug)!; return { slug: entry.slug, name: entry.name, image: entry.image, elements: entry.elements, habitats: entry.habitats, description: entry.description, rank: "Alpha" as const, primegy: 30 }; }),
@@ -66,7 +65,7 @@ export default function DatabaseCategoryPage({ slug }: { slug: string }) {
         })}</div>
       </>}
       {slug === "habitats" && <>
-        <div className={styles.habitatDirectoryBar}><p><strong>{habitatRecords.length}</strong> habitat areas with <strong>{habitatRecords.reduce((total, record) => total + record.entries.length, 0)}</strong> Aniimo connections</p><Link href="/map">Open interactive map <Icon name="arrow" /></Link></div>
+        <div className={styles.habitatDirectoryBar}><p><strong>{habitatRecords.length}</strong> habitat areas with <strong>{habitatRecords.reduce((total, record) => total + record.entries.length, 0)}</strong> Aniimo connections</p><Link href="/map">Open map <Icon name="arrow" /></Link></div>
         <div className={styles.habitatAtlas}>{habitatRecords.map((record) => <article className={styles.habitatCard} key={record.habitat}>
           <div className={styles.habitatMapPanel}>
             <div className={styles.habitatMapStage}>
@@ -77,7 +76,7 @@ export default function DatabaseCategoryPage({ slug }: { slug: string }) {
           <div className={styles.habitatCardBody}>
             <header><div><span className={styles.habitatEyebrow}>Habitat area</span><h2>{record.habitat}</h2></div><span className={styles.habitatCount}>{record.entries.length}<small>Aniimo</small></span></header>
             <div className={styles.habitatRoster}><p>Aniimo to look for</p><div>{record.entries.map((entry) => <Link href={`/aniimo/${entry.slug}`} key={entry.slug} title={entry.name} aria-label={`Open ${entry.name}`}><Image src={entry.image} alt="" fill sizes="32px" /></Link>)}</div></div>
-            <Link className={styles.habitatBrowse} href={`/map?marker=${record.location?.id || ""}`}>View {record.habitat} on map <Icon name="arrow" /></Link>
+            <Link className={styles.habitatBrowse} href={mapHref({ region: record.location?.id || record.habitat })}>View {record.habitat} on map <Icon name="arrow" /></Link>
           </div>
         </article>)}</div>
       </>}

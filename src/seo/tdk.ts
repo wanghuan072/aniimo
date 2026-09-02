@@ -48,11 +48,10 @@ export const tdk = {
     lastModified: released,
   },
   map: {
-    title: "Aniimo Interactive Map — Plan Your Route Through Idyll",
-    description: "Use the Aniimo interactive map to explore habitat areas, see associated creatures, and choose a more focused route through Idyll before you set out.",
+    title: "Aniimo Interactive Map — Breezy Plains and Idyll Atlases",
+    description: "Explore Idyll chests, spawns, puzzles and transporters on a local interactive map covering Breezy Plains, Astra, Whisperwake Isles and The Lost Islets.",
     pathname: "/map",
     lastModified: released,
-    image: "/images/maps/ilya-world-map.png",
   },
   tierList: {
     title: "Aniimo Tier List — Player Picks by Role and Team Use",

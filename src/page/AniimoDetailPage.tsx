@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import type { Aniimo, AniimoEvolutionNode } from "@/types/content";
-import { aniimo, mapLocations } from "@/lib/data";
+import { aniimo } from "@/lib/data";
 import { Breadcrumb, ElementBadge, StageBadge } from "@/components/ui/Content";
 import { Icon } from "@/components/ui/Icon";
 import { StatRadar } from "@/components/aniimo/StatRadar";
@@ -14,15 +14,39 @@ import styles from "@/style/page/detail.module.css";
 
 const titleCase = (value: string) => value.replace(/\b\w/g, (char) => char.toUpperCase());
 const stageLabel = (stage: number) => stage === 1 ? "Lumin" : stage === 2 ? "Gamma" : stage === 3 ? "Nova" : "Special";
-const normalizeLocation = (value: string) => value.replace(/[.]$/, "").trim().toLowerCase();
+
+function EvolutionCard({ node, currentName }: { node: AniimoEvolutionNode; currentName: string }) {
+  const local = aniimo.find((candidate) => candidate.name === node.name);
+  const current = node.name === currentName;
+  const portrait = local ? <Image src={local.voteImage || local.image} alt="" fill sizes="72px" /> : node.imageUrl ? <Image src={node.imageUrl} alt="" fill sizes="72px" /> : null;
+  const body = <><span className={styles.evoMedal}>{portrait}</span><strong>{node.name}</strong><small data-stage={node.stage}>{stageLabel(node.stage)}</small></>;
+  const className = `${styles.evoCard} ${current ? styles.evoCurrent : ""}`;
+  return local
+    ? <Link href={`/aniimo/${local.slug}`} className={className} aria-current={current ? "page" : undefined} aria-label={`${node.name}, ${stageLabel(node.stage)}`}>{body}</Link>
+    : <div className={className}>{body}</div>;
+}
 
 function EvolutionNode({ node, currentName }: { node: AniimoEvolutionNode; currentName: string }) {
-  const local = aniimo.find((candidate) => candidate.name === node.name);
-  const card = <><span>{local ? <Image src={local.voteImage || local.image} alt={`${node.name} artwork`} fill sizes="72px" /> : node.imageUrl ? <Image src={node.imageUrl} alt={`${node.name} artwork`} fill sizes="72px" /> : null}</span><strong>{node.name}</strong><small>{stageLabel(node.stage)}</small></>;
-  return <div className={styles.evolutionBranch}>
-    {local ? <Link href={`/aniimo/${local.slug}`} className={node.name === currentName ? styles.current : undefined}>{card}</Link> : <div>{card}</div>}
-    {node.children.length > 0 && <div className={styles.evolutionChildren}>{node.children.map((child) => <EvolutionNode key={`${child.name}-${child.stage}`} node={child} currentName={currentName} />)}</div>}
-  </div>;
+  const branches = node.children.length;
+  return (
+    <div className={styles.evoLane}>
+      <EvolutionCard node={node} currentName={currentName} />
+      {branches === 1 && (
+        <>
+          <span className={styles.evoRail} aria-hidden />
+          <EvolutionNode node={node.children[0]} currentName={currentName} />
+        </>
+      )}
+      {branches > 1 && (
+        <>
+          <span className={styles.evoRail} aria-hidden />
+          <div className={styles.evoFork} data-count={branches}>
+            {node.children.map((child) => <EvolutionNode key={`${child.name}-${child.stage}`} node={child} currentName={currentName} />)}
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 const letter = (value: number, values: number[]) => {
@@ -31,7 +55,7 @@ const letter = (value: number, values: number[]) => {
   return percentile >= .82 ? "S" : percentile >= .58 ? "A" : percentile >= .3 ? "B" : "C";
 };
 
-export default function AniimoDetailPage({ entry: initialEntry }: { entry: Aniimo }) {
+export default function AniimoDetailPage({ entry: initialEntry, findOnMapHref, habitatLinks }: { entry: Aniimo; findOnMapHref?: string; habitatLinks: Array<{ name: string; href: string }> }) {
   const [illustrationOpen, setIllustrationOpen] = useState(false);
   const entry = initialEntry;
   const evolution = entry.evolution.map((node) => ({ ...node, local: aniimo.find((candidate) => candidate.name === node.name) }));
@@ -54,10 +78,6 @@ export default function AniimoDetailPage({ entry: initialEntry }: { entry: Aniim
     ["Magic DEF", stats.magicDefense],
     ["REGEN", stats.haste],
   ].sort((a, b) => Number(b[1]) - Number(a[1]))[0] : null;
-  const matchedHabitats = entry.habitats.map((habitat) => ({
-    name: habitat.replace(/[.]$/, ""),
-    location: mapLocations.find((candidate) => normalizeLocation(candidate.name) === normalizeLocation(habitat)),
-  }));
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Aniimo", href: "/aniimo" }, { name: entry.name, href: `/aniimo/${entry.slug}` }], siteConfig.url)} />
@@ -82,7 +102,7 @@ export default function AniimoDetailPage({ entry: initialEntry }: { entry: Aniim
             </div>
             <div className={styles.heroActions}>
               <Link href="/team-builder" className="button-primary">Build a Team <Icon name="arrow" /></Link>
-              {matchedHabitats[0]?.location && <Link href={`/map?marker=${matchedHabitats[0].location.id}`} className="button-secondary"><Icon name="pin" /> Find on Map</Link>}
+              {findOnMapHref && <Link href={findOnMapHref} className="button-secondary"><Icon name="pin" /> Find on Map</Link>}
               <Link href={`/tools/compare?first=${entry.slug}`} className="button-secondary">Compare</Link>
               {entry.illustrationUrl && <button type="button" className="button-secondary" onClick={() => setIllustrationOpen(true)}>View Illustration</button>}
             </div>
@@ -171,7 +191,7 @@ export default function AniimoDetailPage({ entry: initialEntry }: { entry: Aniim
           <div className={styles.fieldDataGrid}>
             {entry.habitats.length > 0 && <section className={styles.recordSection}>
               <header className={styles.recordHeader}><h2>Habitats</h2></header>
-              <div className={styles.habitatLinks}>{matchedHabitats.map(({ name, location }) => location ? <Link href={`/map?marker=${location.id}`} key={name}><Icon name="pin" />{name}</Link> : <Link href="/database/habitats" key={name}><Icon name="pin" />{name}</Link>)}</div>
+              <div className={styles.habitatLinks}>{habitatLinks.map(({ name, href }) => <Link href={href} key={name}><Icon name="pin" />{name}</Link>)}</div>
             </section>}
             {entry.homelandAbilities.length > 0 && <section className={styles.recordSection}>
               <header className={styles.recordHeader}><h2>Homeland Abilities</h2></header>
