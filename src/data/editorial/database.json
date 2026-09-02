@@ -1,0 +1,13 @@
+[
+  {"slug":"skills","name":"Skills","icon":"spark","description":"See what a skill does and which Aniimo can bring it into a team.","status":"verified"},
+  {"slug":"traits","name":"Traits","icon":"leaf","description":"Browse passive effects and the Aniimo associated with each trait.","status":"verified"},
+  {"slug":"elements","name":"Elements","icon":"spark","description":"Explore all nine elements and the Aniimo that share each affinity.","status":"verified"},
+  {"slug":"habitats","name":"Habitats","icon":"map","description":"Choose a region, see its associated Aniimo and plan a more focused route.","status":"verified"},
+  {"slug":"evolutions","name":"Evolution Paths","icon":"branch","description":"Follow stage relationships and branching paths across connected Aniimo.","status":"verified"},
+  {"slug":"forms","name":"Forms","icon":"spark","description":"Compare form changes in stage, element, appearance and base fields.","status":"verified"},
+  {"slug":"mobility","name":"Mobility","icon":"map","description":"Find movement and pathfinding abilities, then see the Aniimo that have them.","status":"verified"},
+  {"slug":"items","name":"Items","icon":"bag","description":"Browse item categories, their uses and the activities they belong to.","status":"community"},
+  {"slug":"materials","name":"Materials","icon":"crystal","description":"Find materials, their crafting connections and the places they are used.","status":"community"},
+  {"slug":"bosses","name":"World Bosses","icon":"crown","description":"Review named encounters, their locations and the records connected to them.","status":"community"},
+  {"slug":"achievements","name":"Achievements","icon":"crown","description":"Browse achievement goals and the milestones they help you keep track of.","status":"community"}
+]

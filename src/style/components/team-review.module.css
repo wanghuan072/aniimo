@@ -1,0 +1,8 @@
+.reviewRoster { padding:12px 0; border-bottom:1px solid #e5ecee; }
+.reviewRoster h3 { margin:0 0 8px; color:#5e7e95; font-size:9px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+.reviewMember { display:grid; grid-template-columns:42px minmax(0,1fr); gap:7px; align-items:center; padding:6px 0; color:inherit; border-top:1px solid #edf1f2; }
+.reviewMember:first-of-type { border-top:0; }
+.reviewMember>span { position:relative; grid-row:1/3; width:42px; height:42px; overflow:hidden; border:1px solid #d7e6e9; border-radius:8px; background:#f1f8f9; }
+.reviewMember img { object-fit:contain; padding:2px; }
+.reviewMember>div { min-width:0; }.reviewMember strong,.reviewMember small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }.reviewMember strong { color:#224766; font-size:10px; }.reviewMember small { margin-top:2px; color:#7890a0; font-size:8px; }
+.reviewMember em { grid-column:2; display:flex; flex-wrap:wrap; gap:3px; font-style:normal; }.reviewMember em b { padding:2px 4px; border-radius:4px; color:#5a758a; background:#f2f6f7; font-size:7px; font-weight:850; }.reviewMember i { grid-column:2; color:#859aa8; font-size:8px; font-style:normal; }

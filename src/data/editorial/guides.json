@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "aniimo-beginners-guide",
+    "title": "Aniimo Beginner Guide: Catching, Twining and Your First Team",
+    "category": "Getting Started",
+    "excerpt": "A practical first route through catching, Twining, exploration and a four-role starter team.",
+    "readTime": "8 min",
+    "updated": "2026-08-28",
+    "coverImage": "/images/home/aniimo-world-hero-v2.png",
+    "coverAlt": "Aniimo companions exploring a bright fantasy landscape",
+    "intro": "Aniimo combines creature discovery, action combat and exploration. The fastest start is not collecting everything at once; it is learning what each team slot contributes, then expanding your roster around a clear next objective.",
+    "takeaways": ["Start with one damage option, one support or heal option and one break option", "Treat exploration abilities as part of roster value", "Use published role, element and skill text before relying on rankings"],
+    "steps": ["Open the Aniimo list and identify one damage-focused record you enjoy using.", "Add a support, heal or regen option before filling duplicate damage roles.", "Choose a break option for tougher encounters, then use the fourth slot to cover a habitat or element need.", "Read the published skill and trait text for each candidate before assigning it a job.", "Choose one habitat objective for the next session instead of scattering attention across the whole map.", "Test the four-slot draft in Team Builder and adjust only one position at a time."],
+    "sections": [
+      {"title": "Start with jobs, not a perfect roster", "body": "Every early team benefits from clear jobs. Damage moves an encounter forward; support, healing or regeneration gives you room to recover; break creates a safer opening against resilient targets. You do not need every answer on day one, but naming the missing job gives each future discovery a purpose.", "image": "/images/aniimo/emberpup.png", "imageAlt": "Emberpup official artwork", "link": {"label": "Browse all Aniimo", "href": "/aniimo"}},
+      {"title": "Use habitats to set a small, achievable target", "body": "Pick one or two records that improve the role your team lacks, then check the habitats already listed on their profiles. A short route with a specific target is easier to repeat and evaluate than a vague plan to collect everything in one region.", "image": "/images/maps/ilya-world-map.png", "imageAlt": "Ilya world habitat map", "link": {"label": "Explore habitats", "href": "/database/habitats"}},
+      {"title": "Let the fourth slot remain flexible", "body": "The final position is where an early roster gains comfort. Use it for an element you do not have, a pathfinding utility, or a second contribution that fits your current activity. Flexibility is more valuable than forcing a theoretical composition before you know the encounter.", "image": "/images/aniimo/eklue.png", "imageAlt": "Eklue official artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}},
+      {"title": "Read the kit before making an assumption", "body": "Role labels are a reliable starting point, not a complete rotation guide. Open the profile and scan the published skills, trait and mobility entries before deciding what a creature will do for your party. If a field is not listed, leave it unknown rather than building a plan around a guess.", "image": "/images/aniimo/stellarys.png", "imageAlt": "Stellarys official artwork", "link": {"label": "Browse skill records", "href": "/database/skills"}},
+      {"title": "Keep a short review loop", "body": "After a route or encounter, record one thing that worked and one thing that felt missing. Did a team lack recovery, struggle to create an opening, or simply need a better travel option? Changing a single slot gives you a useful comparison; changing the entire team at once hides what actually improved.", "image": "/images/aniimo/leafy.png", "imageAlt": "Leafy official artwork", "link": {"label": "Track your collection", "href": "/tools/collection-tracker"}}
+    ]
+  },
+  {
+    "slug": "how-to-choose-your-first-aniimo",
+    "title": "Aniimo Forms & Evolution: Regional Forms, Element Changes and Materials",
+    "category": "Forms & Evolution",
+    "excerpt": "Use form differences, published evolution paths and material planning to make better collection decisions.",
+    "readTime": "6 min",
+    "updated": "2026-08-28",
+    "coverImage": "/images/aniimo/leafy.png",
+    "coverAlt": "Leafy official artwork",
+    "intro": "A form is more than a new portrait. It can change an Aniimo’s stage, elements and base fields, while an evolution path can branch into a different long-term choice. Read those changes before you spend a session chasing a path that does not fit your team.",
+    "takeaways": ["Compare the form you have with the form you want", "Read an evolution path from start to finish before making a route", "Use materials and habitats as planning clues, not promises of a quick upgrade"],
+    "steps": ["Open the Aniimo profile and switch through every available form.", "Write down the stage, element or role difference that would actually change your team.", "Follow the evolution path to see whether it branches into more than one destination.", "Check which habitats and materials connect to the path you want to pursue.", "Use the map to combine that route with another collection target when possible.", "Return to Team Builder and see what the evolved form would add or replace."],
+    "sections": [
+      {"title": "Start with the form you already have", "body": "Open the profile and compare the current form with the form you are considering. Look for a change that matters to your own next activity: a different element, a different stage, or base fields that better support the job you need filled.", "image": "/images/aniimo/celestis.png", "imageAlt": "Celestis artwork", "link": {"label": "Compare Aniimo", "href": "/tools/compare"}},
+      {"title": "A branch is a decision point", "body": "An evolution path may lead forward in a line or split into different destinations. Do not treat every branch as an automatic improvement. Pause at the split and ask which destination gives your roster a clearer option for the activities you actually enjoy.", "image": "/images/aniimo/helgon.png", "imageAlt": "Helgon artwork", "link": {"label": "Explore evolution paths", "href": "/database/evolutions"}},
+      {"title": "Plan the route before the upgrade", "body": "Habitats and materials become useful when they help you plan one practical outing. If an evolution target sits beside other Aniimo or collection goals you want, the route does more than chase a single upgrade.", "image": "/images/maps/ilya-world-map.png", "imageAlt": "Ilya world habitat map", "link": {"label": "Open the map", "href": "/map"}},
+      {"title": "Check what changes in the team", "body": "A new form can add variety, but it can also replace a role your current party relied on. Put the candidate into Team Builder before committing to the route, then see whether the team gained a useful answer or simply doubled up on something it already had.", "image": "/images/aniimo/flameruff.png", "imageAlt": "Flameruff artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}},
+      {"title": "Make one clear comparison", "body": "If two forms look appealing, compare them against the same question: which one helps the next team slot or route? Keep the comparison narrow enough that the trade-off is visible, then let your own roster decide the final pick.", "image": "/images/aniimo/coraliz.png", "imageAlt": "Coraliz artwork", "link": {"label": "Open comparison", "href": "/tools/compare"}}
+    ]
+  },
+  {
+    "slug": "aniimo-elements-and-roles-explained",
+    "title": "Aniimo Combat Guide: Roles, BREAK, EP and Team Building",
+    "category": "Combat",
+    "excerpt": "Build clearer teams by connecting roles, BREAK windows, EP use and elemental coverage.",
+    "readTime": "9 min",
+    "updated": "2026-08-28",
+    "coverImage": "/images/aniimo/stellarys.png",
+    "coverAlt": "Stellarys official artwork",
+    "intro": "Elements and roles answer different questions. Elements describe an Aniimo’s affinity, while roles describe its broad contribution to a party. Reading both together is the simplest way to understand where a record may fit.",
+    "takeaways": ["Element and role are separate labels", "Dual-element records can broaden coverage", "Role balance is usually more useful than chasing a complete element set"],
+    "steps": ["Identify the damage source your team currently relies on.", "Add a support, heal or regen record that gives the party recovery or utility.", "Add break pressure when you expect tougher targets.", "Check whether your first three slots all share the same element or limitation.", "Use the remaining slot to solve an element, habitat or exploration gap.", "Review the team in the analyzer before changing multiple slots at once."],
+    "sections": [
+      {"title": "Elements describe affinity", "body": "The database groups Aniimo by official element labels. Use the element directory when you need to see which records share an affinity or when you want to avoid an overly narrow roster. An element label alone does not tell you whether an Aniimo heals, breaks or deals damage.", "image": "/images/aniimo/coraliz.png", "imageAlt": "Coraliz official artwork", "link": {"label": "Browse elements", "href": "/database/elements"}},
+      {"title": "Roles describe contribution", "body": "DPS focuses on pressure, Heal and Regen provide recovery, Support improves a party’s options, and Break helps create an opening. Some Aniimo can contribute more than one way, but these labels give you a useful first pass before reading each published skill description.", "image": "/images/aniimo/leafy.png", "imageAlt": "Leafy official artwork", "link": {"label": "View published skills", "href": "/database/skills"}},
+      {"title": "Build coverage around the activity", "body": "A balanced party is not a checklist of nine elements. Begin with a clear damage source, enough sustain for mistakes and an answer for sturdier targets. Then make the remaining choices based on the habitat, goal and records you want to pursue next.", "image": "/images/aniimo/stellarys.png", "imageAlt": "Stellarys official artwork", "link": {"label": "Test a four-slot team", "href": "/team-builder"}},
+      {"title": "Use dual labels as options, not obligations", "body": "Some records carry more than one element or role label. That can make a roster more flexible, but it does not mean every possible contribution will be equally important in the same activity. Start from the job you need, then use the additional label as a way to widen future choices rather than a reason to overcomplicate the first team.", "image": "/images/aniimo/eklue.png", "imageAlt": "Eklue official artwork", "link": {"label": "View all Aniimo", "href": "/aniimo"}},
+      {"title": "Evaluate coverage after every swap", "body": "When you replace one Aniimo, check what left the party as well as what arrived. A new element might improve variety but remove the only sustain option; a second damage record might help a simple route while leaving no answer for a stronger target. Reviewing role and element coverage after each change keeps the decision visible.", "image": "/images/aniimo/helgon.png", "imageAlt": "Helgon official artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}}
+    ]
+  }
+]

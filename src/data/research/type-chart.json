@@ -1,0 +1,21 @@
+{
+  "sourceId": "aniimoverse",
+  "sourceUrl": "https://www.aniimoverse.com/type-chart",
+  "verifiedAt": "2026-08-10",
+  "retrievedAt": "2026-08-28",
+  "note": "Community-researched Closed Beta 3 matchup table. Not published by the official Wiki.",
+  "superEffective": 1.6,
+  "resisted": 0.625,
+  "elements": ["fire", "water", "grass", "electric", "ice", "rock", "wind", "holy", "dark"],
+  "matrix": [
+    [0.625, 0.625, 1.6, 1, 1.6, 0.625, 1, 0.625, 1],
+    [1.6, 0.625, 0.625, 1, 0.625, 1.6, 1, 0.625, 1],
+    [0.625, 1.6, 0.625, 1, 1, 1.6, 1, 0.625, 1],
+    [1, 1.6, 1, 0.625, 0.625, 0.625, 1.6, 1, 1],
+    [0.625, 1.6, 1, 1.6, 0.625, 0.625, 0.625, 1, 1],
+    [1, 0.625, 0.625, 1.6, 1.6, 0.625, 1, 1, 0.625],
+    [1, 1, 1.6, 0.625, 1, 1, 0.625, 1, 1.6],
+    [1, 1, 1, 0.625, 1, 1, 1.6, 0.625, 1.6],
+    [1.6, 0.625, 1.6, 1, 1, 1, 0.625, 1.6, 1]
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {"id":"beast-fang-ridge","name":"Beast Fang Ridge","region":"Beast Fang Ridge","category":"Habitat area","x":57,"y":18,"description":"A habitat area connected to 10 Aniimo profiles."},
+  {"id":"berylline-causeway","name":"Berylline Causeway","region":"Berylline Causeway","category":"Habitat area","x":53,"y":47,"description":"A habitat area connected to 7 Aniimo profiles."},
+  {"id":"blitzwood","name":"Blitzwood","region":"Blitzwood","category":"Habitat area","x":24,"y":51,"description":"A habitat area connected to 6 Aniimo profiles."},
+  {"id":"crescent-bay","name":"Crescent Bay","region":"Crescent Bay","category":"Habitat area","x":85,"y":67,"description":"A habitat area connected to 8 Aniimo profiles."},
+  {"id":"driftwise-meadow","name":"Driftwise Meadow","region":"Driftwise Meadow","category":"Habitat area","x":39,"y":55,"description":"A habitat area connected to 4 Aniimo profiles."},
+  {"id":"echoback-landing","name":"Echoback Landing","region":"Echoback Landing","category":"Habitat area","x":43,"y":70,"description":"A habitat area connected to 8 Aniimo profiles."},
+  {"id":"forest-of-falling-stars","name":"Forest of Falling Stars","region":"Forest of Falling Stars","category":"Habitat area","x":29,"y":34,"description":"A habitat area connected to 7 Aniimo profiles."},
+  {"id":"mistwoods","name":"Mistwoods","region":"Mistwoods","category":"Habitat area","x":20,"y":41,"description":"A habitat area connected to 7 Aniimo profiles."},
+  {"id":"nimbus-fields","name":"Nimbus Fields","region":"Nimbus Fields","category":"Habitat area","x":47,"y":31,"description":"A habitat area connected to 12 Aniimo profiles."},
+  {"id":"rosetower-woods","name":"Rosetower Woods","region":"Rosetower Woods","category":"Habitat area","x":17,"y":29,"description":"A habitat area connected to 7 Aniimo profiles."},
+  {"id":"russet-highlands","name":"Russet Highlands","region":"Russet Highlands","category":"Habitat area","x":78,"y":29,"description":"A habitat area connected to 5 Aniimo profiles."},
+  {"id":"sea-of-flowers","name":"Sea of Flowers","region":"Sea of Flowers","category":"Habitat area","x":35,"y":62,"description":"A habitat area connected to 7 Aniimo profiles."},
+  {"id":"the-argent-strait","name":"The Argent Strait","region":"The Argent Strait","category":"Habitat area","x":62,"y":80,"description":"A habitat area connected to 9 Aniimo profiles."},
+  {"id":"tideblossom-coast","name":"Tideblossom Coast","region":"Tideblossom Coast","category":"Habitat area","x":73,"y":73,"description":"A habitat area connected to 5 Aniimo profiles."},
+  {"id":"zephyrus-landbridge","name":"Zephyrus Landbridge","region":"Zephyrus Landbridge","category":"Habitat area","x":62,"y":54,"description":"A habitat area connected to 6 Aniimo profiles."}
+]

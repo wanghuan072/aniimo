@@ -1,0 +1,99 @@
+:root {
+  --blue-950: #092c56;
+  --blue-900: #123e70;
+  --blue-800: #165896;
+  --blue-700: #2878ce;
+  --blue-600: #3b8bf2;
+  --blue-200: #cfe8ff;
+  --blue-100: #eaf5ff;
+  --cream: #fbfaf5;
+  --cream-deep: #f3efe4;
+  --surface: rgba(255, 255, 252, 0.96);
+  --ink: #102f55;
+  --muted: #60728a;
+  --line: #dfe6e8;
+  --gold: #f4bd3f;
+  --green: #65a356;
+  --coral: #e96a55;
+  --purple: #8161c5;
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 30px;
+  --shadow-sm: 0 8px 24px rgba(26, 69, 108, 0.08);
+  --shadow: 0 18px 46px rgba(25, 71, 111, 0.14);
+  --font-display: var(--font-game-display), "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: var(--font-game-body), ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-ui: var(--font-game-ui), "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #9bd9f0; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  background:
+    linear-gradient(180deg, rgba(20, 114, 203, 0.08), rgba(120, 192, 117, 0.12)),
+    radial-gradient(circle at 8% 12%, #d7f4ff 0 18%, transparent 43%),
+    radial-gradient(circle at 94% 56%, #d5f2c6 0 13%, transparent 38%),
+    #dff4ef;
+  min-width: 320px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("/images/home/aniimo-world-hero-v2.png") center / cover no-repeat;
+  filter: blur(12px) saturate(0.82);
+  transform: scale(1.04);
+  opacity: 0.38;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select, kbd, code, samp { font: inherit; font-family: var(--font-ui); }
+button, select { cursor: pointer; }
+img { max-width: 100%; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.018em; }
+p { line-height: 1.65; }
+::selection { color: white; background: var(--blue-700); }
+:focus-visible { outline: 3px solid rgba(59, 139, 242, 0.45); outline-offset: 3px; }
+
+.container { width: min(1164px, calc(100% - 40px)); margin-inline: auto; }
+.site-frame { width: min(1232px, calc(100% - 40px)); margin: 18px auto; border: 2px solid rgba(220, 245, 255, 0.88); border-radius: 22px; overflow: clip; box-shadow: 0 30px 80px rgba(12, 55, 91, 0.24); background: var(--cream); }
+.page-main { min-height: 60vh; background: linear-gradient(180deg, rgba(255, 255, 252, 0.98), rgba(247, 245, 238, 0.98)); }
+.section { padding-block: 64px; }
+.section + .section { padding-top: 8px; }
+.surface { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.button-primary, .button-secondary, .button-quiet {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 20px; border-radius: 12px; font-weight: 800; border: 1px solid transparent; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.button-primary { color: white; background: linear-gradient(180deg, #4c9cf7, #276fd4); box-shadow: 0 8px 18px rgba(43, 122, 215, 0.24); }
+.button-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(43, 122, 215, 0.3); }
+.button-secondary { color: var(--blue-800); background: rgba(255,255,255,.9); border-color: #a8c8ea; }
+.button-secondary:hover { background: var(--blue-100); }
+.button-quiet { color: var(--blue-800); background: var(--blue-100); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 1000; padding: 10px 14px; border-radius: 9px; color: white; background: var(--blue-950); font-weight: 850; transform: translateY(-150%); transition: transform 150ms ease; }
+.skip-link:focus-visible { transform: translateY(0); }
+
+@media (max-width: 1024px) {
+  .site-frame { width: 100%; margin: 0; border: 0; border-radius: 0; }
+  .container { width: min(100% - 28px, 1164px); }
+  .section { padding-block: 46px; }
+}
+
+@media (max-width: 768px) {
+  body { font-size: 12px; }
+  .container { width: min(100% - 22px, 1164px); }
+  .section { padding-block: 38px; }
+  .button-primary, .button-secondary, .button-quiet { min-height: 44px; padding-inline: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

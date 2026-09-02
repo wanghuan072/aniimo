@@ -1,0 +1,24 @@
+{
+  "sourceId": "aniimoverse",
+  "sourceUrl": "https://www.aniimoverse.com/tier-list",
+  "retrievedAt": "2026-08-28",
+  "boardUpdated": "2026-08-28",
+  "votableForms": 226,
+  "aniimoRepresented": 96,
+  "rankedForms": 157,
+  "ballots": 225,
+  "note": "Community vote snapshot. Form-specific votes are not treated as ratings for a different form in the same evolution line.",
+  "baseFormRatings": {
+    "malevsera": "SS",
+    "somniwing": "SS",
+    "erlath": "S",
+    "coraliz": "S",
+    "glameep": "S",
+    "popapus": "S",
+    "helion": "S",
+    "besauce": "A",
+    "luminelle": "B",
+    "fahloo": "B",
+    "gachapus": "B"
+  }
+}

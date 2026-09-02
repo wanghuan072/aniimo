@@ -1,0 +1,42 @@
+[
+  {
+    "id": "official-wiki",
+    "name": "Official Aniimo Wiki",
+    "url": "https://wiki.aniimo.com/en",
+    "grade": "official",
+    "retrievedAt": "2026-08-28",
+    "covers": ["94 Aniimo records", "names and descriptions", "elements and roles", "base stats", "skills and traits", "evolution relationships", "habitat labels"]
+  },
+  {
+    "id": "official-site",
+    "name": "Aniimo Official Website",
+    "url": "https://www.aniimo.com",
+    "grade": "official",
+    "retrievedAt": "2026-08-28",
+    "covers": ["release news", "platform announcements", "official trailers", "game feature announcements"]
+  },
+  {
+    "id": "steam",
+    "name": "ANIIMO on Steam",
+    "url": "https://store.steampowered.com/app/4126040/ANIIMO/",
+    "grade": "platform",
+    "retrievedAt": "2026-08-28",
+    "covers": ["PC release listing", "feature summary", "language support", "system requirements"]
+  },
+  {
+    "id": "aniimoverse",
+    "name": "AniimoVerse",
+    "url": "https://www.aniimoverse.com/",
+    "grade": "community",
+    "retrievedAt": "2026-08-28",
+    "covers": ["Closed Beta 3 guides", "community tier voting", "element matchup table", "224 regional and special forms", "2,446-item catalog counts", "21 world bosses", "28 mobility abilities", "85 achievements", "29 player skill nodes", "map research"]
+  },
+  {
+    "id": "aniimo-reddit",
+    "name": "r/Aniimo community",
+    "url": "https://www.reddit.com/r/Aniimo/",
+    "grade": "community",
+    "retrievedAt": "2026-08-28",
+    "covers": ["player discussion", "team preferences", "map validation reports", "beta observations"]
+  }
+]
