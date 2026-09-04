@@ -1,19 +1,19 @@
 .brand { display: inline-flex; align-items: center; gap: 10px; color: white; font: 900 22px var(--font-display); letter-spacing: .045em; text-shadow: 0 2px 8px rgba(5,42,75,.22); white-space: nowrap; }
 .brandMark { display: grid; flex: 0 0 auto; place-items: center; width: 34px; height: 34px; filter: drop-shadow(0 3px 5px rgba(4,37,67,.28)); }
 .brandMark img { display: block; width: 100%; height: 100%; }
-.breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; color: #667b91; font-size: 13px; font-weight: 700; }
+.breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; color: #667b91; font-size: 14px; font-weight: 700; }
 .breadcrumb > span { display: inline-flex; align-items: center; gap: 9px; }
 .breadcrumb a:hover { color: var(--blue-700); }
 .sectionHeading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 24px; }
 .sectionHeading h2 { margin: 4px 0 6px; font-size: clamp(26px, 3vw, 38px); color: var(--ink); }
 .sectionHeading p { max-width: 720px; margin: 0; color: var(--muted); }
-.eyebrow { display: inline-block; color: var(--blue-700); text-transform: uppercase; letter-spacing: .09em; font-size: 11px; font-weight: 900; }
+.eyebrow { display: inline-block; color: var(--blue-700); text-transform: uppercase; letter-spacing: .09em; font-size: 14px; font-weight: 900; }
 .textLink, .cardLink { display: inline-flex; align-items: center; gap: 6px; color: var(--blue-700); font-weight: 850; font-size: 14px; white-space: nowrap; }
 .textLink svg, .cardLink svg { width: 17px; transition: transform 150ms ease; }
 .textLink:hover svg, .cardLink:hover svg { transform: translateX(3px); }
 .elementBadge { --element-color: #4d83d9; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 850; color: var(--element-color); }
 .elementBadge > span { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--element-color) 12%, white); border: 1px solid color-mix(in srgb, var(--element-color) 28%, white); }
-.stageBadge { position: absolute; top: 10px; right: 10px; z-index: 3; padding: 5px 8px; border: 1px solid rgba(255,255,255,.78); border-radius: 9px; font-size: 11px; font-weight: 900; box-shadow: 0 3px 10px rgba(0,0,0,.08); }
+.stageBadge { position: absolute; top: 10px; right: 10px; z-index: 3; padding: 5px 8px; border: 1px solid rgba(255,255,255,.78); border-radius: 9px; font-size: 14px; font-weight: 900; box-shadow: 0 3px 10px rgba(0,0,0,.08); }
 .stage1 { background: #edf6ff; color: #2575b6; }
 .stage2 { background: #fff2ce; color: #a77006; }
 .stage3 { background: #ffe5df; color: #c94935; }
@@ -22,19 +22,19 @@
   --element-color: #4d83d9;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--element-color) 24%, #dce4e7);
+  border: 1px solid color-mix(in srgb, var(--element-color) 24%, rgba(255,255,255,.7));
   border-radius: 17px;
-  background: #fbfdfd;
-  box-shadow: 0 7px 18px rgba(25, 64, 96, 0.08);
+  background: color-mix(in srgb, #fbfdfd 88%, transparent);
+  box-shadow: var(--shadow-1), var(--sheen);
   content-visibility: auto;
   contain-intrinsic-size: 292px;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease);
 }
 .aniimoCard:hover {
   z-index: 2;
   border-color: color-mix(in srgb, var(--element-color) 55%, #b9c9d3);
   transform: translateY(-5px);
-  box-shadow: 0 16px 30px color-mix(in srgb, var(--element-color) 16%, rgba(22,61,92,.12));
+  box-shadow: var(--shadow-2), 0 16px 30px color-mix(in srgb, var(--element-color) 16%, rgba(22,61,92,.12)), var(--sheen);
 }
 .cardShell { display: block; height: 100%; }
 .cardShell:focus-visible { outline: 3px solid color-mix(in srgb, var(--element-color) 65%, white); outline-offset: -3px; }
@@ -86,9 +86,10 @@
   border: 1px solid rgba(255,255,255,.74);
   border-radius: 7px;
   color: #425e77;
-  background: rgba(255,255,255,.72);
-  backdrop-filter: blur(5px);
-  font: 800 11px var(--font-ui);
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--sheen);
+  font: 800 14px var(--font-ui);
   font-variant-numeric: tabular-nums;
 }
 .cardElements { position: absolute; right: 11px; bottom: 10px; z-index: 3; display: flex; gap: 5px; }
@@ -103,7 +104,7 @@
   color: white;
   background: var(--badge-color);
   box-shadow: 0 4px 8px rgba(20,54,81,.18);
-  font-size: 11px;
+  font-size: 14px;
   font-style: normal;
 }
 .cardBody { display: block; min-width: 0; padding: 12px 13px 13px; border-top: 3px solid color-mix(in srgb, var(--element-color) 56%, white); background: linear-gradient(180deg, #fff, #f9fbfb); }
@@ -111,7 +112,7 @@
 .cardTitleRow h3 { min-width: 0; margin: 0; overflow: hidden; color: var(--ink); font-size: 17px; line-height: 1.15; text-overflow: ellipsis; white-space: nowrap; }
 .cardTitleRow svg { flex: 0 0 auto; width: 17px; color: var(--element-color); transition: transform 160ms ease; }
 .aniimoCard:hover .cardTitleRow svg { transform: translateX(3px); }
-.cardMeta { display: flex; align-items: center; justify-content: space-between; gap: 7px; min-width: 0; margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.2; }
+.cardMeta { display: flex; align-items: center; justify-content: space-between; gap: 7px; min-width: 0; margin-top: 7px; color: var(--muted); font-size: 14px; line-height: 1.2; }
 .cardMeta strong { overflow: hidden; color: color-mix(in srgb, var(--element-color) 72%, #27435d); text-overflow: ellipsis; white-space: nowrap; }
 .cardMeta span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cardDescription { display: -webkit-box; margin-top: 9px; overflow: hidden; color: var(--muted); font-size: 14px; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
@@ -124,15 +125,15 @@
 .guideCard, .buildCard { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.92); }
 .guideCard h3, .buildCard h3 { margin: 5px 0 7px; font-size: 20px; }
 .guideCard h3 a:hover, .buildCard h3 a:hover { color: var(--blue-700); }
-.guideCard p, .buildCard p { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.guideCard p, .buildCard p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
 .guideIcon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 13px; color: var(--blue-700); background: var(--blue-100); }
 .guideIcon svg { width: 24px; }
 .buildCard { grid-template-columns: 110px 1fr; }
 .buildImage { position: relative; min-height: 125px; border-radius: 13px; background: radial-gradient(circle, #fff, #e7f4ff); }
 .buildImage img { object-fit: contain; }
 .tagRow { display: flex; flex-wrap: wrap; gap: 6px; }
-.tagRow span { padding: 4px 7px; border-radius: 999px; background: #eef5fa; color: #53718b; font-size: 10px; font-weight: 850; }
-.buildMeta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; color: #75889a; font-size: 11px; font-weight: 750; }
+.tagRow span { padding: 4px 7px; border-radius: 999px; background: #eef5fa; color: #53718b; font-size: 14px; font-weight: 850; }
+.buildMeta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; color: #75889a; font-size: 14px; font-weight: 750; }
 .buildMeta span + span::before { content: "•"; margin-right: 8px; }
 .sourceNote { display: flex; align-items: flex-start; gap: 12px; padding: 15px 17px; border-radius: 14px; border: 1px solid #cfe1d0; background: #f2f8ed; color: #496147; }
 .sourceNote > svg { width: 21px; flex: 0 0 auto; color: #63a24f; }
@@ -146,17 +147,17 @@
 .faqList details p { margin: 0; padding: 0 17px 17px; color: var(--muted); font-size: 14px; }
 @media (max-width: 768px) {
   .sectionHeading { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .textLink, .cardLink, .elementBadge { font-size: 12px; }
-  .sourceNote p, .faqList details p { font-size: 12px; }
+  .textLink, .cardLink, .elementBadge { font-size: 14px; }
+  .sourceNote p, .faqList details p { font-size: 14px; }
   .listCard .cardShell { grid-template-columns: 120px 1fr; }
   .listCard .cardImage { min-height: 160px; }
   .listCard .cardDescription { display: none; }
   .cardTitleRow h3 { font-size: 15px; }
-  .cardMeta { font-size: 11px; }
-  .cardNumber { top: 8px; left: 8px; padding: 3px 5px; font-size: 9px; }
-  .stageBadge { top: 8px; right: 8px; padding: 4px 6px; font-size: 9px; }
+  .cardMeta { font-size: 14px; }
+  .cardNumber { top: 8px; left: 8px; padding: 3px 5px; font-size: 14px; }
+  .stageBadge { top: 8px; right: 8px; padding: 4px 6px; font-size: 14px; }
   .cardElements { right: 8px; bottom: 7px; }
-  .cardElements i { width: 22px; height: 22px; font-size: 10px; }
+  .cardElements i { width: 22px; height: 22px; font-size: 14px; }
   .buildCard { grid-template-columns: 78px 1fr; padding: 14px; }
   .buildImage { min-height: 100px; }
 }

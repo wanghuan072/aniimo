@@ -26,7 +26,7 @@ export default function DatabasePage() {
     elements: { src: "/images/aniimo/blazen.png", alt: "Blazen representing elements", tone: "gold" },
     habitats: { src: "/images/maps/ilya-world-map.png", alt: "Map of Aniimo habitats", tone: "green" },
     evolutions: { src: "/images/aniimo/flameruff.png", alt: "Flameruff evolution form", tone: "violet" },
-    mobility: { src: "/images/aniimo/zephyrin.png", alt: "Aniimo mobility ability", tone: "blue" },
+    mobility: { src: "/images/aniimo/turbo.png", alt: "Turbo representing mobility", tone: "blue" },
     items: { src: "/images/database/items/a-new-journey.webp", alt: "Aniimo item collection", tone: "blue" },
     materials: { src: "/images/aniimo/geoclaw.png", alt: "Geoclaw representing materials", tone: "earth" },
     bosses: { src: "/images/aniimo/infergon.png", alt: "Infergon world boss", tone: "fire" },

@@ -32,7 +32,7 @@
 .dexNav span {
   min-width: 64px;
   color: #5d7388;
-  font: 800 11px var(--font-ui);
+  font: 800 14px var(--font-ui);
   font-variant-numeric: tabular-nums;
   text-align: center;
 }
@@ -114,7 +114,7 @@
   border-radius: 999px;
   color: #fff;
   background: rgba(16, 47, 85, .72);
-  font: 800 9px/16px var(--font-ui);
+  font: 800 14px/16px var(--font-ui);
   text-align: center;
 }
 
@@ -136,7 +136,7 @@
 
 .entryNo {
   color: #8aa0b4;
-  font: 800 13px var(--font-ui);
+  font: 800 14px var(--font-ui);
   font-variant-numeric: tabular-nums;
   letter-spacing: .08em;
 }
@@ -174,7 +174,7 @@
   border-radius: 999px;
   background: #fff;
   border: 1px solid #d7e3ea;
-  font: 800 12px var(--font-ui);
+  font: 800 14px var(--font-ui);
 }
 
 .elementPill:hover {
@@ -182,7 +182,7 @@
   background: color-mix(in srgb, var(--hero-element) 8%, #fff);
 }
 
-.stagePill { background: #fff6d8; border-color: #f0dd9a; color: #8a6410; text-transform: uppercase; letter-spacing: .04em; font-size: 11px; }
+.stagePill { background: #fff6d8; border-color: #f0dd9a; color: #8a6410; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; }
 .formPill { background: #eef6fb; border-color: #c9dce8; color: #355f80; }
 .stagePill[data-stage="2"] { background: #eef3f8; border-color: #c9d6e2; color: #4d657c; }
 .stagePill[data-stage="3"] { background: #fff0d4; border-color: #e8c57a; color: #a07010; }
@@ -206,7 +206,7 @@
 
 .matchCaption {
   color: #7a8fa3;
-  font: 800 10px var(--font-ui);
+  font: 800 14px var(--font-ui);
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -234,7 +234,7 @@
   align-items: center;
   gap: 6px;
   min-width: 92px;
-  font: 900 12px var(--font-ui);
+  font: 900 14px var(--font-ui);
   letter-spacing: .04em;
   text-transform: uppercase;
 }
@@ -291,7 +291,7 @@
   gap: 8px 16px;
   margin: 14px 0 0;
   color: #6d8296;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 750;
 }
 
@@ -311,7 +311,7 @@
 .heroActions > a {
   min-height: 40px;
   padding-inline: 14px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .heroActions svg,
@@ -321,7 +321,7 @@
 
 .sectionEyebrow {
   color: var(--blue-700);
-  font: 850 10px var(--font-ui);
+  font: 850 14px var(--font-ui);
   text-transform: uppercase;
   letter-spacing: .1em;
 }
@@ -365,7 +365,7 @@
   gap: 5px;
   padding-top: 4px;
   color: var(--blue-700);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
   white-space: nowrap;
 }
@@ -415,7 +415,7 @@
   margin-top: 6px;
   overflow: hidden;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -428,7 +428,7 @@
 
 .ratingsPanel > p {
   margin: 12px 0 0;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -446,7 +446,7 @@
 
 .totalStat small {
   margin-top: 1px;
-  font-size: 9px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: .08em;
 }
@@ -483,7 +483,7 @@
 
 .recordStrip span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 750;
 }
 
@@ -555,7 +555,7 @@
   border-radius: 999px;
   color: #52718b;
   background: #edf6fb;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 850;
 }
 
@@ -590,7 +590,7 @@
 
 .skillHud dt {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 750;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -613,7 +613,7 @@
 
 .skillEffects li {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
@@ -624,7 +624,7 @@
   border-radius: 999px;
   color: var(--blue-800);
   background: #edf6fb;
-  font-size: 9px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -679,7 +679,7 @@
   display: block;
   margin-top: 2px;
   color: var(--blue-700);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -750,7 +750,7 @@
   max-width: 280px;
   margin: 0;
   color: #718296;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
   text-align: right;
 }
@@ -782,7 +782,7 @@
   max-width: 360px;
   margin: 0;
   color: #718296;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
   text-align: right;
 }
@@ -813,7 +813,7 @@
   border-radius: 999px;
   color: var(--blue-800);
   background: #fff;
-  font: 800 12px var(--font-ui);
+  font: 800 14px var(--font-ui);
 }
 
 .spawnAtlases button small {
@@ -851,7 +851,7 @@
 .spawnAreas > p {
   margin: 0 0 8px;
   color: #6a8498;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -887,20 +887,20 @@
 .spawnAreas strong {
   min-width: 0;
   color: var(--ink);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.25;
 }
 
 .spawnAreas span {
   color: var(--blue-800);
-  font: 800 13px var(--font-ui);
+  font: 800 14px var(--font-ui);
   font-variant-numeric: tabular-nums;
 }
 
 .spawnAreas small {
   grid-column: 1 / -1;
   color: #6a8498;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 750;
 }
 
@@ -910,7 +910,7 @@
   gap: 5px;
   margin-top: 10px;
   color: var(--blue-700);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
 }
 
@@ -938,7 +938,7 @@
 .fieldData > header > div span {
   display: block;
   color: #7a93a6;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 850;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -954,7 +954,7 @@
   align-items: center;
   gap: 5px;
   color: var(--blue-700);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 850;
   white-space: nowrap;
 }
@@ -1006,7 +1006,7 @@
   border-radius: 999px;
   color: #52718b;
   background: #edf6fb;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 850;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -1015,7 +1015,7 @@
 .fieldFacts p {
   margin: 7px 0 0;
   color: #5d7388;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
@@ -1062,7 +1062,7 @@
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 850;
   letter-spacing: .02em;
 }
@@ -1090,12 +1090,12 @@
 }
 
 .formGallery { margin: 0 0 12px; padding: 14px 16px 16px; border: 1px solid #d8e4ec; border-radius: 15px; background: linear-gradient(115deg,#fbfdff,#f4f9f9); box-shadow: 0 8px 18px rgba(68,78,117,.06); }
-.formGallery > header { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:12px; }.formGallery h2 { margin:2px 0 0; font-size:20px; }.formGallery p { margin:0; color:#718296; font-size:13px; }.formGallery > div { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:9px; }.formGallery button { display:grid; grid-template-columns:54px minmax(0,1fr); width:100%; column-gap:9px; align-items:center; min-height:72px; padding:8px; border:1px solid #d8e4ea; border-radius:11px; color:var(--ink); text-align:left; background:#fff; cursor:pointer; transition:border-color .15s ease,box-shadow .15s ease,background .15s ease; }.formGallery button:hover,.formGallery .currentFormCard,.formGallery button[aria-pressed="true"] { border-color:#80b7e3; box-shadow:0 5px 12px rgba(69,135,188,.12); }.formGallery button:focus-visible { outline:3px solid rgba(91,163,229,.42); outline-offset:2px; }.formPortrait { position:relative; grid-row:1 / 4; display:block; width:54px; height:54px; overflow:hidden; border-radius:8px; background:#edf5f6; }.formPortrait img { object-fit:contain; padding:2px; }.formGallery strong { overflow:hidden; font-size:13px; line-height:1.1; text-overflow:ellipsis; white-space:nowrap; }.formGallery small { color:#657c90; font-size:10px; font-weight:750; line-height:1.2; }.formGallery b { color:#3976aa; font-size:13px; }.formGallery em { color:#8090a0; font-size:9px; font-style:normal; font-weight:750; }
+.formGallery > header { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:12px; }.formGallery h2 { margin:2px 0 0; font-size:20px; }.formGallery p { margin:0; color:#718296; font-size: 14px; }.formGallery > div { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:9px; }.formGallery button { display:grid; grid-template-columns:54px minmax(0,1fr); width:100%; column-gap:9px; align-items:center; min-height:72px; padding:8px; border:1px solid #d8e4ea; border-radius:11px; color:var(--ink); text-align:left; background:#fff; cursor:pointer; transition:border-color .15s ease,box-shadow .15s ease,background .15s ease; }.formGallery button:hover,.formGallery .currentFormCard,.formGallery button[aria-pressed="true"] { border-color:#80b7e3; box-shadow:0 5px 12px rgba(69,135,188,.12); }.formGallery button:focus-visible { outline:3px solid rgba(91,163,229,.42); outline-offset:2px; }.formPortrait { position:relative; grid-row:1 / 4; display:block; width:54px; height:54px; overflow:hidden; border-radius:8px; background:#edf5f6; }.formPortrait img { object-fit:contain; padding:2px; }.formGallery strong { overflow:hidden; font-size: 14px; line-height:1.1; text-overflow:ellipsis; white-space:nowrap; }.formGallery small { color:#657c90; font-size: 14px; font-weight:750; line-height:1.2; }.formGallery b { color:#3976aa; font-size: 14px; }.formGallery em { color:#8090a0; font-size: 14px; font-style:normal; font-weight:750; }
 
 .formComparison { margin:12px 0 0; padding:15px 16px 16px; border:1px solid #d8e4ec; border-radius:15px; background:linear-gradient(115deg,#fbfdff,#f4f9f9); box-shadow:0 8px 18px rgba(68,78,117,.06); scroll-margin-top: 84px; }
 .formComparison > header { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:12px; }
 .formComparison h2 { margin:2px 0 0; font-size:20px; }
-.formComparison > header p { max-width:360px; margin:0; color:#718296; font-size:13px; line-height:1.4; text-align:right; }
+.formComparison > header p { max-width:360px; margin:0; color:#718296; font-size: 14px; line-height:1.4; text-align:right; }
 .formComparisonRows { display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:10px; }
 .formComparisonRows article,
 .formComparisonRows button { min-width:0; padding:11px; border:1px solid #dce7ec; border-radius:12px; background:#fff; box-shadow:0 3px 9px rgba(52,100,129,.04); }
@@ -1107,18 +1107,18 @@
 .formComparisonRows article > header strong,
 .formComparisonRows button > header strong { display:block; overflow-wrap:anywhere; color:var(--ink); font-size:14px; line-height:1.15; }
 .formComparisonRows article > header small,
-.formComparisonRows button > header small { display:block; margin-top:4px; color:#6a8498; font-size:11px; font-weight:800; }
+.formComparisonRows button > header small { display:block; margin-top:4px; color:#6a8498; font-size: 14px; font-weight:800; }
 .formIdentity { display:flex; flex-wrap:wrap; gap:5px; min-height:25px; }
-.formIdentity span { padding:4px 7px; border-radius:999px; color:#52718b; background:#edf6fb; font-size:10px; font-weight:850; }
+.formIdentity span { padding:4px 7px; border-radius:999px; color:#52718b; background:#edf6fb; font-size: 14px; font-weight:850; }
 .formTotals { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin:11px 0 8px; padding-top:9px; border-top:1px solid #e7eef1; }
 .formTotals b { color:#2e77b7; font-size:19px; line-height:1; }
-.formTotals b small { color:#748b9e; font-size:9px; font-weight:850; }
-.formTotals em { color:#6b8194; font-size:10px; font-style:normal; font-weight:800; text-align:right; }
+.formTotals b small { color:#748b9e; font-size: 14px; font-weight:850; }
+.formTotals em { color:#6b8194; font-size: 14px; font-style:normal; font-weight:800; text-align:right; }
 .formComparisonRows dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; margin:0; }
 .formComparisonRows dl div { padding:5px 4px; border-radius:6px; background:#f5f9fa; text-align:center; }
-.formComparisonRows dt { color:#7890a0; font-size:8px; font-weight:900; letter-spacing:.03em; }
-.formComparisonRows dd { margin:2px 0 0; color:#314f69; font-size:12px; font-weight:900; }
-.formComparisonRows footer { display:flex; align-items:center; margin-top:9px; color:#678095; font-size:10px; font-weight:800; }
+.formComparisonRows dt { color:#7890a0; font-size: 14px; font-weight:900; letter-spacing:.03em; }
+.formComparisonRows dd { margin:2px 0 0; color:#314f69; font-size: 14px; font-weight:900; }
+.formComparisonRows footer { display:flex; align-items:center; margin-top:9px; color:#678095; font-size: 14px; font-weight:800; }
 .formComparisonRows footer span { width:1px; height:11px; margin:0 8px; background:#d9e5ea; }
 .formComparisonRows .currentFormComparison { border-color:#81b9e5; box-shadow:inset 3px 0 #4f9fe0,0 4px 11px rgba(69,135,188,.10); }
 
@@ -1193,7 +1193,7 @@
 .evoCard strong {
   max-width: 100%;
   overflow: hidden;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1201,7 +1201,7 @@
 
 .evoCard small {
   color: #6d8294;
-  font: 800 10px/1 var(--font-ui);
+  font: 800 14px/1 var(--font-ui);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -1219,7 +1219,7 @@
   border-radius: 999px;
   color: #fff;
   background: var(--hero-element, #4d83d9);
-  font: 800 9px/1 var(--font-ui);
+  font: 800 14px/1 var(--font-ui);
   font-style: normal;
   letter-spacing: .03em;
   transform: translateX(-50%);
@@ -1380,7 +1380,7 @@
   border-radius: 999px;
   color: #fff;
   background: #667c98;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -1436,7 +1436,7 @@
   border-radius: 999px;
   color: #52718b;
   background: #f3f8fb;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -1482,7 +1482,7 @@
   border-radius: 999px;
   color: #2c658f;
   background: #e9f4f9;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -1527,7 +1527,7 @@
 .buildRows small {
   margin-top: 2px;
   color: var(--blue-700);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 750;
 }
 
@@ -1551,7 +1551,7 @@
   border-radius: 7px;
   color: #536d83;
   background: #e8f0f3;
-  font-size: 11px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 800;
 }
@@ -1603,7 +1603,7 @@
   max-width: 280px;
   margin: 0;
   color: #718296;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
   text-align: right;
 }
@@ -1648,13 +1648,13 @@
 }
 
 .relatedCards strong {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .relatedCards small {
   margin-top: 1px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .bottomGrid {
@@ -1711,7 +1711,7 @@
 .guideLinks small {
   margin-top: 2px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -1764,18 +1764,18 @@
 
 .statRow i {
   color: #5c6b7e;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
 }
 
 .statRow span {
   color: #43556a;
-  font: 800 11px var(--font-ui);
+  font: 800 14px var(--font-ui);
 }
 
 .statRow strong {
   color: var(--ink);
-  font: 800 12px var(--font-ui);
+  font: 800 14px var(--font-ui);
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -1821,9 +1821,9 @@
   .portrait { min-height: 280px; }
   .dossierCopy { padding: 2px 2px 6px; }
   .dossierCopy h1 { font-size: clamp(34px, 11vw, 42px); }
-  .description { font-size: 12px; }
-  .heroActions > a { flex: 1 1 auto; min-height: 39px; font-size: 12px; }
-  .weakBar b, .resistBar b, .strongBar b { min-width: 78px; font-size: 11px; }
+  .description { font-size: 14px; }
+  .heroActions > a { flex: 1 1 auto; min-height: 39px; font-size: 14px; }
+  .weakBar b, .resistBar b, .strongBar b { min-width: 78px; font-size: 14px; }
   .weakBar,
   .resistBar,
   .strongBar {
@@ -1842,45 +1842,45 @@
   .panel > h2 { font-size: 20px; }
   .panel > header > a,
   .panel > header > small,
-  .panel > p { font-size: 12px; }
+  .panel > p { font-size: 14px; }
   .overviewGrid { gap: 9px; margin-top: 9px; }
   .ratings { grid-template-columns: repeat(5,minmax(58px,1fr)); overflow-x: auto; padding-bottom: 3px; }
   .ratings > div { min-width: 58px; }
-  .ratings span { font-size: 10px; }
-  .ratingsPanel > p { font-size: 12px; }
+  .ratings span { font-size: 14px; }
+  .ratingsPanel > p { font-size: 14px; }
   .recordStrip { margin-top: 9px; }
   .recordStrip strong { font-size: 18px; }
-  .recordStrip span { font-size: 11px; }
+  .recordStrip span { font-size: 14px; }
   .abilityGrid,
   .fieldDataGrid { gap: 9px; margin-top: 9px; }
   .recordSection { margin-top: 9px; }
   .recordHeader { min-height: 37px; padding-inline: 14px; }
   .recordHeader h2 { font-size: 17px; }
   .fieldDataGrid .recordSection { margin-top: 0; }
-  .formGallery { margin-bottom:9px; padding:12px; }.formGallery > header { align-items:flex-start; flex-direction:column; gap:4px; }.formGallery p { font-size:12px; }.formGallery > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .formComparison { padding:12px; }.formComparison > header { display:block; margin-bottom:10px; }.formComparison h2 { margin-top:3px; font-size:18px; }.formComparison > header p { margin-top:5px; font-size:12px; text-align:left; }.formComparisonRows { grid-template-columns:1fr; gap:8px; }.formComparisonRows article,.formComparisonRows button { padding:10px; }
-  .relatedSection { padding:12px; }.relatedSection > header { display:block; }.relatedSection h2 { margin-top:3px; font-size:18px; }.relatedSection > header p { margin-top:5px; font-size:12px; text-align:left; }
+  .formGallery { margin-bottom:9px; padding:12px; }.formGallery > header { align-items:flex-start; flex-direction:column; gap:4px; }.formGallery p { font-size: 14px; }.formGallery > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .formComparison { padding:12px; }.formComparison > header { display:block; margin-bottom:10px; }.formComparison h2 { margin-top:3px; font-size:18px; }.formComparison > header p { margin-top:5px; font-size: 14px; text-align:left; }.formComparisonRows { grid-template-columns:1fr; gap:8px; }.formComparisonRows article,.formComparisonRows button { padding:10px; }
+  .relatedSection { padding:12px; }.relatedSection > header { display:block; }.relatedSection h2 { margin-top:3px; font-size:18px; }.relatedSection > header p { margin-top:5px; font-size: 14px; text-align:left; }
   .skillList { grid-template-columns: 1fr; }
   .skillCard { padding: 10px; }
   .skillHead { grid-template-columns: 52px minmax(0, 1fr); gap: 10px; }
   .skillCard h3 { font-size: 15px; }
   .skillHud dd { font-size: 16px; }
-  .skillCard > p { font-size: 12px; }
+  .skillCard > p { font-size: 14px; }
   .traits p,
   .buildRows p,
-  .noBuild p { font-size: 12px; }
+  .noBuild p { font-size: 14px; }
   .traits h3 { font-size: 15px; }
   .traits small,
   .buildRows small,
-  .buildTags i { font-size: 10px; }
+  .buildTags i { font-size: 14px; }
   .evolutionSection { padding: 12px; }
   .evolutionSection > header { display: block; margin-bottom: 10px; }
   .evolutionSection h2 { margin-top: 3px; font-size: 18px; }
-  .evolutionSection > header p { margin-top: 5px; font-size: 12px; text-align: left; }
+  .evolutionSection > header p { margin-top: 5px; font-size: 14px; text-align: left; }
   .spawnSection { padding: 12px; }
   .spawnSection > header { display: block; margin-bottom: 10px; }
   .spawnSection h2 { margin-top: 3px; font-size: 18px; }
-  .spawnSection > header p { margin-top: 5px; font-size: 12px; text-align: left; }
+  .spawnSection > header p { margin-top: 5px; font-size: 14px; text-align: left; }
   .fieldData { padding: 12px; }
   .fieldData h2 { font-size: 18px; }
   .spawnLayout { grid-template-columns: 1fr; }
@@ -1894,12 +1894,12 @@
   .evoRail { width: 26px; flex-basis: 26px; margin: 0 2px; }
   .habitatLinks a,
   .recordLinks > a,
-  .guideLinks > a { font-size: 12px; }
+  .guideLinks > a { font-size: 14px; }
   .radarWrap { grid-template-columns: 138px minmax(0,1fr); gap: 8px; }
   .radarWrap svg { width: 138px; height: 138px; }
   .statRow { grid-template-columns: 15px 50px minmax(50px,1fr) 24px; gap: 5px; }
-  .statRow span { font-size: 9px; }
-  .statRow strong { font-size: 10px; }
+  .statRow span { font-size: 14px; }
+  .statRow strong { font-size: 14px; }
 }
 
 @media (max-width: 768px) {

@@ -5,11 +5,11 @@ import type { Aniimo, Guide } from "@/types/content";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/components/content.module.css";
 
-export function Brand({ compact = false }: { compact?: boolean }) {
+export function Brand({ compact = false, label = "ANIIMO" }: { compact?: boolean; label?: string }) {
   return (
     <Link href="/" className={styles.brand} aria-label="Aniimo home">
       <span className={styles.brandMark}><Image src="/images/logo.png" alt="" width={34} height={34} priority /></span>
-      <span>{compact ? "ANIIMO" : "ANIIMO"}</span>
+      <span>{label}</span>
     </Link>
   );
 }

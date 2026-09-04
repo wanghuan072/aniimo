@@ -19,8 +19,17 @@
   --radius-sm: 12px;
   --radius: 20px;
   --radius-lg: 30px;
-  --shadow-sm: 0 8px 24px rgba(26, 69, 108, 0.08);
-  --shadow: 0 18px 46px rgba(25, 71, 111, 0.14);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --sheen: inset 0 1px 0 rgba(255, 255, 255, .58);
+  --btn-sheen: inset 0 1px 0 rgba(255, 255, 255, .38);
+  --well-inset: inset 0 1px 3px rgba(16, 47, 85, .08);
+  --shadow-1: 0 1px 2px rgba(26, 69, 108, .06), 0 1px 3px rgba(26, 69, 108, .1);
+  --shadow-2: 0 6px 18px rgba(25, 71, 111, .1), 0 2px 6px rgba(25, 71, 111, .08);
+  --shadow-sm: var(--shadow-2);
+  --shadow-pop: 0 18px 48px rgba(16, 47, 85, .16);
+  --shadow: var(--shadow-pop);
+  --glass: rgba(255, 255, 252, .72);
+  --glass-strong: rgba(255, 255, 252, .88);
   --font-display: var(--font-game-display), "Arial Rounded MT Bold", system-ui, sans-serif;
   --font-body: var(--font-game-body), ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-ui: var(--font-game-ui), "Segoe UI", system-ui, sans-serif;
@@ -32,7 +41,7 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
   background:
     linear-gradient(180deg, rgba(20, 114, 203, 0.08), rgba(120, 192, 117, 0.12)),
@@ -64,19 +73,42 @@ p { line-height: 1.65; }
 :focus-visible { outline: 3px solid rgba(59, 139, 242, 0.45); outline-offset: 3px; }
 
 .container { width: min(1164px, calc(100% - 40px)); margin-inline: auto; }
-.site-frame { width: min(1232px, calc(100% - 40px)); margin: 18px auto; border: 2px solid rgba(220, 245, 255, 0.88); border-radius: 22px; overflow: clip; box-shadow: 0 30px 80px rgba(12, 55, 91, 0.24); background: var(--cream); }
-.page-main { min-height: 60vh; background: linear-gradient(180deg, rgba(255, 255, 252, 0.98), rgba(247, 245, 238, 0.98)); }
+.site-frame {
+  width: min(1232px, calc(100% - 40px));
+  margin: 18px auto;
+  overflow: clip;
+  border: 1px solid rgba(255, 255, 255, .62);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--cream) 86%, transparent);
+  box-shadow: var(--shadow-pop), var(--sheen), 0 30px 80px rgba(12, 55, 91, .18);
+}
+@supports (backdrop-filter: blur(4px)) {
+  .site-frame { backdrop-filter: blur(18px) saturate(1.08); }
+}
+.page-main { min-height: 60vh; background: linear-gradient(180deg, rgba(255, 255, 252, .78), rgba(247, 245, 238, .86)); }
 .section { padding-block: 64px; }
 .section + .section { padding-top: 8px; }
-.surface { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
-.button-primary, .button-secondary, .button-quiet {
-  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 20px; border-radius: 12px; font-weight: 800; border: 1px solid transparent; transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+.surface {
+  background: var(--glass-strong);
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1), var(--sheen);
 }
-.button-primary { color: white; background: linear-gradient(180deg, #4c9cf7, #276fd4); box-shadow: 0 8px 18px rgba(43, 122, 215, 0.24); }
-.button-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(43, 122, 215, 0.3); }
-.button-secondary { color: var(--blue-800); background: rgba(255,255,255,.9); border-color: #a8c8ea; }
-.button-secondary:hover { background: var(--blue-100); }
-.button-quiet { color: var(--blue-800); background: var(--blue-100); }
+@supports (backdrop-filter: blur(4px)) {
+  .surface { backdrop-filter: blur(12px) saturate(1.08); }
+}
+.button-primary, .button-secondary, .button-quiet {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 20px; border-radius: 12px; font-weight: 800; border: 1px solid transparent; transition: color 160ms var(--ease), background-color 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+.button-primary { color: white; background: linear-gradient(180deg, #4c9cf7, #276fd4); border-color: rgba(255,255,255,.22); box-shadow: var(--btn-sheen), 0 8px 18px rgba(43, 122, 215, .28); }
+.button-primary:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.46), 0 12px 26px rgba(43, 122, 215, .34); }
+.button-primary:active { transform: translateY(1px); }
+.button-secondary { color: var(--blue-800); background: var(--glass-strong); border-color: rgba(168, 200, 234, .72); box-shadow: var(--sheen), var(--shadow-1); }
+.button-secondary:hover { background: rgba(234, 245, 255, .92); transform: translateY(-1px); box-shadow: var(--sheen), var(--shadow-2); }
+.button-quiet { color: var(--blue-800); background: color-mix(in srgb, var(--blue-100) 82%, transparent); box-shadow: var(--sheen); }
+@supports (backdrop-filter: blur(4px)) {
+  .button-secondary, .button-quiet { backdrop-filter: blur(10px) saturate(1.08); }
+}
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: 1000; padding: 10px 14px; border-radius: 9px; color: white; background: var(--blue-950); font-weight: 850; transform: translateY(-150%); transition: transform 150ms ease; }
 .skip-link:focus-visible { transform: translateY(0); }
@@ -88,7 +120,7 @@ p { line-height: 1.65; }
 }
 
 @media (max-width: 768px) {
-  body { font-size: 12px; }
+  body { font-size: 14px; }
   .container { width: min(100% - 22px, 1164px); }
   .section { padding-block: 38px; }
   .button-primary, .button-secondary, .button-quiet { min-height: 44px; padding-inline: 15px; }
@@ -96,4 +128,14 @@ p { line-height: 1.65; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-frame, .page-main, .surface, .button-secondary, .button-quiet {
+    backdrop-filter: none;
+  }
+  .site-frame { background: var(--cream); }
+  .page-main { background: linear-gradient(180deg, rgba(255, 255, 252, .98), rgba(247, 245, 238, .98)); }
+  .surface, .button-secondary { background: #fff; }
+  .button-quiet { background: var(--blue-100); }
 }
