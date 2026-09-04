@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/ui/Content";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/page/tools.module.css";
+
 const actions = [
   { title: "Compare Aniimo", body: "Put two records together when you need to choose a role, skill set, or element match.", href: "/tools/compare", icon: "database", label: "Compare records" },
   { title: "Track collection", body: "Mark the Aniimo you have discovered. Your checklist stays in this browser.", href: "/tools/collection-tracker", icon: "check", label: "Open checklist" },
@@ -15,7 +16,8 @@ export default function ToolsPage() {
         <Breadcrumb items={[{ label: "Tools" }]} />
         <span className={styles.kicker}><Icon name="tools" /> Player tools</span>
         <h1>Aniimo Planning Tools</h1>
-        <p>Choose the tool that answers the question in front of you: compare a shortlist or track your own roster.</p><HeroPanel label="Choose a tool" items={["Compare a real shortlist", "Track your own collection"]} />
+        <p>Choose the tool that answers the question in front of you: compare a shortlist or track your own roster.</p>
+        <HeroPanel label="Choose a tool" items={["Compare a real shortlist", "Track your own collection"]} />
       </div>
     </section>
     <section className={styles.toolContent}>

@@ -7,24 +7,30 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { navigation } from "@/config/site";
 import { Brand } from "@/components/ui/Content";
 import { Icon } from "@/components/ui/Icon";
+import type { SearchRecord } from "@/types/content";
 import styles from "@/style/components/layout.module.css";
 
-type SearchRecord = { title: string; subtitle: string; href: string; type: string; image: string };
-
-export function Header({ searchRecords }: { searchRecords: SearchRecord[] }) {
+export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [searchRecords, setSearchRecords] = useState<SearchRecord[] | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const records = searchRecords || [];
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    if (!needle) return searchRecords.slice(0, 8);
-    return searchRecords
+    if (!needle) return records.slice(0, 8);
+    return records
       .filter((record) => `${record.title} ${record.subtitle} ${record.type}`.toLowerCase().includes(needle))
       .slice(0, 10);
-  }, [query, searchRecords]);
+  }, [query, records]);
+
+  useEffect(() => {
+    if (!searchOpen || searchRecords) return;
+    import("@/lib/search-index").then((mod) => setSearchRecords(mod.searchRecords));
+  }, [searchOpen, searchRecords]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -79,16 +85,17 @@ export function Header({ searchRecords }: { searchRecords: SearchRecord[] }) {
       {searchOpen && (
         <div className={styles.searchOverlay} role="dialog" aria-modal="true" aria-label="Site search" onMouseDown={(event) => { if (event.target === event.currentTarget) setSearchOpen(false); }}>
           <div className={styles.searchPanel}>
-            <div className={styles.searchInputWrap}><Icon name="search" /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Aniimo, guides and builds…" aria-label="Search" /><button type="button" onClick={() => setSearchOpen(false)} aria-label="Close search"><Icon name="close" /></button></div>
+            <div className={styles.searchInputWrap}><Icon name="search" /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Aniimo, skills, items or habitats…" aria-label="Search" /><button type="button" onClick={() => setSearchOpen(false)} aria-label="Close search"><Icon name="close" /></button></div>
             <div className={styles.searchCaption}><span>{query ? `${results.length} best matches` : "Popular destinations"}</span><span>Press Esc to close</span></div>
             <div className={styles.searchResults}>
-              {results.map((record) => (
-                <Link href={record.href} key={`${record.type}-${record.href}`} onClick={() => setSearchOpen(false)}>
+              {!searchRecords && <p className={styles.emptySearch}>Loading search…</p>}
+              {searchRecords && results.map((record) => (
+                <Link href={record.href} key={`${record.type}-${record.href}-${record.title}`} onClick={() => setSearchOpen(false)}>
                   {record.image ? <span className={styles.searchThumb}><Image src={record.image} alt="" fill sizes="48px" /></span> : <span className={styles.searchThumbFallback}><Icon name="book" /></span>}
                   <span><strong>{record.title}</strong><small>{record.subtitle}</small></span><em>{record.type}</em>
                 </Link>
               ))}
-              {results.length === 0 && <p className={styles.emptySearch}>No match yet. Try a creature name, element, role or guide topic.</p>}
+              {searchRecords && results.length === 0 && <p className={styles.emptySearch}>No match yet. Try a creature, skill, item or habitat name.</p>}
             </div>
           </div>
         </div>

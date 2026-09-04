@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-export default function TypeChartRedirect() {
-  redirect("/database/elements");
+export default function Page() {
+  permanentRedirect("/database/elements#matchups");
 }

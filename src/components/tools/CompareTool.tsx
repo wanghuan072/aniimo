@@ -9,8 +9,8 @@ import styles from "@/style/components/tools.module.css";
 
 const fields = [
   ["hp", "HP"],
-  ["physicalAttack", "ATK"],
-  ["magicAttack", "BREAK"],
+  ["physicalAttack", "P. ATK"],
+  ["magicAttack", "M. ATK"],
   ["physicalDefense", "P. DEF"],
   ["magicDefense", "M. DEF"],
   ["haste", "REGEN"],

@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { Icon } from "@/components/ui/Icon";
-import { atlasFrame, atlasIndex, essentialsFor, findFocusPoi, getAtlas, regionColor, resolveMapFocus, type MapAtlas, type MapPoi } from "@/lib/map-atlas";
+import { atlasFrame, atlasIndex, atlasLoaders, essentialsFor, findFocusPoi, regionColor, resolveFocusInAtlas } from "@/lib/map-runtime";
+import type { AtlasFile, MapAtlas, MapPoi } from "@/lib/map-types";
 import styles from "@/style/components/map.module.css";
 import "leaflet/dist/leaflet.css";
 
@@ -45,7 +46,34 @@ function syncClusters(map: LeafletMap, atlas: MapAtlas, clusters: ClusterSet, en
 }
 
 export function InteractiveMap({ atlasId, regionSlug, marker }: { atlasId?: string; regionSlug?: string; marker?: string }) {
-  const payload = getAtlas(atlasId);
+  const id = atlasId && atlasLoaders[atlasId] ? atlasId : "breezy-plains";
+  const [payload, setPayload] = useState<AtlasFile | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setPayload(null);
+    atlasLoaders[id]().then((file) => {
+      if (!cancelled) setPayload(file);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  if (!payload) {
+    return (
+      <div className={styles.shell}>
+        <div className={styles.stage}>
+          <p className={styles.credit}>Loading atlas…</p>
+        </div>
+      </div>
+    );
+  }
+
+  return <AtlasView payload={payload} regionSlug={regionSlug} marker={marker} />;
+}
+
+function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; regionSlug?: string; marker?: string }) {
   const atlas = payload.atlas;
   const frame = useMemo(() => atlasFrame(atlas), [atlas]);
   const categoryBySlug = useMemo(() => new Map(atlas.categories.map((category) => [category.slug, category])), [atlas]);
@@ -205,7 +233,7 @@ export function InteractiveMap({ atlasId, regionSlug, marker }: { atlasId?: stri
 
   useEffect(() => {
     if (!mapTick) return;
-    const focus = resolveMapFocus(marker, atlas.id);
+    const focus = resolveFocusInAtlas(atlas, marker);
     const poi = findFocusPoi(atlas, marker, regionSlug);
     if (!focus || !poi) return;
     setEnabled((current) => {

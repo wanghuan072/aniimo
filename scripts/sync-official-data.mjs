@@ -380,7 +380,11 @@ async function main() {
     entries,
   };
   await writeFile(DATA_FILE, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  if (entries.length < 1) throw new Error("Official sync produced no Aniimo records");
+  const { writeSearchIndex } = await import("./write-search-index.mjs");
+  const searchCount = await writeSearchIndex();
   console.log(`Saved ${entries.length} records to ${path.relative(ROOT, DATA_FILE)}`);
+  console.log(`Wrote ${searchCount} search records`);
 }
 
 main().catch((error) => {

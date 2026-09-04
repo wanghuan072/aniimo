@@ -37,7 +37,7 @@ export const tdk = {
   },
   database: {
     title: "Aniimo Wiki — Skills, Items, Habitats & More",
-    description: "Explore Aniimo skills, traits, items, materials, habitats, forms, evolutions, bosses, and achievements, then follow the useful links between each record.",
+    description: "Explore Aniimo skills, traits, items, materials, habitats, evolutions, bosses, and achievements, then follow the useful links between each record.",
     pathname: "/database",
     lastModified: released,
   },

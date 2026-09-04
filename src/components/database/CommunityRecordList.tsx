@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/page/content.module.css";
 
-import type { CommunityRecord } from "@/lib/data";
+import type { CommunityRecord } from "@/types/content";
 
 const batchSize = 60;
 
@@ -27,10 +27,13 @@ export function CommunityRecordList({ records, categorySlug }: { records: Commun
   const isAchievementsCatalogue = categorySlug === "achievements";
   const type = searchParams.get("type") || "";
   const rarity = searchParams.get("rarity") || "";
+  const query = (searchParams.get("q") || "").trim().toLowerCase();
   const itemCategories = isItemsCatalogue ? [...new Set(records.map((record) => record.category))].sort() : [];
   const materialRarities = isMaterialsCatalogue ? [...new Set(records.map((record) => record.rarity))].sort((a, b) => ["Common", "Uncommon", "Rare", "Epic", "Legendary"].indexOf(a) - ["Common", "Uncommon", "Rare", "Epic", "Legendary"].indexOf(b)) : [];
   const activeFilter = isMaterialsCatalogue ? rarity : type;
-  const filteredRecords = activeFilter ? records.filter((record) => isMaterialsCatalogue ? record.rarity === activeFilter : record.category === activeFilter) : records;
+  const filteredRecords = records
+    .filter((record) => !activeFilter || (isMaterialsCatalogue ? record.rarity === activeFilter : record.category === activeFilter))
+    .filter((record) => !query || record.slug.toLowerCase() === query || record.name.toLowerCase().includes(query));
   const [visibleCount, setVisibleCount] = useState(batchSize);
   const autoLoadLocked = useRef(false);
   const hasMore = visibleCount < filteredRecords.length;
@@ -56,14 +59,14 @@ export function CommunityRecordList({ records, categorySlug }: { records: Commun
   }, [hasMore, loadMore]);
 
   return <>
-    {activeFilter && <div className={styles.filterNotice}><span>Showing {activeFilter} records</span><Link href={`/database/${categorySlug}`}>Clear filter <Icon name="close" /></Link></div>}
+    {(activeFilter || query) && <div className={styles.filterNotice}><span>Showing {query ? `"${searchParams.get("q")}"` : activeFilter} records</span><Link href={`/database/${categorySlug}`}>Clear filter <Icon name="close" /></Link></div>}
     {isItemsCatalogue ? <>
       <div className={styles.itemCatalogueBar}><p><strong>{filteredRecords.length}</strong> catalogued items <span /> browse by item family</p><span>Images and descriptions are loaded as you browse.</span></div>
       <nav className={styles.itemCategoryFilter} aria-label="Item categories">
         <Link className={!type ? styles.itemCategoryActive : ""} href={`/database/${categorySlug}`}>All items <b>{records.length}</b></Link>
         {itemCategories.map((category) => <Link className={type === category ? styles.itemCategoryActive : ""} href={`/database/${categorySlug}?type=${encodeURIComponent(category)}`} key={category}>{category} <b>{records.filter((record) => record.category === category).length}</b></Link>)}
       </nav>
-      <div className={styles.itemCatalogueGrid}>{filteredRecords.slice(0, visibleCount).map((record) => <article className={styles.itemCatalogueCard} key={record.slug}>
+      <div className={styles.itemCatalogueGrid}>{filteredRecords.slice(0, visibleCount).map((record) => <article id={record.slug} className={styles.itemCatalogueCard} key={record.slug}>
         <div className={styles.itemArtwork}><span>{record.image ? <Image src={record.image} alt="" fill sizes="(max-width: 680px) 45vw, 220px" /> : <Icon name="item" />}</span><b>{record.rarity}</b></div>
         <div className={styles.itemCatalogueCopy}><h2>{record.name}</h2><p>{record.description}</p></div>
       </article>)}</div>

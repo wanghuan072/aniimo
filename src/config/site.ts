@@ -22,6 +22,7 @@ export const navigation = [
       { label: "Elements", href: "/database/elements" },
       { label: "Habitats", href: "/database/habitats" },
       { label: "Evolutions", href: "/database/evolutions" },
+      { label: "Mobility", href: "/database/mobility" },
       { label: "Materials", href: "/database/materials" },
       { label: "World Bosses", href: "/database/bosses" },
       { label: "Achievements", href: "/database/achievements" },
@@ -84,4 +85,20 @@ export const roleLabels: Record<string, string> = {
   break: "Break",
   regen: "Regen",
   energy: "Regen",
+};
+
+export const homelandAbilityMeta: Record<string, { label: string; color: string }> = {
+  "home-1000": { label: "Fire", color: "#e26161" },
+  "home-1001": { label: "Grass", color: "#51b17a" },
+  "home-1002": { label: "Water", color: "#529de7" },
+  "home-1003": { label: "Earth", color: "#bea77b" },
+  "home-1004": { label: "Lightning", color: "#e0c21a" },
+  "home-1005": { label: "Ice", color: "#45c1d6" },
+  "home-1006": { label: "Wind", color: "#2a52be" },
+  "home-1007": { label: "Dark", color: "#a373d2" },
+  "home-1008": { label: "Holy", color: "#f6a93c" },
+  "home-1100": { label: "Carrying", color: "#6285cc" },
+  "home-1101": { label: "Planting", color: "#71b258" },
+  "home-1102": { label: "Harvesting", color: "#e77894" },
+  "home-1103": { label: "Crafting", color: "#b579dc" },
 };

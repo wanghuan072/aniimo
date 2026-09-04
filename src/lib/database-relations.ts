@@ -10,14 +10,17 @@ export type SharedDatabaseRecord = {
   iconUrl: string;
   cost?: string;
   power?: string;
+  cooldown?: string;
+  breakValue?: string;
+  teamRole?: string;
   owners: OwnerLink[];
 };
 
-const recordSlug = (name: string) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const recordSlug = (name: string) => name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const groupedSkills: SharedDatabaseRecord[] = Object.values(aniimo.flatMap((entry) => entry.skills.map((skill) => ({ ...skill, owner: { name: entry.name, slug: entry.slug, image: entry.image } }))).reduce<Record<string, SharedDatabaseRecord>>((groups, skill) => {
   const key = skill.name;
-  if (!groups[key]) groups[key] = { id: `skill-${recordSlug(skill.name)}`, name: skill.name, description: skill.description, category: skill.category, iconUrl: skill.iconUrl, cost: skill.cost, power: skill.power, owners: [] };
+  if (!groups[key]) groups[key] = { id: `skill-${recordSlug(skill.name)}`, name: skill.name, description: skill.description, category: skill.category, iconUrl: skill.iconUrl, cost: skill.cost, power: skill.power, cooldown: skill.cooldown, breakValue: skill.breakValue, teamRole: skill.teamRole, owners: [] };
   groups[key].owners.push(skill.owner);
   return groups;
 }, {})).sort((a, b) => a.name.localeCompare(b.name));

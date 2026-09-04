@@ -18,33 +18,55 @@ export type BossEncounter = {
   unlock?: string;
 };
 
-function BossCard({ record, featured = false }: { record: BossEncounter; featured?: boolean }) {
+function ElementPills({ elements }: { elements: string[] }) {
+  return (
+    <span className={styles.encounterElements}>
+      {elements.map((element) => (
+        <i key={element} style={{ "--boss-element": elementMeta[element]?.color || "#5d91c5" } as React.CSSProperties}>
+          {elementMeta[element]?.label || element}
+        </i>
+      ))}
+    </span>
+  );
+}
+
+function EncounterCard({ record, featured = false }: { record: BossEncounter; featured?: boolean }) {
   const mapLink = resolveMapFocus(record.slug) ? mapHref({ marker: record.slug, region: record.habitats[0] || record.region }) : "";
-  return <article className={`${styles.bossCard} ${featured ? styles.bossCardFeatured : ""}`}>
-    {mapLink.includes("?") ? <Link className={styles.bossMapPin} href={mapLink}><Icon name="pin" /> Map</Link> : null}
-    <Link className={styles.bossCardMain} href={`/aniimo/${record.slug}`}>
-      <span className={styles.bossPortrait}><Image src={record.image} alt="" fill sizes={featured ? "180px" : "120px"} /></span>
-      <span className={styles.bossRank}>{record.rank}</span>
-      <span className={styles.bossCardCopy}>
-        <small>{record.rank === "Omega" ? record.region || "Omega encounter" : "Alpha encounter"}</small>
-        <strong>{record.name}</strong>
-        <span className={styles.bossElements}>{record.elements.map((element) => <i key={element} style={{ "--boss-element": elementMeta[element]?.color || "#5d91c5" } as React.CSSProperties}>{elementMeta[element]?.symbol} {elementMeta[element]?.label || element}</i>)}</span>
-        <p>{record.description}</p>
-        <span className={styles.bossCardFooter}>
-          <em>{record.rank === "Omega" && record.unlock ? `Quest: ${record.unlock}` : record.habitats.length ? record.habitats.slice(0, 2).join(" · ") : "Profile data available"}</em>
-          <span className={styles.bossReward}>{record.primegy}<small>Primegy</small></span>
+  const place = featured ? record.region : "";
+  return (
+    <article id={record.slug} className={`${styles.encounterCard} ${featured ? styles.encounterFeatured : ""}`}>
+      {mapLink.includes("?") ? <Link className={styles.encounterMap} href={mapLink}><Icon name="pin" /> Map</Link> : null}
+      <Link className={styles.encounterMain} href={`/aniimo/${record.slug}`}>
+        <span className={styles.encounterArt}><Image src={record.image} alt="" fill sizes={featured ? "280px" : "160px"} /></span>
+        <span className={styles.encounterCopy}>
+          <small>{record.rank}{place ? ` · ${place}` : ""}</small>
+          <strong>{record.name}</strong>
+          <ElementPills elements={record.elements} />
+          {featured && record.unlock ? <em>Quest: {record.unlock}</em> : null}
+          {!featured && record.habitats.length ? <em>{record.habitats.slice(0, 2).join(" · ")}</em> : null}
         </span>
-      </span>
-    </Link>
-  </article>;
+      </Link>
+    </article>
+  );
 }
 
 export function BossEncounterAtlas({ records }: { records: BossEncounter[] }) {
   const omega = records.filter((record) => record.rank === "Omega");
   const alpha = records.filter((record) => record.rank === "Alpha");
-  return <>
-    <div className={styles.bossDirectory}><p><strong>{records.length}</strong> documented encounters <span /> <b>{omega.length}</b> Omega <span /> <b>{alpha.length}</b> Alpha</p><span>Open a profile, or jump to the encounter marker on the map.</span></div>
-    <section className={styles.bossSection}><header><span>Omega encounters</span><h2>Quest Boss Encounters</h2></header><div className={styles.omegaBossGrid}>{omega.map((record) => <BossCard record={record} featured key={record.slug} />)}</div></section>
-    <section className={styles.bossSection}><header><span>Alpha encounters</span><h2>Field Boss Encounters</h2></header><div className={styles.alphaBossGrid}>{alpha.map((record) => <BossCard record={record} key={record.slug} />)}</div></section>
-  </>;
+  return (
+    <>
+      <div className={styles.catalogBar}>
+        <p><strong>{records.length}</strong> encounters <span /> <b>{omega.length}</b> Omega <span /> <b>{alpha.length}</b> Alpha</p>
+        <span>Open a profile, or jump to the marker on the map.</span>
+      </div>
+      <section className={styles.encounterBand}>
+        <header><span>Omega</span><h2>Quest bosses</h2></header>
+        <div className={styles.omegaRow}>{omega.map((record) => <EncounterCard record={record} featured key={record.slug} />)}</div>
+      </section>
+      <section className={styles.encounterBand}>
+        <header><span>Alpha</span><h2>Field bosses</h2></header>
+        <div className={styles.alphaRow}>{alpha.map((record) => <EncounterCard record={record} key={record.slug} />)}</div>
+      </section>
+    </>
+  );
 }

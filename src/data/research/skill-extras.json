@@ -1,0 +1,4639 @@
+{
+  "source": {
+    "name": "AniimoVerse",
+    "url": "https://www.aniimoverse.com/skills",
+    "grade": "community",
+    "syncedAt": "2026-09-04T03:27:07.151Z",
+    "note": "Cooldown, BREAK, team role, parsed effects and targeting come from AniimoVerse skill pages. Official Wiki does not publish these fields. EP cost and power stay on the official records."
+  },
+  "requested": 263,
+  "count": 262,
+  "records": [
+    {
+      "name": "Annihilation Barrage",
+      "slug": "annihilation-barrage",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Unleashes a devastating strike."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Annihilation Bomb",
+      "slug": "annihilation-bomb",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Ant Nest Sentinel",
+      "slug": "ant-nest-sentinel",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Launches Cozite to hover around this Aniimo."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Lasts 15s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Aqua Defense",
+      "slug": "aqua-defense",
+      "cooldown": "6s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Enters a defensive stance, reducing damage taken by 20% While in this state, it counters when attacked."
+        },
+        {
+          "kind": "Buff",
+          "text": "If attacked just as the skill is used, its critical rate increases by 30% for 10s."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.01s"
+      }
+    },
+    {
+      "name": "Aquatic Glide",
+      "slug": "aquatic-glide",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flies overhead, dropping Water stars that damage targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Hitting the same target 3 times increases this Aniimo's EP recovery rate by 10% for 10s."
+        },
+        {
+          "kind": "Damage",
+          "text": "After using the skill for 4s, it can attack while moving."
+        }
+      ],
+      "targeting": {
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Arc Strike",
+      "slug": "arc-strike",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Enemies hit while affected by"
+        }
+      ],
+      "targeting": {
+        "range": "2.6",
+        "hitCap": "2",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Ashfrost Judgment",
+      "slug": "ashfrost-judgment",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "The final hit applies damage over time, dealing damage equal to 6 Might every second for 10s."
+        }
+      ],
+      "targeting": {
+        "range": "3",
+        "interval": "0.09s"
+      }
+    },
+    {
+      "name": "ATK",
+      "slug": "atk",
+      "cooldown": "0.1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Aurora Protection",
+      "slug": "aurora-protection",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Avian Harmony Ensemble",
+      "slug": "avian-harmony-ensemble",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires a powerful wind-type beam at the target."
+        },
+        {
+          "kind": "Movement",
+          "text": "If you have all three Movements equipped, the attack’s area of effect expands."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "interval": "0.05s"
+      }
+    },
+    {
+      "name": "Baa-Baa Darkbubb",
+      "slug": "baa-baa-darkbubb",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "range": "1"
+      }
+    },
+    {
+      "name": "Baa-Baa Healbubb",
+      "slug": "baa-baa-healbubb",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "5",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Baa-Baa Leaf Shot",
+      "slug": "baa-baa-leaf-shot",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots a Grass Orb to attack the target, reducing its 5%Grass Resistance for 20s on hit."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Baa-Baa Sweetbubb",
+      "slug": "baa-baa-sweetbubb",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "range": "1"
+      }
+    },
+    {
+      "name": "Ballistic Guard",
+      "slug": "ballistic-guard",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Turns into a ball and jumps high into the air, damaging targets at the landing point."
+        },
+        {
+          "kind": "Damage",
+          "text": "Enters"
+        },
+        {
+          "kind": "Damage",
+          "text": "When attacked, releases a shock wave around self that deals damage equal to 10 Might."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Beat of Passion",
+      "slug": "beat-of-passion",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Keeps playing, sending sound waves forward to damage targets."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1"
+      }
+    },
+    {
+      "name": "Black Hole Domain",
+      "slug": "black-hole-domain",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Quickly backstep a short distance while leaving a black hole beneath the target that continuously pulls them in and deals damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1.8"
+      }
+    },
+    {
+      "name": "Blasting Roses",
+      "slug": "blasting-roses",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Releases petals that track and attack the target."
+        },
+        {
+          "kind": "Buff",
+          "text": "This skill gains 35% extra critical rate."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Blooms of Vigor",
+      "slug": "blooms-of-vigor",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "The field also upgrades nearby grass into Vitality Blooms, restoring 1% HP every second to Grass-type teammates within range."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Blossoming Moment",
+      "slug": "blossoming-moment",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up to dodge an attack, allowing a scent to encircle itself before dive-pecking the targets to deal damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Boomerang Blade",
+      "slug": "boomerang-blade",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Throws an ice blade forward, dealing damage to targets in range and applying stacks of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Boulder Blast",
+      "slug": "boulder-blast",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Spins rapidly across the ground, pulling in debris before detonating violently."
+        },
+        {
+          "kind": "Damage",
+          "text": "On explosion, deals AoE damage and generates 6"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "8"
+      }
+    },
+    {
+      "name": "Bouncy Sling",
+      "slug": "bouncy-sling",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Charges up in place and launches itself forward, dealing damage to the target hit and increasing its BREAK damage taken by 15% for 15s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "If other targets are nearby after the hit, it bounces to them up to {4} times."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "It can also bounce to allies."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Breaking Roar",
+      "slug": "breaking-roar",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Restores Hummin units to their maximum number, then roars with them to release a massive shockwave at the target."
+        }
+      ],
+      "targeting": {
+        "range": "1"
+      }
+    },
+    {
+      "name": "Bubble Blast",
+      "slug": "bubble-blast",
+      "cooldown": "0s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots a bubble in the target direction, pushing targets back and dealing damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Leaves behind a small bubble that lasts 9 s (max 3 bubbles can be stored for consecutive casts)."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Bubble Rush",
+      "slug": "bubble-rush",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Spits bubbles to attack a target."
+        }
+      ],
+      "targeting": {
+        "interval": "0.5s"
+      }
+    },
+    {
+      "name": "Bubbles",
+      "slug": "bubbles",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Creates a bubble field."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Each time a teammate casts a Water skill inside the field, 1 bubble is generated, up to 6 bubbles."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Lasts 15s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Tap the skill button again to detonate all bubbles."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Each bubble restores 2.5 EP."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "After absorbing a puddle, restores an additional 10EP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Burn Breaker",
+      "slug": "burn-breaker",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "After charging, unleash a powerful blast forward, dealing damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "At max charge, consumes all remaining EP."
+        }
+      ],
+      "targeting": {
+        "range": "0.5"
+      }
+    },
+    {
+      "name": "Burning Sun",
+      "slug": "burning-sun",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Damage increases by2% per stack of Fire Debuff on targets."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Butterfly Dance",
+      "slug": "butterfly-dance",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "The Somniwing flies up and uses its power of rejuvenation, recovering 22.5 EP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Charged Geyser",
+      "slug": "charged-geyser",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Charged Strike",
+      "slug": "charged-strike",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Raises its pincers to charge."
+        },
+        {
+          "kind": "Control",
+          "text": "When fully charged or used again, performs 2 quick swings, attacking and briefly stunning the target."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Can consume 3 stacks of"
+        },
+        {
+          "kind": "Mechanic",
+          "text": "The user can move while charging."
+        }
+      ],
+      "targeting": {
+        "range": "3"
+      }
+    },
+    {
+      "name": "Chill Glide",
+      "slug": "chill-glide",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flies overhead, dropping Ice stars that damage targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Hitting the same target 3 times increases this Aniimo's EP recovery rate by 10% for 10s."
+        },
+        {
+          "kind": "Damage",
+          "text": "After using the skill for 4s, it can attack while moving."
+        }
+      ],
+      "targeting": {
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Claw of Madness",
+      "slug": "claw-of-madness",
+      "cooldown": "0s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Claws the target up to 4 times."
+        },
+        {
+          "kind": "Buff",
+          "text": "When the fourth hit lands, the next skill gains double"
+        },
+        {
+          "kind": "Debuff",
+          "text": "In the"
+        }
+      ],
+      "targeting": {
+        "range": "1.5",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Clay Ball",
+      "slug": "clay-ball",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Throws a clay ball in a straight line in the direction faced, dealing damage on hit and applying Crumble effect."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Clearance Sale",
+      "slug": "clearance-sale",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Continuously spits bubbles at the target for 5 s."
+        },
+        {
+          "kind": "Movement",
+          "text": "The user can move while casting, but movement speed is reduced."
+        },
+        {
+          "kind": "Damage",
+          "text": "This skill's damage counts as basic attack damage."
+        }
+      ],
+      "targeting": {
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Cloud Orb",
+      "slug": "cloud-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Throws a missile condensed from clouds at the target."
+        },
+        {
+          "kind": "Damage",
+          "text": "If the user is"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "0.8"
+      }
+    },
+    {
+      "name": "Cloud Shield",
+      "slug": "cloud-shield",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Collectible Drop",
+      "slug": "collectible-drop",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Turbo sneezes, shaking 7 collectibles out of its wool."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Picking up a collectible restores 7% HP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Comet Aureus",
+      "slug": "comet-aureus",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Coral Impact",
+      "slug": "coral-impact",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Deals damage to the target and applies"
+        },
+        {
+          "kind": "Debuff",
+          "text": "When"
+        }
+      ],
+      "targeting": {
+        "range": "0.7",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Coral Prison",
+      "slug": "coral-prison",
+      "cooldown": "20s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Deals wide-area damage to targets in front and restores 30 EP."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hit targets enter"
+        },
+        {
+          "kind": "Damage",
+          "text": "When"
+        }
+      ],
+      "targeting": {
+        "range": "2.5"
+      }
+    },
+    {
+      "name": "Coral Trap",
+      "slug": "coral-trap",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Creates a coral trap ahead for 5 s."
+        },
+        {
+          "kind": "Debuff",
+          "text": "It deals damage to targets every second and applies 1 stack of Earth Debuff."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Crazy Bubbles",
+      "slug": "crazy-bubbles",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Quickly creates 6 bubbles and increases Water damage for teammates by 10% for 30s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Critical Hit",
+      "slug": "critical-hit",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Strikes hard to deal high damage and remove all"
+        },
+        {
+          "kind": "Debuff",
+          "text": "Each stack of"
+        }
+      ],
+      "targeting": {
+        "range": "3.5",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Crossfire",
+      "slug": "crossfire",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Fires a flame ray that penetrates targets and deals up to 9 hits of damage."
+        },
+        {
+          "kind": "Buff",
+          "text": "While"
+        }
+      ],
+      "targeting": {
+        "range": "0.65",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Cyclone of Leaves",
+      "slug": "cyclone-of-leaves",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Dancing Petals",
+      "slug": "dancing-petals",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Spins and releases a storm of petals to attack a target."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Dark Claw",
+      "slug": "dark-claw",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Unleash consecutive Dark claw strikes on the target, dealing Damage."
+        }
+      ],
+      "targeting": {
+        "range": "2.2"
+      }
+    },
+    {
+      "name": "Dark Dash",
+      "slug": "dark-dash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Tackles the target with the power of shadows, increasing basic attack damage by 40% for 10s after casting."
+        }
+      ],
+      "targeting": {
+        "range": "0.75",
+        "hitCap": "3",
+        "interval": "0.075s"
+      }
+    },
+    {
+      "name": "Dark Energy Surge",
+      "slug": "dark-energy-surge",
+      "cooldown": "5s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Plunges both claws into the underground crystals, causing an eruption that creates a cone-shaped wave of Dark lava stone spikes surging forward, dealing damage to targets and stunning them for 1s."
+        }
+      ],
+      "targeting": {
+        "range": "0.7",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Dark Soul",
+      "slug": "dark-soul",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Transports itself to a target and attacks."
+        },
+        {
+          "kind": "Buff",
+          "text": "If the target has less than 50% HP left, for each 1% HP lost, increases the Aniimo's damage by 1% ."
+        },
+        {
+          "kind": "Buff",
+          "text": "Defeating a target with this skill grants a time-limited free recast."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "11"
+      }
+    },
+    {
+      "name": "Dark Tide",
+      "slug": "dark-tide",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Absorbs all puddles within 10 m."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Absorbs up to 4 puddles at once."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Defense Mode",
+      "slug": "defense-mode",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Entering Defense Mode grants 20% damage reduction."
+        },
+        {
+          "kind": "Damage",
+          "text": "Generates a shock wave when hit, dealing damage equal to 10 Might."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Demon Steps",
+      "slug": "demon-steps",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Dashes to the target and attacks, restoring 5% max HP on hit."
+        }
+      ],
+      "targeting": {
+        "range": "2.8",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Demonic State",
+      "slug": "demonic-state",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Press the Skill button again to end the state."
+        },
+        {
+          "kind": "Damage",
+          "text": "After 6 skill casts, holding basic attack deals additional damage equal to 50 Might."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Detect Weakness",
+      "slug": "detect-weakness",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Continuously emits sonar through its tail amplifier to detect the weak points of targets within range."
+        },
+        {
+          "kind": "Debuff",
+          "text": "After keeping a target’s weak point centered in the area for 1s, additionally applies Weakness Mark to it, reducing the target’s Crit Resistance by 7% for 20s."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Dimension Rupture",
+      "slug": "dimension-rupture",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Cleaves through space, dealing heavy Physical damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "6",
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Disruptive Current",
+      "slug": "disruptive-current",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Releases a current of electricity, damaging targets ahead."
+        }
+      ],
+      "targeting": {
+        "range": "0.8",
+        "hitCap": "3",
+        "interval": "0.08s"
+      }
+    },
+    {
+      "name": "Dream Blast",
+      "slug": "dream-blast",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Deals damage to targets in range and applies 2 stacks of"
+        },
+        {
+          "kind": "Buff",
+          "text": "Increases the whole team’s Dark damage by 12% for 30s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "6"
+      }
+    },
+    {
+      "name": "Earth Spikes",
+      "slug": "earth-spikes",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Generates a line of stone spikes that extend forward, piercing all targets in their path."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Earthquake",
+      "slug": "earthquake",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Stomps the ground, damaging targets in front and removing all"
+        },
+        {
+          "kind": "Control",
+          "text": "Each stack of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1.8",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Elastic Sword",
+      "slug": "elastic-sword",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Extends its arm and throws its sword at targets ahead."
+        },
+        {
+          "kind": "Control",
+          "text": "When the sword returns, it pulls normal targets in front of itself."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Electric Dance Frenzy",
+      "slug": "electric-dance-frenzy",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Creates an independent music space and deals damage to the targets within the space, lowering their Lightning resistance by 17% for 30s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Electricity Shock",
+      "slug": "electricity-shock",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Curls into a ball and dashes at the target, dealing damage and applying 5 stacks of"
+        },
+        {
+          "kind": "Debuff",
+          "text": "If the target has more than 5 stacks of"
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Electrified Impact",
+      "slug": "electrified-impact",
+      "cooldown": "0s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Dashes toward the target with electricity and cannot be blocked during the dash."
+        }
+      ],
+      "targeting": {
+        "range": "2.2",
+        "hitCap": "1",
+        "interval": "0.075s"
+      }
+    },
+    {
+      "name": "Elegant Waltz",
+      "slug": "elegant-waltz",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Repeatedly stabs a target with its thorn blade."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "7",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Energy Orb",
+      "slug": "energy-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Hold the Skill button to charge."
+        },
+        {
+          "kind": "Buff",
+          "text": "Every 0.6s, consumes 10 Energy to increase the skill damage, up to 4 times."
+        },
+        {
+          "kind": "Damage",
+          "text": "Stages 1 to 5 deal damage equal to 1/2/3/4.5/6x Might, respectively."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1.1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Enhanced Bubble",
+      "slug": "enhanced-bubble",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Spits enhanced bubbles at the target."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Enhanced Light Blade",
+      "slug": "enhanced-light-blade",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Empowers the blade with Light, increasing skill CRIT rate by 25% for 20s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Enhanced Lightning Blade",
+      "slug": "enhanced-lightning-blade",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Enhances the blade, increasing skill CRIT rate by 25% for 20s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Ethereal Light Wave",
+      "slug": "ethereal-light-wave",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Euphoric Sonic Blast",
+      "slug": "euphoric-sonic-blast",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Falling Star",
+      "slug": "falling-star",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up and slams down with a flame-encircled fist, dealing damage to a large area."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "8"
+      }
+    },
+    {
+      "name": "Fanatic Clawing",
+      "slug": "fanatic-clawing",
+      "cooldown": "0s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Claws the target up to 4 times."
+        },
+        {
+          "kind": "Buff",
+          "text": "When the fourth hit lands, the next skill gains double"
+        },
+        {
+          "kind": "Debuff",
+          "text": "In the"
+        }
+      ],
+      "targeting": {
+        "range": "1.5",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Fiery Charge",
+      "slug": "fiery-charge",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Charges at the target to deal damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "If used while flying, dives at the target and stops flying."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Fiery Punch",
+      "slug": "fiery-punch",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Dashes forward with a punch, dealing damage and piercing through targets."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Also removes all"
+        },
+        {
+          "kind": "Debuff",
+          "text": "Each stack of"
+        }
+      ],
+      "targeting": {
+        "range": "0.4",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Fire Bolt",
+      "slug": "fire-bolt",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Launches a fireball at the target and applies 2 stacks of Fire Debuff for 5s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hold the skill button to aim."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Fire Dash",
+      "slug": "fire-dash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Tackles the target with the power of fire, increasing basic attack damage by 40% for 10s after casting."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.03s"
+      }
+    },
+    {
+      "name": "Fire Kick",
+      "slug": "fire-kick",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up to dodge an attack, allowing flames to encircle itself before delivering a dive-kick, dealing damage to all targets near the kick."
+        },
+        {
+          "kind": "Buff",
+          "text": "A successful dodge will also deal 120% damage and increase damage by 20% for 20s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Fire Orb",
+      "slug": "fire-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Throws an explosive fireball at the target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Press and hold to aim."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Flaming Claws",
+      "slug": "flaming-claws",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Casts Flaming Claws to attack at the target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "A stronger claw strike can be cast again within 5s."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Both 2 claw strikes can consume 2 stacks of"
+        }
+      ],
+      "targeting": {
+        "range": "1"
+      }
+    },
+    {
+      "name": "Floral Storm",
+      "slug": "floral-storm",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Spins while moving and releases magical petals that track targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "The number of petals released increases by 1 over time, up to 3 at once."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Tap the skill again to stop casting."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4.5",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Flowing Water Slash",
+      "slug": "flowing-water-slash",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "If all hits strike the target, unleashes one additional powerful slash."
+        },
+        {
+          "kind": "Damage",
+          "text": "When near water, absorbs water to deal extra damage equal to 30% Might, upgrading the slash into a Waterblade Slash."
+        }
+      ],
+      "targeting": {
+        "range": "3",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Focused Beam",
+      "slug": "focused-beam",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "After gaining 24 points of"
+        }
+      ],
+      "targeting": {
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Forest Whirl",
+      "slug": "forest-whirl",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Fragrance Bomb",
+      "slug": "fragrance-bomb",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flaps its wings to release a fragrance, increasing Dark damage for all team members by 10% for 30s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Also charms targets within range, leaving them dizzy for a short duration."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3.5"
+      }
+    },
+    {
+      "name": "Fragrance Marking",
+      "slug": "fragrance-marking",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Deals damage to the targets in front while marking them with Secret Fragrance for 15s."
+        },
+        {
+          "kind": "Debuff",
+          "text": "While the marks are active, Dark-type basic attacks deal 25% extra damage to the targets."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3.5"
+      }
+    },
+    {
+      "name": "Freezing Claws",
+      "slug": "freezing-claws",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Deals damage over a large area."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Frost Slam",
+      "slug": "frost-slam",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Gathers icy vapor in both pincers, then slams them down to deal AoE damage in front and create an ice wall for 5 s."
+        }
+      ],
+      "targeting": {
+        "range": "2.2"
+      }
+    },
+    {
+      "name": "Frost Strike",
+      "slug": "frost-strike",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Strikes targets around itself and applies"
+        },
+        {
+          "kind": "Mechanic",
+          "text": "While"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Frost Tail Strike",
+      "slug": "frost-tail-strike",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flips forward toward the target and slams the ground with a tail strike, dealing damage."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Can consume 10 stacks of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Gale Guard",
+      "slug": "gale-guard",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Assumes a defensive stance and gains 20% Damage Reduction."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Tap the skill again to end it early."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Glimmer Shot",
+      "slug": "glimmer-shot",
+      "cooldown": "0s",
+      "break": "100%",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots a Light Orb to attack the target."
+        },
+        {
+          "kind": "Buff",
+          "text": "On hit, increases the whole team’s damage by 15% for 15s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Press and hold the skill button to aim."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Gravel Strike",
+      "slug": "gravel-strike",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Teleports all Hummin units next to the target to unleash Gravel Tackle, dealing damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Gravel Tackle",
+      "slug": "gravel-tackle",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Ram into the target with your body, dealing Earth damage."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Ground Slam",
+      "slug": "ground-slam",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Leaps toward the target and slams down, dealing circular AoE damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Recast to cancel the Ice Prison."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Guardbreak Slam",
+      "slug": "guardbreak-slam",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Guardbreak Smash",
+      "slug": "guardbreak-smash",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up and smashes down on the target to deal damage."
+        },
+        {
+          "kind": "Control",
+          "text": "Up to three consecutive smashes are allowed, and the third smash will stun the target for 1s."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Haunting Choir",
+      "slug": "haunting-choir",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "All Hummin units teleport next to targets and release sonic attacks, dealing AoE damage and stunning targets for 1 s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Healing Dance",
+      "slug": "healing-dance",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "7",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Healing Impact",
+      "slug": "healing-impact",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Healing Rose",
+      "slug": "healing-rose",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Healing Water",
+      "slug": "healing-water",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Heavy Slam",
+      "slug": "heavy-slam",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Makes its hands grow huge and smashes the ground, dealing damage to all targets nearby."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Helios' Judgment",
+      "slug": "helios-judgment",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Unleashes Helios’ Judgment on nearby targets, dealing massive damage."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Help! Gracewing!",
+      "slug": "help-gracewing",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Here Comes the Bubble",
+      "slug": "here-comes-the-bubble",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Also increases the movement speed of allies within range by 15%."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4.1"
+      }
+    },
+    {
+      "name": "High-Voltage Dash",
+      "slug": "high-voltage-dash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Charges toward the targets while electrified to deal damage."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Holy Roar",
+      "slug": "holy-roar",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Unleash a lion's roar imbued with sacred power to ATK enemies."
+        },
+        {
+          "kind": "Buff",
+          "text": "Upon hit, increases own 6% Light Damage Amplification, stacking up to 3 times, lasting 20 seconds."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Holy Storm",
+      "slug": "holy-storm",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Spins and jumps up to cause a storm to attack all surrounding targets while pulling them closer to the center of the storm."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Home Run",
+      "slug": "home-run",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Swings the shovel with full force to deliver a powerful strike, dealing damage."
+        }
+      ],
+      "targeting": {
+        "range": "5.5"
+      }
+    },
+    {
+      "name": "Hot Breath",
+      "slug": "hot-breath",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Breathes powerful flames from the air, dealing damage to all targets within a large area in front and applying 8 stacks of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "6",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Hunting Pack",
+      "slug": "hunting-pack",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Hydro Roll",
+      "slug": "hydro-roll",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Hypnotic Cloud Shot",
+      "slug": "hypnotic-cloud-shot",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires a Hypnotic Cloud Shot at the target."
+        },
+        {
+          "kind": "Damage",
+          "text": "After it explodes, it deals damage to targets in the area and applies 1 stack of Drowsiness."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Hypnotic Spores",
+      "slug": "hypnotic-spores",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "On hit, inflicts"
+        },
+        {
+          "kind": "Damage",
+          "text": "Removed when the target takes damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Lasts 5s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Does not affect Grass-type Aniimo."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Ice Arc Strike",
+      "slug": "ice-arc-strike",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Enemies hit while affected by"
+        }
+      ],
+      "targeting": {
+        "range": "2.6",
+        "hitCap": "2",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Ice Ball Cutting",
+      "slug": "ice-ball-cutting",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Raises the ice ball and rolls forward, dealing a large amount of damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "0.7",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Ice Orb",
+      "slug": "ice-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots Ice Orbs to attack a target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Press and hold the skill button to Aim."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Ice Sphere",
+      "slug": "ice-sphere",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Direction can be adjusted."
+        },
+        {
+          "kind": "Damage",
+          "text": "Hitting an enemy deals damage, while bouncing off a wall deals AoE damage equal to 15 Might to nearby targets."
+        },
+        {
+          "kind": "Movement",
+          "text": "Jump is available in the Rolling Ball state, dealing AoE damage equal to 20 Might on landing."
+        },
+        {
+          "kind": "Movement",
+          "text": "Jump cooldown: 5s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1",
+        "interval": "0.57s"
+      }
+    },
+    {
+      "name": "Ice Spikes",
+      "slug": "ice-spikes",
+      "cooldown": "5s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Creates an ice spike ahead, attacking and freezing the target for1s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Can be used during tunneling."
+        },
+        {
+          "kind": "Movement",
+          "text": "Afterward, dashes forward and emerges from underground."
+        }
+      ],
+      "targeting": {
+        "range": "0",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Ice Strikes",
+      "slug": "ice-strikes",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Lunges forward and spins to create a magic field that fires 3 ice blades for 3 hits, dealing damage and applying 5 stacks of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.2"
+      }
+    },
+    {
+      "name": "Ice Tornado",
+      "slug": "ice-tornado",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Turns into an icy tornado to continuously attack its targets."
+        }
+      ],
+      "targeting": {
+        "range": "1.5",
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Icebreaker",
+      "slug": "icebreaker",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Charges in the selected direction, knocking back targets and dealing damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hitting any target consumes 10% of current HP."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Icy Gravel Dance",
+      "slug": "icy-gravel-dance",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "The Ice Storm keeps moving forward until it hits a wall or a target."
+        }
+      ],
+      "targeting": {
+        "range": "2.5"
+      }
+    },
+    {
+      "name": "Ironclad Armament",
+      "slug": "ironclad-armament",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "During this effect, the Ultimate can be used again to unleash Dragon Slayer Strike, dealing heavy damage to targets ahead."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Jittering Beats",
+      "slug": "jittering-beats",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Strikes targets around itself and applies"
+        },
+        {
+          "kind": "Mechanic",
+          "text": "While"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Lava Breath",
+      "slug": "lava-breath",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Lava Punch",
+      "slug": "lava-punch",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Dashes forward with a punch, dealing damage and piercing through targets."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Also removes all"
+        },
+        {
+          "kind": "Debuff",
+          "text": "Each stack of"
+        }
+      ],
+      "targeting": {
+        "range": "0.7",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Leaf Slash",
+      "slug": "leaf-slash",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Spins leaves around itself, dealing damage for 6s."
+        }
+      ],
+      "targeting": {
+        "range": "3.2"
+      }
+    },
+    {
+      "name": "Leaf Tornado",
+      "slug": "leaf-tornado",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Releases a leaf vortex at the target location, dealing damage and pulling enemies toward the center."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.8"
+      }
+    },
+    {
+      "name": "Leafwave Bubble",
+      "slug": "leafwave-bubble",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "8",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Light Bombardment",
+      "slug": "light-bombardment",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Lightning Blade Impact",
+      "slug": "lightning-blade-impact",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Hold to enter Aim Mode and fire two Electric Blade Shock Waves."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Critical hits inflict Paralysis on the target for 1 seconds."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Lightning Blade Storm",
+      "slug": "lightning-blade-storm",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "For every 3 consecutive slashes accumulated by this skill, the final Spinning Slash deals 100% increased damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.7",
+        "interval": "0.45s"
+      }
+    },
+    {
+      "name": "Lightning Break",
+      "slug": "lightning-break",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Attacks the targets while break dancing."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Lightning Claw",
+      "slug": "lightning-claw",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Channels the power of lightning and strikes the target with a three-hit claw combo."
+        },
+        {
+          "kind": "Buff",
+          "text": "This skill gains 50% additional critical rate."
+        }
+      ],
+      "targeting": {
+        "range": "2.2"
+      }
+    },
+    {
+      "name": "Lightning Cross",
+      "slug": "lightning-cross",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Channels the power of lightning, sending a pushing lightning claw mark forward that deals up to 3 hits to enemies."
+        },
+        {
+          "kind": "Buff",
+          "text": "This skill gains 50% additional critical rate."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Lightning Dart",
+      "slug": "lightning-dart",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Launches a lightning dart at the target, dealing damage to all targets along the way while drawing them closer."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1"
+      }
+    },
+    {
+      "name": "Lightning Discharge",
+      "slug": "lightning-discharge",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "interval": "0.5s"
+      }
+    },
+    {
+      "name": "Lightning Flash",
+      "slug": "lightning-flash",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Leaps up at high speed, gathers electricity, then slams down onto the target and enters the"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3.2",
+        "hitCap": "1",
+        "interval": "0.075s"
+      }
+    },
+    {
+      "name": "Lightning Impact",
+      "slug": "lightning-impact",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Thrusts toward the target."
+        },
+        {
+          "kind": "Buff",
+          "text": "On hit, increases this Aniimo's critical rate by 15% for 15s."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Lightning Kick",
+      "slug": "lightning-kick",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up to dodge an attack, allowing lightning to encircle itself before delivering a dive-kick, dealing damage to all targets near the kick."
+        },
+        {
+          "kind": "Buff",
+          "text": "A successful dodge will also deal 120%damage and increase damage by 20% for 20s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Lightning Splitter",
+      "slug": "lightning-splitter",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires multiple Electric Projectiles at nearby targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "If multiple projectiles hit the same unit, Cornet's damage increases by 30% for 15s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hold the Skill button to automatically enter the Fly state after the skill is cast."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Lightning Storm",
+      "slug": "lightning-storm",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Spins upside down on its head at high speed, creating a massive lightning storm."
+        },
+        {
+          "kind": "Debuff",
+          "text": "During the skill, deals 12 hits of damage to targets in range, and each hit applies 1 stack of"
+        },
+        {
+          "kind": "Mechanic",
+          "text": "The user can move while casting."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3.2",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Lotus Bloom",
+      "slug": "lotus-bloom",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Lumin Bolts",
+      "slug": "lumin-bolts",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Fires three Light projectiles to attack enemies, prioritizing different targets."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Applies"
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Lunar Eclipse",
+      "slug": "lunar-eclipse",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Pours moonlight power onto the target, dealing heavy extra BREAK damage."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Magma Surge",
+      "slug": "magma-surge",
+      "cooldown": "5s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Drives both claws into the ground, causing underground crystals to burst with lava."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "A cone of molten spikes surges forward, damaging targets."
+        },
+        {
+          "kind": "Control",
+          "text": "If it hits a target with more than 5 stacks of Fire Debuff, stuns them for 1s."
+        }
+      ],
+      "targeting": {
+        "range": "0.7",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Malice Burst",
+      "slug": "malice-burst",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "March",
+      "slug": "march",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Plays music and gains the movement-series buff:"
+        },
+        {
+          "kind": "Buff",
+          "text": "With 3 movement-series buffs active, all effects from those buffs are increased by 30%."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Meteors",
+      "slug": "meteors",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Unresolved scope",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Moon Impact",
+      "slug": "moon-impact",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Drops a full moon onto the target, triggering an explosion and dealing damage."
+        },
+        {
+          "kind": "Debuff",
+          "text": "If it hits a target with"
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Moon-Washed",
+      "slug": "moon-washed",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Bathes in moonlight and recovers 20 EP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Nebula Burst",
+      "slug": "nebula-burst",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Inhales, then slams the ground, triggering an explosion that deals AoE damage in a circular area around itself."
+        },
+        {
+          "kind": "Buff",
+          "text": "Increases teammates' Dark damage by 6%% for 15s."
+        },
+        {
+          "kind": "Buff",
+          "text": "If the user is"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "10"
+      }
+    },
+    {
+      "name": "Night Slash",
+      "slug": "night-slash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Lunges forward and spins to unleash 3 dark blades to deal damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.2"
+      }
+    },
+    {
+      "name": "Nightmare Devourer",
+      "slug": "nightmare-devourer",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Restores 5% HP to this Aniimo and nearby allies, then absorbs"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Nimbi Attack",
+      "slug": "nimbi-attack",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Use again to send the Nimbi charging back toward the target."
+        }
+      ],
+      "targeting": {
+        "range": "0.8"
+      }
+    },
+    {
+      "name": "Nimbi Burst",
+      "slug": "nimbi-burst",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Inhales, then slams the ground, triggering an explosion that deals AoE damage in a circular area around itself."
+        },
+        {
+          "kind": "Buff",
+          "text": "Increases teammates' damage and BREAK efficiency by 6% for 15s."
+        },
+        {
+          "kind": "Buff",
+          "text": "If the user is"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "10"
+      }
+    },
+    {
+      "name": "Nutrient Absorption",
+      "slug": "nutrient-absorption",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Off-Key Shock Wave",
+      "slug": "off-key-shock-wave",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Teleports all Off-Key Grass units next to the target and unleashes a Tackle attack, dealing damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Oozing Malice",
+      "slug": "oozing-malice",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Overcharged Claw Strike",
+      "slug": "overcharged-claw-strike",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Claws a target, dealing damage."
+        }
+      ],
+      "targeting": {
+        "range": "1.6"
+      }
+    },
+    {
+      "name": "Pause Gust",
+      "slug": "pause-gust",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Flaps its wings to fire 2 arcing whirlwinds, pulling targets along their paths."
+        },
+        {
+          "kind": "Damage",
+          "text": "When the whirlwinds meet, they explode and deal AoE damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Pebble Kick",
+      "slug": "pebble-kick",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up to dodge an attack, allowing broken stones to encircle itself before delivering a dive-kick, dealing damage to all targets near the kick."
+        },
+        {
+          "kind": "Buff",
+          "text": "A successful dodge will also deal 120% damage and increase damage by 20% for 20s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "hitCap": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Phantom Barrage",
+      "slug": "phantom-barrage",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Slams all targets within range that are affected by"
+        },
+        {
+          "kind": "Debuff",
+          "text": "Restores 2 EP for each stack of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "0.8"
+      }
+    },
+    {
+      "name": "Phantom Dance",
+      "slug": "phantom-dance",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Removes all debuffs for the caster."
+        },
+        {
+          "kind": "Debuff",
+          "text": "When not deployed in battle, Gracewing automatically emerges to remove debuffs from active teammates."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Phantom Flame Cannon",
+      "slug": "phantom-flame-cannon",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up and throws a giant fireball at the target."
+        },
+        {
+          "kind": "Debuff",
+          "text": "It explodes on landing, dealing wide-area damage and applying 12 stacks of"
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Phantomflutter",
+      "slug": "phantomflutter",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Plant Charge",
+      "slug": "plant-charge",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Rams into the target with the body."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Prismana Slam",
+      "slug": "prismana-slam",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Throws a shell at a target to deal damage."
+        },
+        {
+          "kind": "Damage",
+          "text": "If near water terrain, absorbs water to expand the hit area and deal {0}% extra damage."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Prismana Slash",
+      "slug": "prismana-slash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Lunges forward and spins to create a magic field that fires 3 ice blades for 3 hits, dealing damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.5"
+      }
+    },
+    {
+      "name": "Purifying Dance",
+      "slug": "purifying-dance",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Removes all debuffs on surrounding teammates."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Once the debuffs are removed, increases their EP recovery rate by 20% for 10s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Quake Impact",
+      "slug": "quake-impact",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Bursts out of the ground, causing shock waves across a large area."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "8"
+      }
+    },
+    {
+      "name": "Quicksand Slam",
+      "slug": "quicksand-slam",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Creates quicksand ahead, dealing damage to targets and applying"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Radiant Dart",
+      "slug": "radiant-dart",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Launches a lightning dart at the target, dealing damage to all targets along the way while drawing them closer."
+        }
+      ],
+      "targeting": {
+        "range": "1.5"
+      }
+    },
+    {
+      "name": "Rhythm Combo",
+      "slug": "rhythm-combo",
+      "cooldown": "0s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Can be used up to 3 times in a row."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Casting with the right timing adds 1 extra stack of"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Rigged Odds",
+      "slug": "rigged-odds",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Consumes the least common bubble color."
+        },
+        {
+          "kind": "Buff",
+          "text": "The next basic attack is guaranteed to fire the most common color, and basic attack damage increases by 25% for 15s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Rock Ball Blast",
+      "slug": "rock-ball-blast",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Launches a giant rock ball forward."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "The rock ball rolls over targets in its path and explodes."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Rock Smash",
+      "slug": "rock-smash",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Leaps high, immediately gains 100"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "6",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Rock Tackle",
+      "slug": "rock-tackle",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Charges briefly in place, then rushes at the target and slams into it, dealing damage and creating 4"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2"
+      }
+    },
+    {
+      "name": "Roll Out",
+      "slug": "roll-out",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Kick forward a rolling mudball that deals AoE damage on impact; hold to aim and lob it."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Rolling Ball",
+      "slug": "rolling-ball",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Direction can be adjusted."
+        },
+        {
+          "kind": "Damage",
+          "text": "Hitting an enemy deals damage, while bouncing off a wall deals AoE damage equal to 15 Might to nearby targets."
+        },
+        {
+          "kind": "Movement",
+          "text": "Jump is available in the Rolling Ball state, dealing AoE damage equal to 20 Might on landing."
+        },
+        {
+          "kind": "Movement",
+          "text": "Jump cooldown: 5s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1",
+        "interval": "0.57s"
+      }
+    },
+    {
+      "name": "Rose Garden",
+      "slug": "rose-garden",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Creates a magic circle beneath itself."
+        },
+        {
+          "kind": "Buff",
+          "text": "Allies within range gain 70% increased Grass critical damage for 30s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Sand Rush",
+      "slug": "sand-rush",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Charges in the selected direction, knocking back targets and dealing damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hitting any target consumes 10% of current HP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Sandstorm Spin",
+      "slug": "sandstorm-spin",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Spins around by continuously consuming EP, dealing damage."
+        },
+        {
+          "kind": "Damage",
+          "text": "Deals 20% extra damage to BREAK targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Spin speed gradually increases, raising damage frequency by up to 100% without increasing EP cost."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1.8",
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Scream Splitter",
+      "slug": "scream-splitter",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires multiple Screech Rounds at nearby targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "If multiple projectiles hit the same unit, Cornet's damage increases by 30% for 15s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Hold the Skill button to automatically enter the Fly state after the skill is cast."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Scythe Dance",
+      "slug": "scythe-dance",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Seismic Wave",
+      "slug": "seismic-wave",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Continuously releases shock waves, dealing damage every second for 8s."
+        }
+      ],
+      "targeting": {
+        "range": "5",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Selene's Judgment",
+      "slug": "selene-s-judgment",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Also gains 4 stacks of Silvermoon Mark."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Self-Destruction",
+      "slug": "self-destruction",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Continuously increases its voltage and eventually triggers an explosion, dealing wide-area damage and creating an electric field underfoot."
+        },
+        {
+          "kind": "Buff",
+          "text": "Inside the field, Lightning damage increases by 12% for 30s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5"
+      }
+    },
+    {
+      "name": "Shadow Cut",
+      "slug": "shadow-cut",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Curls into a ball and spins with a blade sticking out, dealing damage."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Shadow Magic",
+      "slug": "shadow-magic",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Shard Impact",
+      "slug": "shard-impact",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Shooting Star Bombs",
+      "slug": "shooting-star-bombs",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots stars to attack a target, dealing damage."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Shooting Star Glide",
+      "slug": "shooting-star-glide",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flies overhead, dropping stars that damage targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Hitting the same target 3 times increases this Aniimo's EP recovery rate by 10% for 10s."
+        },
+        {
+          "kind": "Damage",
+          "text": "After using the skill for 4s, it can attack while moving."
+        }
+      ],
+      "targeting": {
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Shooting Stars",
+      "slug": "shooting-stars",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires 3 homing stars."
+        },
+        {
+          "kind": "Buff",
+          "text": "Each time a star damages a target, the user gains a 1% Damage Boost, stacking up to 15 times."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Skyfall",
+      "slug": "skyfall",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flies up and dives down to hit the ground, dealing huge amount of damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "5.5"
+      }
+    },
+    {
+      "name": "Smoke Screen",
+      "slug": "smoke-screen",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Deploy smoke to obscure vision—targets cannot be aimed through the smoke."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Sonar Attack",
+      "slug": "sonar-attack",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Fires a Sonar Attack in a cone, dealing damage 10 times to targets within range."
+        },
+        {
+          "kind": "Debuff",
+          "text": "The final hit applies Weakness Mark, reducing the Crit Resistance Rate of targets hit by 7% for 5s."
+        }
+      ],
+      "targeting": {
+        "range": "2.6",
+        "hitCap": "2",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Sonic Boom",
+      "slug": "sonic-boom",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Unleashes a sonic blast around itself and instantly fills"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Spiral Blade",
+      "slug": "spiral-blade",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Fires a Wind Bomb at the target, dealing damage."
+        },
+        {
+          "kind": "Damage",
+          "text": "After 1s, a second explosion erupts around the hit target, dealing additional AoE damage equal to 30% of the original Might."
+        },
+        {
+          "kind": "Debuff",
+          "text": "The second explosion reduces the Wind Resistance of hit targets by3%, up to 5 stacks, for 10s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.5"
+      }
+    },
+    {
+      "name": "Splash Shield",
+      "slug": "splash-shield",
+      "cooldown": "15s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "While active, each skill hit deals one additional instance of skill damage to the target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Trigger interval: 0.5s."
+        }
+      ],
+      "targeting": {
+        "interval": "0.5s"
+      }
+    },
+    {
+      "name": "Spotlight Moment",
+      "slug": "spotlight-moment",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Spring of Life",
+      "slug": "spring-of-life",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Creates a circular water zone at a fixed location."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "7",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Star Glide",
+      "slug": "star-glide",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Flies overhead, dropping stars that damage targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Hitting the same target 3 times increases this Aniimo's EP recovery rate by 10% for 10s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Stone Ball Cutter",
+      "slug": "stone-ball-cutter",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Raises the stone ball and rolls forward, dealing a large amount of damage."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "0.7",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Stone Ball Drift",
+      "slug": "stone-ball-drift",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Stone Shell",
+      "slug": "stone-shell",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Fires a stone shell at the target."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Sun-Kissed",
+      "slug": "sun-kissed",
+      "cooldown": "18s",
+      "break": "",
+      "teamRole": "Unresolved scope",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Bathes in sunlight and restores 20 EP."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Super Jackpot",
+      "slug": "super-jackpot",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Spits a giant rainbow bubble at the target, dealing damage over a large area and immediately entering the"
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Surf",
+      "slug": "surf",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [],
+      "targeting": {
+        "range": "2",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Surge",
+      "slug": "surge",
+      "cooldown": "1s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Absorbs all puddles within 10 m."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Absorbs up to 4 puddles at once."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Swift Retreat",
+      "slug": "swift-retreat",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Tactical Kick",
+      "slug": "tactical-kick",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [],
+      "targeting": {
+        "range": "2.5"
+      }
+    },
+    {
+      "name": "Target Weakness",
+      "slug": "target-weakness",
+      "cooldown": "8s",
+      "break": "",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Applies Weakness Mark to all targets within view range for 30s."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Also reduces targets' Wind Resistance by 12% for 30s."
+        }
+      ],
+      "targeting": {
+        "range": "8"
+      }
+    },
+    {
+      "name": "The Luminus Gust",
+      "slug": "the-luminus-gust",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Spins Cores around itself, continuously dealing damage and applying Earth Debuff for 6s."
+        }
+      ],
+      "targeting": {
+        "range": "3.2"
+      }
+    },
+    {
+      "name": "Thorny Blessing",
+      "slug": "thorny-blessing",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Grants Thorny Blessing to the whole team."
+        },
+        {
+          "kind": "Damage",
+          "text": "When dealing Grass critical damage to a target, creates thorns beneath it that deal damage."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Triggers up to 1 time every 0.5s for 14s."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Thorny Defense",
+      "slug": "thorny-defense",
+      "cooldown": "6s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Enters a defensive stance, reducing damage taken by 20% While in this state, it counters when attacked."
+        },
+        {
+          "kind": "Buff",
+          "text": "If attacked just as the skill is used, its critical rate increases by 30% for 10s."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.01s"
+      }
+    },
+    {
+      "name": "Thorny Impact",
+      "slug": "thorny-impact",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Thrusts toward the target."
+        },
+        {
+          "kind": "Buff",
+          "text": "On hit, increases this Aniimo's critical rate by 15% for 15s."
+        }
+      ],
+      "targeting": {
+        "range": "0.8",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Thorny Rain",
+      "slug": "thorny-rain",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Rapidly attacks the target with its thorn blade."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Can be used up to 3 times in a row."
+        }
+      ],
+      "targeting": {
+        "range": "3"
+      }
+    },
+    {
+      "name": "Thunder Bolt",
+      "slug": "thunder-bolt",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Throws a missile condensed from thunderclouds at the target."
+        },
+        {
+          "kind": "Damage",
+          "text": "If the user is"
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "0.8"
+      }
+    },
+    {
+      "name": "Thunder Field",
+      "slug": "thunder-field",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Generates a thunder field that keeps following the target."
+        },
+        {
+          "kind": "Debuff",
+          "text": "Targets within the thunder field that receive a Lightning attack will be hit by an additional Lightning attack and be inflicted with a Lightning Debuff ."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "The thunder field lasts for 8 s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Thunder Imprint",
+      "slug": "thunder-imprint",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Gains"
+        },
+        {
+          "kind": "Buff",
+          "text": "While active, each hit against a target stores damage on the target, then deals all stored damage when the effect ends."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Lasts 8 s."
+        },
+        {
+          "kind": "Debuff",
+          "text": "If the target has 10 stacks of Lightning Debuff, consumes them to deal 100% extra damage."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Thunder Lance",
+      "slug": "thunder-lance",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Deals multiple hits to targets in a straight line."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Targets hit will be paralyzed for 1.5 seconds."
+        }
+      ],
+      "targeting": {
+        "range": "2",
+        "interval": "0.2s"
+      }
+    },
+    {
+      "name": "Thunder Slam",
+      "slug": "thunder-slam",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Throws a shell at a target to deal damage."
+        },
+        {
+          "kind": "Damage",
+          "text": "If near water terrain, absorbs water to expand the hit area and deal {0}% extra damage."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Thunder Sweep",
+      "slug": "thunder-sweep",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Rapidly spins into a sweeping kick, dealing AoE damage and pulling nearby targets in front of the user."
+        },
+        {
+          "kind": "Buff",
+          "text": "On hit, increases the team's Lightning critical rate by 12% for 20s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Thunder Tail",
+      "slug": "thunder-tail",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Channels the power of lightning, swinging its tail to attack targets ahead."
+        },
+        {
+          "kind": "Buff",
+          "text": "This skill gains 50% additional critical rate."
+        }
+      ],
+      "targeting": {
+        "range": "0.75",
+        "hitCap": "2",
+        "interval": "0.075s"
+      }
+    },
+    {
+      "name": "Thunderfeather Volley",
+      "slug": "thunderfeather-volley",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "If in Thunder Wing Stance, fires an additional 5 arrows, and at the end, deals additional explosion damage with 20 Might."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Tornado",
+      "slug": "tornado",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Releases an air vortex at the target location, dealing damage and pulling enemies toward the center."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.8"
+      }
+    },
+    {
+      "name": "Tornado Wind Orb",
+      "slug": "tornado-wind-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Launches a tornado wind orb that explodes on impact and generates a forward-propelling tornado."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Torrent Blade",
+      "slug": "torrent-blade",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Delivers a slash in a large area."
+        },
+        {
+          "kind": "Buff",
+          "text": "If near water terrain, absorbs water to deal {0}% extra damage and increases basic attack range after the slash for {1} s."
+        }
+      ],
+      "targeting": {
+        "range": "3"
+      }
+    },
+    {
+      "name": "Torrent Slam",
+      "slug": "torrent-slam",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Throws a shell at the target."
+        },
+        {
+          "kind": "Damage",
+          "text": "Nearby puddles deal extra damage equal to 30% of the original Might and increasing Water damage by 15% for 20s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4.2"
+      }
+    },
+    {
+      "name": "Trick Fire Ring",
+      "slug": "trick-fire-ring",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Launches a fire ring that expands then contracts to attack the target."
+        },
+        {
+          "kind": "Buff",
+          "text": "The farther the target is, the more damage it will take, up to 50% increased damage."
+        }
+      ],
+      "targeting": {
+        "range": "0",
+        "hitCap": "1"
+      }
+    },
+    {
+      "name": "Turret Mode",
+      "slug": "turret-mode",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Lowers its chassis and grips the ground."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2",
+        "interval": "0.11s"
+      }
+    },
+    {
+      "name": "Unbroken Flameruff Spirit",
+      "slug": "unbroken-flameruff-spirit",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Fires a Flameruff Spirit that ricochets between targets, increasing BREAK efficiency against them by 10% per stack, up to 3 stacks, for 20s."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Ricochets 5 times by default."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Verdant Beam",
+      "slug": "verdant-beam",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Consecutive hits gradually increase its Might."
+        }
+      ],
+      "targeting": {
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Vine Entanglement",
+      "slug": "vine-entanglement",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Launches a circular magical strike around a target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "If the affected target is on grassland, it will also be entangled by vines for 3s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3"
+      }
+    },
+    {
+      "name": "Vortex of Petals",
+      "slug": "vortex-of-petals",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Generates a large vortex of petals at the feet of the target to attack it."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Waltz",
+      "slug": "waltz",
+      "cooldown": "15s",
+      "break": "",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Plays music and gains the movement-series buff:"
+        },
+        {
+          "kind": "Buff",
+          "text": "With 3 movement-series buffs active, all effects from those buffs are increased by 30%."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Water Arc Strike",
+      "slug": "water-arc-strike",
+      "cooldown": "10s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Enemies hit while affected by"
+        }
+      ],
+      "targeting": {
+        "range": "2.6",
+        "hitCap": "2",
+        "interval": "0.1s"
+      }
+    },
+    {
+      "name": "Water Cannon",
+      "slug": "water-cannon",
+      "cooldown": "1s",
+      "break": "2",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Water Cannonade",
+      "slug": "water-cannonade",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Debuff",
+          "text": "Jumps up and hurls a huge water ball at the target, dealing AoE damage, creating a water puddle, and applying 5 stacks of Water Debuff to targets hit."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Water Dash",
+      "slug": "water-dash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Dashes at the target, dealing damage and knocking them back."
+        }
+      ],
+      "targeting": {
+        "range": "1.5",
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Water Orb",
+      "slug": "water-orb",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Shoots Water Orbs to attack a target."
+        },
+        {
+          "kind": "Mechanic",
+          "text": "Press and hold the skill button to aim."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Water Rush",
+      "slug": "water-rush",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": {
+        "interval": "0.5s"
+      }
+    },
+    {
+      "name": "Water Tornado",
+      "slug": "water-tornado",
+      "cooldown": "15s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Releases a water vortex at the target location, dealing damage and pulling enemies toward the center."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "2.8"
+      }
+    },
+    {
+      "name": "Wave Surge",
+      "slug": "wave-surge",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Slides across the ice, dealing AoE damage in front."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "1.6"
+      }
+    },
+    {
+      "name": "Weakening Slam",
+      "slug": "weakening-slam",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up and smashes down on the target to deal damage."
+        },
+        {
+          "kind": "Control",
+          "text": "Up to three consecutive smashes are allowed, and the third smash will stun the target for 1s."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Weakening Smash",
+      "slug": "weakening-smash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Movement",
+          "text": "Jumps up and smashes down on the target to deal damage."
+        },
+        {
+          "kind": "Control",
+          "text": "Up to three consecutive smashes are allowed, and the third smash will stun the target for 1s."
+        }
+      ],
+      "targeting": {
+        "range": "2"
+      }
+    },
+    {
+      "name": "Wild Dance",
+      "slug": "wild-dance",
+      "cooldown": "0s",
+      "break": "100%",
+      "teamRole": "Self only",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Unleashes rapid slashes in succession."
+        },
+        {
+          "kind": "Buff",
+          "text": "Gains 20% damage reduction during the attack."
+        }
+      ],
+      "targeting": {
+        "range": "1.6"
+      }
+    },
+    {
+      "name": "Wild Show",
+      "slug": "wild-show",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Hold to charge the microphone, then release to unleash a massive sound wave, damaging targets in front."
+        },
+        {
+          "kind": "Damage",
+          "text": "A well-timed release deals an additional 30% BREAK damage."
+        }
+      ],
+      "targeting": {
+        "range": "3",
+        "interval": "0.15s"
+      }
+    },
+    {
+      "name": "Wind Bomb Rush",
+      "slug": "wind-bomb-rush",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Mechanic",
+          "text": "Goes all out, rapidly firing a continuous barrage of wind projectiles."
+        }
+      ],
+      "targeting": {
+        "interval": "0.3s"
+      }
+    },
+    {
+      "name": "Wind Counter",
+      "slug": "wind-counter",
+      "cooldown": "10s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Enters a defensive stance, increasing damage reduction by 30% and immediately counterattacking."
+        },
+        {
+          "kind": "Control",
+          "text": "If attacked at the moment the skill is cast, additionally increases BREAK efficiency by 20% for 10s and stuns the target for 1.5s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "3.5"
+      }
+    },
+    {
+      "name": "Wind of Regeneration",
+      "slug": "wind-of-regeneration",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "7",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Wind of Rejuvenation",
+      "slug": "wind-of-rejuvenation",
+      "cooldown": "20s",
+      "break": "",
+      "teamRole": "Team-wide support",
+      "effects": [],
+      "targeting": {
+        "shape": "circular",
+        "range": "7",
+        "interval": "1s"
+      }
+    },
+    {
+      "name": "Wind Tackle",
+      "slug": "wind-tackle",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Control",
+          "text": "Tackles and knocks back small-sized targets."
+        },
+        {
+          "kind": "Buff",
+          "text": "Increases own damage reduction by 15% for 10s."
+        }
+      ],
+      "targeting": {
+        "range": "1",
+        "hitCap": "1",
+        "interval": "0.02s"
+      }
+    },
+    {
+      "name": "Withering Bloom",
+      "slug": "withering-bloom",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Wolfpack Onslaught",
+      "slug": "wolfpack-onslaught",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "Direct offense",
+      "effects": [
+        {
+          "kind": "Damage",
+          "text": "Upon hitting a target, it explodes, dealing damage."
+        }
+      ],
+      "targeting": null
+    },
+    {
+      "name": "Wrath of the Sea",
+      "slug": "wrath-of-the-sea",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Enemy debuff",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Also increases Water damage for team members by 10% for 30s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "4"
+      }
+    },
+    {
+      "name": "Zephyr's Breath",
+      "slug": "zephyr-s-breath",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "Team-wide support",
+      "effects": [
+        {
+          "kind": "Buff",
+          "text": "Deals Wind damage over a large area and increases all party members' Wind damage by 25% for 30s."
+        }
+      ],
+      "targeting": {
+        "shape": "circular",
+        "range": "8",
+        "hitCap": "4",
+        "interval": "0.15s"
+      }
+    }
+  ]
+}

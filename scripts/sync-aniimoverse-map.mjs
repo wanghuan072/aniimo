@@ -82,6 +82,15 @@ for (const payload of payloads) {
   await save(path.join(ROOT, "src/data/map", `${atlas.id}.json`), `${JSON.stringify({ atlas, vocabulary: payload.vocabulary || vocabulary })}\n`);
 }
 
+if (index.length !== ATLAS_IDS.length) throw new Error(`Expected ${ATLAS_IDS.length} atlas index entries, got ${index.length}`);
+for (const payload of payloads) {
+  const atlas = payload.atlas;
+  if (!atlas?.id || !Array.isArray(atlas.pois) || typeof atlas.total !== "number") {
+    throw new Error(`Atlas payload is missing required fields (${atlas?.id || "unknown"})`);
+  }
+  if (!atlas.pois.length) throw new Error(`Atlas ${atlas.id} has no points`);
+}
+
 await save(path.join(ROOT, "src/data/map/index.json"), `${JSON.stringify({ index, vocabulary }, null, 2)}\n`);
 
 console.log("tiles", tileJobs.length, "icons", iconUrls.size);

@@ -44,7 +44,7 @@ export default function MapPage({ atlas, region, marker }: { atlas?: string; reg
       <section className={styles.toolContent}>
         <div className="container">
           <div id="atlas" className={styles.mapStage}>
-            <InteractiveMap atlasId={atlasId} regionSlug={regionSlug} marker={markerSlug} />
+            <InteractiveMap key={atlasId || "breezy-plains"} atlasId={atlasId} regionSlug={regionSlug} marker={markerSlug} />
           </div>
           <div className={styles.mapStats}>
             <div><strong>{atlasIndex.length}</strong><span>Atlases</span></div>

@@ -8,6 +8,18 @@ export type AniimoStats = {
   attributeValue: number;
 };
 
+export type AniimoSkillEffect = {
+  kind: string;
+  text: string;
+};
+
+export type AniimoSkillTargeting = {
+  shape?: string;
+  range?: string;
+  hitCap?: string;
+  interval?: string;
+};
+
 export type AniimoSkill = {
   name: string;
   description: string;
@@ -17,6 +29,11 @@ export type AniimoSkill = {
   iconUrl: string;
   cost: string;
   power: string;
+  cooldown?: string;
+  breakValue?: string;
+  teamRole?: string;
+  effects?: AniimoSkillEffect[];
+  targeting?: AniimoSkillTargeting | null;
 };
 
 export type AniimoEvolutionNode = {
@@ -25,6 +42,12 @@ export type AniimoEvolutionNode = {
   imageUrl: string;
   isVariant: boolean;
   children: AniimoEvolutionNode[];
+};
+
+export type AniimoEvolutionView = AniimoEvolutionNode & {
+  slug?: string;
+  portrait?: string;
+  children: AniimoEvolutionView[];
 };
 
 export type AniimoForm = {
@@ -129,4 +152,21 @@ export type MapLocation = {
   x: number;
   y: number;
   description: string;
+};
+
+export type CommunityRecord = {
+  slug: string;
+  name: string;
+  description: string;
+  rarity: string;
+  category: string;
+  image?: string;
+};
+
+export type SearchRecord = {
+  title: string;
+  subtitle: string;
+  href: string;
+  type: string;
+  image: string;
 };
