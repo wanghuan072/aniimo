@@ -5,22 +5,19 @@ import { AniimoExplorer } from "@/components/aniimo/AniimoExplorer";
 import { Breadcrumb } from "@/components/ui/Content";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
-import { JsonLd, faqJsonLd } from "@/seo/JsonLd";
 import styles from "@/style/page/content.module.css";
 
 export default function AniimoIndexPage() {
   const novaCount = aniimo.filter((entry) => entry.stage === 3).length;
   const electricCount = aniimo.filter((entry) => entry.elements.includes("electric")).length;
   const newest = [...aniimo].sort((a, b) => Number(b.entryId) - Number(a.entryId)).slice(0, 4);
-  const faq = [{ question: "How many Aniimo are in the index?", answer: `This index currently includes ${aniimo.length} Aniimo profiles.` }];
   return (
     <>
-      <JsonLd data={faqJsonLd(faq)} />
       <section className={styles.listHero}>
         <div className={`container ${styles.listHeroInner}`}>
           <div className={styles.listHeroCopy}>
             <Breadcrumb items={[{ label: "Database", href: "/database" }, { label: "Aniimo" }]} />
-            <h1><span>✦</span> Aniimo — Browse the Full Roster <span>✦</span></h1>
+            <h1><span>✦</span> All Aniimo Creatures — Browse the Full Roster <span>✦</span></h1>
             <p>Filter by element, role and stage, then open a profile to see skills, traits, forms, habitats and evolution paths in one place.</p>
           </div>
           <HeroPanel label="Find an Aniimo" items={["Filter by role or element", "Open forms and evolution paths", "Compare a real shortlist"]} />

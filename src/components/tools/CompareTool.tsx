@@ -63,6 +63,5 @@ export function CompareTool({ entries }: { entries: Aniimo[] }) {
       <div className={styles.compareMetric}><span>Skills</span>{selected.map((entry, index) => <div key={`${entry.slug}-${index}`}><b>{entry.skills.length}</b><small>published</small></div>)}</div>
       <div className={styles.compareMetric}><span>Habitats</span>{selected.map((entry, index) => <div key={`${entry.slug}-${index}`}><b>{entry.habitats.length || "—"}</b><small>listed</small></div>)}</div>
     </section>
-    <section className={styles.compareSummary}><div><span>Comparison reminder</span><h2>Compare the Details That Matter</h2><p>Base fields do not account for encounter behavior, cooldowns or a player’s preferred rotation. Open each profile after comparing to read its skills, trait, evolution and habitat information.</p></div><div>{selected.map((entry) => <Link href={`/aniimo/${entry.slug}`} key={entry.slug}><span><Image src={entry.image} alt="" fill sizes="42px" /></span>{entry.name} <b>→</b></Link>)}</div></section>
   </div>;
 }

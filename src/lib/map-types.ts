@@ -85,6 +85,20 @@ export type MapFocus = {
   categorySlug: string;
 };
 
+export type MapAniimoProfile = {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+  stage: number;
+  form: string;
+  elements: string[];
+  roles: string[];
+  stats: { hp: number; physicalAttack: number; magicAttack: number } | null;
+  skills: string[];
+  evolution: string[];
+};
+
 export type AniimoSpawnPoint = {
   x: number;
   y: number;

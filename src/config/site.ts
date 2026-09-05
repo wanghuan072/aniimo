@@ -4,6 +4,7 @@ export const siteConfig = {
   description:
     "An independent Aniimo companion with creature profiles, forms, skills, habitats, guides, maps, and practical planning tools for players.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aniimo.cc",
+  author: "Frontline Pathfinde",
   contactEmail: "wyong@aniimo.cc",
   officialWiki: "https://wiki.aniimo.com/en",
   releaseNote: "PC and console: September 16, 2026 · Mobile: September 23, 2026",

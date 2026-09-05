@@ -42,7 +42,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-.panelHead h1 {
+.panelHead h2 {
   margin: 2px 0 0;
   font-size: 20px;
   line-height: 1.05;
@@ -309,7 +309,7 @@
 .cardArt {
   position: relative;
   display: block;
-  height: 196px;
+  height: 152px;
   margin: 0 0 10px;
   overflow: hidden;
   border-radius: 12px;
@@ -332,9 +332,19 @@
   line-height: 1.15;
 }
 .card p { margin: 0 0 8px; color: #4d6a80; font-size: 14px; line-height: 1.45; }
+.cardTags { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 9px; }
+.cardTags span { padding: 3px 6px; border-radius: 6px; color: #326785; background: #eaf4f8; font-size: 11px; font-weight: 800; text-transform: capitalize; }
+.cardStats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin: 10px 0; }
+.cardStats span { display: grid; gap: 1px; padding: 6px; border: 1px solid #dce8ed; border-radius: 8px; background: #f7fafb; }
+.cardStats small { color: #7890a0; font-size: 10px; font-weight: 850; letter-spacing: .04em; }
+.cardStats strong { color: #244f6a; font-size: 13px; font-variant-numeric: tabular-nums; }
+.cardRecord { display: grid; gap: 7px; margin: 9px 0; padding-top: 9px; border-top: 1px solid #e1e9ec; }
+.cardRecord p { margin: 0; color: #526f83; font-size: 12px; line-height: 1.4; }
+.cardRecord strong { display: block; margin-bottom: 2px; color: #2e6688; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .cardLink {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   margin-top: 2px;
   color: var(--blue-700);
   font-size: 14px;
@@ -360,6 +370,11 @@
 .close svg { width: 14px; height: 14px; }
 
 .shell :global(.leaflet-container) { width: 100%; height: 100%; background: transparent; font: inherit; }
+.shell :global(.leaflet-pane > svg path.leaflet-interactive:focus) { outline: none; }
+.shell :global(.leaflet-pane > svg path.leaflet-interactive:focus-visible) {
+  stroke-width: 4px !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, .9));
+}
 .shell :global(.leaflet-control-zoom) { border: 0; box-shadow: 0 8px 18px rgba(8, 30, 48, 0.2); }
 .shell :global(.leaflet-bar a) { width: 32px; height: 32px; line-height: 32px; color: #143f66; }
 .shell :global(.map-cluster) {

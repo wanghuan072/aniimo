@@ -1,16 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { Icon } from "@/components/ui/Icon";
-import { atlasFrame, atlasIndex, atlasLoaders, essentialsFor, findFocusPoi, regionColor, resolveFocusInAtlas } from "@/lib/map-runtime";
-import type { AtlasFile, MapAtlas, MapPoi } from "@/lib/map-types";
+import { elementMeta, roleLabels } from "@/config/site";
+import { atlasFrame, atlasIndex, atlasLoaders, essentialsFor, findFocusPoi, regionColor, resolveFocusInAtlas, token } from "@/lib/map-runtime";
+import type { AtlasFile, MapAniimoProfile, MapAtlas, MapPoi } from "@/lib/map-types";
 import styles from "@/style/components/map.module.css";
 import "leaflet/dist/leaflet.css";
 
 type Depth = "all" | "surface" | "underground";
-type ClusterSet = Map<string, { group: MarkerClusterGroup; byType: Map<string, Marker[]>; active: Set<string> }>;
+type ClusterSet = Map<string, {
+  group: MarkerClusterGroup;
+  byType: Map<string, MapPoi[]>;
+  markers: Map<string, Marker[]>;
+  active: Set<string>;
+  createMarker: (poi: MapPoi) => Marker;
+}>;
 
 const ATLAS_SHORT: Record<string, string> = {
   "breezy-plains": "Breezy",
@@ -27,15 +34,21 @@ function syncClusters(map: LeafletMap, atlas: MapAtlas, clusters: ClusterSet, en
     for (const type of category.types) {
       for (const plane of ["s", "u"] as const) {
         const key = `${type.slug}|${plane}`;
-        const markers = bucket.byType.get(key);
-        const on = Boolean(markers?.length) && enabled.has(type.slug) && (depth === "all" || (depth === "underground" ? plane === "u" : plane === "s"));
+        const points = bucket.byType.get(key);
+        const on = Boolean(points?.length) && enabled.has(type.slug) && (depth === "all" || (depth === "underground" ? plane === "u" : plane === "s"));
         if (on) visible = true;
-        if (on && !bucket.active.has(key) && markers) {
+        if (on && !bucket.active.has(key) && points) {
+          let markers = bucket.markers.get(key);
+          if (!markers) {
+            markers = points.map(bucket.createMarker);
+            bucket.markers.set(key, markers);
+          }
           bucket.group.addLayers(markers);
           bucket.active.add(key);
         }
-        if (!on && bucket.active.has(key) && markers) {
-          bucket.group.removeLayers(markers);
+        if (!on && bucket.active.has(key)) {
+          const markers = bucket.markers.get(key);
+          if (markers) bucket.group.removeLayers(markers);
           bucket.active.delete(key);
         }
       }
@@ -45,13 +58,12 @@ function syncClusters(map: LeafletMap, atlas: MapAtlas, clusters: ClusterSet, en
   }
 }
 
-export function InteractiveMap({ atlasId, regionSlug, marker }: { atlasId?: string; regionSlug?: string; marker?: string }) {
+export function InteractiveMap({ atlasId, regionSlug, marker, profiles }: { atlasId?: string; regionSlug?: string; marker?: string; profiles: Record<string, MapAniimoProfile> }) {
   const id = atlasId && atlasLoaders[atlasId] ? atlasId : "breezy-plains";
   const [payload, setPayload] = useState<AtlasFile | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    setPayload(null);
     atlasLoaders[id]().then((file) => {
       if (!cancelled) setPayload(file);
     });
@@ -70,10 +82,10 @@ export function InteractiveMap({ atlasId, regionSlug, marker }: { atlasId?: stri
     );
   }
 
-  return <AtlasView payload={payload} regionSlug={regionSlug} marker={marker} />;
+  return <AtlasView payload={payload} regionSlug={regionSlug} marker={marker} profiles={profiles} />;
 }
 
-function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; regionSlug?: string; marker?: string }) {
+function AtlasView({ payload, regionSlug, marker, profiles }: { payload: AtlasFile; regionSlug?: string; marker?: string; profiles: Record<string, MapAniimoProfile> }) {
   const atlas = payload.atlas;
   const frame = useMemo(() => atlasFrame(atlas), [atlas]);
   const categoryBySlug = useMemo(() => new Map(atlas.categories.map((category) => [category.slug, category])), [atlas]);
@@ -91,24 +103,10 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
   const mapRef = useRef<LeafletMap | null>(null);
   const clustersRef = useRef<ClusterSet>(new Map());
   const focusedRef = useRef("");
-  const enabledRef = useRef(enabled);
-  const depthRef = useRef(depth);
-  enabledRef.current = enabled;
-  depthRef.current = depth;
-  const onSelect = useRef<(poi: MapPoi) => void>(() => undefined);
-  onSelect.current = (poi) => {
+  const onSelect = useCallback((poi: MapPoi) => {
     setSelected(poi);
     mapRef.current?.flyTo(frame.toLatLng(poi.x, poi.y), Math.max(mapRef.current.getZoom(), 3.5), { duration: 0.5 });
-  };
-
-  useEffect(() => {
-    setEnabled(essentialsFor(atlas));
-    setSelected(null);
-    setDepth("all");
-    setQuery("");
-    setOpenGroups(new Set());
-    focusedRef.current = "";
-  }, [atlas]);
+  }, [frame]);
 
   useEffect(() => {
     const el = mapEl.current;
@@ -174,6 +172,13 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
         icons.set(key, created);
         return created;
       };
+      const createMarker = (poi: MapPoi) => {
+        const title = atlas.labels[poi.n] || "Map point";
+        const created = L.marker(frame.toLatLng(poi.x, poi.y), { icon: iconFor(poi), title, keyboard: true });
+        created.bindTooltip(title, { direction: "top", offset: [0, -12] });
+        created.on("click", () => onSelect(poi));
+        return created;
+      };
       const clusters: ClusterSet = new Map();
       for (const category of atlas.categories) {
         const group = L.markerClusterGroup({
@@ -184,22 +189,18 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
           maxClusterRadius: (zoom) => (zoom >= 3 ? 1 : 44),
           iconCreateFunction: (cluster) => L.divIcon({ html: `<span class="map-cluster">${cluster.getChildCount()}</span>`, className: "", iconSize: [36, 36] }),
         });
-        clusters.set(category.slug, { group, byType: new Map(), active: new Set() });
+        clusters.set(category.slug, { group, byType: new Map(), markers: new Map(), active: new Set(), createMarker });
       }
       for (const poi of atlas.pois) {
         const bucket = clusters.get(poi.c);
         if (!bucket) continue;
-        const title = atlas.labels[poi.n] || "Map point";
-        const marker = L.marker(frame.toLatLng(poi.x, poi.y), { icon: iconFor(poi), title, keyboard: true });
-        marker.bindTooltip(title, { direction: "top", offset: [0, -12] });
-        marker.on("click", () => onSelect.current(poi));
         const key = `${poi.t}|${poi.ug ? "u" : "s"}`;
         const list = bucket.byType.get(key) || [];
-        list.push(marker);
+        list.push(poi);
         bucket.byType.set(key, list);
       }
       clustersRef.current = clusters;
-      syncClusters(map, atlas, clusters, enabledRef.current, depthRef.current);
+      syncClusters(map, atlas, clusters, essentialsFor(atlas), "all");
       const regionLayer = (map as LeafletMap & { __regions?: import("leaflet").LayerGroup }).__regions;
       if (regionLayer) regionLayer.addTo(map);
       setMapTick((value) => value + 1);
@@ -210,7 +211,7 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
       mapRef.current = null;
       clustersRef.current = new Map();
     };
-  }, [atlas, frame, regionSlug, typeBySlug]);
+  }, [atlas, frame, onSelect, regionSlug, typeBySlug]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -236,21 +237,24 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
     const focus = resolveFocusInAtlas(atlas, marker);
     const poi = findFocusPoi(atlas, marker, regionSlug);
     if (!focus || !poi) return;
-    setEnabled((current) => {
-      const next = new Set(essentialsFor(atlas));
-      next.add(poi.t);
-      if (current.size === next.size && [...next].every((slug) => current.has(slug))) return current;
-      return next;
-    });
-    const groupId = atlas.groups.find((group) => group.categories.includes(focus.categorySlug))?.id;
-    if (groupId) {
-      setOpenGroups((current) => {
-        if (current.has(groupId)) return current;
-        const next = new Set(current);
-        next.add(groupId);
+    const frameId = requestAnimationFrame(() => {
+      setEnabled((current) => {
+        const next = new Set(essentialsFor(atlas));
+        next.add(poi.t);
+        if (current.size === next.size && [...next].every((slug) => current.has(slug))) return current;
         return next;
       });
-    }
+      const groupId = atlas.groups.find((group) => group.categories.includes(focus.categorySlug))?.id;
+      if (groupId) {
+        setOpenGroups((current) => {
+          if (current.has(groupId)) return current;
+          const next = new Set(current);
+          next.add(groupId);
+          return next;
+        });
+      }
+    });
+    return () => cancelAnimationFrame(frameId);
   }, [atlas, marker, regionSlug, mapTick]);
 
   useEffect(() => {
@@ -260,8 +264,8 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
     const key = `${atlas.id}:${poi.t}:${poi.x}:${poi.y}:${regionSlug || ""}`;
     if (focusedRef.current === key) return;
     focusedRef.current = key;
-    onSelect.current(poi);
-  }, [atlas, enabled, mapTick, marker, regionSlug]);
+    onSelect(poi);
+  }, [atlas, enabled, mapTick, marker, onSelect, regionSlug]);
 
   useEffect(() => {
     if (!regionSlug && !marker) return;
@@ -312,10 +316,14 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
   const selectedType = selected ? typeBySlug.get(selected.t) : undefined;
   const selectedProfile = selected?.entity || selectedType?.entity;
   const selectedLabel = selected ? atlas.labels[selected.n] : "";
-  const selectedDesc = selected?.d != null ? atlas.descriptions[selected.d] : selectedProfile?.description;
+  const selectedAniimoSlug = selected && (selected.c === "creatures" || selected.c === "aniimo")
+    ? token(selectedProfile?.slug || selectedType?.label || selectedLabel)
+    : "";
+  const selectedAniimo = profiles[selectedAniimoSlug];
+  const selectedDesc = selected?.d != null ? atlas.descriptions[selected.d] : selectedAniimo?.description || selectedProfile?.description;
   const selectedIcon = selected ? atlas.icons[selected.ic] || "" : "";
-  const selectedArt = selectedProfile?.kind === "aniimo" && selectedProfile.slug
-    ? `/images/aniimo/${selectedProfile.slug}.png`
+  const selectedArt = selectedAniimo?.image
+    ? selectedAniimo.image
     : selectedProfile?.image?.startsWith("/images/")
       ? selectedProfile.image
       : selectedIcon;
@@ -337,7 +345,7 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
           <div className={styles.panelHead}>
             <div>
               <p className={styles.kicker}>Field atlas</p>
-              <h1>{atlas.name}</h1>
+              <h2>{atlas.name}</h2>
               <p className={styles.meta}>{atlas.tagline} · {atlas.total.toLocaleString()} points</p>
             </div>
             <div className={styles.headActions}>
@@ -355,13 +363,13 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
           </nav>
           <label className={styles.searchWrap}>
             <Icon name="search" />
-            <input className={styles.search} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search markers" aria-label="Search markers" />
+            <input className={styles.search} name="map-search" autoComplete="off" spellCheck={false} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Aniimo, chests, or landmarks…" aria-label="Search map markers" />
           </label>
           {hits.length > 0 && (
             <div className={styles.hits}>
               {hits.map((poi, index) => (
-                <button type="button" key={`${poi.t}-${index}`} onClick={() => { setEnabled((current) => new Set(current).add(poi.t)); onSelect.current(poi); }}>
-                  <img src={atlas.icons[poi.ic]} alt="" />
+                <button type="button" key={`${poi.t}-${index}`} onClick={() => { setEnabled((current) => new Set(current).add(poi.t)); onSelect(poi); }}>
+                  <img src={atlas.icons[poi.ic]} alt="" width={24} height={24} />
                   <span>{atlas.labels[poi.n]}</span>
                 </button>
               ))}
@@ -451,23 +459,43 @@ function AtlasView({ payload, regionSlug, marker }: { payload: AtlasFile; region
         </button>
         <div ref={mapEl} />
         {selected && (
-          <aside className={styles.card}>
-            <button type="button" className={styles.close} onClick={() => setSelected(null)} aria-label="Close"><Icon name="close" /></button>
+          <aside className={styles.card} aria-live="polite" aria-label={`${selectedAniimo?.name || selectedLabel} map details`}>
+            <button type="button" className={styles.close} onClick={() => setSelected(null)} aria-label="Close map details"><Icon name="close" /></button>
             {selectedArt ? (
-              selectedProfile?.kind === "aniimo" ? (
-                <Link className={styles.cardArt} href={`/aniimo/${selectedProfile.slug}`} aria-label={`Open ${selectedProfile.name}`}>
-                  <img src={selectedArt} alt="" onError={(event) => { if (selectedIcon) event.currentTarget.src = selectedIcon; }} />
+              selectedAniimo ? (
+                <Link className={styles.cardArt} href={`/aniimo/${selectedAniimo.slug}`} aria-label={`Open ${selectedAniimo.name}`}>
+                  <img src={selectedArt} alt="" width={280} height={196} onError={(event) => { if (selectedIcon) event.currentTarget.src = selectedIcon; }} />
                 </Link>
               ) : (
                 <div className={styles.cardArt}>
-                  <img src={selectedArt} alt="" onError={(event) => { if (selectedIcon) event.currentTarget.src = selectedIcon; }} />
+                  <img src={selectedArt} alt="" width={280} height={196} onError={(event) => { if (selectedIcon) event.currentTarget.src = selectedIcon; }} />
                 </div>
               )
             ) : null}
-            <h2>{selectedLabel}</h2>
+            <h2>{selectedAniimo?.name || selectedLabel}</h2>
+            {selectedAniimo && (
+              <div className={styles.cardTags}>
+                {selectedAniimo.elements.map((element) => <span key={element}>{elementMeta[element]?.symbol} {elementMeta[element]?.label || element}</span>)}
+                {selectedAniimo.roles.map((role) => <span key={role}>{roleLabels[role] || role}</span>)}
+                <span>{selectedAniimo.form} · Stage {selectedAniimo.stage}</span>
+              </div>
+            )}
             {selectedDesc ? <p>{selectedDesc}</p> : null}
             {selected.ar ? <p>{selected.ar}{selected.tm ? ` · ${payload.vocabulary?.times?.[selected.tm]?.label || selected.tm}` : ""}{selected.ug ? " · Underground" : ""}</p> : null}
-            {selectedProfile?.kind === "aniimo" ? <Link className={styles.cardLink} href={`/aniimo/${selectedProfile.slug}`}>Open {selectedProfile.name}</Link> : null}
+            {selectedAniimo?.stats && (
+              <div className={styles.cardStats}>
+                <span><small>HP</small><strong>{selectedAniimo.stats.hp}</strong></span>
+                <span><small>P. ATK</small><strong>{selectedAniimo.stats.physicalAttack}</strong></span>
+                <span><small>M. ATK</small><strong>{selectedAniimo.stats.magicAttack}</strong></span>
+              </div>
+            )}
+            {selectedAniimo && (selectedAniimo.skills.length > 0 || selectedAniimo.evolution.length > 1) && (
+              <div className={styles.cardRecord}>
+                {selectedAniimo.skills.length > 0 && <p><strong>Skills</strong>{selectedAniimo.skills.join(" · ")}</p>}
+                {selectedAniimo.evolution.length > 1 && <p><strong>Evolution</strong>{selectedAniimo.evolution.join(" → ")}</p>}
+              </div>
+            )}
+            {selectedAniimo ? <Link className={styles.cardLink} href={`/aniimo/${selectedAniimo.slug}`}>Open full {selectedAniimo.name} profile <Icon name="arrow" /></Link> : null}
           </aside>
         )}
       </div>

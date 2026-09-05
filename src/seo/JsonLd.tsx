@@ -59,3 +59,28 @@ export function articleJsonLd(article: { title: string; description: string; url
     publisher: { "@type": "Organization", name: "Aniimo", url: new URL("/", article.url).toString() },
   };
 }
+
+export function mapJsonLd(map: {
+  name: string;
+  description: string;
+  url: string;
+  parts: Array<{ name: string; description: string; href: string; image: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Map",
+    name: map.name,
+    description: map.description,
+    url: map.url,
+    inLanguage: "en-US",
+    about: { "@type": "VideoGame", name: "Aniimo" },
+    hasPart: map.parts.map((part) => ({
+      "@type": "Map",
+      name: part.name,
+      description: part.description,
+      url: new URL(part.href, map.url).toString(),
+      image: new URL(part.image, map.url).toString(),
+      inLanguage: "en-US",
+    })),
+  };
+}

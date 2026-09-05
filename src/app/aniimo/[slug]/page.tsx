@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           image: item.voteImage || item.image,
           caption: [item.elements.map((element) => titleCase(element)).join(" / "), item.roles.map((role) => roleLabels[role] || titleCase(role)).join(" / ")].filter(Boolean).join(" · "),
         }))}
-        author={officialSource.name}
+        author={siteConfig.author}
         updated={new Date(officialSource.syncedAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
       />
     </>

@@ -30,7 +30,7 @@ export const tdk = {
     lastModified: released,
   },
   aniimo: {
-    title: "Aniimo — Browse Creatures, Forms, Skills & Habitats",
+    title: "All Aniimo Creatures — Forms, Skills & Habitats",
     description: "Browse the Aniimo roster by element, role, stage, and form. Open each creature profile to compare stats, skills, traits, evolution paths, and habitats.",
     pathname: "/aniimo",
     lastModified: released,
@@ -152,8 +152,11 @@ export function aniimoTdk(entry: Aniimo): TdkEntry {
 }
 
 export function guideTdk(guide: Guide): TdkEntry {
+  const title = guide.title.toLowerCase().startsWith("aniimo ")
+    ? guide.title
+    : `${guide.title} — Aniimo Guide`;
   return {
-    title: `${guide.title} — Aniimo Player Guide`,
+    title,
     description: fitDescription(`${guide.excerpt} Read the guide, follow its relevant creature links, and adapt the next choice to the Aniimo and route you are planning.`),
     pathname: `/guides/${guide.slug}`,
     lastModified: guide.updated,
@@ -162,8 +165,11 @@ export function guideTdk(guide: Guide): TdkEntry {
 }
 
 export function categoryTdk(category: DatabaseCategory): TdkEntry {
+  const title = category.slug === "skills"
+    ? "Aniimo Skills List — Effects, Owners & Skill Types"
+    : `Aniimo ${category.name} — Browse Related Game Records`;
   return {
-    title: `Aniimo ${category.name} — Browse Related Game Records`,
+    title,
     description: fitDescription(`${category.description} Browse connected Aniimo records, open the entries that matter to your next route, and keep useful game information in one place.`),
     pathname: `/database/${category.slug}`,
     lastModified: released,

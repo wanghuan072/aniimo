@@ -25,13 +25,18 @@
   margin-top: 18px;
 }
 .atlasBoard a {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 16px;
   color: inherit;
   background: #fff;
   box-shadow: 0 8px 18px rgba(31, 76, 105, 0.05);
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
 }
+.atlasBoard a:hover { transform: translateY(-2px); border-color: #a9cfe2; box-shadow: 0 12px 24px rgba(31, 76, 105, .1); }
+.atlasBoard a:focus-visible { outline: 3px solid rgba(42, 132, 191, .35); outline-offset: 3px; }
 .atlasBoard a[aria-current="page"] { border-color: #f4bd3f; box-shadow: 0 0 0 1px #f4bd3f; }
 .atlasBoard img {
   width: 100%;
@@ -39,9 +44,48 @@
   object-fit: cover;
   background: #123f59;
 }
-.atlasBoard span { display: grid; gap: 2px; padding: 11px 13px 13px; }
-.atlasBoard strong { font-size: 15px; }
-.atlasBoard small { color: #6b8496; font-size: 14px; }
+.atlasSection {
+  margin-top: 18px;
+  padding: 23px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+.atlasHeading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  gap: 28px;
+  align-items: end;
+}
+.atlasHeading span,
+.atlasBrief > div > span {
+  display: block;
+  color: #2d7caf;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.atlasHeading h2 { margin: 4px 0 0; font-size: 27px; line-height: 1.1; text-wrap: balance; }
+.atlasHeading > p { margin: 0; color: #607a8e; font-size: 14px; line-height: 1.55; }
+.atlasCardCopy { display: flex; flex: 1; flex-direction: column; gap: 3px; padding: 12px 13px 15px; }
+.atlasCardCopy h3 { margin: 0; font-size: 16px; }
+.atlasCardCopy small { color: #6b8496; font-size: 13px; font-variant-numeric: tabular-nums; }
+.atlasCardCopy p { margin: 9px 0 0; color: #516d82; font-size: 13px; line-height: 1.48; }
+.atlasBrief {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+  gap: 28px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #dce8ec;
+}
+.atlasBrief h2 { margin: 6px 0 9px; font-size: 24px; line-height: 1.12; text-wrap: balance; }
+.atlasBrief > div > p { max-width: 760px; margin: 0; color: #526e82; font-size: 14px; line-height: 1.68; }
+.atlasBrief aside { display: grid; align-content: center; gap: 16px; padding-left: 22px; border-left: 1px solid #dce8ec; }
+.atlasBrief aside strong { display: block; margin-bottom: 6px; color: #407b9e; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.atlasBrief aside p { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; color: #526e82; font-size: 13px; line-height: 1.5; }
+.atlasBrief aside a { padding: 3px 7px; border: 1px solid #d2e3e9; border-radius: 999px; color: #236b99; background: #f4fafc; font-weight: 800; }
 .regionList p { margin: 6px 0 12px; color: #668092; font-size: 14px; line-height: 1.5; }
 .regionList a {
   padding: 7px 10px;
@@ -54,10 +98,17 @@
 .mapFaq { margin-top: 22px; }
 @media (max-width: 1024px) {
   .atlasBoard { grid-template-columns: 1fr 1fr; }
+  .atlasBrief { grid-template-columns: 1fr; gap: 18px; }
+  .atlasBrief aside { padding: 0; border: 0; }
 }
 @media (max-width: 768px) {
   .mapStage { height: min(78dvh, 640px); min-height: 460px; scroll-margin-top: 76px; }
+  .atlasSection { padding: 18px; }
+  .atlasHeading { grid-template-columns: 1fr; gap: 8px; }
+  .atlasHeading h2 { font-size: 23px; }
   .atlasBoard { grid-template-columns: 1fr; }
+  .atlasBrief { padding-top: 18px; }
+  .atlasBrief h2 { font-size: 21px; }
 }
 
 .toolStations { grid-template-columns: repeat(2, minmax(0, 1fr)); }

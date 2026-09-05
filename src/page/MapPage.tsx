@@ -1,89 +1,127 @@
+import Image from "next/image";
 import Link from "next/link";
-import { mapLocations } from "@/lib/data";
+import { aniimo, mapLocations } from "@/lib/data";
+import { mapAtlasGuides } from "@/data/editorial/map-guides";
 import { atlasIndex, mapHref, resolveMapFocus, resolveMapRegion } from "@/lib/map-atlas";
 import { InteractiveMap } from "@/components/tools/InteractiveMap";
 import { Breadcrumb, FaqList } from "@/components/ui/Content";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
+import { siteConfig } from "@/config/site";
+import { JsonLd, mapJsonLd } from "@/seo/JsonLd";
+import { tdk } from "@/seo/tdk";
+import type { MapAniimoProfile } from "@/lib/map-types";
 import styles from "@/style/page/tools.module.css";
 
 const faq = [
-  { question: "Which parts of Idyll are on this map?", answer: "Four atlases are stored on this site: Breezy Plains, Astra, Whisperwake Isles and The Lost Islets. Switch maps from the sidebar or the atlas cards below." },
-  { question: "Why are most markers hidden at first?", answer: "Breezy Plains alone has thousands of points. The map opens on key markers — bosses, teleporters, temples, landmarks and gold chests — so you can add creature, chest or gathering layers when you need them." },
-  { question: "How do profile and habitat links open a marker?", answer: "Aniimo profiles, habitat cards and boss encounters pass a marker or region in the URL. The atlas switches maps if needed, turns that layer on, and flies to the matching spawn or area outline." },
-];
-
-const guides = [
-  { icon: "pin" as const, title: "Start with key markers", body: "Bosses, teleporters, temples and landmarks stay on by default so the first view stays readable." },
-  { icon: "search" as const, title: "Search, then zoom", body: "Type a chest, shop or landmark name to jump to it. The atlas keeps that marker type visible." },
-  { icon: "filter" as const, title: "Open layers as you go", body: "Use All only when you are ready for the full scatter. Depth filters separate surface points from caves on Breezy Plains." },
+  { question: "Which maps can I use here?", answer: "Breezy Plains covers the mainland, Astra covers the city hub, Whisperwake Isles covers Crescent Bay, and The Lost Islets covers the outer islands. Use the atlas switcher without leaving the map." },
+  { question: "Why doesn't the map show every marker when it opens?", answer: "A full Breezy Plains view would bury the route under thousands of pins. The map starts with bosses, teleporters, temples, landmarks, and gold chests; turn on the Aniimo, chest, or gathering layer when you need it." },
+  { question: "Can I open a spawn from an Aniimo profile?", answer: "Yes. Location links on Aniimo profiles open the right atlas, enable the matching spawn layer, and move the map to that Aniimo or habitat." },
 ];
 
 export default function MapPage({ atlas, region, marker }: { atlas?: string; region?: string; marker?: string }) {
   const typeHit = resolveMapFocus(marker);
   const regionHit = resolveMapRegion(region) || (!typeHit ? resolveMapRegion(marker) : undefined);
-  const atlasId = atlas || typeHit?.atlasId || regionHit?.atlasId;
+  const requestedAtlasId = atlas || typeHit?.atlasId || regionHit?.atlasId;
+  const atlasId = atlasIndex.some((entry) => entry.id === requestedAtlasId) ? requestedAtlasId! : "breezy-plains";
   const regionSlug = regionHit?.slug;
   const markerSlug = typeHit ? marker : undefined;
   const points = atlasIndex.reduce((total, entry) => total + entry.total, 0);
+  const activeGuide = mapAtlasGuides[atlasId];
+  const profiles = Object.fromEntries(aniimo.map((entry) => [entry.slug, {
+    slug: entry.slug,
+    name: entry.name,
+    description: entry.description,
+    image: entry.image,
+    stage: entry.stage,
+    form: entry.form,
+    elements: entry.elements,
+    roles: entry.roles,
+    stats: entry.stats ? {
+      hp: entry.stats.hp,
+      physicalAttack: entry.stats.physicalAttack,
+      magicAttack: entry.stats.magicAttack,
+    } : null,
+    skills: entry.skills.slice(0, 2).map((skill) => skill.name),
+    evolution: [...new Set(entry.evolution.map((step) => step.name))],
+  }])) as Record<string, MapAniimoProfile>;
+  const mapUrl = new URL("/map", siteConfig.url).toString();
   return (
     <>
+      <JsonLd data={mapJsonLd({
+        name: "Aniimo Interactive Map",
+        description: tdk.map.description,
+        url: mapUrl,
+        parts: atlasIndex.map((entry) => ({
+          name: `${entry.name} Aniimo Map`,
+          description: mapAtlasGuides[entry.id].card,
+          href: entry.href,
+          image: entry.thumb,
+        })),
+      })} />
       <section className={styles.toolHeader}>
         <div className="container">
           <Breadcrumb items={[{ label: "Map" }]} />
-          <span className={styles.kicker}><Icon name="map" /> Idyll atlas</span>
+          <span className={styles.kicker}><Icon name="map" /> Idyll field atlas</span>
           <h1>Aniimo Interactive Map</h1>
-          <p>Explore chests, spawns, puzzles and transporters across Breezy Plains, Astra, Whisperwake Isles and The Lost Islets. The basemap and marker data live on this site.</p>
+          <p>Looking for one stubborn spawn, a clean chest loop, or the cave entrance behind a pin? Pick an atlas, turn on the layer you need, and leave the rest of the map quiet.</p>
           <div className={styles.mapHeroActions}>
-            <a href="#atlas" className="button-primary">Open the atlas <Icon name="arrow" /></a>
-            <Link href="/database/habitats" className="button-secondary">Habitat list</Link>
+            <a href="#atlas" className="button-primary">Start searching <Icon name="arrow" /></a>
+            <Link href="/database/habitats" className="button-secondary">Browse habitats</Link>
           </div>
-          <HeroPanel label="Use the atlas" items={["Pick a region map", "Start with key markers", "Search or filter before zooming in"]} />
+          <HeroPanel label="Before you set out" items={["Search an Aniimo by name", "Open only the layer you need", "Check Surface or Cave before rerouting"]} />
         </div>
       </section>
       <section className={styles.toolContent}>
         <div className="container">
           <div id="atlas" className={styles.mapStage}>
-            <InteractiveMap key={atlasId || "breezy-plains"} atlasId={atlasId} regionSlug={regionSlug} marker={markerSlug} />
+            <InteractiveMap key={atlasId} atlasId={atlasId} regionSlug={regionSlug} marker={markerSlug} profiles={profiles} />
           </div>
+          <section className={styles.atlasSection} aria-labelledby="aniimo-map-regions">
+            <header className={styles.atlasHeading}>
+              <div><span>Four local atlases</span><h2 id="aniimo-map-regions">Explore the Aniimo Map by Region</h2></div>
+              <p>Choose the part of Idyll you are actually playing. Each atlas keeps its own layers, counts, and route notes.</p>
+            </header>
+            <div className={styles.atlasBoard}>
+              {atlasIndex.map((entry) => (
+                <Link key={entry.id} href={entry.href} aria-current={atlasId === entry.id ? "page" : undefined}>
+                  <Image src={entry.thumb} alt="" width={280} height={168} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 280px" />
+                  <div className={styles.atlasCardCopy}>
+                    <h3>{entry.name}</h3>
+                    <small>{entry.tagline} · {entry.total.toLocaleString()} points</small>
+                    <p>{mapAtlasGuides[entry.id].card}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <article className={styles.atlasBrief}>
+              <div>
+                <span>{atlasIndex.find((entry) => entry.id === atlasId)?.name} field notes</span>
+                <h2>{activeGuide.heading}</h2>
+                <p>{activeGuide.overview}</p>
+              </div>
+              <aside>
+                {activeGuide.featuredAniimo.length > 0 && (
+                  <div><strong>Worth checking</strong><p>{activeGuide.featuredAniimo.map((entry) => <Link key={entry.slug} href={`/aniimo/${entry.slug}`}>{entry.name}</Link>)}</p></div>
+                )}
+                <div><strong>Treasure on this map</strong><p>{activeGuide.treasure}</p></div>
+              </aside>
+            </article>
+          </section>
           <div className={styles.mapStats}>
             <div><strong>{atlasIndex.length}</strong><span>Atlases</span></div>
             <div><strong>{points.toLocaleString()}</strong><span>Mapped points</span></div>
             <div><strong>{mapLocations.length}</strong><span>Habitat areas</span></div>
             <div><strong>Local</strong><span>Tiles and markers</span></div>
           </div>
-          <div className={styles.mapGuideGrid}>
-            {guides.map((guide) => (
-              <section key={guide.title}>
-                <span className={styles.toolIcon}><Icon name={guide.icon} /></span>
-                <h2>{guide.title}</h2>
-                <p>{guide.body}</p>
-              </section>
-            ))}
-          </div>
-          <div className={styles.atlasBoard}>
-            {atlasIndex.map((entry) => (
-              <Link key={entry.id} href={entry.href} aria-current={(atlasId || "breezy-plains") === entry.id ? "page" : undefined}>
-                <img src={entry.thumb} alt="" width={280} height={168} />
-                <span>
-                  <strong>{entry.name}</strong>
-                  <small>{entry.tagline} · {entry.total.toLocaleString()} points</small>
-                </span>
-              </Link>
-            ))}
-          </div>
           <div className={styles.regionList}>
-            <h2>Jump to a habitat</h2>
-            <p>Open a habitat from an Aniimo profile, a boss card, or the list below. The atlas switches maps when needed and flies to the matching outline or spawn.</p>
+            <h2>Jump to a named habitat</h2>
+            <p>Already know the area? Pick it below and the atlas will move to its outline. The same links also work from Aniimo profiles and boss records.</p>
             <div>
               {mapLocations.map((location) => (
                 <Link key={location.id} href={mapHref({ region: location.id })}>{location.name}</Link>
               ))}
             </div>
-          </div>
-          <div className={styles.toolSeoCopy}>
-            <h2>Plan a route on Idyll without leaving Aniimo</h2>
-            <p>Use the interactive map when you want a chest run, a spawn check, or a teleport hop. Aniimo profiles, habitats and boss encounters link to the same markers; opening a creature pin still returns to this site's profile.</p>
           </div>
           <div className={styles.mapFaq}>
             <FaqList items={faq} />
