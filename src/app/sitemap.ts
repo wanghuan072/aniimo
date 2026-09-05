@@ -5,6 +5,8 @@ import { aniimoTdk, categoryTdk, guideTdk, tdk } from "@/seo/tdk";
 
 const staticEntries = [tdk.home, tdk.aniimo, tdk.database, tdk.tierList, tdk.globalVote, tdk.map, tdk.teamBuilder, tdk.teamTemplates, tdk.guides, tdk.tools, tdk.compare, tdk.collectionTracker, tdk.updates, tdk.howItWorks, tdk.privacy, tdk.terms, tdk.copyright, tdk.about, tdk.contact];
 
+export const revalidate = 0;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticEntries.map((entry) => ({ url: new URL(entry.pathname, siteConfig.url).toString(), lastModified: entry.lastModified })),
