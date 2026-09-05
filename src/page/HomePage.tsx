@@ -15,12 +15,12 @@ export default function HomePage() {
   const trending = [...aniimo].sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0)).slice(0, 5);
   const teamChoices = [pick("stellarys"), pick("emberpup"), pick("eklue")];
   const uniqueTraits = new Set(aniimo.flatMap((entry) => entry.traits.map((trait) => trait.name))).size;
-  const totalSkills = aniimo.reduce((sum, entry) => sum + entry.skills.length, 0);
+  const uniqueSkills = new Set(aniimo.flatMap((entry) => entry.skills.map((skill) => skill.name))).size;
   const atlasIndex = atlasIndexData.index;
   const databaseShowcase = ["skills", "habitats", "traits", "bosses"].map((slug) => databaseCategories.find((category) => category.slug === slug)!);
   const homepageStats: Array<{ value: number; label: string; href: string; tone: string; image?: string; icon?: "spark" | "water" | "trait" | "pin" }> = [
     { value: aniimo.length, label: "Aniimo", href: "/aniimo", tone: "creature", image: pick("glacy").image },
-    { value: totalSkills, label: "Skills", href: "/database/skills", tone: "gold", icon: "spark" },
+    { value: uniqueSkills, label: "Unique Skills", href: "/database/skills", tone: "gold", icon: "spark" },
     { value: elements.length, label: "Elements", href: "/database/elements", tone: "water", icon: "water" },
     { value: uniqueTraits, label: "Traits", href: "/database/traits", tone: "purple", icon: "trait" },
     { value: habitats.length, label: "Habitats", href: "/map", tone: "green", icon: "pin" },
@@ -69,7 +69,7 @@ export default function HomePage() {
             </article>
 
             <article className={`${styles.featureCard} ${styles.databaseFeature}`}>
-              <div className={styles.cardCopy}><h2 className={styles.cardKicker}>▣ Database</h2><p>Check {totalSkills} skills, {uniqueTraits} traits, habitats and boss encounters without losing the link to the Aniimo that use them.</p><Link href="/database">Open database <Icon name="arrow" /></Link></div>
+              <div className={styles.cardCopy}><h2 className={styles.cardKicker}>▣ Database</h2><p>Check {uniqueSkills} unique skills, {uniqueTraits} traits, habitats and boss encounters without losing the link to the Aniimo that use them.</p><Link href="/database">Open database <Icon name="arrow" /></Link></div>
               <div className={styles.iconTiles}>{databaseShowcase.map((category, index) => <Link href={`/database/${category.slug}`} key={category.slug}><i><Icon name={(["spark", "map", "trait", "boss"] as const)[index]} /></i><span>{category.name}</span></Link>)}</div>
             </article>
 

@@ -11,15 +11,20 @@ export type TdkEntry = {
 
 const released = "2026-09-01";
 
+const guideDescriptions: Record<string, string> = {
+  "aniimo-beginners-guide": "Start with a practical Aniimo route covering your first catches, Twining, exploration priorities and the four roles that keep an early team balanced.",
+  "how-to-choose-your-first-aniimo": "Compare Aniimo forms, element changes, published evolution paths and material costs before committing resources to your first long-term choice.",
+  "aniimo-elements-and-roles-explained": "Learn how Aniimo roles, BREAK windows, EP use and elemental coverage work together when you are building a balanced four-member team.",
+};
+
 function fitDescription(value: string) {
   const normalized = value.replace(/\s+/g, " ").trim();
-  if (normalized.length >= 140 && normalized.length <= 160) return normalized;
-  if (normalized.length > 160) {
-    const clipped = normalized.slice(0, 159);
-    const end = clipped.lastIndexOf(" ");
-    return `${clipped.slice(0, end > 130 ? end : clipped.length).replace(/[,.]$/, "")}.`;
-  }
-  return `${normalized} Explore the relevant records and plan your next route.`.slice(0, 160);
+  if (normalized.length <= 160) return normalized;
+  const clipped = normalized.slice(0, 157);
+  const sentenceEnd = Math.max(clipped.lastIndexOf("."), clipped.lastIndexOf("!"), clipped.lastIndexOf("?"));
+  if (sentenceEnd >= 120) return clipped.slice(0, sentenceEnd + 1);
+  const wordEnd = clipped.lastIndexOf(" ");
+  return `${clipped.slice(0, wordEnd > 120 ? wordEnd : clipped.length).replace(/[,.]$/, "")}…`;
 }
 
 export const tdk = {
@@ -36,7 +41,7 @@ export const tdk = {
     lastModified: released,
   },
   database: {
-    title: "Aniimo Wiki — Skills, Items, Habitats & More",
+    title: "Aniimo Database — Skills, Items, Habitats & More",
     description: "Explore Aniimo skills, traits, items, materials, habitats, evolutions, bosses, and achievements, then follow the useful links between each record.",
     pathname: "/database",
     lastModified: released,
@@ -157,7 +162,7 @@ export function guideTdk(guide: Guide): TdkEntry {
     : `${guide.title} — Aniimo Guide`;
   return {
     title,
-    description: fitDescription(`${guide.excerpt} Read the guide, follow its relevant creature links, and adapt the next choice to the Aniimo and route you are planning.`),
+    description: fitDescription(guideDescriptions[guide.slug] || guide.excerpt),
     pathname: `/guides/${guide.slug}`,
     lastModified: guide.updated,
     image: guide.coverImage,

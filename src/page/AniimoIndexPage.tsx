@@ -1,11 +1,24 @@
 import Link from "next/link";
-import { Suspense } from "react";
 import { aniimo } from "@/lib/data";
 import { AniimoExplorer } from "@/components/aniimo/AniimoExplorer";
 import { Breadcrumb } from "@/components/ui/Content";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/page/content.module.css";
+
+const explorerEntries = aniimo.map((entry) => ({
+  slug: entry.slug,
+  name: entry.name,
+  description: entry.description,
+  image: entry.image,
+  voteImage: entry.voteImage,
+  entryId: entry.entryId,
+  stage: entry.stage,
+  elements: entry.elements,
+  roles: entry.roles,
+  form: entry.form,
+  viewCount: entry.viewCount,
+}));
 
 export default function AniimoIndexPage() {
   const novaCount = aniimo.filter((entry) => entry.stage === 3).length;
@@ -16,7 +29,7 @@ export default function AniimoIndexPage() {
       <section className={styles.listHero}>
         <div className={`container ${styles.listHeroInner}`}>
           <div className={styles.listHeroCopy}>
-            <Breadcrumb items={[{ label: "Database", href: "/database" }, { label: "Aniimo" }]} />
+            <Breadcrumb items={[{ label: "Aniimo" }]} />
             <h1><span>✦</span> All Aniimo Creatures — Browse the Full Roster <span>✦</span></h1>
             <p>Filter by element, role and stage, then open a profile to see skills, traits, forms, habitats and evolution paths in one place.</p>
           </div>
@@ -27,9 +40,7 @@ export default function AniimoIndexPage() {
       <section className={styles.listContent}>
         <div className="container">
           <div className={styles.listExplorer}>
-            <Suspense fallback={<div className={styles.explorerFallback}>Preparing the Aniimo index…</div>}>
-              <AniimoExplorer entries={aniimo} />
-            </Suspense>
+            <AniimoExplorer entries={explorerEntries} />
           </div>
           <div className={styles.popularBand}>
             <div className={styles.popularCategories}><h2>✣ Browse Aniimo by Element, Role or Stage</h2><div><Link href="/tier-list/global-vote"><b>★</b><span><strong>Global Vote</strong><small>2026 player results</small></span></Link><Link href="/aniimo?element=electric"><b>ϟ</b><span><strong>Electric</strong><small>{electricCount} Aniimo</small></span></Link><Link href="/aniimo?stage=3"><b>★</b><span><strong>Nova Stage</strong><small>{novaCount} Aniimo</small></span></Link><Link href={`/aniimo/${newest[0]?.slug}`}><b>NEW</b><span><strong>Newer profiles</strong><small>{newest.length} quick links</small></span></Link></div></div>

@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { Aniimo } from "@/types/content";
-import { AniimoCard } from "@/components/ui/Content";
+import { AniimoCard, type AniimoCardEntry } from "@/components/ui/Content";
 import { Icon } from "@/components/ui/Icon";
 import { elementMeta, roleLabels } from "@/config/site";
 import styles from "@/style/components/explorer.module.css";
@@ -31,7 +30,7 @@ const sortOptions = [
   { value: "views", label: "Most Viewed" },
 ];
 
-export function AniimoExplorer({ entries }: { entries: Aniimo[] }) {
+export function AniimoExplorer({ entries }: { entries: AniimoCardEntry[] }) {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const element = searchParams.get("element") || "all";
@@ -39,7 +38,7 @@ export function AniimoExplorer({ entries }: { entries: Aniimo[] }) {
   const stage = searchParams.get("stage") || "all";
   const sort = searchParams.get("sort") || "number";
   const view = searchParams.get("view") === "list" ? "list" : "grid";
-  const batchSize = 60;
+  const batchSize = 100;
   const [visibleCount, setVisibleCount] = useState(batchSize);
   const autoLoadLocked = useRef(false);
 

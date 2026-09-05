@@ -2,37 +2,29 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState, type DragEvent } from "react";
-import type { Aniimo } from "@/types/content";
+import { useMemo, useState, type DragEvent } from "react";
+import type { AniimoStats } from "@/types/content";
 import { elementMeta, roleLabels } from "@/config/site";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/components/tools.module.css";
 import reviewStyles from "@/style/components/team-review.module.css";
 
-function readSharedTeam(entries: Aniimo[]) {
-  if (typeof window === "undefined") return [];
-  const allowed = new Set(entries.map((entry) => entry.slug));
-  return [...new Set((new URL(window.location.href).searchParams.get("team") || "").split(",").filter((slug) => allowed.has(slug)))].slice(0, 4);
-}
+export type TeamBuilderEntry = {
+  slug: string;
+  name: string;
+  image: string;
+  elements: string[];
+  roles: string[];
+  stats: Pick<AniimoStats, "hp" | "physicalAttack" | "magicAttack" | "physicalDefense" | "magicDefense"> | null;
+};
 
-export function TeamBuilder({ entries }: { entries: Aniimo[] }) {
-  const [slots, setSlots] = useState<string[]>([]);
-  const [activeSlot, setActiveSlot] = useState(0);
+export function TeamBuilder({ entries, initialTeam = [] }: { entries: TeamBuilderEntry[]; initialTeam?: string[] }) {
+  const [slots, setSlots] = useState<string[]>(initialTeam);
+  const [activeSlot, setActiveSlot] = useState(() => Math.min(initialTeam.length, 3));
   const [query, setQuery] = useState("");
   const [element, setElement] = useState("all");
   const [draggedSlot, setDraggedSlot] = useState<number | null>(null);
   const [shareState, setShareState] = useState("");
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      const sharedTeam = readSharedTeam(entries);
-      if (sharedTeam.length) {
-        setSlots(sharedTeam);
-        setActiveSlot(Math.min(sharedTeam.length, 3));
-      }
-    }, 0);
-    return () => window.clearTimeout(timer);
-  }, [entries]);
 
   const commitTeam = (next: string[]) => {
     const allowed = new Set(entries.map((entry) => entry.slug));
@@ -47,7 +39,7 @@ export function TeamBuilder({ entries }: { entries: Aniimo[] }) {
     return clean;
   };
 
-  const team = slots.map((slug) => entries.find((entry) => entry.slug === slug)).filter((entry): entry is Aniimo => Boolean(entry));
+  const team = slots.map((slug) => entries.find((entry) => entry.slug === slug)).filter((entry): entry is TeamBuilderEntry => Boolean(entry));
   const filtered = useMemo(() => entries.filter((entry) => (element === "all" || entry.elements.includes(element)) && entry.name.toLowerCase().includes(query.trim().toLowerCase())), [element, entries, query]);
   const elementOptions = useMemo(() => [...new Set(entries.flatMap((entry) => entry.elements))].sort(), [entries]);
   const analysis = useMemo(() => {

@@ -5,7 +5,9 @@ import type { Aniimo, Guide } from "@/types/content";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/components/content.module.css";
 
-export function Brand({ compact = false, label = "ANIIMO" }: { compact?: boolean; label?: string }) {
+export type AniimoCardEntry = Pick<Aniimo, "slug" | "name" | "description" | "image" | "voteImage" | "entryId" | "stage" | "elements" | "roles" | "form" | "viewCount">;
+
+export function Brand({ label = "ANIIMO" }: { compact?: boolean; label?: string }) {
   return (
     <Link href="/" className={styles.brand} aria-label="Aniimo home">
       <span className={styles.brandMark}><Image src="/images/logo.png" alt="" width={34} height={34} priority /></span>
@@ -65,7 +67,7 @@ export function StageBadge({ stage }: { stage: number }) {
   return <span className={`${styles.stageBadge} ${styles[`stage${stage}`]}`}>{label}</span>;
 }
 
-export function AniimoCard({ entry, compact = false, list = false }: { entry: Aniimo; compact?: boolean; list?: boolean }) {
+export function AniimoCard({ entry, compact = false, list = false }: { entry: AniimoCardEntry; compact?: boolean; list?: boolean }) {
   const primaryElement = entry.elements[0];
   const cardColor = elementMeta[primaryElement]?.color || "#4d83d9";
   return (
