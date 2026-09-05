@@ -51,8 +51,8 @@ export const navigation = [
     href: "/guides",
     children: [
       { label: "Beginner Guide", href: "/guides/aniimo-beginners-guide" },
-      { label: "Choose Your First Aniimo", href: "/guides/how-to-choose-your-first-aniimo" },
-      { label: "Elements & Roles", href: "/guides/aniimo-elements-and-roles-explained" },
+      { label: "Forms & Evolution", href: "/guides/aniimo-forms-and-evolution" },
+      { label: "Combat Guide", href: "/guides/aniimo-combat-guide" },
     ],
   },
   {

@@ -12,7 +12,7 @@ export function createMetadata(
   options: MetadataOptions = {},
 ): Metadata {
   const canonical = new URL(entry.pathname, siteConfig.url).toString();
-  const image = options.image || "/images/og-image.png";
+  const image = options.image || entry.image || "/images/og-image.png";
   const title = entry.title;
   const description = entry.description;
   return {

@@ -45,7 +45,15 @@ export function websiteJsonLd(name: string, url: string, description: string) {
   };
 }
 
-export function articleJsonLd(article: { title: string; description: string; url: string; image: string; dateModified: string }) {
+export function articleJsonLd(article: {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished: string;
+  dateModified: string;
+  author: { name: string; url: string };
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -53,9 +61,10 @@ export function articleJsonLd(article: { title: string; description: string; url
     description: article.description,
     mainEntityOfPage: article.url,
     image: article.image,
+    datePublished: article.datePublished,
     dateModified: article.dateModified,
     inLanguage: "en-US",
-    author: { "@type": "Organization", name: "Aniimo" },
+    author: { "@type": "Organization", name: article.author.name, url: article.author.url },
     publisher: { "@type": "Organization", name: "Aniimo", url: new URL("/", article.url).toString() },
   };
 }

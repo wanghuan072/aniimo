@@ -12,9 +12,9 @@ export type TdkEntry = {
 const released = "2026-09-01";
 
 const guideDescriptions: Record<string, string> = {
-  "aniimo-beginners-guide": "Start with a practical Aniimo route covering your first catches, Twining, exploration priorities and the four roles that keep an early team balanced.",
-  "how-to-choose-your-first-aniimo": "Compare Aniimo forms, element changes, published evolution paths and material costs before committing resources to your first long-term choice.",
-  "aniimo-elements-and-roles-explained": "Learn how Aniimo roles, BREAK windows, EP use and elemental coverage work together when you are building a balanced four-member team.",
+  "aniimo-beginners-guide": "Build a useful first Aniimo team, learn which profile fields matter, and turn the missing role into one focused habitat route through Idyll.",
+  "aniimo-forms-and-evolution": "Separate Aniimo forms from stages, follow the Emberpup evolution branches, and compare regional element and habitat records without guessing recipes.",
+  "aniimo-combat-guide": "Read Aniimo roles, skill Cost and Power, EP effects, cooldown sources, and BREAK references without mistaking incomplete data for a final combat formula.",
 };
 
 function fitDescription(value: string) {
@@ -47,8 +47,8 @@ export const tdk = {
     lastModified: released,
   },
   guides: {
-    title: "Aniimo Guides — From First Catch to Smarter Teams",
-    description: "Read Aniimo guides for first teams, elements, roles, forms, evolution choices, and exploration planning without losing sight of what you want to do next.",
+    title: "Aniimo Guides — Teams, Forms, Evolution & Combat",
+    description: "Read Aniimo guides for first teams, regional forms, evolution paths, roles, BREAK, EP skill costs, and practical exploration planning.",
     pathname: "/guides",
     lastModified: released,
   },
@@ -165,7 +165,7 @@ export function guideTdk(guide: Guide): TdkEntry {
     description: fitDescription(guideDescriptions[guide.slug] || guide.excerpt),
     pathname: `/guides/${guide.slug}`,
     lastModified: guide.updated,
-    image: guide.coverImage,
+    image: `/guides/${guide.slug}/opengraph-image`,
   };
 }
 

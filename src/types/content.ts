@@ -121,19 +121,92 @@ export type Aniimo = {
   viewCount: number | null;
 };
 
+export type GuideLink = {
+  label: string;
+  href: string;
+};
+
+export type GuideBlock =
+  | {
+      type: "route";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      steps: Array<{ title: string; body: string; link?: GuideLink }>;
+    }
+  | {
+      type: "notes";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      items: Array<{ title: string; body: string; link?: GuideLink }>;
+    }
+  | {
+      type: "story";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      paragraphs: string[];
+      image: string;
+      imageAlt: string;
+      caption: string;
+      link?: GuideLink;
+    }
+  | {
+      type: "table";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      columns: string[];
+      rows: string[][];
+      note?: string;
+    }
+  | {
+      type: "lineage";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      paths: Array<{
+        label: string;
+        nodes: Array<{ name: string; stage: string; href?: string }>;
+      }>;
+      note?: string;
+    }
+  | {
+      type: "terms";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      items: Array<{ term: string; value?: string; body: string; link?: GuideLink }>;
+    }
+  | {
+      type: "checklist";
+      eyebrow: string;
+      title: string;
+      intro?: string;
+      items: string[];
+    }
+  | {
+      type: "callout";
+      tone: "source" | "caution";
+      title: string;
+      body: string;
+      links?: GuideLink[];
+    };
+
 export type Guide = {
   slug: string;
   title: string;
   category: string;
   excerpt: string;
   readTime: string;
+  published: string;
   updated: string;
+  author: GuideLink;
   coverImage: string;
   coverAlt: string;
   intro: string;
-  takeaways: string[];
-  steps: string[];
-  sections: Array<{ title: string; body: string; image: string; imageAlt: string; link?: { label: string; href: string } }>;
+  blocks: GuideBlock[];
 };
 
 export type DatabaseCategory = {

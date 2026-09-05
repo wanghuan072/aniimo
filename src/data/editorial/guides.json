@@ -3,60 +3,283 @@
     "slug": "aniimo-beginners-guide",
     "title": "Aniimo Beginner Guide: Catching, Twining and Your First Team",
     "category": "Getting Started",
-    "excerpt": "A practical first route through catching, Twining, exploration and a four-role starter team.",
-    "readTime": "8 min",
-    "updated": "2026-08-28",
+    "excerpt": "A player-first guide to making your first catches useful, understanding what Twining currently means, and building a four-slot team that can survive mistakes.",
+    "readTime": "9 min",
+    "published": "2026-08-28",
+    "updated": "2026-09-05",
+    "author": { "label": "Aniimo Editorial Team", "href": "/legal/about-us" },
     "coverImage": "/images/home/aniimo-world-hero-v2.png",
     "coverAlt": "Aniimo companions exploring a bright fantasy landscape",
-    "intro": "Aniimo combines creature discovery, action combat and exploration. The fastest start is not collecting everything at once; it is learning what each team slot contributes, then expanding your roster around a clear next objective.",
-    "takeaways": ["Start with one damage option, one support or heal option and one break option", "Treat exploration abilities as part of roster value", "Use published role, element and skill text before relying on rankings"],
-    "steps": ["Open the Aniimo list and identify one damage-focused record you enjoy using.", "Add a support, heal or regen option before filling duplicate damage roles.", "Choose a break option for tougher encounters, then use the fourth slot to cover a habitat or element need.", "Read the published skill and trait text for each candidate before assigning it a job.", "Choose one habitat objective for the next session instead of scattering attention across the whole map.", "Test the four-slot draft in Team Builder and adjust only one position at a time."],
-    "sections": [
-      {"title": "Start with jobs, not a perfect roster", "body": "Every early team benefits from clear jobs. Damage moves an encounter forward; support, healing or regeneration gives you room to recover; break creates a safer opening against resilient targets. You do not need every answer on day one, but naming the missing job gives each future discovery a purpose.", "image": "/images/aniimo/emberpup.png", "imageAlt": "Emberpup official artwork", "link": {"label": "Browse all Aniimo", "href": "/aniimo"}},
-      {"title": "Use habitats to set a small, achievable target", "body": "Pick one or two records that improve the role your team lacks, then check the habitats already listed on their profiles. A short route with a specific target is easier to repeat and evaluate than a vague plan to collect everything in one region.", "image": "/images/maps/ilya-world-map.png", "imageAlt": "Ilya world habitat map", "link": {"label": "Explore habitats", "href": "/database/habitats"}},
-      {"title": "Let the fourth slot remain flexible", "body": "The final position is where an early roster gains comfort. Use it for an element you do not have, a pathfinding utility, or a second contribution that fits your current activity. Flexibility is more valuable than forcing a theoretical composition before you know the encounter.", "image": "/images/aniimo/eklue.png", "imageAlt": "Eklue official artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}},
-      {"title": "Read the kit before making an assumption", "body": "Role labels are a reliable starting point, not a complete rotation guide. Open the profile and scan the published skills, trait and mobility entries before deciding what a creature will do for your party. If a field is not listed, leave it unknown rather than building a plan around a guess.", "image": "/images/aniimo/stellarys.png", "imageAlt": "Stellarys official artwork", "link": {"label": "Browse skill records", "href": "/database/skills"}},
-      {"title": "Keep a short review loop", "body": "After a route or encounter, record one thing that worked and one thing that felt missing. Did a team lack recovery, struggle to create an opening, or simply need a better travel option? Changing a single slot gives you a useful comparison; changing the entire team at once hides what actually improved.", "image": "/images/aniimo/leafy.png", "imageAlt": "Leafy official artwork", "link": {"label": "Track your collection", "href": "/tools/collection-tracker"}}
+    "intro": "The first hour of a creature game is easy to overcomplicate. You see a large roster, several elements, a map full of markers, and a team screen asking you to make choices before you know what those choices cost. The practical answer is to make your first catches answer a problem you actually have: damage, recovery, a safer opening, or a route you want to explore. This guide follows that order and separates confirmed Aniimo information from launch details that are still missing.",
+    "blocks": [
+      {
+        "type": "story",
+        "eyebrow": "Before the first catch",
+        "title": "Start with a reason to keep one",
+        "paragraphs": [
+          "Do not begin by trying to collect a complete tier list. Pick one Aniimo you genuinely want to use, then open its profile and ask a more useful question: what does this record give my team that I do not have yet? Emberpup, for example, is listed as Fire and DPS in the current index. That is enough to make it a clear pressure slot, but not enough to tell you how the whole party should look.",
+          "The next catch should cover a weakness you can feel while playing. If encounters leave you with no way to recover, look at Heal, Regen, or Support records. If tougher targets leave no safe opening, use the BREAK label as a shortlist and read the skill descriptions before deciding. A role badge starts the search; the kit decides whether the Aniimo is useful to you.",
+          "This is also why a favorite is a good first anchor. You will learn more from using one familiar record, changing one teammate, and noticing what improved than from replacing all four slots because a ranking placed another Aniimo higher."
+        ],
+        "image": "/images/aniimo/emberpup.png",
+        "imageAlt": "Emberpup official artwork",
+        "caption": "A first anchor only needs a clear job. It does not need to be your forever pick.",
+        "link": { "label": "Open Emberpup's profile", "href": "/aniimo/emberpup" }
+      },
+      {
+        "type": "story",
+        "eyebrow": "Catching in practice",
+        "title": "Make the route part of the decision",
+        "paragraphs": [
+          "A catch is more useful when you know what you are going to do with it. Before walking across the map, choose one target and check its listed habitats. That turns the first outing into a small experiment: find the region, learn the route, and come back knowing whether the record improves the job your team was missing.",
+          "The official launch site confirms that Aniimo can be caught and names Aniipod items, including Aniipod Ultra in launch rewards. It does not publish a complete capture table for every species. So the honest player workflow right now is to use the map and profile data to decide where to look, then treat the in-game encounter as the source of truth for the actual capture interaction.",
+          "When you are choosing between two targets, prefer the one that shares a region with another thing you already want. A short route that produces a useful teammate and a material or chest is easier to repeat than a long detour for a single uncertain upgrade."
+        ],
+        "image": "/images/maps/ilya-world-map.png",
+        "imageAlt": "Ilya world map used for planning Aniimo habitats",
+        "caption": "Use the map to plan one outing around a real target, not to clear every marker at once.",
+        "link": { "label": "Browse the Aniimo map", "href": "/map" }
+      },
+      {
+        "type": "route",
+        "eyebrow": "Your first four slots",
+        "title": "Build around jobs, then test the gaps",
+        "intro": "This is a practical order for a first draft. It is not a mandatory team or a promise about the final meta.",
+        "steps": [
+          { "title": "Choose one pressure source", "body": "Start with DPS or another record whose published skills give you a clear way to move an encounter forward. Keep the first question narrow: can I use this record comfortably?", "link": { "label": "Filter the roster", "href": "/aniimo" } },
+          { "title": "Add a way to recover", "body": "Look for Heal, Regen, or Support. Read who receives the effect and whether it has a condition; the label alone cannot tell you if it saves a mistake or merely adds utility." },
+          { "title": "Reserve an opening slot", "body": "Use BREAK as a candidate filter for sturdier targets. Current public records do not establish one universal BREAK gauge or window, so test the actual skill against the encounter you care about.", "link": { "label": "Read the combat guide", "href": "/guides/aniimo-combat-guide" } },
+          { "title": "Let the fourth slot follow the route", "body": "Fill the last position with a second element, mobility option, habitat target, or another job your next activity needs. The flexible slot is where a first team becomes your team.", "link": { "label": "Try the Team Builder", "href": "/team-builder" } }
+        ]
+      },
+      {
+        "type": "story",
+        "eyebrow": "Twining, without the guesswork",
+        "title": "Keep the promise, leave the rules open",
+        "paragraphs": [
+          "Twining is the word players will naturally want explained because it sounds like a system that changes how you collect or use Aniimo. At the moment, the public launch material and the indexed records do not give us a complete, verifiable explanation of its inputs, odds, or every way it changes a team. That is not a reason to pretend the missing details are obvious.",
+          "Until the launch build documents the interaction, use the roster and profile fields that are actually visible: form, stage, element, role, habitat, traits, mobility, and skills. Those fields are enough to decide whether a catch is worth a place in the next test team. When the rules for Twining become public, they can be added here without rewriting the rest of your roster plan.",
+          "For a new player, that restraint is useful. You are not wasting an early route around a made-up percentage or treating an unconfirmed combination as a required build. Record what the game shows you, then update the decision when the system is documented."
+        ],
+        "image": "/images/aniimo/eklue.png",
+        "imageAlt": "Eklue official artwork",
+        "caption": "Use published profile fields first; let the launch build answer what Twining changes."
+      },
+      {
+        "type": "table",
+        "eyebrow": "Profile reading order",
+        "title": "What to check before you spend a route",
+        "intro": "These fields answer different player questions. Reading them in this order keeps the decision grounded.",
+        "columns": ["Check", "Player question", "What it can tell you now"],
+        "rows": [
+          ["Role", "What job might this fill?", "A useful shortlist: DPS, Heal, Regen, Support, or BREAK."],
+          ["Elements", "What affinity does it bring?", "Whether it widens or duplicates your current coverage."],
+          ["Skills", "What does it actually do?", "Cost, Power, effects, recovery, conditions, and timing when published."],
+          ["Habitat", "Where should I look?", "A concrete region for the next outing."],
+          ["Mobility / traits", "What value exists outside damage?", "Travel utility or passive identity that a role badge misses."]
+        ],
+        "note": "If a field is empty, leave it unknown. Do not convert a blank record into a confident recommendation."
+      },
+      {
+        "type": "callout",
+        "tone": "caution",
+        "title": "What this beginner guide will not invent",
+        "body": "The current sources do not provide complete capture odds, a universal Twining rule set, or a finished launch combat formula. The guide explains how to make useful decisions with the fields players can verify today, and it will be updated when official documentation or the launch build fills those gaps."
+      },
+      {
+        "type": "checklist",
+        "eyebrow": "Before the next outing",
+        "title": "A first-team check that takes five minutes",
+        "items": [
+          "Choose the one Aniimo you want to learn first.",
+          "Name the job your current team is missing.",
+          "Read the candidate's skill text, not only its role label.",
+          "Choose one habitat and one route objective.",
+          "After the test, change one slot and compare again."
+        ]
+      }
     ]
   },
   {
-    "slug": "how-to-choose-your-first-aniimo",
-    "title": "Aniimo Forms & Evolution: Regional Forms, Element Changes and Materials",
+    "slug": "aniimo-forms-and-evolution",
+    "title": "Aniimo Forms & Evolution: Regional Forms, Stages and Paths",
     "category": "Forms & Evolution",
-    "excerpt": "Use form differences, published evolution paths and material planning to make better collection decisions.",
-    "readTime": "6 min",
-    "updated": "2026-08-28",
+    "excerpt": "Understand what a regional form changes, follow real evolution branches, and plan a collection route without mistaking a catalogue for a recipe.",
+    "readTime": "9 min",
+    "published": "2026-08-28",
+    "updated": "2026-09-05",
+    "author": { "label": "Aniimo Editorial Team", "href": "/legal/about-us" },
     "coverImage": "/images/aniimo/leafy.png",
     "coverAlt": "Leafy official artwork",
-    "intro": "A form is more than a new portrait. It can change an Aniimo’s stage, elements and base fields, while an evolution path can branch into a different long-term choice. Read those changes before you spend a session chasing a path that does not fit your team.",
-    "takeaways": ["Compare the form you have with the form you want", "Read an evolution path from start to finish before making a route", "Use materials and habitats as planning clues, not promises of a quick upgrade"],
-    "steps": ["Open the Aniimo profile and switch through every available form.", "Write down the stage, element or role difference that would actually change your team.", "Follow the evolution path to see whether it branches into more than one destination.", "Check which habitats and materials connect to the path you want to pursue.", "Use the map to combine that route with another collection target when possible.", "Return to Team Builder and see what the evolved form would add or replace."],
-    "sections": [
-      {"title": "Start with the form you already have", "body": "Open the profile and compare the current form with the form you are considering. Look for a change that matters to your own next activity: a different element, a different stage, or base fields that better support the job you need filled.", "image": "/images/aniimo/celestis.png", "imageAlt": "Celestis artwork", "link": {"label": "Compare Aniimo", "href": "/tools/compare"}},
-      {"title": "A branch is a decision point", "body": "An evolution path may lead forward in a line or split into different destinations. Do not treat every branch as an automatic improvement. Pause at the split and ask which destination gives your roster a clearer option for the activities you actually enjoy.", "image": "/images/aniimo/helgon.png", "imageAlt": "Helgon artwork", "link": {"label": "Explore evolution paths", "href": "/database/evolutions"}},
-      {"title": "Plan the route before the upgrade", "body": "Habitats and materials become useful when they help you plan one practical outing. If an evolution target sits beside other Aniimo or collection goals you want, the route does more than chase a single upgrade.", "image": "/images/maps/ilya-world-map.png", "imageAlt": "Ilya world habitat map", "link": {"label": "Open the map", "href": "/map"}},
-      {"title": "Check what changes in the team", "body": "A new form can add variety, but it can also replace a role your current party relied on. Put the candidate into Team Builder before committing to the route, then see whether the team gained a useful answer or simply doubled up on something it already had.", "image": "/images/aniimo/flameruff.png", "imageAlt": "Flameruff artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}},
-      {"title": "Make one clear comparison", "body": "If two forms look appealing, compare them against the same question: which one helps the next team slot or route? Keep the comparison narrow enough that the trade-off is visible, then let your own roster decide the final pick.", "image": "/images/aniimo/coraliz.png", "imageAlt": "Coraliz artwork", "link": {"label": "Open comparison", "href": "/tools/compare"}}
+    "intro": "The confusing part of Aniimo forms is that three different ideas appear next to each other: a named form, a stage in a family, and an evolution relationship. They are not the same thing. This guide treats the profile like a field record, shows what changes between regional examples, and keeps material requirements separate until the source actually connects them to a path.",
+    "blocks": [
+      {
+        "type": "story",
+        "eyebrow": "Read the record first",
+        "title": "A regional form is not just a new portrait",
+        "paragraphs": [
+          "When two forms share a name, compare the fields that affect a real decision: element, role, stage, habitat, base fields, skills, and mobility. A portrait tells you that the record looks different; the field data tells you whether it belongs in a different team or route.",
+          "The current index gives a clear example with Emberpup. Basic Form is listed as Fire in Nimbus Fields and Mistwoods, while the Highland record adds Rock and points to Zephyrus Landbridge and Russet Highlands. That is not a cosmetic difference for a collector: it changes both the affinity question and the route you would plan.",
+          "Pranky shows the same idea at Gamma stage. Its Basic Form is Water in Nimbus Fields and Mistwoods, while Snowfield is Water + Ice in Driftwise Meadow. If you are searching for the Snowfield record, opening the Basic Form page and assuming the habitat is shared will send you to the wrong part of the map."
+        ],
+        "image": "/images/aniimo/leafy.png",
+        "imageAlt": "Leafy official artwork used as a form comparison example",
+        "caption": "The useful difference is in the fields around the portrait: element, stage, habitat, and role.",
+        "link": { "label": "Browse all Aniimo forms", "href": "/aniimo" }
+      },
+      {
+        "type": "table",
+        "eyebrow": "Field key",
+        "title": "Form, stage and evolution answer different questions",
+        "columns": ["Field", "What the record shows", "What it does not prove"],
+        "rows": [
+          ["Form", "A named version with its own elements, role, habitat, or base fields.", "That every form is unlocked through evolution."],
+          ["Stage", "Lumin (1), Gamma (2), or Nova (3) in the current index.", "The level, item, or action required to advance."],
+          ["Evolution", "Published parent, child, and branching relationships.", "A complete recipe or guaranteed route."]
+        ]
+      },
+      {
+        "type": "lineage",
+        "eyebrow": "Published lineage",
+        "title": "Emberpup has a branch, not a single finish line",
+        "intro": "The current evolution records connect Emberpup to Flameruff, then split at the Nova stage.",
+        "paths": [
+          { "label": "Scorchhowl branch", "nodes": [
+            { "name": "Emberpup", "stage": "Lumin · Stage 1", "href": "/aniimo/emberpup" },
+            { "name": "Flameruff", "stage": "Gamma · Stage 2", "href": "/aniimo/flameruff" },
+            { "name": "Scorchhowl", "stage": "Nova · Stage 3", "href": "/aniimo/scorchhowl" }
+          ] },
+          { "label": "Inferlupa branch", "nodes": [
+            { "name": "Emberpup", "stage": "Lumin · Stage 1", "href": "/aniimo/emberpup" },
+            { "name": "Flameruff", "stage": "Gamma · Stage 2", "href": "/aniimo/flameruff" },
+            { "name": "Inferlupa", "stage": "Nova · Stage 3", "href": "/aniimo/inferlupa" }
+          ] }
+        ],
+        "note": "The relationship is published; the current public dataset does not attach a material recipe, level gate, or required action to either branch."
+      },
+      {
+        "type": "story",
+        "eyebrow": "Route planning",
+        "title": "Choose the branch that changes your next session",
+        "paragraphs": [
+          "A branching evolution only matters when the two destinations solve different problems for your roster. Before choosing, compare the destination's role, elements, skills, and habitats against the team you are actually using. If both branches would fill the same slot, the better choice may simply be the one whose route fits your current play session.",
+          "Map planning is where form data becomes practical. Put the destination habitat beside one other objective you already want: a chest loop, a material search, or another Aniimo in the same region. This keeps evolution from becoming a single-purpose detour and gives you something useful to do if the target does not appear quickly.",
+          "Do not call a branch an upgrade until the record supports that claim. Stage 3 sounds later than Stage 2, but “later” is not a complete build recommendation; the element and skill text still decide whether the destination improves this team."
+        ],
+        "image": "/images/maps/ilya-world-map.png",
+        "imageAlt": "Ilya world map for planning an evolution route",
+        "caption": "A good evolution route has a destination and a backup objective in the same region.",
+        "link": { "label": "Open the interactive map", "href": "/map" }
+      },
+      {
+        "type": "notes",
+        "eyebrow": "Compare before committing",
+        "title": "Three questions that prevent a wasted route",
+        "items": [
+          { "title": "What actually changes?", "body": "Write down the element, role, skill, or habitat field that matters to your team. If the answer is only “the portrait,” keep researching." },
+          { "title": "Which destination fits the next activity?", "body": "A form that suits the route you are already taking can be more valuable right now than a distant option with a theoretical advantage.", "link": { "label": "Compare records", "href": "/tools/compare" } },
+          { "title": "What is still unknown?", "body": "Keep missing material names, quantities, level gates, and actions marked as unknown instead of borrowing a recipe from an unrelated catalogue.", "link": { "label": "See evolution records", "href": "/database/evolutions" } }
+        ]
+      },
+      {
+        "type": "callout",
+        "tone": "source",
+        "title": "Why there is no evolution material table yet",
+        "body": "The public evolution records used here list names, stages, variants, and family links, but not material names or quantities. The separate materials catalogue is not evidence that a material belongs to a particular evolution. A recipe table will be added only when those links can be sourced directly.",
+        "links": [
+          { "label": "Browse evolution records", "href": "/database/evolutions" },
+          { "label": "Browse the material catalogue", "href": "/database/materials" }
+        ]
+      }
     ]
   },
   {
-    "slug": "aniimo-elements-and-roles-explained",
-    "title": "Aniimo Combat Guide: Roles, BREAK, EP and Team Building",
+    "slug": "aniimo-combat-guide",
+    "title": "Aniimo Combat Guide: Roles, BREAK and EP Skill Costs",
     "category": "Combat",
-    "excerpt": "Build clearer teams by connecting roles, BREAK windows, EP use and elemental coverage.",
-    "readTime": "9 min",
-    "updated": "2026-08-28",
+    "excerpt": "Learn to read Aniimo combat records in the order a player needs them: job, resource, effect, condition, and one testable team change.",
+    "readTime": "10 min",
+    "published": "2026-08-28",
+    "updated": "2026-09-05",
+    "author": { "label": "Aniimo Editorial Team", "href": "/legal/about-us" },
     "coverImage": "/images/aniimo/stellarys.png",
     "coverAlt": "Stellarys official artwork",
-    "intro": "Elements and roles answer different questions. Elements describe an Aniimo’s affinity, while roles describe its broad contribution to a party. Reading both together is the simplest way to understand where a record may fit.",
-    "takeaways": ["Element and role are separate labels", "Dual-element records can broaden coverage", "Role balance is usually more useful than chasing a complete element set"],
-    "steps": ["Identify the damage source your team currently relies on.", "Add a support, heal or regen record that gives the party recovery or utility.", "Add break pressure when you expect tougher targets.", "Check whether your first three slots all share the same element or limitation.", "Use the remaining slot to solve an element, habitat or exploration gap.", "Review the team in the analyzer before changing multiple slots at once."],
-    "sections": [
-      {"title": "Elements describe affinity", "body": "The database groups Aniimo by official element labels. Use the element directory when you need to see which records share an affinity or when you want to avoid an overly narrow roster. An element label alone does not tell you whether an Aniimo heals, breaks or deals damage.", "image": "/images/aniimo/coraliz.png", "imageAlt": "Coraliz official artwork", "link": {"label": "Browse elements", "href": "/database/elements"}},
-      {"title": "Roles describe contribution", "body": "DPS focuses on pressure, Heal and Regen provide recovery, Support improves a party’s options, and Break helps create an opening. Some Aniimo can contribute more than one way, but these labels give you a useful first pass before reading each published skill description.", "image": "/images/aniimo/leafy.png", "imageAlt": "Leafy official artwork", "link": {"label": "View published skills", "href": "/database/skills"}},
-      {"title": "Build coverage around the activity", "body": "A balanced party is not a checklist of nine elements. Begin with a clear damage source, enough sustain for mistakes and an answer for sturdier targets. Then make the remaining choices based on the habitat, goal and records you want to pursue next.", "image": "/images/aniimo/stellarys.png", "imageAlt": "Stellarys official artwork", "link": {"label": "Test a four-slot team", "href": "/team-builder"}},
-      {"title": "Use dual labels as options, not obligations", "body": "Some records carry more than one element or role label. That can make a roster more flexible, but it does not mean every possible contribution will be equally important in the same activity. Start from the job you need, then use the additional label as a way to widen future choices rather than a reason to overcomplicate the first team.", "image": "/images/aniimo/eklue.png", "imageAlt": "Eklue official artwork", "link": {"label": "View all Aniimo", "href": "/aniimo"}},
-      {"title": "Evaluate coverage after every swap", "body": "When you replace one Aniimo, check what left the party as well as what arrived. A new element might improve variety but remove the only sustain option; a second damage record might help a simple route while leaving no answer for a stronger target. Reviewing role and element coverage after each change keeps the decision visible.", "image": "/images/aniimo/helgon.png", "imageAlt": "Helgon official artwork", "link": {"label": "Open Team Builder", "href": "/team-builder"}}
+    "intro": "Combat advice becomes unreliable when it jumps straight from a role label to a finished rotation. The current Aniimo data is better suited to a careful reading order: identify the job, check the Cost and Power fields, read the effect and its condition, then test one party change in the activity you care about. This guide explains what each layer tells you and where the public data still stops.",
+    "blocks": [
+      {
+        "type": "story",
+        "eyebrow": "Start with the job",
+        "title": "A role is a question, not a rotation",
+        "paragraphs": [
+          "DPS, Heal, Regen, Support, and BREAK are useful because they reduce a 94-record roster to a manageable shortlist. They do not tell you when to press a skill, how much EP a fight will generate, or whether the record is best for every target. Those answers live in the skill descriptions and in the encounter you are testing.",
+          "A practical first pass is to choose one pressure source, one recovery or utility source, and one candidate for tougher targets. Read what each one spends and returns. If your DPS consumes a resource quickly, a support skill that restores EP may matter more than a second damage label; if a utility skill has a long condition, it belongs to a different plan than a permanent passive.",
+          "This is why a second DPS can feel worse than a less exciting support pick. The extra damage is visible on the roster screen, but the missing recovery or opening is what makes the encounter fail."
+        ],
+        "image": "/images/aniimo/stellarys.png",
+        "imageAlt": "Stellarys official artwork for combat role planning",
+        "caption": "Start from the job the encounter is missing, then read the kit behind the label.",
+        "link": { "label": "Open the skill directory", "href": "/database/skills" }
+      },
+      {
+        "type": "terms",
+        "eyebrow": "Combat field key",
+        "title": "Five labels you will see in the database",
+        "items": [
+          { "term": "Role", "value": "Roster filter", "body": "DPS, Heal, Regen, Support, and BREAK describe a broad contribution. The badge narrows the list; the skill text tells you what the Aniimo actually does." },
+          { "term": "Cost", "value": "Official record", "body": "The skill record publishes a Cost value. Several official descriptions explicitly say that a skill restores or changes EP, so Cost should be read beside the description rather than renamed into a universal formula." },
+          { "term": "Power", "value": "Official record", "body": "Power is a published skill value. It is not enough on its own to calculate final damage without the game's full formula, target defenses, modifiers, and launch balance." },
+          { "term": "Cooldown", "value": "CBT3 community field", "body": "Cooldown values in the skill directory come from AniimoVerse CBT3 records and are marked as community data. They may change at launch." },
+          { "term": "BREAK", "value": "Role, state, and skill field", "body": "Current records use BREAK as a role label, list BREAK-related skill values, and mention targets already in a BREAK state. They do not yet establish one verified site-wide trigger threshold or window duration." }
+        ]
+      },
+      {
+        "type": "story",
+        "eyebrow": "EP in real records",
+        "title": "Read the number next to the sentence",
+        "paragraphs": [
+          "Cost is only half of an EP decision. Scorchhowl's Fire Bolt is listed at Cost 10 and Power 30, but the description also applies two Fire Debuff stacks for five seconds. Blazen's Electrified Impact costs 20 and restores 5 EP on a critical hit. Those are different resource stories even before a final damage formula is known.",
+          "Gracewing makes the point from the utility side: Phantomflutter costs 20 and has Power 0, while its Phantomfly restores 20 EP to teammates that touch it after three seconds, with a maximum of two. A zero Power field does not mean the skill has no combat value; it means the useful result is not expressed as direct damage.",
+          "Pawney's Ironclad Armament is another readable example. The record lists Cost 0 and Power 220, then adds 10% EP recovery and 30% damage to BREAK targets for 15 seconds. Keep the duration and target condition attached to the effect; do not flatten it into a permanent team bonus."
+        ],
+        "image": "/images/aniimo/pawney.png",
+        "imageAlt": "Pawney official artwork for an EP and BREAK example",
+        "caption": "A skill's written effect often explains more than its Cost / Power pair.",
+        "link": { "label": "Compare published skill records", "href": "/database/skills" }
+      },
+      {
+        "type": "table",
+        "eyebrow": "Published skill text",
+        "title": "EP examples you can verify now",
+        "intro": "Use these as reading examples, not as a complete combat formula.",
+        "columns": ["Aniimo", "Skill", "Cost / Power", "What the text confirms"],
+        "rows": [
+          ["Scorchhowl", "Fire Bolt", "10 / 30", "Deals damage and applies two Fire Debuff stacks for 5 seconds."],
+          ["Blazen", "Electrified Impact", "20 / 33", "A critical hit restores 5 EP."],
+          ["Gracewing", "Phantomflutter", "20 / 0", "After 3 seconds, the Phantomfly restores 20 EP to teammates that touch it; up to two can exist."],
+          ["Pawney", "Ironclad Armament", "0 / 220", "Increases EP recovery by 10% and damage dealt to BREAK targets by 30% for 15 seconds."]
+        ],
+        "note": "Cost and Power are reproduced as database fields, not as a claim that Power equals final damage."
+      },
+      {
+        "type": "story",
+        "eyebrow": "Make one test",
+        "title": "Change one slot so you can learn from the result",
+        "paragraphs": [
+          "Pick a repeatable activity and write down what failed: no recovery, no opening, too much resource pressure, or a missing element. Then change one slot that addresses that failure. If you replace half the party, you may win, but you will not know which decision helped.",
+          "Use the profile and the Team Builder to keep the comparison honest. Record the role, element, Cost, and the condition on the skill you are testing. A simple note like “the party survived the second phase after adding recovery” is more useful than a vague claim that one record is universally better.",
+          "BREAK deserves the same patience. The current records mention BREAK roles, BREAK values, and bonuses against BREAK targets, but they do not publish a universal gauge threshold or window duration. Treat the first run as a test of the encounter, not proof of a permanent rule."
+        ],
+        "image": "/images/aniimo/eklue.png",
+        "imageAlt": "Eklue official artwork for testing a team change",
+        "caption": "A controlled swap teaches you more than a full rebuild after every failed run.",
+        "link": { "label": "Open Team Builder", "href": "/team-builder" }
+      },
+      {
+        "type": "callout",
+        "tone": "caution",
+        "title": "The combat formula is not public yet",
+        "body": "The current sources do not establish the default EP cap and passive recovery rules, a universal BREAK gauge threshold, the duration of every BREAK window, or a final damage formula. Those gaps matter, so this guide labels them instead of filling them with familiar rules from another game."
+      }
     ]
   }
 ]
