@@ -88,6 +88,12 @@ export const tdk = {
     pathname: "/tools",
     lastModified: released,
   },
+  typeChart: {
+    title: "Aniimo Type Chart — Element Matchups and Weaknesses",
+    description: "Check Aniimo element matchups at a glance before choosing skills, changing forms, or filling a gap in your team.",
+    pathname: "/tools/type-chart",
+    lastModified: released,
+  },
   compare: {
     title: "Aniimo Compare — Review Creature Stats Side by Side",
     description: "Compare selected Aniimo side by side using published base fields, elements, roles, forms, and skills, then open the profiles that matter to your team decision.",
