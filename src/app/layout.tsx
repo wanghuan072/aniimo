@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-scroll-behavior="smooth" className={`${gameDisplay.variable} ${gameBody.variable} ${gameUi.variable}`}><body><JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} /><Script async src="https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4" strategy="afterInteractive" /><Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || [];
+  return <html lang="en" data-scroll-behavior="smooth" className={`${gameDisplay.variable} ${gameBody.variable} ${gameUi.variable}`}><body><JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} /><Script async src="https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4" strategy="lazyOnload" /><Script id="google-analytics" strategy="lazyOnload">{`window.dataLayer = window.dataLayer || [];
 function gtag(){window.dataLayer.push(arguments);}
 window.gtag = window.gtag || gtag;
 gtag('js', new Date());
