@@ -65,7 +65,7 @@ export default function HomePage() {
           <div className={styles.dashboardGrid}>
             <article className={`${styles.featureCard} ${styles.aniimoFeature}`}>
               <div className={styles.cardCopy}><h2 className={styles.cardKicker}>🐾 Aniimo</h2><p>Browse the roster by element, role and stage, then open the details that matter to your next choice.</p><Link href="/aniimo">Browse Aniimo <Icon name="arrow" /></Link></div>
-              <div className={styles.creatureFan}>{showcase.map((entry, index) => <Link href={`/aniimo/${entry.slug}`} key={entry.slug} style={{ "--fan-index": index } as React.CSSProperties}><Image src={entry.image} alt={entry.name} fill sizes="150px" /><span>{entry.name}</span></Link>)}</div>
+              <div className={styles.creatureFan}>{showcase.map((entry, index) => <Link href={`/aniimo/${entry.slug}`} key={entry.slug} style={{ "--fan-index": index } as React.CSSProperties}><Image src={entry.image} alt={entry.name} fill sizes="(max-width: 760px) 130px, 150px" /><span>{entry.name}</span></Link>)}</div>
             </article>
 
             <article className={`${styles.featureCard} ${styles.databaseFeature}`}>
@@ -104,7 +104,7 @@ export default function HomePage() {
 
             <section className={styles.guideFeature} aria-labelledby="home-guides-title">
               <header><div><span>Guides</span><h2 id="home-guides-title">Aniimo Guides for Teams, Forms &amp; Exploration</h2><p>Three short routes for the questions most players meet first: building a first team, understanding forms and choosing roles that work together.</p></div><Link href="/guides">Browse all guides <Icon name="arrow" /></Link></header>
-              <div className={styles.homeGuideCards}>{guides.map((guide) => <Link href={`/guides/${guide.slug}`} key={guide.slug}><span><Image src={guide.coverImage} alt={guide.coverAlt} fill sizes="(max-width: 760px) 100vw, 33vw" /></span><div><small>{guide.category} · {guide.readTime}</small><strong>{guide.title}</strong><p>{guide.excerpt}</p><em>Read guide <Icon name="arrow" /></em></div></Link>)}</div>
+              <div className={styles.homeGuideCards}>{guides.map((guide) => <Link href={`/guides/${guide.slug}`} key={guide.slug}><span><Image src={guide.coverImage} alt={guide.coverAlt} fill sizes="(max-width: 760px) 84px, 88px" /></span><div><small>{guide.category} · {guide.readTime}</small><strong>{guide.title}</strong><p>{guide.excerpt}</p><em>Read guide <Icon name="arrow" /></em></div></Link>)}</div>
             </section>
 
             <article className={`${styles.featureCard} ${styles.toolsFeature}`}>
