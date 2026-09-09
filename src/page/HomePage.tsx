@@ -36,7 +36,7 @@ export default function HomePage() {
     <>
       <JsonLd data={faqJsonLd(faq)} />
       <section className={styles.hero}>
-        <Image src="/images/home/aniimo-world-hero-v2.png" alt="An explorer and fantasy companions overlooking the world of Aniimo" fill preload fetchPriority="high" sizes="(max-width: 1440px) 100vw, 1440px" />
+        <Image src="/images/home/aniimo-world-hero-v2-960.webp" alt="An explorer and fantasy companions overlooking the world of Aniimo" fill preload fetchPriority="high" unoptimized sizes="100vw" />
         <div className={styles.heroWash} />
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
