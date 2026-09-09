@@ -6,8 +6,6 @@ import { siteConfig } from "@/config/site";
 import { tdk } from "@/seo/tdk";
 
 const rosterSynced = aniimoData.source.syncedAt;
-const redirectPaths = new Set(["/tools/type-chart"]);
-
 const staticEntries = [
   tdk.home,
   tdk.aniimo,
@@ -19,6 +17,7 @@ const staticEntries = [
   tdk.teamTemplates,
   tdk.guides,
   tdk.tools,
+  tdk.typeChart,
   tdk.compare,
   tdk.collectionTracker,
   tdk.updates,
@@ -28,7 +27,7 @@ const staticEntries = [
   tdk.copyright,
   tdk.about,
   tdk.contact,
-].filter((entry) => !redirectPaths.has(entry.pathname));
+];
 
 function loc(pathname: string) {
   return new URL(pathname, siteConfig.url).toString();
