@@ -20,6 +20,7 @@ const gameBody = Nunito_Sans({
   weight: "variable",
   variable: "--font-game-body",
   display: "swap",
+  preload: false,
 });
 
 const gameUi = Oxanium({
@@ -27,6 +28,7 @@ const gameUi = Oxanium({
   weight: "variable",
   variable: "--font-game-ui",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
