@@ -582,9 +582,7 @@ a.statItem:hover strong { color: var(--blue-700); }
 .lowerGrid > article:first-child em { color: #38a07e; font-size: 14px; font-style: normal; font-weight: 800; }
 
 .updateCard {
-  background:
-    linear-gradient(90deg, rgba(255, 255, 252, .97) 0%, rgba(249, 252, 251, .89) 48%, rgba(224, 244, 255, .37) 100%),
-    url('/images/home/aniimo-world-hero-v2.png') 63% 53% / cover !important;
+  background: linear-gradient(90deg, rgba(255, 255, 252, .97) 0%, rgba(249, 252, 251, .89) 48%, rgba(224, 244, 255, .37) 100%);
 }
 
 .updateCard > div { width: 57%; padding: 7px 0; border-bottom: 1px solid rgba(211, 222, 225, .78); }
