@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Baloo_2, Nunito_Sans, Oxanium } from "next/font/google";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site";
@@ -39,9 +39,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" data-scroll-behavior="smooth" className={`${gameDisplay.variable} ${gameBody.variable} ${gameUi.variable}`}><body><JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} /><Script async src="https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4" strategy="lazyOnload" /><Script id="google-analytics" strategy="lazyOnload">{`window.dataLayer = window.dataLayer || [];
-function gtag(){window.dataLayer.push(arguments);}
-window.gtag = window.gtag || gtag;
-gtag('js', new Date());
-gtag('config', 'G-E01MQKVEZ4');`}</Script><a className="skip-link" href="#main-content">Skip to content</a><div className="site-frame"><Header /><main id="main-content" className="page-main">{children}</main><Footer /></div></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth" className={`${gameDisplay.variable} ${gameBody.variable} ${gameUi.variable}`}><body><JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} /><GoogleAnalytics /><a className="skip-link" href="#main-content">Skip to content</a><div className="site-frame"><Header /><main id="main-content" className="page-main">{children}</main><Footer /></div></body></html>;
 }
