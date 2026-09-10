@@ -18,7 +18,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [searchRecords, setSearchRecords] = useState<SearchRecord[] | null>(null);
   const navRef = useRef<HTMLElement>(null);
-  const records = searchRecords || [];
+  const records = useMemo(() => searchRecords ?? [], [searchRecords]);
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
     if (!needle) return records.slice(0, 8);

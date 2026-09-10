@@ -1,4 +1,5 @@
 import type { Aniimo, DatabaseCategory, Guide } from "@/types/content";
+import { getGuideDossier } from "@/data/editorial/guide-dossiers";
 
 export type TdkEntry = {
   title: string;
@@ -10,12 +11,6 @@ export type TdkEntry = {
 };
 
 const released = "2026-09-01";
-
-const guideDescriptions: Record<string, string> = {
-  "aniimo-beginners-guide": "Build a useful first Aniimo team, learn which profile fields matter, and turn the missing role into one focused habitat route through Idyll.",
-  "aniimo-forms-and-evolution": "Separate Aniimo forms from stages, follow the Emberpup evolution branches, and compare regional element and habitat records without guessing recipes.",
-  "aniimo-combat-guide": "Read Aniimo roles, skill Cost and Power, EP effects, cooldown sources, and BREAK references without mistaking incomplete data for a final combat formula.",
-};
 
 function fitDescription(value: string) {
   const normalized = value.replace(/\s+/g, " ").trim();
@@ -47,8 +42,8 @@ export const tdk = {
     lastModified: released,
   },
   guides: {
-    title: "Aniimo Guides — Teams, Forms, Evolution & Combat",
-    description: "Read Aniimo guides for first teams, regional forms, evolution paths, roles, BREAK, EP skill costs, and practical exploration planning.",
+    title: "Aniimo Guides — Catching, Teams, Maps & Progression",
+    description: "Read Aniimo guides for catching, forms, traits, eggs, materials, type matchups, teams, mobility, map routes, and practical exploration planning.",
     pathname: "/guides",
     lastModified: released,
   },
@@ -122,7 +117,7 @@ export const tdk = {
     title: "Aniimo Privacy Policy — How This Fan Site Handles Data",
     description: "Read how Aniimo handles browser storage, service data, contact messages, cookies, and privacy choices for a fan site serving players in the United States.",
     pathname: "/legal/privacy-policy",
-    lastModified: released,
+    lastModified: "2026-09-10",
   },
   terms: {
     title: "Aniimo Terms of Service — Independent Fan Site Terms",
@@ -163,12 +158,13 @@ export function aniimoTdk(entry: Aniimo): TdkEntry {
 }
 
 export function guideTdk(guide: Guide): TdkEntry {
-  const title = guide.title.toLowerCase().startsWith("aniimo ")
+  const dossier = getGuideDossier(guide.slug);
+  const title = dossier?.seoTitle || (guide.title.toLowerCase().startsWith("aniimo ")
     ? guide.title
-    : `${guide.title} — Aniimo Guide`;
+    : `${guide.title} — Aniimo Guide`);
   return {
     title,
-    description: fitDescription(guideDescriptions[guide.slug] || guide.excerpt),
+    description: fitDescription(dossier?.seoDescription || guide.excerpt),
     pathname: `/guides/${guide.slug}`,
     lastModified: guide.updated,
     image: `/guides/${guide.slug}/opengraph-image`,

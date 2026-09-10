@@ -30,7 +30,10 @@ export function ProgressiveRecordList({ records, noun, fallback = "✦" }: { rec
     const id = window.location.hash.replace(/^#/, "");
     if (!id) return;
     const index = records.findIndex((record) => record.id === id);
-    if (index >= 0) setVisibleCount((current) => Math.max(current, index + 1));
+    if (index >= 0) {
+      const needed = index + 1;
+      queueMicrotask(() => setVisibleCount((current) => Math.max(current, needed)));
+    }
   }, [records]);
 
   useEffect(() => {

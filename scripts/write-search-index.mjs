@@ -14,7 +14,9 @@ function token(value) {
 
 export async function writeSearchIndex() {
   const aniimo = JSON.parse(await readFile(path.join(ROOT, "src/data/game/aniimo.json"), "utf8"));
-  const guides = JSON.parse(await readFile(path.join(ROOT, "src/data/editorial/guides.json"), "utf8"));
+  const coreGuides = JSON.parse(await readFile(path.join(ROOT, "src/data/editorial/guides.json"), "utf8"));
+  const expandedGuides = JSON.parse(await readFile(path.join(ROOT, "src/data/editorial/guides-expansion.json"), "utf8"));
+  const guides = [...coreGuides, ...expandedGuides];
   const database = JSON.parse(await readFile(path.join(ROOT, "src/data/editorial/database.json"), "utf8"));
   const locations = JSON.parse(await readFile(path.join(ROOT, "src/data/editorial/locations.json"), "utf8"));
   const community = JSON.parse(await readFile(path.join(ROOT, "src/data/research/community-database.json"), "utf8"));

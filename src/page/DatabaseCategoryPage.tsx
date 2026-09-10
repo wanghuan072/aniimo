@@ -5,7 +5,8 @@ import { alphaBossSlugs, omegaBosses } from "@/data/editorial/encounters";
 import { aniimo, communityDatabase, getDatabaseCategory, mapLocations } from "@/lib/data";
 import { groupedSkills, groupedTraits, recordSlug } from "@/lib/database-relations";
 import { mapHref } from "@/lib/map-atlas";
-import { Breadcrumb } from "@/components/ui/Content";
+import { Breadcrumb, GuideCue } from "@/components/ui/Content";
+import { databaseGuideCues } from "@/lib/guide-hub";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import { CommunityRecordList } from "@/components/database/CommunityRecordList";
@@ -50,6 +51,7 @@ export default function DatabaseCategoryPage({ slug }: { slug: string }) {
   return <>
     <section className={styles.compactHero}><div className="container"><Breadcrumb items={[{ label: "Database", href: "/database" }, { label: category.name }]} /><span className={styles.kicker}><Icon name="database" /> Explore connections</span><h1>Aniimo {category.name}</h1><p>{category.description}</p><HeroPanel label="Use this page" items={["Scan the entries", "Open connected Aniimo", "Keep your next choice focused"]} /></div></section>
     <section className={styles.contentSection}><div className="container">
+      <GuideCue title="How to use these records" items={databaseGuideCues[slug] || []} />
       {slug === "skills" && <SkillRecordList records={skillRecords} />}
       {slug === "traits" && <ProgressiveRecordList records={traitRecords} noun="traits" fallback="◇" />}
       {slug === "elements" && <>

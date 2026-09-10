@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "An independent Aniimo companion with creature profiles, forms, skills, habitats, guides, maps, and practical planning tools for players.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aniimo.cc",
-  author: "Frontline Pathfinde",
+  author: "Frontline Pathfinder",
   contactEmail: "wyong@aniimo.cc",
   officialWiki: "https://wiki.aniimo.com/en",
   releaseNote: "PC and console: September 16, 2026 · Mobile: September 23, 2026",
@@ -50,9 +50,10 @@ export const navigation = [
     label: "Guides",
     href: "/guides",
     children: [
-      { label: "Beginner Guide", href: "/guides/aniimo-beginners-guide" },
+      { label: "First Hours", href: "/guides/aniimo-beginners-guide" },
+      { label: "Catching", href: "/guides/aniimo-catching-guide" },
+      { label: "Combat", href: "/guides/aniimo-combat-guide" },
       { label: "Forms & Evolution", href: "/guides/aniimo-forms-and-evolution" },
-      { label: "Combat Guide", href: "/guides/aniimo-combat-guide" },
     ],
   },
   {

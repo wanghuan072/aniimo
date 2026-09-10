@@ -4,7 +4,8 @@ import { aniimo, mapLocations } from "@/lib/data";
 import { mapAtlasGuides } from "@/data/editorial/map-guides";
 import { atlasIndex, mapHref, resolveMapFocus, resolveMapRegion } from "@/lib/map-atlas";
 import { InteractiveMap } from "@/components/tools/InteractiveMap";
-import { Breadcrumb, FaqList } from "@/components/ui/Content";
+import { Breadcrumb, FaqList, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import { siteConfig } from "@/config/site";
@@ -68,8 +69,10 @@ export default function MapPage({ atlas, region, marker }: { atlas?: string; reg
           <div className={styles.mapHeroActions}>
             <a href="#atlas" className="button-primary">Start searching <Icon name="arrow" /></a>
             <Link href="/database/habitats" className="button-secondary">Browse habitats</Link>
+            <Link href="/guides/aniimo-collection-guide" className="button-secondary">Collection guide</Link>
           </div>
           <HeroPanel label="Before you set out" items={["Search an Aniimo by name", "Open only the layer you need", "Check Surface or Cave before rerouting"]} />
+          <GuideCue title="Guides that use this map" items={pageGuideCues.map} />
         </div>
       </section>
       <section className={styles.toolContent}>

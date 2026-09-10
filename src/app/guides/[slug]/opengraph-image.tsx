@@ -6,15 +6,21 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const treatments: Record<string, { accent: string; pale: string; code: string; mark: string }> = {
+  "aniimo-catching-guide": { accent: "#2d79b3", pale: "#e8f5fc", code: "CATCH LOG 00", mark: "ANIIPOD" },
   "aniimo-beginners-guide": { accent: "#6f9d48", pale: "#edf5e6", code: "FIELD ROUTE 01", mark: "01—05" },
   "aniimo-forms-and-evolution": { accent: "#b47a22", pale: "#fff3d9", code: "LINEAGE FILE 02", mark: "1 → 2 → 3" },
   "aniimo-combat-guide": { accent: "#c9554d", pale: "#ffebe7", code: "COMBAT LOG 03", mark: "BREAK / EP" },
+  "aniimo-elements-guide": { accent: "#6552a9", pale: "#f1eefc", code: "MATCHUP GRID 04", mark: "1.6× / .625×" },
+  "aniimo-traits-guide": { accent: "#39785c", pale: "#edf7f1", code: "TRAIT TEST 05", mark: "TRIGGER" },
+  "aniimo-materials-guide": { accent: "#a46628", pale: "#fff4e6", code: "ROUTE LEDGER 06", mark: "MAP / BAG" },
+  "aniimo-eggs-guide": { accent: "#9a6c19", pale: "#fff7df", code: "EGG RECORD 07", mark: "ALPHA / ELITE" },
+  "aniimo-collection-guide": { accent: "#26748c", pale: "#e8f6f7", code: "ROSTER LOG 08", mark: "OWNED / MISSING" },
 };
 
 export default async function OpenGraphImage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const guide = getGuide(slug);
-  const treatment = treatments[slug] || treatments["aniimo-beginners-guide"];
+  const treatment = treatments[slug] || treatments["aniimo-catching-guide"];
   const title = guide?.title || "Aniimo Player Guide";
   const category = guide?.category || "Player Guide";
 
@@ -63,7 +69,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ slu
             borderRadius: "75px",
             color: treatment.accent,
             background: treatment.pale,
-            fontSize: slug === "aniimo-combat-guide" ? 28 : 34,
+            fontSize: treatment.mark.length > 11 ? 26 : 34,
             fontWeight: 900,
             letterSpacing: "1px",
           }}>{treatment.mark}</div>

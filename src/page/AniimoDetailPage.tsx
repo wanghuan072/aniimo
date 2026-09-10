@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Aniimo, AniimoEvolutionView, AniimoSkill } from "@/types/content";
-import { Breadcrumb, ElementBadge } from "@/components/ui/Content";
+import { Breadcrumb, ElementBadge, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { Icon } from "@/components/ui/Icon";
 import { AniimoSpawnMap } from "@/components/aniimo/AniimoSpawnMap";
 import { StatRadar } from "@/components/aniimo/StatRadar";
@@ -409,6 +410,7 @@ export default function AniimoDetailPage({
               </div>
             </section>
           )}
+          <GuideCue title="Guides for this profile" items={pageGuideCues.aniimoProfile} />
         </div>
       </section>
     </>

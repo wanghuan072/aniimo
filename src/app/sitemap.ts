@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import aniimoData from "@/data/game/aniimo.json";
 import databaseData from "@/data/editorial/database.json";
 import guidesData from "@/data/editorial/guides.json";
+import guideExpansionData from "@/data/editorial/guides-expansion.json";
 import { siteConfig } from "@/config/site";
 import { tdk } from "@/seo/tdk";
 
@@ -55,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const pathname = `/aniimo/${entry.slug}`;
       return { url: loc(pathname), lastModified: rosterSynced, ...sitemapFields(pathname) };
     }),
-    ...(guidesData as Array<{ slug: string; updated: string }>).map((guide) => {
+    ...([...guidesData, ...guideExpansionData] as Array<{ slug: string; updated: string }>).map((guide) => {
       const pathname = `/guides/${guide.slug}`;
       return { url: loc(pathname), lastModified: guide.updated, ...sitemapFields(pathname) };
     }),

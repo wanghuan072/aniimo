@@ -8,7 +8,7 @@ export const metadata = createMetadata(tdk.privacy);
 
 export default function PrivacyPolicyPage() {
   return (
-    <StaticPage title="Privacy Policy" description="Last updated September 2, 2026. A detailed account of what aniimo.cc stores, what stays in your browser, what appears in shared URLs, and how email and hosting logs are handled.">
+    <StaticPage title="Privacy Policy" description="Last updated September 10, 2026. A detailed account of what aniimo.cc stores, what stays in your browser, what appears in shared URLs, and how email, analytics, and hosting logs are handled.">
       <h2>1. Who we are and what this policy covers</h2>
       <p>
         This policy describes how the independent fan site at aniimo.cc (“Aniimo”, “we”, “the site”) handles information when you browse pages or use player tools. The operator of aniimo.cc is a small, independent publisher of a player companion. It is not the game’s owner, publisher, platform holder, or official wiki.
@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
         We do not ask for your real name, date of birth, postal address, telephone number, payment card, government ID, or official game account credentials. We do not need those to run a reference site. If you include them in an email anyway, treat that as a mistake: we will ignore credentials and you should change any password you exposed.
       </p>
       <p>
-        We do not currently run third-party advertising pixels, behavioral analytics suites, or social-login buttons that would phone home with a persistent advertising identifier.
+        We do not run advertising pixels, social-login buttons, or a marketing profile. We do load Google Analytics after a short delay so we can see which pages are used; that is described in section 7.
       </p>
 
       <h2>3. Information that stays on your device</h2>
@@ -103,10 +103,13 @@ export default function PrivacyPolicyPage() {
 
       <h2>7. Cookies, analytics and advertising</h2>
       <p>
-        At the date on this page, aniimo.cc does not set advertising cookies, login cookies, or third-party analytics cookies. We do not currently embed a “share this” widget that would load a social network’s tracker on every view.
+        After the page has been open for about ten seconds, the site loads Google Analytics (measurement ID G-E01MQKVEZ4) from Google’s gtag script. That request can include the page URL, referrer, browser and device information, and an approximate location derived from IP. Google may set or read its own cookies on that request. We use the reports to see which pages and tools people actually open, not to retarget you with ads.
       </p>
       <p>
-        If a future feature cannot work without an essential cookie (for example a preference that local storage cannot hold, or a security cookie required by the host), we will update this policy before that cookie is used for anything beyond operating the feature. We will not silently introduce an ad network.
+        The site does not set login cookies or advertising cookies of its own, and it does not embed a “share this” widget that would load a social network’s tracker on every view.
+      </p>
+      <p>
+        You can block or clear third-party scripts and cookies in the browser, use a content blocker, or use Google’s own analytics opt-out if you prefer not to be counted. If a future feature cannot work without an essential first-party cookie, we will update this policy before that cookie is used for anything beyond operating the feature. We will not silently introduce an ad network.
       </p>
 
       <h2>8. Outbound links and other companies</h2>
@@ -127,6 +130,7 @@ export default function PrivacyPolicyPage() {
         <li><strong>Local checklist.</strong> Clear storage for aniimo.cc, or toggle Aniimo off in the tracker, to remove ticks.</li>
         <li><strong>Shared URLs.</strong> Stop circulating a team or compare link if you no longer want that shortlist public. We cannot retract a URL someone else already copied.</li>
         <li><strong>Email.</strong> Ask us to delete a thread you started, or to send you a copy of what we still have of that thread. Include the address you used and enough of the subject or date to find it. We may refuse a request that we cannot reasonably match to you, or that we must keep briefly for a live copyright or security dispute.</li>
+        <li><strong>Analytics.</strong> Block third-party scripts, clear Google cookies for this site, or use Google’s analytics opt-out if you do not want page views counted.</li>
         <li><strong>Do not sell.</strong> We do not sell personal information. There is no “sale opt-out” toggle because there is no sale.</li>
       </ul>
       <p>
@@ -150,7 +154,7 @@ export default function PrivacyPolicyPage() {
 
       <h2>14. Changes to this policy</h2>
       <p>
-        If we add an account system, analytics, a comment form, or any other collection that this page does not describe, we will revise this policy first and change the date at the top. Continued use after that date means the new description applies to later visits. Older email is still handled under the policy that was current when we received it, unless a later law requires a different treatment.
+        If we add an account system, a comment form, advertising, or any other collection that this page does not describe, we will revise this policy first and change the date at the top. Continued use after that date means the new description applies to later visits. Older email is still handled under the policy that was current when we received it, unless a later law requires a different treatment.
       </p>
       <p>
         Questions: <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>. Related: <Link href="/legal/terms-of-service">Terms of Service</Link>, <Link href="/legal/contact-us">Contact Us</Link>, <Link href="/legal/about-us">About Us</Link>.

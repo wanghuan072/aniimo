@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "aniimo-materials-guide",
+    "title": "Material routes in Breezy Plains",
+    "category": "Progression",
+    "excerpt": "Farm from a named shortfall. Use Beast Fang Ridge, Blitzwood, Zephyrus Landbridge, and Mistwoods pin counts to pick a loop.",
+    "readTime": "9 min",
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "author": {
+      "label": "Aniimo Editorial Team",
+      "href": "/legal/about-us"
+    },
+    "coverImage": "/images/database/items/lumin-amber.webp",
+    "coverAlt": "Lumin Amber item artwork"
+  },
+  {
+    "slug": "aniimo-eggs-guide",
+    "title": "Eggs and hatching",
+    "category": "Eggs & Collection",
+    "excerpt": "Hatch at an Outpost or Homeland Hatchinator, read what Alpha and Elite labels promise, and use Breezy Plains egg pins to pick a region.",
+    "readTime": "9 min",
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "author": {
+      "label": "Aniimo Editorial Team",
+      "href": "/legal/about-us"
+    },
+    "coverImage": "/images/database/items/alpha-egg.webp",
+    "coverAlt": "Alpha Egg item artwork"
+  },
+  {
+    "slug": "aniimo-collection-guide",
+    "title": "Tracking your collection",
+    "category": "Collection",
+    "excerpt": "Mark missing Aniimo in the local Collection Tracker, verify the exact form, and turn one target into a two-purpose map route.",
+    "readTime": "9 min",
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "author": {
+      "label": "Aniimo Editorial Team",
+      "href": "/legal/about-us"
+    },
+    "coverImage": "/images/aniimo/helgon.png",
+    "coverAlt": "Helgon official artwork for a collection guide"
+  }
+]

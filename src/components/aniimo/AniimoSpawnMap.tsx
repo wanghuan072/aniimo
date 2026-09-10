@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { Map as LeafletMap } from "leaflet";
 import { Icon } from "@/components/ui/Icon";
 import { regionColor } from "@/lib/map-runtime";
@@ -126,10 +126,11 @@ export function AniimoSpawnMap({ name, atlases }: { name: string; atlases: Aniim
 }
 
 function SpawnStage({ atlas, area }: { atlas: AniimoSpawnAtlas; area: string | null }) {
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    setReady(true);
-  }, []);
+  const ready = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  );
 
   return (
     <div className={styles.stage} style={{ background: atlas.backdrop }}>
@@ -144,7 +145,6 @@ function SpawnLeaflet({ atlas, area }: { atlas: AniimoSpawnAtlas; area: string |
   const mapRef = useRef<LeafletMap | null>(null);
   const fitRef = useRef<(areaName: string | null) => void>(() => undefined);
   const areaRef = useRef(area);
-  areaRef.current = area;
 
   useEffect(() => {
     const host = hostRef.current;
@@ -259,6 +259,7 @@ function SpawnLeaflet({ atlas, area }: { atlas: AniimoSpawnAtlas; area: string |
   }, [atlas, frame]);
 
   useEffect(() => {
+    areaRef.current = area;
     fitRef.current(area);
   }, [area]);
 

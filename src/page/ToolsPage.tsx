@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Breadcrumb } from "@/components/ui/Content";
+import { Breadcrumb, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/page/tools.module.css";
@@ -18,6 +19,7 @@ export default function ToolsPage() {
         <h1>Aniimo Planning Tools</h1>
         <p>Choose the tool that answers the question in front of you: compare a shortlist or track your own roster.</p>
         <HeroPanel label="Choose a tool" items={["Compare a real shortlist", "Track your own collection"]} />
+        <GuideCue title="Guides that use these tools" items={pageGuideCues.tools} />
       </div>
     </section>
     <section className={styles.toolContent}>

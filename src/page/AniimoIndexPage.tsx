@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { aniimo } from "@/lib/data";
 import { AniimoExplorer } from "@/components/aniimo/AniimoExplorer";
-import { Breadcrumb } from "@/components/ui/Content";
+import { Breadcrumb, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/page/content.module.css";
@@ -46,6 +47,7 @@ export default function AniimoIndexPage() {
             <div className={styles.popularCategories}><h2>✣ Browse Aniimo by Element, Role or Stage</h2><div><Link href="/tier-list/global-vote"><b>★</b><span><strong>Global Vote</strong><small>2026 player results</small></span></Link><Link href="/aniimo?element=electric"><b>ϟ</b><span><strong>Electric</strong><small>{electricCount} Aniimo</small></span></Link><Link href="/aniimo?stage=3"><b>★</b><span><strong>Nova Stage</strong><small>{novaCount} Aniimo</small></span></Link><Link href={`/aniimo/${newest[0]?.slug}`}><b>NEW</b><span><strong>Newer profiles</strong><small>{newest.length} quick links</small></span></Link></div></div>
             <aside><span>✦ Choosing between two?</span><p>Filter by the job your team needs first, then compare the skills and fields that affect that choice.</p><Link href="/tools/compare">Compare Aniimo <Icon name="arrow" /></Link></aside>
           </div>
+          <GuideCue title="Related guides" items={pageGuideCues.aniimoIndex} />
         </div>
       </section>
     </>

@@ -8,6 +8,41 @@
 .sectionHeading h2 { margin: 4px 0 6px; font-size: clamp(26px, 3vw, 38px); color: var(--ink); }
 .sectionHeading p { max-width: 720px; margin: 0; color: var(--muted); }
 .eyebrow { display: inline-block; color: var(--blue-700); text-transform: uppercase; letter-spacing: .09em; font-size: 14px; font-weight: 900; }
+.guideCue {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+  padding: 14px 16px 15px;
+  border: 1px solid #d5e4ec;
+  border-radius: 14px;
+  background: linear-gradient(115deg, #fbfdff, #f3f8f6);
+}
+.guideCue > span {
+  color: var(--blue-700);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.guideCue > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+.guideCue a {
+  display: grid;
+  gap: 3px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border: 1px solid #dce7ea;
+  border-radius: 10px;
+  color: inherit;
+  background: #fff;
+}
+.guideCue a:hover { border-color: #6eafd2; }
+.guideCue b { color: #1f4f6c; font-size: 14px; line-height: 1.25; }
+.guideCue small { color: #6a8294; font-size: 12px; line-height: 1.4; }
+
 .textLink, .cardLink { display: inline-flex; align-items: center; gap: 6px; color: var(--blue-700); font-weight: 850; font-size: 14px; white-space: nowrap; }
 .textLink svg, .cardLink svg { width: 17px; transition: transform 150ms ease; }
 .textLink:hover svg, .cardLink:hover svg { transform: translateX(3px); }
@@ -122,23 +157,6 @@
 .listCard .cardShell { display: grid; grid-template-columns: 170px minmax(0,1fr); }
 .listCard .cardImage { min-height: 178px; aspect-ratio: auto; }
 .listCard .cardBody { display: flex; flex-direction: column; justify-content: center; border-top: 0; border-left: 3px solid color-mix(in srgb, var(--element-color) 56%, white); }
-.guideCard, .buildCard { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 20px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.92); }
-.guideCard h3, .buildCard h3 { margin: 5px 0 7px; font-size: 20px; }
-.guideCard h3 a:hover, .buildCard h3 a:hover { color: var(--blue-700); }
-.guideCard p, .buildCard p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
-.guideIcon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 13px; color: var(--blue-700); background: var(--blue-100); }
-.guideIcon svg { width: 24px; }
-.buildCard { grid-template-columns: 110px 1fr; }
-.buildImage { position: relative; min-height: 125px; border-radius: 13px; background: radial-gradient(circle, #fff, #e7f4ff); }
-.buildImage img { object-fit: contain; }
-.tagRow { display: flex; flex-wrap: wrap; gap: 6px; }
-.tagRow span { padding: 4px 7px; border-radius: 999px; background: #eef5fa; color: #53718b; font-size: 14px; font-weight: 850; }
-.buildMeta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; color: #75889a; font-size: 14px; font-weight: 750; }
-.buildMeta span + span::before { content: "•"; margin-right: 8px; }
-.sourceNote { display: flex; align-items: flex-start; gap: 12px; padding: 15px 17px; border-radius: 14px; border: 1px solid #cfe1d0; background: #f2f8ed; color: #496147; }
-.sourceNote > svg { width: 21px; flex: 0 0 auto; color: #63a24f; }
-.sourceNote p { margin: 0; font-size: 14px; }
-.sourceNote a { color: var(--blue-700); text-decoration: underline; }
 .faqList { display: grid; gap: 8px; }
 .faqList details { border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.82); overflow: hidden; }
 .faqList summary { display: flex; justify-content: space-between; gap: 15px; padding: 15px 17px; cursor: pointer; font-weight: 850; list-style: none; }
@@ -148,7 +166,7 @@
 @media (max-width: 768px) {
   .sectionHeading { align-items: flex-start; flex-direction: column; gap: 12px; }
   .textLink, .cardLink, .elementBadge { font-size: 14px; }
-  .sourceNote p, .faqList details p { font-size: 14px; }
+  .faqList details p { font-size: 14px; }
   .listCard .cardShell { grid-template-columns: 120px 1fr; }
   .listCard .cardImage { min-height: 160px; }
   .listCard .cardDescription { display: none; }
@@ -158,8 +176,6 @@
   .stageBadge { top: 8px; right: 8px; padding: 4px 6px; font-size: 14px; }
   .cardElements { right: 8px; bottom: 7px; }
   .cardElements i { width: 22px; height: 22px; font-size: 14px; }
-  .buildCard { grid-template-columns: 78px 1fr; padding: 14px; }
-  .buildImage { min-height: 100px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

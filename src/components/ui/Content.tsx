@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { elementMeta, roleLabels } from "@/config/site";
-import type { Aniimo, Guide } from "@/types/content";
+import type { GuideCueItem } from "@/lib/guide-hub";
+import type { Aniimo } from "@/types/content";
 import { Icon } from "@/components/ui/Icon";
 import styles from "@/style/components/content.module.css";
 
 export type AniimoCardEntry = Pick<Aniimo, "slug" | "name" | "description" | "image" | "voteImage" | "entryId" | "stage" | "elements" | "roles" | "form" | "viewCount">;
 
-export function Brand({ label = "ANIIMO" }: { compact?: boolean; label?: string }) {
+export function Brand({ compact = false, label = "ANIIMO" }: { compact?: boolean; label?: string }) {
+  void compact;
   return (
     <Link href="/" className={styles.brand} aria-label="Aniimo home">
       <span className={styles.brandMark}><Image src="/images/logo.png" alt="" width={34} height={34} priority /></span>
@@ -101,23 +103,27 @@ export function AniimoCard({ entry, compact = false, list = false }: { entry: An
   );
 }
 
-export function GuideCard({ guide }: { guide: Guide }) {
+export function GuideCue({
+  title = "Related guides",
+  items,
+}: {
+  title?: string;
+  items: GuideCueItem[];
+}) {
+  if (!items.length) return null;
   return (
-    <article className={styles.guideCard}>
-      <span className={styles.guideIcon}><Icon name="book" /></span>
+    <aside className={styles.guideCue} aria-label={title}>
+      <span>{title}</span>
       <div>
-        <span className={styles.eyebrow}>{guide.category} · {guide.readTime}</span>
-        <h3><Link href={`/guides/${guide.slug}`}>{guide.title}</Link></h3>
-        <p>{guide.excerpt}</p>
-        <Link className={styles.textLink} href={`/guides/${guide.slug}`}>Read guide <Icon name="arrow" /></Link>
+        {items.map((item) => (
+          <Link href={item.href} key={item.href}>
+            <b>{item.title}</b>
+            {item.blurb ? <small>{item.blurb}</small> : null}
+          </Link>
+        ))}
       </div>
-    </article>
+    </aside>
   );
-}
-
-export function SourceNote({ children }: { children?: React.ReactNode }) {
-  void children;
-  return null;
 }
 
 export function FaqList({ items }: { items: Array<{ question: string; answer: string }> }) {

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { aniimo, officialVote } from "@/lib/data";
-import { Breadcrumb } from "@/components/ui/Content";
+import { Breadcrumb, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { HeroPanel } from "@/components/ui/HeroPanel";
 import { Icon } from "@/components/ui/Icon";
 import { TierListExplorer } from "@/components/aniimo/TierListExplorer";
@@ -26,6 +27,7 @@ export default function GlobalVotePage() {
         <div>{topTen.map(({ entry, rank, votes, name }) => entry && <Link href={`/aniimo/${entry.slug}`} key={rank}><span><b>#{rank}</b><Image src={`/images/aniimo/vote/${entry.slug}.png`} alt="" fill sizes="104px" /></span><strong>{name}</strong><small>{votes.toLocaleString("en-US")} votes</small></Link>)}</div>
       </section>
       <TierListExplorer entries={aniimo} records={officialVote.records.slice(10)} rangeLabel="Ranks 11–88" />
+      <GuideCue title="A vote is not a team" items={pageGuideCues.tier} />
       <p className={styles.tierSourceLine}>The ranking keeps the published 2026 vote order. Momand (#29) is listed here, but its profile is not available yet.</p>
     </div></section>
   </>;

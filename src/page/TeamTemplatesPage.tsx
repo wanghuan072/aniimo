@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { aniimo } from "@/lib/data";
 import { playerTeamTemplates } from "@/data/editorial/team-templates";
-import { Breadcrumb } from "@/components/ui/Content";
+import { Breadcrumb, GuideCue } from "@/components/ui/Content";
+import { pageGuideCues } from "@/lib/guide-hub";
 import { Icon } from "@/components/ui/Icon";
 import { elementMeta, roleLabels } from "@/config/site";
 import type { Aniimo } from "@/types/content";
@@ -17,6 +18,7 @@ export default function TeamTemplatesPage() {
         <span className={styles.kicker}><Icon name="team" /> Player-made starting points</span>
         <h1>Aniimo Player Team Templates</h1>
         <p>Browse six four-Aniimo team shapes, then load one into Team Builder and change it around the activity you have in mind.</p>
+        <GuideCue title="How to read a template" items={pageGuideCues.templates} />
       </div>
     </section>
     <section className={styles.toolContent}>

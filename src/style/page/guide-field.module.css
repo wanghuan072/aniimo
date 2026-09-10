@@ -1,0 +1,94 @@
+.fieldSection {
+  position: relative;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(27, 68, 92, .06);
+}
+
+.fieldSection::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 82px;
+  height: 4px;
+  background: rgba(255, 255, 255, .68);
+}
+
+.exampleLead {
+  max-width: 640px;
+  margin: 0 0 4px;
+  color: #5b7588;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.fieldSection p a {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.fieldLead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  gap: 28px;
+  align-items: start;
+}
+
+.scene {
+  margin: 22px 0 26px;
+  border: 1px solid rgba(34, 76, 101, .18);
+  background: #102c42;
+  overflow: hidden;
+}
+
+.scene > div {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.scene img { object-fit: cover; }
+
+.scene figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 15px;
+  color: #dcecf5;
+  background: #173b57;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.scene figcaption small {
+  color: #92b9cf;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.fieldLead figure { min-height: 320px; margin-top: 7px; }
+.fieldRoute { border-color: #bdd8c2; border-top-color: #4f8b61; background: linear-gradient(145deg, #fbfdf8, #f3faf2); }
+.fieldRoute header > span { color: #3f7d53; }
+.fieldRecords { background: linear-gradient(145deg, #fbfdff, #f0f8fc); }
+.fieldMatchup { border-color: #d5ccef; border-top-color: #6957aa; background: linear-gradient(145deg, #fbfaff, #f4f1fc); }
+.fieldMatchup header > span { color: #6957aa; }
+.fieldWorkbench { border-color: #e5d3af; border-top-color: #b87b2e; background: linear-gradient(145deg, #fffdfa, #fff6e9); }
+.fieldWorkbench header > span { color: #9a661f; }
+
+@media (max-width: 1024px) {
+  .fieldLead { grid-template-columns: minmax(0, 1fr) 260px; }
+}
+
+@media (max-width: 768px) {
+  .fieldSection { padding: 22px 18px; }
+  .fieldLead { grid-template-columns: 1fr; }
+  .fieldLead figure { min-height: 230px; }
+  .scene figcaption { grid-template-columns: 1fr; gap: 5px; }
+}

@@ -1,5 +1,6 @@
 import aniimoData from "@/data/game/aniimo.json";
 import guidesData from "@/data/editorial/guides.json";
+import guideExpansionData from "@/data/editorial/guides-expansion.json";
 import databaseData from "@/data/editorial/database.json";
 import locationsData from "@/data/editorial/locations.json";
 import sourcesData from "@/data/research/sources.json";
@@ -51,7 +52,7 @@ function decorateAniimo(entry: Aniimo): Aniimo {
 export const aniimo = (aniimoData.entries as Aniimo[]).map(decorateAniimo);
 
 export const officialSource = aniimoData.source;
-export const guides = guidesData as Guide[];
+export const guides = [...(guidesData as Guide[]), ...(guideExpansionData as Guide[])];
 export const databaseCategories = databaseData as DatabaseCategory[];
 export const mapLocations = locationsData as MapLocation[];
 export const researchSources = sourcesData;
