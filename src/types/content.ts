@@ -1,3 +1,5 @@
+import type { GuideTopicId } from "@/lib/guide-topics";
+
 export type AniimoStats = {
   hp: number;
   physicalAttack: number;
@@ -129,6 +131,7 @@ export type GuideLink = {
 export type Guide = {
   slug: string;
   title: string;
+  topic: GuideTopicId;
   category: string;
   excerpt: string;
   readTime: string;

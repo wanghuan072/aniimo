@@ -1,3 +1,5 @@
+import { guideTopics } from "@/lib/guide-topics";
+
 export const siteConfig = {
   name: "Aniimo",
   shortName: "ANIIMO",
@@ -49,12 +51,10 @@ export const navigation = [
   {
     label: "Guides",
     href: "/guides",
-    children: [
-      { label: "First Hours", href: "/guides/aniimo-beginners-guide" },
-      { label: "Catching", href: "/guides/aniimo-catching-guide" },
-      { label: "Combat", href: "/guides/aniimo-combat-guide" },
-      { label: "Forms & Evolution", href: "/guides/aniimo-forms-and-evolution" },
-    ],
+    children: guideTopics.map((topic) => ({
+      label: topic.label,
+      href: `/guides#${topic.id}`,
+    })),
   },
   {
     label: "Tools",

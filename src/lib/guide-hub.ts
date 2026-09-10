@@ -15,13 +15,6 @@ export type GuideTextLink = {
   label: string;
 };
 
-export const guideJourney = [
-  { href: "/guides/aniimo-beginners-guide", label: "First hours", blurb: "Starter, Command, first catch" },
-  { href: "/guides/aniimo-catching-guide", label: "Catching", blurb: "Which Aniipod to throw" },
-  { href: "/guides/aniimo-combat-guide", label: "Combat", blurb: "BREAK, EP, matchups" },
-  { href: "/guides/aniimo-forms-and-evolution", label: "Forms", blurb: "Pick the later record first" },
-] as const;
-
 export const guideConnections: Record<string, {
   outline: Array<{ href: string; label: string }>;
   related: GuideRelated[];

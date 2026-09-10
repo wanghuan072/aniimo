@@ -5,7 +5,7 @@ import styles from "@/style/components/layout.module.css";
 
 const columns = [
   { title: "Explore", links: [["All Aniimo", "/aniimo"], ["Database", "/database"], ["Tier List", "/tier-list"], ["Map", "/map"]] },
-  { title: "Resources", links: [["Guides", "/guides"], ["First Hours", "/guides/aniimo-beginners-guide"], ["Catching", "/guides/aniimo-catching-guide"], ["Team Builder", "/team-builder"], ["Collection", "/tools/collection-tracker"]] },
+  { title: "Resources", links: [["Guides", "/guides"], ["Getting Started", "/guides#getting-started"], ["Combat", "/guides#combat"], ["Forms & Growth", "/guides#growth"], ["Collection", "/guides#collection"], ["Team Builder", "/team-builder"]] },
   { title: "Legal", links: [["Privacy Policy", "/legal/privacy-policy"], ["Terms of Service", "/legal/terms-of-service"], ["Copyright", "/legal/copyright"], ["About Us", "/legal/about-us"], ["Contact Us", "/legal/contact-us"]] },
 ];
 

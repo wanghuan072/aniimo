@@ -3,6 +3,7 @@ import Link from "next/link";
 import { aniimo, databaseCategories, elements, getAniimo, guides, habitats } from "@/lib/data";
 import atlasIndexData from "@/data/map/index.json";
 import { getGuideDossier } from "@/data/editorial/guide-dossiers";
+import { getGuideTopic } from "@/lib/guide-topics";
 import { FaqList } from "@/components/ui/Content";
 import { Icon } from "@/components/ui/Icon";
 import { elementMeta, roleLabels } from "@/config/site";
@@ -116,7 +117,7 @@ export default function HomePage() {
               <header><div><span>Guides</span><h2 id="home-guides-title">Latest Aniimo Guides</h2><p>Three recent field notes. Catching, combat, forms, and the rest stay on the Guides page.</p></div><Link href="/guides">Browse all guides <Icon name="arrow" /></Link></header>
               <div className={styles.homeGuideCards}>{latestGuides.map((guide) => {
                 const dossier = getGuideDossier(guide.slug);
-                return <Link href={`/guides/${guide.slug}`} key={guide.slug}><span><Image src={dossier?.heroImage || guide.coverImage} alt={dossier?.heroAlt || guide.coverAlt} fill sizes="(max-width: 760px) 84px, 88px" /></span><div><small>{dossier?.category || guide.category} · {dossier?.readTime || `${guide.readTime} read`}</small><strong>{dossier?.title || guide.title}</strong><em>Read guide <Icon name="arrow" /></em></div></Link>;
+                return <Link href={`/guides/${guide.slug}`} key={guide.slug}><span><Image src={dossier?.heroImage || guide.coverImage} alt={dossier?.heroAlt || guide.coverAlt} fill sizes="(max-width: 760px) 84px, 88px" /></span><div><small>{getGuideTopic(guide.topic)?.label || guide.category} · {dossier?.readTime || `${guide.readTime} read`}</small><strong>{dossier?.title || guide.title}</strong><em>Read guide <Icon name="arrow" /></em></div></Link>;
               })}</div>
             </section>
 

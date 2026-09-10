@@ -36,7 +36,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: #9bd9f0; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; background: #9bd9f0; }
 body {
   margin: 0;
   color: var(--ink);

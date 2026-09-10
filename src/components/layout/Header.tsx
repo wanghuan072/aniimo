@@ -10,6 +10,14 @@ import { Icon } from "@/components/ui/Icon";
 import type { SearchRecord } from "@/types/content";
 import styles from "@/style/components/layout.module.css";
 
+function samePageHash(pathname: string, href: string) {
+  const hashIndex = href.indexOf("#");
+  if (hashIndex === -1) return null;
+  const path = href.slice(0, hashIndex) || "/";
+  if (pathname !== path) return null;
+  return href.slice(hashIndex + 1);
+}
+
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -64,7 +72,21 @@ export function Header() {
                   </Link>
                   {item.children && (
                     <div className={`${styles.dropdown} ${openMenu === item.label ? styles.dropdownOpen : ""} ${item.children.length > 6 ? styles.megaDropdown : ""}`}>
-                      {item.children.map((child) => <Link key={child.href} href={child.href}>{child.label}<Icon name="arrow" /></Link>)}
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={(event) => {
+                            const id = samePageHash(pathname, child.href);
+                            if (!id) return;
+                            event.preventDefault();
+                            setOpenMenu(null);
+                            window.location.hash = id;
+                          }}
+                        >
+                          {child.label}<Icon name="arrow" />
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -78,7 +100,14 @@ export function Header() {
         </div>
         {mobileOpen && (
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
-            {navigation.map((item) => <div className={styles.mobileGroup} key={item.label}><Link href={item.href} onClick={() => setMobileOpen(false)}>{item.label}<Icon name="arrow" /></Link>{item.children && <div>{item.children.map((child) => <Link href={child.href} key={child.href} onClick={() => setMobileOpen(false)}>{child.label}</Link>)}</div>}</div>)}
+            {navigation.map((item) => <div className={styles.mobileGroup} key={item.label}><Link href={item.href} onClick={() => setMobileOpen(false)}>{item.label}<Icon name="arrow" /></Link>{item.children && <div>{item.children.map((child) => <Link href={child.href} key={child.href} onClick={(event) => {
+              const id = samePageHash(pathname, child.href);
+              if (id) {
+                event.preventDefault();
+                window.location.hash = id;
+              }
+              setMobileOpen(false);
+            }}>{child.label}</Link>)}</div>}</div>)}
           </nav>
         )}
       </header>

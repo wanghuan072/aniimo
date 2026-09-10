@@ -2,6 +2,7 @@
   {
     "slug": "aniimo-beginners-guide",
     "title": "First hours in Aniimo",
+    "topic": "getting-started",
     "category": "Getting Started",
     "excerpt": "Follow the opening, pick Helion or Lunara, then catch one Aniimo in Nimbus Fields that covers a job your starter does not have.",
     "readTime": "10 min",
@@ -17,6 +18,7 @@
   {
     "slug": "aniimo-forms-and-evolution",
     "title": "Forms and evolution",
+    "topic": "growth",
     "category": "Forms & Evolution",
     "excerpt": "Compare Emberpup’s Basic, Highland, and Mountain Woods forms, then choose Scorchhowl or Inferlupa before spending materials.",
     "readTime": "9 min",
@@ -32,6 +34,7 @@
   {
     "slug": "aniimo-combat-guide",
     "title": "Combat: BREAK, EP, and matchups",
+    "topic": "combat",
     "category": "Combat",
     "excerpt": "Hit a 1.6× matchup, build BREAK with cheaper skills, then spend expensive actions while the target is open.",
     "readTime": "10 min",
@@ -47,6 +50,7 @@
   {
     "slug": "aniimo-catching-guide",
     "title": "Catching Aniimo: which Aniipod to throw",
+    "topic": "getting-started",
     "category": "Catching",
     "excerpt": "Use the right Aniipod for the catch in front of you: routine odds, a long throw, a moving target, a Wild Surge, or the rare Aniimo you cannot lose.",
     "readTime": "10 min",
@@ -62,6 +66,7 @@
   {
     "slug": "aniimo-elements-guide",
     "title": "Type matchups",
+    "topic": "combat",
     "category": "Elements",
     "excerpt": "Read the nine-element chart, then fix one bad matchup with a single swap instead of rebuilding the party.",
     "readTime": "8 min",
@@ -77,6 +82,7 @@
   {
     "slug": "aniimo-traits-guide",
     "title": "Traits that actually fire",
+    "topic": "combat",
     "category": "Traits & Builds",
     "excerpt": "Read a trait’s trigger, who it helps, and how often it fires. Compare Scorching Flames, Victory Concerto, and other named passives.",
     "readTime": "9 min",

@@ -2,6 +2,7 @@
   {
     "slug": "aniimo-materials-guide",
     "title": "Material routes in Breezy Plains",
+    "topic": "growth",
     "category": "Progression",
     "excerpt": "Farm from a named shortfall. Use Beast Fang Ridge, Blitzwood, Zephyrus Landbridge, and Mistwoods pin counts to pick a loop.",
     "readTime": "9 min",
@@ -17,6 +18,7 @@
   {
     "slug": "aniimo-eggs-guide",
     "title": "Eggs and hatching",
+    "topic": "collection",
     "category": "Eggs & Collection",
     "excerpt": "Hatch at an Outpost or Homeland Hatchinator, read what Alpha and Elite labels promise, and use Breezy Plains egg pins to pick a region.",
     "readTime": "9 min",
@@ -32,6 +34,7 @@
   {
     "slug": "aniimo-collection-guide",
     "title": "Tracking your collection",
+    "topic": "collection",
     "category": "Collection",
     "excerpt": "Mark missing Aniimo in the local Collection Tracker, verify the exact form, and turn one target into a two-purpose map route.",
     "readTime": "9 min",
