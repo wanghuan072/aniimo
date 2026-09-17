@@ -13,7 +13,7 @@ export function Brand({ compact = false, label = "ANIIMO" }: { compact?: boolean
   return (
     <Link href="/" className={styles.brand} aria-label="Aniimo home">
       <span className={styles.brandMark}><Image src="/images/logo.png" alt="" width={34} height={34} priority /></span>
-      <span>{label}</span>
+      <span>{label === "ANIIMO" ? <>AN<span className={styles.brandDoubleI}>II</span>MO</> : label}</span>
     </Link>
   );
 }
