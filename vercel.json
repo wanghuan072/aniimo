@@ -1,4 +1,5 @@
 {
+  "framework": "astro",
   "cleanUrls": true,
   "redirects": [
     { "source": "/about", "destination": "/legal/about-us", "statusCode": 308 },
