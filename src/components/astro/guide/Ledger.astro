@@ -1,0 +1,6 @@
+---
+import RichText from "./RichText.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+const { chapter } = Astro.props;
+---
+{chapter.table && <div class={styles.ledgerWrap}><table class={styles.ledger}><caption>{chapter.table.caption}</caption><thead><tr>{chapter.table.columns.map((column: string) => <th scope="col">{column}</th>)}</tr></thead><tbody>{chapter.table.rows.map((row: string[]) => <tr>{row.map((value, index) => index === 0 ? <th scope="row"><RichText text={value} /></th> : <td><RichText text={value} /></td>)}</tr>)}</tbody></table></div>}

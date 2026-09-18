@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AniimoDetailPage from "@/page/astro/AniimoDetailPage.astro";
+import JsonLd from "@/components/astro/JsonLd.astro";
+import { breadcrumbJsonLd } from "@/seo/schema";
+import { aniimoTdk } from "@/seo/tdk";
+import { aniimo, getAniimo } from "@/lib/data";
+import { getAniimoPageData } from "@/lib/aniimo-page-data";
+import { siteConfig } from "@/config/site";
+export function getStaticPaths() {
+  return aniimo.map((entry) => ({ params: { slug: entry.slug } }));
+}
+const entry = getAniimo(Astro.params.slug)!;
+const data = getAniimoPageData(entry);
+---
+<BaseLayout metadata={aniimoTdk(entry)}>
+  <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Aniimo", href: "/aniimo" }, { name: entry.name, href: `/aniimo/${entry.slug}` }], siteConfig.url)} />
+  <AniimoDetailPage {...data} />
+</BaseLayout>

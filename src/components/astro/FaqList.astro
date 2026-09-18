@@ -1,0 +1,5 @@
+---
+import styles from "@/style/components/content.module.css";
+const { items } = Astro.props;
+---
+<div class={styles.faqList}>{items.map((item: { question: string; answer: string }) => <details><summary>{item.question}<span aria-hidden="true">＋</span></summary><p>{item.answer}</p></details>)}</div>

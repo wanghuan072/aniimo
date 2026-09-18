@@ -1,0 +1,8 @@
+---
+import RichText from "./RichText.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+import type { DossierChapter } from "@/data/editorial/guide-dossiers";
+type Props = { chapter: DossierChapter };
+const { chapter } = Astro.props;
+---
+{chapter.steps && <ol class={styles.steps}>{chapter.steps.map((step, index) => <li><b>{String(index + 1).padStart(2, "0")}</b><div><h3>{step.title}</h3><p><RichText text={step.body} /></p></div></li>)}</ol>}

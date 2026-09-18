@@ -1,0 +1,6 @@
+---
+import Link from "./Link.astro";
+import styles from "@/style/components/content.module.css";
+const { title = "Related guides", items } = Astro.props;
+---
+{items.length > 0 && <aside class={styles.guideCue} aria-label={title}><span>{title}</span><div>{items.map((item: { href: string; title: string; blurb?: string }) => <Link href={item.href}><b>{item.title}</b>{item.blurb ? <small>{item.blurb}</small> : null}</Link>)}</div></aside>}

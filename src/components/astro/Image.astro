@@ -1,0 +1,5 @@
+---
+const { src, alt = "", fill = false, width, height, sizes, priority, preload, fetchPriority, unoptimized: _unoptimized, ...attrs } = Astro.props;
+const style = fill ? "position:absolute;height:100%;width:100%;inset:0" : undefined;
+---
+<img src={src} alt={alt} width={width} height={height} sizes={sizes} loading={priority || preload ? "eager" : "lazy"} decoding="async" fetchpriority={fetchPriority || (priority ? "high" : undefined)} style={style} {...attrs} />

@@ -1,0 +1,43 @@
+---
+import Image from "@/components/astro/Image.astro";
+import Link from "@/components/astro/Link.astro";
+import { aniimo } from "@/lib/data";
+import { playerTeamTemplates } from "@/data/editorial/team-templates";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import GuideCue from "@/components/astro/GuideCue.astro";
+import { pageGuideCues } from "@/lib/guide-hub";
+import Icon from "@/components/astro/Icon.astro";
+import { elementMeta, roleLabels } from "@/config/site";
+import type { Aniimo } from "@/types/content";
+import styles from "@/style/page/tools.module.css";
+
+
+const recordsBySlug = new Map(aniimo.map((entry) => [entry.slug, entry]));
+---
+<>
+    <section class={styles.toolHeader}>
+      <div class="container">
+        <Breadcrumb items={[{ label: "Team Builder", href: "/team-builder" }, { label: "Player Templates" }]} />
+        <span class={styles.kicker}><Icon name="team" /> Player-made starting points</span>
+        <h1>Aniimo Player Team Templates</h1>
+        <p>Browse six four-Aniimo team shapes, then load one into Team Builder and change it around the activity you have in mind.</p>
+        <GuideCue title="How to read a template" items={pageGuideCues.templates} />
+      </div>
+    </section>
+    <section class={styles.toolContent}>
+      <div class="container">
+        <aside class={styles.templateDisclosure}><Icon name="spark" /><div><strong>These are player-made starting points, not fixed answers.</strong><p>Use the role and element coverage as a first draft, then swap a slot when your route, encounter or own roster asks for something different.</p></div></aside>
+        <div class={styles.playerTemplateList}>
+          {playerTeamTemplates.map((template) => {
+            const team = template.slugs.map((slug) => recordsBySlug.get(slug)).filter((entry): entry is Aniimo => Boolean(entry));
+            const elements = [...new Set(team.flatMap((entry) => entry.elements))];
+            return <article class={styles.playerTemplateCard}>
+              <div class={styles.playerTemplateRoster}><span>{template.useCase}</span><div>{team.map((entry) => <Link href={`/aniimo/${entry.slug}`} title={`Open ${entry.name}`} aria-label={`Open ${entry.name}`}><Image src={entry.image} alt="" fill sizes="72px" /></Link>)}</div></div>
+              <div class={styles.playerTemplateCopy}><h2>{template.name}</h2><p>{template.summary}</p><div class={styles.playerTemplateMembers}>{team.map((entry) => <Link href={`/aniimo/${entry.slug}`}>{entry.name}<small>{entry.roles.map((role) => roleLabels[role] || role).join(" / ")}</small></Link>)}</div></div>
+              <div class={styles.playerTemplateReasons}><strong>Why this shape</strong><ul>{template.notes.map((note) => <li>{note}</li>)}</ul><div>{elements.map((element) => <span style={{ "--template-element": elementMeta[element]?.color || "#4b89c4" } as any}>{elementMeta[element]?.symbol} {elementMeta[element]?.label}</span>)}</div><Link href={`/team-builder?team=${template.slugs.join(",")}`}>Use this team <Icon name="arrow" /></Link></div>
+            </article>;
+          })}
+        </div>
+      </div>
+    </section>
+  </>

@@ -1,0 +1,14 @@
+---
+import Image from "../Image.astro";
+import Copy from "./Copy.astro";
+import Artwork from "./Artwork.astro";
+import Ledger from "./Ledger.astro";
+import Note from "./Note.astro";
+import SectionLinks from "./SectionLinks.astro";
+import fieldStyles from "@/style/page/guide-field.module.css";
+import type { GuideFieldSection } from "@/data/editorial/guide-field-notes";
+type Props = { section: GuideFieldSection; after: string };
+const { section, after } = Astro.props;
+const toneClass = { route: fieldStyles.fieldRoute, records: fieldStyles.fieldRecords, matchup: fieldStyles.fieldMatchup, workbench: fieldStyles.fieldWorkbench };
+---
+<section id={section.id} class={`${fieldStyles.fieldSection} ${toneClass[section.tone]}`}><header><span>Example</span><h2>{section.title}</h2><p class={fieldStyles.exampleLead}>{section.label}. A worked example of “{after}”, not a new plan.</p></header>{section.scene && <figure class={fieldStyles.scene}><div><Image src={section.scene.src} alt={section.scene.alt} fill sizes="(max-width: 1024px) 100vw, 860px" /></div><figcaption>{section.scene.caption}<small>Official Aniimo gameplay media</small></figcaption></figure>}<div class={section.image ? fieldStyles.fieldLead : undefined}><div><Copy paragraphs={section.paragraphs} /></div><Artwork chapter={section} /></div><Ledger chapter={section} /><Note chapter={section} /><SectionLinks id={section.id} own={section.link} /></section>

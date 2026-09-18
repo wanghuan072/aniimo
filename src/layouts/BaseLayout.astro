@@ -1,0 +1,59 @@
+---
+import Header from "@/components/astro/Header.astro";
+import Footer from "@/components/astro/Footer.astro";
+import JsonLd from "@/components/astro/JsonLd.astro";
+import { siteConfig } from "@/config/site";
+import { websiteJsonLd } from "@/seo/schema";
+import type { TdkEntry } from "@/seo/tdk";
+import "@fontsource-variable/baloo-2/wght.css";
+import "@fontsource-variable/nunito-sans/wght.css";
+import "@fontsource-variable/oxanium/wght.css";
+import "@/style/globals.css";
+
+const { metadata } = Astro.props as { metadata: TdkEntry };
+const canonical = new URL(metadata.pathname, siteConfig.url).toString();
+const imagePath = metadata.image?.endsWith("/opengraph-image") ? `${metadata.image}.png` : metadata.image || "/images/og-image.png";
+const image = new URL(imagePath, siteConfig.url).toString();
+---
+<!doctype html>
+<html lang="en" data-scroll-behavior="smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{metadata.title}</title>
+    <meta name="description" content={metadata.description} />
+    <link rel="canonical" href={canonical} />
+    {metadata.noIndex && <meta name="robots" content="noindex,follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={metadata.title} />
+    <meta property="og:description" content={metadata.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metadata.title} />
+    <meta name="twitter:description" content={metadata.description} />
+    <meta name="twitter:image" content={image} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} />
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-frame"><Header /><main id="main-content" class="page-main"><slot /></main><Footer /></div>
+    <script>
+      window.setTimeout(() => {
+        if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-E01MQKVEZ4"]')) return;
+        const win = window as typeof window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
+        win.dataLayer = win.dataLayer || [];
+        win.gtag = (...args) => win.dataLayer!.push(args);
+        win.gtag('js', new Date());
+        win.gtag('config', 'G-E01MQKVEZ4');
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4';
+        document.head.appendChild(script);
+      }, 10000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [hatch, label, plan, unknowns] = dossier.chapters;
+const [records, map] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={hatch.id}><div class={styles.eggStrip}><Image src="/images/database/items/alpha-egg.webp" alt="" width={72} height={72} /><Image src="/images/database/items/elite-egg.webp" alt="" width={72} height={72} /><Image src="/images/database/items/beach-egg.webp" alt="" width={72} height={72} /></div><SectionHead chapter={hatch} /><Copy paragraphs={hatch.paragraphs} /><Steps chapter={hatch} /><ChapterLinks chapter={hatch} /></section>
+    <FieldSection section={records} after={hatch.title} />
+    <section id={label.id}><SectionHead chapter={label} /><Copy paragraphs={label.paragraphs} /><Ledger chapter={label} /><ChapterLinks chapter={label} /></section>
+    <section id={plan.id} class={styles.eggRoute}><SectionHead chapter={plan} /><Copy paragraphs={plan.paragraphs} /><Steps chapter={plan} /><ChapterLinks chapter={plan} /></section>
+    <FieldSection section={map} after={plan.title} />
+    <section id={unknowns.id} class={styles.unknownBlock}><SectionHead chapter={unknowns} /><Copy paragraphs={unknowns.paragraphs} /><Note chapter={unknowns} /><ChapterLinks chapter={unknowns} /></section>
+  </>

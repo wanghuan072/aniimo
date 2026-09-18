@@ -1,0 +1,20 @@
+---
+import Image from "./Image.astro";
+import Link from "./Link.astro";
+import Icon from "./Icon.astro";
+import { getGuideDossier } from "@/data/editorial/guide-dossiers";
+import { guideTopics } from "@/lib/guide-topics";
+import styles from "@/style/page/content.module.css";
+const { guide } = Astro.props;
+const dossier = getGuideDossier(guide.slug);
+const title = dossier?.title || guide.title;
+const excerpt = dossier?.deck || guide.excerpt;
+const readTime = dossier?.readTime || `${guide.readTime} read`;
+const coverImage = dossier?.heroImage || guide.coverImage;
+const coverAlt = dossier?.heroAlt || guide.coverAlt;
+const topic = guideTopics.find((item) => item.id === guide.topic);
+---
+<article class={`${styles.guideFeatureCard} ${guide.slug === "aniimo-beginners-guide" ? styles.guideFeatureCover : ""}`} data-guide-card data-topic={guide.topic}>
+  <Link href={`/guides/${guide.slug}`} class={styles.guideFeatureImage} aria-label={`Read ${title}`}><Image src={coverImage} alt={coverAlt} fill sizes="(max-width: 760px) 100vw, 33vw" /><span>{topic?.label || guide.category}</span></Link>
+  <div class={styles.guideFeatureBody}><div class={styles.guideFeatureMeta}><span>{readTime}</span><span>Updated {new Date(guide.updated).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span></div><h2><Link href={`/guides/${guide.slug}`}>{title}</Link></h2><p>{excerpt}</p><Link href={`/guides/${guide.slug}`} class={styles.guideFeatureLink}>Read guide <Icon name="arrow" /></Link></div>
+</article>

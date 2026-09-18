@@ -1,0 +1,70 @@
+---
+import AniimoCard from "./AniimoCard.astro";
+import Icon from "./Icon.astro";
+import { elementMeta, roleLabels } from "@/config/site";
+import styles from "@/style/components/explorer.module.css";
+const { entries } = Astro.props;
+const preferredElements = ["holy", "fire", "ice", "dark", "electric", "grass", "water", "rock", "wind"];
+const elements = preferredElements.filter((value) => entries.some((entry: any) => entry.elements.includes(value)));
+const roles = [...new Set(entries.flatMap((entry: any) => entry.roles))].sort() as string[];
+const stageOptions = [{ value: "all", label: "All", symbol: "✦" }, { value: "1", label: "Lumin", symbol: "●" }, { value: "2", label: "Gamma", symbol: "◆" }, { value: "3", label: "Nova", symbol: "✹" }, { value: "0", label: "Special", symbol: "◇" }];
+const roleSymbols: Record<string, string> = { dps: "⚔", heal: "✚", sup: "♥", break: "✊", regen: "◉", energy: "ϟ" };
+const sortOptions = [{ value: "number", label: "Official No." }, { value: "name", label: "A–Z" }, { value: "views", label: "Most Viewed" }];
+const countBy = (type: "element" | "role" | "stage", value: string) => entries.filter((entry: any) => type === "element" ? entry.elements.includes(value) : type === "role" ? entry.roles.includes(value) : entry.stage === Number(value)).length;
+---
+<div class={styles.explorer} data-aniimo-explorer>
+  <section class={styles.filterDeck} aria-label="Filter Aniimo">
+    <div class={styles.filterTopline}>
+      <label class={styles.searchField}><span class="sr-only">Search Aniimo</span><Icon name="search" /><input type="search" name="aniimo-search" data-search placeholder="Search Aniimo…" autocomplete="off" /></label>
+      <div class={styles.sortGroup} aria-label="Sort Aniimo"><span>Sort</span>{sortOptions.map((option) => <button type="button" data-filter="sort" data-value={option.value} aria-pressed={option.value === "number"} class={option.value === "number" ? styles.sortActive : ""}>{option.label}</button>)}</div>
+    </div>
+    <div class={styles.filterRows}>
+      <fieldset class={styles.filterGroup}><legend>Elements</legend><div><button type="button" data-filter="element" data-value="all" aria-pressed="true" class={styles.chipActive}><i class={styles.allIcon} aria-hidden="true">✦</i><span>All</span><small>{entries.length}</small></button>{elements.map((value) => { const meta = elementMeta[value]; return <button type="button" data-filter="element" data-value={value} aria-pressed="false" style={{ "--chip-color": meta?.color || "#4d83d9" }}><i aria-hidden="true">{meta?.symbol || "✦"}</i><span>{meta?.label || value}</span><small>{countBy("element", value)}</small></button>; })}</div></fieldset>
+      <fieldset class={styles.filterGroup}><legend>Roles</legend><div><button type="button" data-filter="role" data-value="all" aria-pressed="true" class={styles.chipActive}><i class={styles.roleIcon} aria-hidden="true">✦</i><span>All</span><small>{entries.length}</small></button>{roles.map((value) => <button type="button" data-filter="role" data-value={value} aria-pressed="false"><i class={styles.roleIcon} aria-hidden="true">{roleSymbols[value] || "◆"}</i><span>{roleLabels[value] || value}</span><small>{countBy("role", value)}</small></button>)}</div></fieldset>
+      <fieldset class={styles.filterGroup}><legend>Stage</legend><div>{stageOptions.map((option) => <button type="button" data-filter="stage" data-value={option.value} aria-pressed={option.value === "all"} class={option.value === "all" ? styles.chipActive : ""}><i class={styles.stageIcon} aria-hidden="true">{option.symbol}</i><span>{option.label}</span><small>{option.value === "all" ? entries.length : countBy("stage", option.value)}</small></button>)}</div></fieldset>
+    </div>
+  </section>
+  <div class={styles.results}>
+    <div class={styles.resultsTop}><div><span class={styles.resultCount} data-result-count>{entries.length}</span><p><strong>Matching Aniimo</strong><small>More records load as you scroll</small></p></div><div class={styles.resultActions}><button type="button" class={styles.resetButton} data-reset hidden>Reset Filters</button><button type="button" class={styles.viewActive} data-filter="view" data-value="grid" aria-label="Grid view" aria-pressed="true"><Icon name="grid" /></button><button type="button" data-filter="view" data-value="list" aria-label="List view" aria-pressed="false"><Icon name="list" /></button></div></div>
+    <div class={styles.cardGrid} data-card-container>{entries.map((entry: any) => <AniimoCard entry={entry} data-card data-name={entry.name.toLowerCase()} data-search-text={`${entry.name} ${entry.description} ${entry.elements.join(" ")} ${entry.roles.join(" ")}`.toLowerCase()} data-elements={entry.elements.join(" ")} data-roles={entry.roles.join(" ")} data-stage={entry.stage} data-number={entry.entryId} data-views={entry.viewCount || 0} />)}</div>
+    <div class={styles.empty} data-empty hidden><Icon name="search" /><h2>No Aniimo Matched</h2><p>Clear a filter or search by another name, element, or role.</p><button type="button" class="button-primary" data-reset>Reset Filters</button></div>
+    <div class={styles.loadMore} aria-live="polite" data-load-status><span data-showing>Showing {entries.length} of {entries.length} Aniimo</span></div>
+  </div>
+</div>
+<style is:global>[data-card][hidden],[data-empty][hidden],[data-reset][hidden]{display:none!important}</style>
+<script>
+  import styles from "@/style/components/explorer.module.css";
+  import cardStyles from "@/style/components/content.module.css";
+  const root = document.querySelector<HTMLElement>('[data-aniimo-explorer]');
+  if (root) {
+    const explorer = root;
+    const input = root.querySelector<HTMLInputElement>('[data-search]')!;
+    const container = root.querySelector<HTMLElement>('[data-card-container]')!;
+    const cards = [...container.querySelectorAll<HTMLElement>('[data-card]')];
+    const params = new URLSearchParams(location.search);
+    const defaults: Record<string, string> = { q: '', element: 'all', role: 'all', stage: 'all', sort: 'number', view: 'grid' };
+    const state: Record<string, string> = Object.fromEntries(Object.keys(defaults).map((key) => [key, params.get(key) || defaults[key]]));
+    state.view = state.view === 'list' ? 'list' : 'grid';
+    input.value = state.q;
+    function render() {
+      const needle = state.q.trim().toLowerCase();
+      const filtered = cards.filter((card) => (!needle || card.dataset.searchText?.includes(needle)) && (state.element === 'all' || card.dataset.elements?.split(' ').includes(state.element)) && (state.role === 'all' || card.dataset.roles?.split(' ').includes(state.role)) && (state.stage === 'all' || card.dataset.stage === state.stage));
+      filtered.sort((a,b) => state.sort === 'name' ? (a.dataset.name || '').localeCompare(b.dataset.name || '') : state.sort === 'views' ? Number(b.dataset.views) - Number(a.dataset.views) : (a.dataset.number || '').localeCompare(b.dataset.number || ''));
+      for (const card of filtered) container.appendChild(card);
+      for (const card of cards) { card.hidden = !filtered.includes(card); card.classList.toggle(cardStyles.listCard, state.view === 'list'); const desc = card.querySelector<HTMLElement>('[data-description]'); if (desc) desc.hidden = state.view !== 'list'; }
+      container.className = state.view === 'list' ? styles.cardList : styles.cardGrid;
+      explorer.querySelector<HTMLElement>('[data-result-count]')!.textContent = String(filtered.length);
+      explorer.querySelector<HTMLElement>('[data-showing]')!.textContent = `Showing ${filtered.length} of ${filtered.length} Aniimo`;
+      explorer.querySelector<HTMLElement>('[data-empty]')!.hidden = filtered.length !== 0;
+      explorer.querySelector<HTMLElement>('[data-load-status]')!.hidden = filtered.length === 0;
+      for (const button of explorer.querySelectorAll<HTMLButtonElement>('[data-filter]')) { const active = state[button.dataset.filter!] === button.dataset.value; button.setAttribute('aria-pressed', String(active)); button.classList.toggle(button.dataset.filter === 'sort' ? styles.sortActive : button.dataset.filter === 'view' ? styles.viewActive : styles.chipActive, active); }
+      const hasFilters = Object.keys(defaults).some((key) => key !== 'view' && state[key] !== defaults[key]);
+      explorer.querySelector<HTMLButtonElement>('[data-reset]')!.hidden = !hasFilters;
+    }
+    function update(key: string, value: string) { state[key] = value; if (key === 'q') input.value = value; const url = new URL(location.href); for (const name of Object.keys(defaults)) { if (state[name] === defaults[name]) url.searchParams.delete(name); else url.searchParams.set(name, state[name]); } history.replaceState(null, '', url); render(); }
+    input.addEventListener('input', () => update('q', input.value));
+    root.addEventListener('click', (event) => { const target = event.target as Element; const filter = target.closest<HTMLButtonElement>('[data-filter]'); if (filter) update(filter.dataset.filter!, filter.dataset.value!); if (target.closest('[data-reset]')) { for (const key of Object.keys(defaults)) state[key] = defaults[key]; update('q',''); } });
+    window.addEventListener('popstate', () => { const query = new URLSearchParams(location.search); for (const key of Object.keys(defaults)) state[key] = query.get(key) || defaults[key]; input.value = state.q; render(); });
+    render();
+  }
+</script>

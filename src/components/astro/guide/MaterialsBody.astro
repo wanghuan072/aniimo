@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [shortfall, route, boundary, inventory] = dossier.chapters;
+const [loops, ledger] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={shortfall.id}><p class={styles.shortfallRule}>{dossier.thesis}</p><SectionHead chapter={shortfall} /><Copy paragraphs={shortfall.paragraphs} /><ChapterLinks chapter={shortfall} /></section>
+    <FieldSection section={loops} after={shortfall.title} />
+    <section id={route.id} class={styles.routeBlock}><SectionHead chapter={route} /><Copy paragraphs={route.paragraphs} /><Steps chapter={route} /><ChapterLinks chapter={route} /></section>
+    <section id={boundary.id}><SectionHead chapter={boundary} /><Copy paragraphs={boundary.paragraphs} /><Ledger chapter={boundary} /><ChapterLinks chapter={boundary} /></section>
+    <FieldSection section={ledger} after={boundary.title} />
+    <section id={inventory.id} class={styles.storySplit}><Artwork chapter={inventory} /><div><SectionHead chapter={inventory} /><Copy paragraphs={inventory.paragraphs} /><ChapterLinks chapter={inventory} /></div></section>
+  </>

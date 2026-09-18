@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GuideDossierPage from "@/page/astro/GuideDossierPage.astro";
+import { getGuide, guides } from "@/lib/data";
+import { getGuideDossier } from "@/data/editorial/guide-dossiers";
+import { guideTdk } from "@/seo/tdk";
+export function getStaticPaths() {
+  return guides.map((guide) => ({ params: { slug: guide.slug } }));
+}
+const guide = getGuide(Astro.params.slug)!;
+const dossier = getGuideDossier(guide.slug)!;
+---
+<BaseLayout metadata={guideTdk(guide)}><GuideDossierPage guide={guide} dossier={dossier} /></BaseLayout>

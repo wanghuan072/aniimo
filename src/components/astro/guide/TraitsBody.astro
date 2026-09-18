@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [read, fit, mistakes, closing] = dossier.chapters;
+const [records, test] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={read.id}><SectionHead chapter={read} /><Copy paragraphs={read.paragraphs} /><Ledger chapter={read} /><ChapterLinks chapter={read} /></section>
+    <FieldSection section={records} after={read.title} />
+    <section id={fit.id} class={styles.storySplit}><Artwork chapter={fit} /><div><SectionHead chapter={fit} /><Copy paragraphs={fit.paragraphs} /><ChapterLinks chapter={fit} /></div></section>
+    <section id={mistakes.id} class={styles.auditBlock}><SectionHead chapter={mistakes} /><Copy paragraphs={mistakes.paragraphs} /><Steps chapter={mistakes} /><ChapterLinks chapter={mistakes} /></section>
+    <FieldSection section={test} after={mistakes.title} />
+    <section id={closing.id}><SectionHead chapter={closing} /><Copy paragraphs={closing.paragraphs} /><Note chapter={closing} /><ChapterLinks chapter={closing} /></section>
+  </>

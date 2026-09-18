@@ -1,0 +1,44 @@
+---
+import { aniimo } from "@/lib/data";
+import { pageGuideCues } from "@/lib/guide-hub";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import GuideCue from "@/components/astro/GuideCue.astro";
+import HeroPanel from "@/components/astro/HeroPanel.astro";
+import Image from "@/components/astro/Image.astro";
+import Link from "@/components/astro/Link.astro";
+import Icon from "@/components/astro/Icon.astro";
+import pageStyles from "@/style/page/tools.module.css";
+import styles from "@/style/components/tools.module.css";
+---
+<section class={pageStyles.toolHeader}><div class="container"><Breadcrumb items={[{ label: "Tools", href: "/tools" }, { label: "Collection Tracker" }]} /><h1>Aniimo Collection Tracker</h1><p>Mark the Aniimo you have found, filter what is still missing and keep a personal checklist for your next route.</p><HeroPanel label="Keep it simple" items={["Mark what you have found", "Filter the missing ones", "Turn the list into a route"]} /><GuideCue title="How to use the tracker" items={pageGuideCues.collection} /></div></section><section class={pageStyles.toolContent}><div class="container"><div class={pageStyles.appSpacing}><div class={styles.collectionApp} data-collection><div class={styles.collectionTop}><div><strong data-owned-count>0</strong><span>of {aniimo.length} collected</span><div><i data-owned-progress style="width:0%" /></div></div><label><Icon name="search" /><input data-collection-search placeholder="Search collection…" /></label><div>{["all", "owned", "missing"].map((mode) => <button type="button" data-collection-mode={mode} class={mode === "all" ? styles.modeActive : undefined}>{mode}</button>)}</div></div><div class={styles.collectionGrid}>{aniimo.map((entry) => <article data-collection-entry={entry.slug} data-name={entry.name.toLowerCase()}><button type="button" data-toggle-owned aria-label={`Add ${entry.name} to collection`}><span>＋</span></button><div><Image src={entry.image} alt="" fill sizes="130px" /></div><strong>{entry.name}</strong><small>NO. {entry.entryId}</small><Link href={`/aniimo/${entry.slug}`}>Details</Link></article>)}</div><p class={styles.collectionEmpty} data-collection-empty hidden>No collection entries match this view.</p></div></div></div></section>
+<style is:global>[data-collection-entry][hidden],[data-collection-empty][hidden]{display:none!important}</style>
+<script>
+  import styles from "@/style/components/tools.module.css";
+  const root = document.querySelector<HTMLElement>("[data-collection]");
+  if (root) {
+    const tracker = root;
+    const entries = [...root.querySelectorAll<HTMLElement>("[data-collection-entry]")];
+    const search = root.querySelector<HTMLInputElement>("[data-collection-search]")!;
+    let owned = new Set<string>();
+    try { owned = new Set(JSON.parse(localStorage.getItem("aniimo-collection") || "[]") as string[]); } catch { owned = new Set(); }
+    let mode = "all";
+    function render() {
+      let visible = 0;
+      for (const entry of entries) {
+        const selected = owned.has(entry.dataset.collectionEntry || "");
+        entry.hidden = !entry.dataset.name?.includes(search.value.trim().toLowerCase()) || (mode === "owned" && !selected) || (mode === "missing" && selected);
+        if (!entry.hidden) visible++;
+        entry.classList.toggle(styles.ownedCard, selected);
+        entry.querySelector("[data-toggle-owned] span")!.textContent = selected ? "✓" : "＋";
+        entry.querySelector("[data-toggle-owned]")!.setAttribute("aria-label", `${selected ? "Remove" : "Add"} ${entry.querySelector("strong")?.textContent} ${selected ? "from" : "to"} collection`);
+      }
+      tracker.querySelector<HTMLElement>("[data-owned-count]")!.textContent = String(owned.size);
+      tracker.querySelector<HTMLElement>("[data-owned-progress]")!.style.width = `${owned.size / entries.length * 100}%`;
+      tracker.querySelector<HTMLElement>("[data-collection-empty]")!.hidden = visible > 0;
+      tracker.querySelectorAll<HTMLButtonElement>("[data-collection-mode]").forEach((button) => button.classList.toggle(styles.modeActive, button.dataset.collectionMode === mode));
+    }
+    root.addEventListener("click", (event) => { const target = event.target as Element; const toggle = target.closest("[data-toggle-owned]"); const button = target.closest<HTMLButtonElement>("[data-collection-mode]"); if (toggle) { const slug = toggle.closest<HTMLElement>("[data-collection-entry]")?.dataset.collectionEntry; if (!slug) return; if (owned.has(slug)) owned.delete(slug); else owned.add(slug); localStorage.setItem("aniimo-collection", JSON.stringify([...owned])); render(); } else if (button) { mode = button.dataset.collectionMode || "all"; render(); } });
+    search.addEventListener("input", render);
+    render();
+  }
+</script>

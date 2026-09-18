@@ -1,0 +1,104 @@
+---
+import type { AniimoSpawnAtlas } from "@/lib/map-types";
+import Icon from "./Icon.astro";
+import Link from "./Link.astro";
+import detail from "@/style/page/detail.module.css";
+import styles from "@/style/components/spawn-map.module.css";
+import "leaflet/dist/leaflet.css";
+type Props = { name: string; atlases: AniimoSpawnAtlas[] };
+const { name, atlases } = Astro.props;
+const total = atlases.reduce((sum, entry) => sum + entry.count, 0);
+const times = [...new Set(atlases.flatMap((atlas) => atlas.points.map((point) => point.time).filter((value): value is string => Boolean(value))))].sort();
+---
+<section id="locations" class={detail.spawnSection} aria-label={`${name} field locations`} data-spawn-root>
+  <header><div><span class={detail.sectionEyebrow}>Field locations</span><h2>Where {name} Appears</h2></div><p data-spawn-intro>{total} published spawn{total === 1 ? "" : "s"} across {atlases.length === 1 ? atlases[0].atlasName : `${atlases.length} maps`}. Pins mark wild encounters; outlines are the named areas they sit in.</p></header>
+  {(atlases.length > 1 || times.length > 0) && <div class={detail.spawnFilters}>{atlases.length > 1 && <nav class={detail.spawnAtlases} aria-label="Spawn maps" data-spawn-atlas-nav>{atlases.map((entry, index) => <button type="button" data-spawn-atlas={entry.atlasId} aria-pressed={index === 0}>{entry.atlasName}<small>{entry.count}</small></button>)}</nav>}{times.length > 0 && <nav class={detail.spawnAtlases} aria-label="Time of day"><button type="button" data-spawn-time="all" aria-pressed="true">All hours</button>{times.map((value) => <button type="button" data-spawn-time={value} aria-pressed="false">{value === "day" ? "Day" : value === "night" ? "Night" : value}</button>)}</nav>}</div>}
+  <div class={detail.spawnLayout}><div class={styles.stage} style={{ background: atlases[0].backdrop }}><div data-spawn-map style="width:100%;height:100%"></div></div><aside class={detail.spawnAreas}><p data-spawn-summary></p><ul data-spawn-areas></ul><Link href={atlases[0].href} data-spawn-link>Open {atlases[0].atlasName} atlas <Icon name="arrow" /></Link></aside></div>
+  <script type="application/json" data-spawn-data set:html={JSON.stringify(atlases).replace(/</g, "\\u003c")} />
+</section>
+<script>
+  import type { AniimoSpawnArea, AniimoSpawnAtlas } from "@/lib/map-types";
+  import { regionColor } from "@/lib/map-runtime";
+  const root = document.querySelector<HTMLElement>("[data-spawn-root]");
+  if (root) {
+    const atlases = JSON.parse(root.querySelector<HTMLScriptElement>("[data-spawn-data]")?.textContent || "[]") as AniimoSpawnAtlas[];
+    const host = root.querySelector<HTMLElement>("[data-spawn-map]")!;
+    const areas = root.querySelector<HTMLElement>("[data-spawn-areas]")!;
+    const summary = root.querySelector<HTMLElement>("[data-spawn-summary]")!;
+    const intro = root.querySelector<HTMLElement>("[data-spawn-intro]")!;
+    const atlasNav = root.querySelector<HTMLElement>("[data-spawn-atlas-nav]");
+    const atlasLink = root.querySelector<HTMLAnchorElement>("[data-spawn-link]")!;
+    let atlasId = atlases[0]?.atlasId || "";
+    let time = "all";
+    let selectedArea = "";
+    let map: import("leaflet").Map | undefined;
+    const L = (await import("leaflet")).default;
+    (globalThis as typeof globalThis & { L: typeof L }).L = L;
+    await import("leaflet.markercluster");
+    const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" } as Record<string, string>)[char]);
+    const timeLabel = (value: string) => value === "day" ? "Day" : value === "night" ? "Night" : value;
+    function render() {
+      const filtered = atlases.map((entry) => ({ ...entry, points: entry.points.filter((point) => time === "all" || !point.time || point.time === time) }));
+      const visibleAtlases = filtered.filter((entry) => entry.points.length > 0);
+      const mapTabs = visibleAtlases.length ? visibleAtlases : filtered;
+      const atlas = mapTabs.find((entry) => entry.atlasId === atlasId) || mapTabs[0];
+      if (!atlas) return;
+      atlasId = atlas.atlasId;
+      const points = atlas.points;
+      const total = mapTabs.reduce((sum, entry) => sum + entry.points.length, 0);
+      intro.textContent = `${total} published spawn${total === 1 ? "" : "s"}${time === "all" ? "" : ` at ${timeLabel(time).toLowerCase()}`} across ${mapTabs.length === 1 ? atlas.atlasName : `${mapTabs.length} maps`}. Pins mark wild encounters; outlines are the named areas they sit in.`;
+      if (atlasNav) atlasNav.style.display = mapTabs.length > 1 ? "" : "none";
+      root!.querySelectorAll<HTMLButtonElement>("[data-spawn-atlas]").forEach((button) => {
+        const entry = mapTabs.find((item) => item.atlasId === button.dataset.spawnAtlas);
+        button.style.display = entry ? "" : "none";
+        button.querySelector("small")!.textContent = String(entry?.points.length || 0);
+        button.setAttribute("aria-pressed", String(button.dataset.spawnAtlas === atlasId));
+      });
+      const areaMap = new Map<string, AniimoSpawnArea>();
+      for (const point of points) {
+        const area = areaMap.get(point.area) || { name: point.area, count: 0, forms: [], times: [] };
+        area.count++;
+        if (point.form && !area.forms.includes(point.form)) area.forms.push(point.form);
+        if (point.time && !area.times.includes(point.time)) area.times.push(point.time);
+        areaMap.set(point.area, area);
+      }
+      const listedAreas = time === "all" ? atlas.areas : [...areaMap.values()].sort((left, right) => right.count - left.count || left.name.localeCompare(right.name));
+      areas.innerHTML = listedAreas.map((area) => {
+        const details = [...area.forms, ...area.times.map(timeLabel)];
+        return `<li><button type="button" data-area="${escapeHtml(area.name)}" aria-pressed="${area.name === selectedArea}"><strong>${escapeHtml(area.name.replace(/ \/ /g, " · "))}</strong><span>${area.count}</span>${details.length ? `<small>${escapeHtml(details.join(" · "))}</small>` : ""}</button></li>`;
+      }).join("");
+      summary.textContent = `${atlas.atlasName} · ${points.length} pin${points.length === 1 ? "" : "s"} · ${listedAreas.length} area${listedAreas.length === 1 ? "" : "s"}`;
+      atlasLink.href = atlas.href;
+      atlasLink.firstChild!.textContent = `Open ${atlas.atlasName} atlas `;
+      host.parentElement!.style.background = atlas.backdrop;
+      if (map) { map.remove(); host.replaceChildren(); }
+      const width = atlas.width, height = atlas.height;
+      const coords = (x: number, y: number): [number, number] => [-y * height, x * width];
+      map = L.map(host, { crs: L.CRS.Simple, minZoom: -3, maxZoom: 5, zoomSnap: .25, zoomControl: false, attributionControl: false });
+      L.control.zoom({ position: "bottomright" }).addTo(map);
+      L.tileLayer(atlas.tiles.template, { tileSize: atlas.tiles.tileSize, minZoom: -3, maxZoom: 5, minNativeZoom: 0, maxNativeZoom: 0, bounds: [[-height, 0], [0, width]], noWrap: true }).addTo(map);
+      for (const region of atlas.regions) if (region.poly.length) { const color = regionColor(region.lvlMin); L.polygon(region.poly.map(([x, y]) => coords(x, y)), { color, weight: 1.5, fillColor: color, fillOpacity: .1 }).bindTooltip(region.name).addTo(map); }
+      const group = L.markerClusterGroup({ chunkedLoading: true, showCoverageOnHover: false, maxClusterRadius: 36, iconCreateFunction: (cluster) => L.divIcon({ html: `<span class="spawn-cluster">${cluster.getChildCount()}</span>`, className: "", iconSize: [32, 32] }) });
+      const icon = L.divIcon({ className: "", html: `<span class="spawn-pin">${atlas.icon ? `<img src="${atlas.icon}" alt="" width="26" height="26">` : ""}</span>`, iconSize: [26, 26], iconAnchor: [13, 13] });
+      const visible = selectedArea ? points.filter((point) => point.area === selectedArea) : points;
+      for (const point of visible) group.addLayer(L.marker(coords(point.x, point.y), { icon, title: point.area, keyboard: true }).bindTooltip([point.area, point.form, point.time].filter(Boolean).join(" · ")));
+      group.addTo(map);
+      if (visible.length) map.fitBounds(L.latLngBounds(visible.map((point) => coords(point.x, point.y))).pad(.18), { maxZoom: selectedArea ? 3.25 : 2.25, padding: [18, 18] });
+      requestAnimationFrame(() => map?.invalidateSize());
+    }
+    root.addEventListener("click", (event) => {
+      const target = event.target as Element;
+      const atlasButton = target.closest<HTMLButtonElement>("[data-spawn-atlas]");
+      const timeButton = target.closest<HTMLButtonElement>("[data-spawn-time]");
+      const areaButton = target.closest<HTMLButtonElement>("[data-area]");
+      if (atlasButton) { atlasId = atlasButton.dataset.spawnAtlas || atlasId; selectedArea = ""; }
+      else if (timeButton) { time = timeButton.dataset.spawnTime || "all"; selectedArea = ""; }
+      else if (areaButton) selectedArea = selectedArea === areaButton.dataset.area ? "" : areaButton.dataset.area || "";
+      else return;
+      root.querySelectorAll<HTMLButtonElement>("[data-spawn-atlas]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.spawnAtlas === atlasId)));
+      root.querySelectorAll<HTMLButtonElement>("[data-spawn-time]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.spawnTime === time)));
+      render();
+    });
+    render();
+  }
+</script>

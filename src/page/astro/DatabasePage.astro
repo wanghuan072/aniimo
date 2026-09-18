@@ -1,0 +1,43 @@
+---
+import Image from "@/components/astro/Image.astro";
+import Link from "@/components/astro/Link.astro";
+import { alphaBossSlugs, omegaBosses } from "@/data/editorial/encounters";
+import { aniimo, communityDatabase, databaseCategories, habitats } from "@/lib/data";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import GuideCue from "@/components/astro/GuideCue.astro";
+import SectionHeading from "@/components/astro/SectionHeading.astro";
+import { pageGuideCues } from "@/lib/guide-hub";
+import HeroPanel from "@/components/astro/HeroPanel.astro";
+import Icon from "@/components/astro/Icon.astro";
+import styles from "@/style/page/content.module.css";
+
+
+const counts: Record<string, number | string> = {
+    skills: new Set(aniimo.flatMap((entry) => entry.skills.map((skill) => skill.name))).size,
+    traits: new Set(aniimo.flatMap((entry) => entry.traits.map((trait) => trait.name))).size,
+    elements: new Set(aniimo.flatMap((entry) => entry.elements)).size,
+    habitats: habitats.length,
+    evolutions: aniimo.filter((entry) => entry.evolution.length > 1).length,
+    mobility: new Set(aniimo.flatMap((entry) => entry.mobility.map((ability) => ability.name))).size,
+    items: communityDatabase.items?.length || 0,
+    materials: communityDatabase.materials?.length || 0,
+    bosses: alphaBossSlugs.length + omegaBosses.length,
+    achievements: communityDatabase.achievements?.length || 0,
+  };
+const categoryArt: Record<string, { src: string; alt: string; tone: string }> = {
+    skills: { src: "/images/database/skills/emberpup-1.png", alt: "Emberpup skill icon", tone: "blue" },
+    traits: { src: "/images/database/traits/emberpup-1.png", alt: "Emberpup trait icon", tone: "rose" },
+    elements: { src: "/images/aniimo/blazen.png", alt: "Blazen representing elements", tone: "gold" },
+    habitats: { src: "/images/maps/ilya-world-map.png", alt: "Map of Aniimo habitats", tone: "green" },
+    evolutions: { src: "/images/aniimo/flameruff.png", alt: "Flameruff evolution form", tone: "violet" },
+    mobility: { src: "/images/aniimo/turbo.png", alt: "Turbo representing mobility", tone: "blue" },
+    items: { src: "/images/database/items/a-new-journey.webp", alt: "Aniimo item collection", tone: "blue" },
+    materials: { src: "/images/aniimo/geoclaw.png", alt: "Geoclaw representing materials", tone: "earth" },
+    bosses: { src: "/images/aniimo/infergon.png", alt: "Infergon world boss", tone: "fire" },
+    achievements: { src: "/images/database/achievements/starbound-journey.webp", alt: "Starbound Journey achievement", tone: "violet" },
+  };
+---
+<>
+    <section class={styles.compactHero}><div class="container"><Breadcrumb items={[{ label: "Database" }]} /><span class={styles.kicker}><Icon name="database" /> Find what connects</span><h1>Aniimo Database — Skills, Items, Habitats &amp; More</h1><p>Look up an item, ability or place, then follow it back to the Aniimo and activities it connects to.</p><div class={styles.heroButtons}><Link href="/aniimo" class="button-primary">Browse Aniimo <Icon name="arrow" /></Link></div><HeroPanel label="Start with a question" items={["What can this skill do?", "Which Aniimo use this trait?", "Where does this evolution lead?"]} /></div></section>
+    <section class={styles.contentSection}><div class="container"><SectionHeading eyebrow="Explore by topic" title="Explore Aniimo Skills, Items & Habitats" description="Choose a collection, then move between the records that answer the next part of your question." /><GuideCue title="Related guides" items={pageGuideCues.database} /><div class={styles.databaseGrid}>{databaseCategories.map((category) => { const art = categoryArt[category.slug]; return <Link href={`/database/${category.slug}`} class={styles.databaseCard} data-tone={art.tone}><span class={styles.databaseArtwork}><Image src={art.src} alt={art.alt} fill sizes="(max-width: 680px) 122px, 150px" /></span><span class={styles.databaseCardBody}><span class={styles.status}>Explore</span><h2>{category.name}</h2><p>{category.description}</p><span class={styles.databaseCardFooter}><b>{counts[category.slug]} entries</b><em>Open <Icon name="arrow" /></em></span></span></Link>; })}</div><div class={styles.seoCopy}><div><span class={styles.kicker}>How to use it</span><h2>Find Connected Aniimo Game Data</h2><p>Looking for a teammate? Begin with roles and skills. Planning a route? Start with habitats, evolution paths or materials. Each page keeps related Aniimo close at hand.</p></div><aside><h2>At a glance</h2><p><strong>{aniimo.length}</strong> Aniimo</p><p><strong>{counts.skills}</strong> unique skills</p><p><strong>{counts.traits}</strong> traits</p><p><strong>{habitats.length}</strong> habitat areas</p></aside></div></div></section>
+  </>

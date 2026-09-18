@@ -1,0 +1,112 @@
+---
+import Link from "@/components/astro/Link.astro";
+import type { Guide } from "@/types/content";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import Icon from "@/components/astro/Icon.astro";
+import styles from "@/style/page/guide-shell.module.css";
+type TocItem = {
+  href: string;
+  label: string;
+};
+type RelatedGuide = {
+  href: string;
+  title: string;
+  description?: string;
+};
+type Props = {
+  guide: Guide;
+  title: string;
+  description: string;
+  kicker: string;
+  kickerIcon?: "book" | "item";
+  heroNote: string;
+  theme?: "sky" | "ember" | "violet" | "moss" | "gold" | "tide";
+  outline?: TocItem[];
+  toc: TocItem[];
+  tools?: Array<{ href: string; label: string }>;
+  relatedLabel?: string;
+  related: RelatedGuide[];
+  articleClassName?: string;
+  bodyClassName?: string;
+};
+const {
+  guide,
+  title,
+  description,
+  kicker,
+  kickerIcon = "book",
+  heroNote,
+  theme = "sky",
+  outline,
+  toc,
+  tools = [],
+  relatedLabel = "Open next",
+  related,
+  articleClassName,
+  bodyClassName,
+ } = Astro.props;
+const updated = new Date(guide.updated).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+const path = outline?.length ? outline : toc.slice(0, 4);
+---
+<article class={[styles.article, articleClassName].filter(Boolean).join(" ")} data-guide={guide.slug} data-theme={theme}>
+    <header class={styles.hero}>
+      <div class={`container ${styles.breadcrumbRow}`}>
+        <Breadcrumb items={[{ label: "Guides", href: "/guides" }, { label: title }]} />
+      </div>
+      <div class={`container ${styles.heroInner}`}>
+        <div class={styles.heroCopy}>
+          <span class={styles.kicker}><Icon name={kickerIcon} /> Player guide · {kicker}</span>
+          <h1>{title}</h1>
+          <p>{description}</p>
+          <div class={styles.metaRow}>
+            <small>By <Link href={guide.author.href}>{guide.author.label}</Link> · Updated <time datetime={guide.updated}>{updated}</time></small>
+            {path[0] ? <a class={styles.startLink} href={path[0].href}>Start with {path[0].label}<Icon name="arrow" /></a> : null}
+          </div>
+        </div>
+        <div class={styles.heroFieldCard}>
+          <div class={styles.heroVisual}><slot name="heroVisual" /></div>
+          <div class={styles.heroNote}><span>Field answer</span><p>{heroNote}</p></div>
+        </div>
+      </div>
+    </header>
+
+    <div class={`container ${styles.wrap}`}>
+      <main class={[styles.body, bodyClassName].filter(Boolean).join(" ")}>
+        {path.length > 0 ? (
+          <ol class={styles.outline} aria-label="How this guide is organized">
+            {path.map((item, index) => (
+              <li>
+                <a href={item.href}><b>{String(index + 1).padStart(2, "0")}</b>{item.label}</a>
+              </li>
+            ))}
+          </ol>
+        ) : null}
+        <slot />
+        <nav class={styles.related} aria-label="Continue with related pages">
+          <span>{relatedLabel}</span>
+          <div>
+            {related.map((item) => <Link href={item.href}>
+              <b>{item.title}</b>
+              {item.description ? <small>{item.description}</small> : null}
+              <Icon name="arrow" />
+            </Link>)}
+          </div>
+        </nav>
+      </main>
+
+      <aside class={styles.aside}>
+        <span>On this page</span>
+        {toc.map((item, index) => <a href={item.href}>{String(index + 1).padStart(2, "0")} · {item.label}</a>)}
+        {tools.length > 0 ? (
+          <div class={styles.asideTools}>
+            <span>Open a record</span>
+            {tools.map((item) => <Link href={item.href}>{item.label}</Link>)}
+          </div>
+        ) : null}
+      </aside>
+    </div>
+  </article>

@@ -5,7 +5,7 @@ export const siteConfig = {
   shortName: "ANIIMO",
   description:
     "An independent Aniimo companion with creature profiles, forms, skills, habitats, guides, maps, and practical planning tools for players.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://aniimo.cc",
+  url: import.meta.env.PUBLIC_SITE_URL || "https://aniimo.cc",
   author: "Frontline Pathfinder",
   contactEmail: "wyong@aniimo.cc",
   officialWiki: "https://wiki.aniimo.com/en",

@@ -1,0 +1,6 @@
+---
+import Image from "../Image.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+const { chapter } = Astro.props;
+---
+{chapter.image && <figure class={styles.artwork}><Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(max-width: 768px) 100vw, 310px" /><figcaption>{chapter.image.caption}</figcaption></figure>}

@@ -1,0 +1,18 @@
+---
+import type { AniimoEvolutionView } from "@/types/content";
+import Link from "./Link.astro";
+import Image from "./Image.astro";
+import styles from "@/style/page/detail.module.css";
+type Props = { node: AniimoEvolutionView; currentName: string };
+const { node, currentName } = Astro.props;
+const current = node.name === currentName;
+const portrait = node.portrait || node.imageUrl;
+const stageLabel = (stage: number) => stage === 1 ? "Lumin" : stage === 2 ? "Gamma" : stage === 3 ? "Nova" : "Special";
+const className = `${styles.evoCard} ${current ? styles.evoCurrent : ""}`;
+---
+<div class={styles.evoLane}>
+  {node.slug ? <Link href={`/aniimo/${node.slug}`} class={className} aria-current={current ? "page" : undefined} aria-label={`${node.name}, ${stageLabel(node.stage)}${current ? ", this profile" : ""}`}><span class={styles.evoMedal}>{portrait && <Image src={portrait} alt="" fill sizes="88px" />}</span><strong>{node.name}</strong><small data-stage={node.stage}>{stageLabel(node.stage)}</small>{current && <em>This profile</em>}</Link> : <div class={className}><span class={styles.evoMedal}>{portrait && <Image src={portrait} alt="" fill sizes="88px" />}</span><strong>{node.name}</strong><small data-stage={node.stage}>{stageLabel(node.stage)}</small>{current && <em>This profile</em>}</div>}
+  {node.children.length > 0 && <span class={styles.evoRail} aria-hidden="true" />}
+  {node.children.length === 1 && <Astro.self node={node.children[0]} currentName={currentName} />}
+  {node.children.length > 1 && <div class={styles.evoFork} data-count={node.children.length}>{node.children.map((child) => <Astro.self node={child} currentName={currentName} />)}</div>}
+</div>

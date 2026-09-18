@@ -1,0 +1,5 @@
+---
+import SectionLinks from "./SectionLinks.astro";
+const { chapter } = Astro.props;
+---
+<SectionLinks id={chapter.id} own={chapter.link} />

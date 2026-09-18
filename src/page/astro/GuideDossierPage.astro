@@ -1,0 +1,66 @@
+---
+import Image from "@/components/astro/Image.astro";
+import JsonLd from "@/components/astro/JsonLd.astro";
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/seo/schema";
+import { catchingFaq } from "@/data/editorial/catching-faq";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import { getGuideConnections } from "@/lib/guide-hub";
+import { siteConfig } from "@/config/site";
+import GuideArticleShell from "./GuideArticleShell.astro";
+import CatchingGuideContent from "./CatchingGuideContent.astro";
+import BeginnerBody from "@/components/astro/guide/BeginnerBody.astro";
+import EvolutionBody from "@/components/astro/guide/EvolutionBody.astro";
+import CombatBody from "@/components/astro/guide/CombatBody.astro";
+import ElementsBody from "@/components/astro/guide/ElementsBody.astro";
+import TraitsBody from "@/components/astro/guide/TraitsBody.astro";
+import MaterialsBody from "@/components/astro/guide/MaterialsBody.astro";
+import EggsBody from "@/components/astro/guide/EggsBody.astro";
+import CollectionBody from "@/components/astro/guide/CollectionBody.astro";
+import GuideFaq from "@/components/astro/guide/GuideFaq.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+import contentStyles from "@/style/page/content.module.css";
+import type { Guide } from "@/types/content";
+import type { GuideDossier } from "@/data/editorial/guide-dossiers";
+
+type Props = { guide: Guide; dossier: GuideDossier };
+const { guide, dossier } = Astro.props;
+const guideUrl = new URL(`/guides/${guide.slug}`, siteConfig.url).toString();
+const isCatchingGuide = dossier.slug === "aniimo-catching-guide";
+const fieldSections = getGuideFieldNotes(dossier.slug);
+const connections = getGuideConnections(dossier.slug);
+const tocChapters = (() => {
+  if (!fieldSections.length) return dossier.chapters;
+  const [opening, second, third, last] = dossier.chapters;
+  const [firstExample, secondExample] = fieldSections;
+  if (dossier.slug === "aniimo-beginners-guide") return [opening, firstExample, second, third, last, secondExample];
+  if (dossier.slug === "aniimo-forms-and-evolution") return [opening, firstExample, second, secondExample, third, last];
+  return [opening, firstExample, second, third, secondExample, last];
+})();
+const schemas = [
+  articleJsonLd({ title: dossier.title, description: dossier.deck, url: guideUrl, image: new URL(`/guides/${guide.slug}/opengraph-image.png`, siteConfig.url).toString(), datePublished: guide.published, dateModified: guide.updated, author: { name: guide.author.label, url: new URL(guide.author.href, siteConfig.url).toString() } }),
+  breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Guides", href: "/guides" }, { name: dossier.title, href: `/guides/${guide.slug}` }], siteConfig.url),
+  ...(isCatchingGuide ? [faqJsonLd(catchingFaq)] : dossier.faq.length ? [faqJsonLd(dossier.faq)] : []),
+];
+const toc = [
+  ...tocChapters.map((chapter) => ({ href: `#${chapter.id}`, label: fieldSections.some((section) => section.id === chapter.id) ? `Example: ${chapter.title}` : chapter.title })),
+  ...(!isCatchingGuide && dossier.faq.length ? [{ href: "#questions", label: "Quick answers" }] : []),
+];
+const bodies = {
+  "aniimo-catching-guide": CatchingGuideContent,
+  "aniimo-beginners-guide": BeginnerBody,
+  "aniimo-forms-and-evolution": EvolutionBody,
+  "aniimo-combat-guide": CombatBody,
+  "aniimo-elements-guide": ElementsBody,
+  "aniimo-traits-guide": TraitsBody,
+  "aniimo-materials-guide": MaterialsBody,
+  "aniimo-eggs-guide": EggsBody,
+  "aniimo-collection-guide": CollectionBody,
+};
+const Body = bodies[dossier.slug as keyof typeof bodies];
+---
+<JsonLd data={schemas} />
+<GuideArticleShell guide={guide} title={dossier.title} description={dossier.deck} kicker={`${dossier.category} · ${dossier.readTime}`} heroNote={dossier.thesis} theme={dossier.theme} outline={connections?.outline} toc={toc} tools={connections?.tools} related={connections?.related || []} articleClassName={`${styles.guideArticle} ${isCatchingGuide ? contentStyles.catchingArticle : ""}`} bodyClassName={`${styles.guideBody} ${isCatchingGuide ? contentStyles.catchingBody : ""}`}>
+  <Image slot="heroVisual" class={styles.guideHeroImage} src={dossier.heroImage} alt={dossier.heroAlt} fill priority sizes="(max-width: 1024px) 100vw, 430px" />
+  {Body && <Body dossier={dossier} />}
+  {!isCatchingGuide && <GuideFaq items={dossier.faq} />}
+</GuideArticleShell>

@@ -3,32 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check --minimumSeverity warning",
+    "test:smoke": "node scripts/smoke-astro.mjs",
+    "lint": "eslint src scripts --ext .ts,.mjs",
+    "typecheck": "astro check --minimumSeverity warning",
     "sync:data": "node scripts/sync-official-data.mjs",
     "sync:map": "node scripts/sync-aniimoverse-map.mjs",
     "sync:skills": "node scripts/sync-skill-extras.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/baloo-2": "^5.3.0",
+    "@fontsource-variable/nunito-sans": "^5.3.0",
+    "@fontsource-variable/oxanium": "^5.3.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "next": "16.3.3",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
     "@types/leaflet": "^1.9.22",
     "@types/leaflet.markercluster": "^1.5.6",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "astro": "^7.3.3",
     "eslint": "^9",
-    "eslint-config-next": "16.3.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "eslint-plugin-astro": "^1.5.0",
+    "typescript": "^5",
+    "typescript-eslint": "^8.0.0"
   }
 }

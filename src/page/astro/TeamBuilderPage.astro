@@ -1,0 +1,76 @@
+---
+import { aniimo } from "@/lib/data";
+import { elementMeta, roleLabels } from "@/config/site";
+import { pageGuideCues } from "@/lib/guide-hub";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import HeroPanel from "@/components/astro/HeroPanel.astro";
+import GuideCue from "@/components/astro/GuideCue.astro";
+import Link from "@/components/astro/Link.astro";
+import Image from "@/components/astro/Image.astro";
+import Icon from "@/components/astro/Icon.astro";
+import pageStyles from "@/style/page/tools.module.css";
+import styles from "@/style/components/tools.module.css";
+const elements = [...new Set(aniimo.flatMap((entry) => entry.elements))].sort();
+const clientData = aniimo.map((entry) => ({ slug: entry.slug, name: entry.name, image: entry.voteImage || entry.image, elements: entry.elements, roles: entry.roles, stats: entry.stats ? { hp: entry.stats.hp, physicalAttack: entry.stats.physicalAttack, magicAttack: entry.stats.magicAttack, physicalDefense: entry.stats.physicalDefense, magicDefense: entry.stats.magicDefense } : null }));
+---
+<section class={pageStyles.toolHeader}><div class="container"><Breadcrumb items={[{ label: "Team Builder" }]} /><span class={pageStyles.kicker}><Icon name="team" /> Team planning</span><h1>Aniimo Team Builder — Build Your Four-Aniimo Team</h1><p>Choose a party, adjust the order, then use role, element and base-field coverage to decide what to try next.</p><HeroPanel label="Build in four slots" items={["Choose a first Aniimo", "Fill the jobs you are missing", "Review each member's base fields"]} /><GuideCue title="Guides for building a team" items={pageGuideCues.team} /></div></section>
+<section class={pageStyles.toolContent}><div class="container"><div class={pageStyles.appSpacing}><div class={styles.teamBuilder} data-team-builder><div class={styles.teamBuilderMain}><section class={styles.teamDeck} aria-label="Your team"><header class={styles.teamDeckHeader}><div><span>Your four-slot party</span><h2>Build Your Four-Aniimo Team</h2></div><div class={styles.deckActions}><Link href="/team-builder/templates">Player templates</Link><button type="button" data-team-clear disabled>Clear</button><button type="button" data-team-share disabled><Icon name="share" /> Share team</button></div></header><div class={styles.teamSlotsGrid} data-team-slots>{[0, 1, 2, 3].map((index) => <article class={`${styles.builderSlot} ${index === 0 ? styles.builderSlotActive : ""} ${styles.builderSlotEmpty}`} data-slot={index} draggable="false"><button type="button" class={styles.slotSelect} data-select-slot={index} aria-label={`Select slot ${index + 1}`}><span>Slot {index + 1}</span>{index === 0 && <b>Picking</b>}</button><div class={styles.slotEmptyCopy}><span>+</span><p>Select an Aniimo below</p></div></article>)}</div><p class={styles.shareFeedback} data-team-feedback hidden></p></section>
+<section class={styles.teamRoster} aria-label="Aniimo roster"><header class={styles.teamRosterHeader}><div><span>Choose an Aniimo</span><h2>Choose Aniimo for Your Team</h2></div><label><span>Search the index</span><input data-team-search placeholder="Search Aniimo…" /></label></header><nav class={styles.teamFilters} aria-label="Filter Aniimo by element"><button type="button" data-team-element="all" class={styles.teamFilterActive}>All elements</button>{elements.map((value) => <button type="button" data-team-element={value} style={{ "--team-element": elementMeta[value]?.color || "#4b89c4" }}>{elementMeta[value]?.symbol} {elementMeta[value]?.label}</button>)}</nav><div class={styles.aniimoPickerGrid}>{clientData.map((entry) => <article data-team-picker={entry.slug} data-name={entry.name.toLowerCase()} data-elements={entry.elements.join(" ")} draggable="true"><button type="button" data-choose={entry.slug} title={`Use ${entry.name} in the selected slot`}><span><Image src={entry.image} alt="" fill sizes="104px" /></span><strong>{entry.name}</strong><small>{entry.elements.map((value) => elementMeta[value]?.label || value).join(" / ")}</small></button><Link href={`/aniimo/${entry.slug}`} aria-label={`Open ${entry.name} record`}>↗</Link></article>)}</div></section></div>
+<aside class={styles.teamReview} aria-label="Team analysis" data-team-review><header><span>Live team readout</span><h2 data-team-review-title>Choose Your First Aniimo</h2><p data-team-review-lead>Pick from the roster or apply a team template to begin.</p></header><section class={styles.reviewSection}><h3>Elements</h3><div data-team-elements><small>Element coverage appears here.</small></div></section><section class={styles.reviewSection}><h3>Roles</h3><div data-team-roles><small>Role coverage appears here.</small></div></section><div data-team-gaps></div></aside>
+<script type="application/json" data-team-data set:html={JSON.stringify({ entries: clientData, elements: elementMeta, roles: roleLabels }).replace(/</g, "\\u003c")} />
+</div></div></div></section>
+<style is:global>[data-team-picker][hidden],[data-team-feedback][hidden]{display:none!important}</style>
+<script>
+  import styles from "@/style/components/tools.module.css";
+  import reviewStyles from "@/style/components/team-review.module.css";
+  const root = document.querySelector<HTMLElement>("[data-team-builder]");
+  if (root) {
+    const app = root;
+    type Entry = { slug: string; name: string; image: string; elements: string[]; roles: string[]; stats: { hp: number; physicalAttack: number; magicAttack: number; physicalDefense: number; magicDefense: number } | null };
+    const data = JSON.parse(app.querySelector<HTMLScriptElement>("[data-team-data]")?.textContent || "{}") as { entries: Entry[]; elements: Record<string, { symbol: string; label: string; color: string }>; roles: Record<string, string> };
+    const index = new Map(data.entries.map((entry) => [entry.slug, entry]));
+    const params = new URLSearchParams(location.search);
+    let slots = [...new Set((params.get("team") || "").split(",").filter((slug) => index.has(slug)))].slice(0, 4);
+    let active = Math.min(slots.length, 3), element = "all", dragged = -1;
+    const search = app.querySelector<HTMLInputElement>("[data-team-search]")!;
+    const slotHost = app.querySelector<HTMLElement>("[data-team-slots]")!;
+    const escape = (value: string) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" } as Record<string, string>)[char]);
+    function commit(next: string[]) { slots = [...new Set(next.filter((slug) => index.has(slug)))].slice(0, 4); const url = new URL(location.href); if (slots.length) url.searchParams.set("team", slots.join(",")); else url.searchParams.delete("team"); history.replaceState(null, "", url); render(); }
+    function render() {
+      const team = slots.map((slug) => index.get(slug)!);
+      slotHost.innerHTML = [0, 1, 2, 3].map((slot) => { const entry = team[slot]; return `<article data-slot="${slot}" draggable="${!!entry}" class="${styles.builderSlot} ${active === slot ? styles.builderSlotActive : ""} ${entry ? "" : styles.builderSlotEmpty}"><button type="button" data-select-slot="${slot}" class="${styles.slotSelect}" aria-label="Select slot ${slot + 1}"><span>Slot ${slot + 1}</span>${active === slot ? "<b>Picking</b>" : ""}</button>${entry ? `<div class="${styles.slotArtwork}"><img src="${escape(entry.image)}" alt="" loading="lazy"></div><div class="${styles.slotIdentity}"><div><h3>${escape(entry.name)}</h3><p>${entry.roles.map((role) => escape(data.roles[role] || role)).join(" / ")}</p></div><button type="button" data-remove-slot="${slot}" aria-label="Remove ${escape(entry.name)}">×</button></div><a href="/aniimo/${escape(entry.slug)}" class="${styles.slotProfile}">View record →</a>` : `<div class="${styles.slotEmptyCopy}"><span>+</span><p>Select an Aniimo below</p></div>`}</article>`; }).join("");
+      app.querySelector<HTMLButtonElement>("[data-team-clear]")!.disabled = !slots.length;
+      app.querySelector<HTMLButtonElement>("[data-team-share]")!.disabled = !slots.length;
+      app.querySelectorAll<HTMLElement>("[data-team-picker]").forEach((card) => { card.hidden = !card.dataset.name?.includes(search.value.trim().toLowerCase()) || (element !== "all" && !card.dataset.elements?.split(" ").includes(element)); card.classList.toggle(styles.pickerSelected, slots.includes(card.dataset.teamPicker || "")); });
+      app.querySelectorAll<HTMLButtonElement>("[data-team-element]").forEach((button) => button.classList.toggle(styles.teamFilterActive, button.dataset.teamElement === element));
+      app.querySelector<HTMLElement>("[data-team-review-title]")!.textContent = team.length ? "Team Role and Element Coverage" : "Choose Your First Aniimo";
+      app.querySelector<HTMLElement>("[data-team-review-lead]")!.textContent = team.length ? "The readout changes as you select, replace, or reorder the party." : "Pick from the roster or apply a team template to begin.";
+      const allElements = [...new Set(team.flatMap((entry) => entry.elements))], roles = [...new Set(team.flatMap((entry) => entry.roles))];
+      app.querySelector<HTMLElement>("[data-team-elements]")!.innerHTML = allElements.length ? allElements.map((value) => `<span style="--tag:${escape(data.elements[value]?.color || "#4b89c4")}">${escape(data.elements[value]?.symbol || "")} ${escape(data.elements[value]?.label || value)}</span>`).join("") : "<small>Element coverage appears here.</small>";
+      app.querySelector<HTMLElement>("[data-team-roles]")!.innerHTML = roles.length ? roles.map((role) => `<span>${escape(data.roles[role] || role)}</span>`).join("") : "<small>Role coverage appears here.</small>";
+      const missing: string[] = [];
+      if (team.length && !roles.includes("dps")) missing.push("Add a DPS-labelled Aniimo");
+      if (team.length && !["heal", "regen", "sup", "energy"].some((role) => roles.includes(role))) missing.push("Consider sustain or support");
+      if (team.length && !roles.includes("break")) missing.push("Consider a BREAK-labelled Aniimo");
+      if (team.length > 1 && allElements.length < 3) missing.push("Element coverage is narrow");
+      app.querySelector<HTMLElement>("[data-team-gaps]")!.innerHTML = missing.length ? `<section class="${styles.reviewGaps}"><h3>Consider next</h3>${missing.map((item) => `<p><span>!</span>${item}</p>`).join("")}</section>` : "";
+      const existing = app.querySelector(`.${reviewStyles.reviewRoster}`); existing?.remove();
+      if (team.length) app.querySelector("[data-team-review] header")!.insertAdjacentHTML("afterend", `<section class="${reviewStyles.reviewRoster}"><h3>Selected Aniimo</h3>${team.map((entry) => `<a href="/aniimo/${escape(entry.slug)}" class="${reviewStyles.reviewMember}"><span><img src="${escape(entry.image)}" alt="" loading="lazy"></span><div><strong>${escape(entry.name)}</strong><small>${entry.roles.map((role) => escape(data.roles[role] || role)).join(" / ")}</small></div>${entry.stats ? `<em><b>HP ${entry.stats.hp}</b><b>ATK ${Math.max(entry.stats.physicalAttack, entry.stats.magicAttack)}</b><b>DEF ${Math.round((entry.stats.physicalDefense + entry.stats.magicDefense) / 2)}</b></em>` : "<i>Stats not listed</i>"}</a>`).join("")}</section>`);
+    }
+    app.addEventListener("click", async (event) => {
+      const target = event.target as Element;
+      const choose = target.closest<HTMLButtonElement>("[data-choose]"); const select = target.closest<HTMLButtonElement>("[data-select-slot]"); const remove = target.closest<HTMLButtonElement>("[data-remove-slot]"); const filter = target.closest<HTMLButtonElement>("[data-team-element]");
+      if (choose) { const slug = choose.dataset.choose!; const existing = slots.indexOf(slug); if (existing >= 0) active = existing; else { const next = [...slots]; if (next.length < 4) { next.push(slug); active = next.length - 1; } else next[active] = slug; commit(next); } render(); }
+      else if (select) { active = Number(select.dataset.selectSlot); render(); }
+      else if (remove) { const slot = Number(remove.dataset.removeSlot); commit(slots.filter((_, i) => i !== slot)); active = Math.max(0, Math.min(slot, slots.length)); render(); }
+      else if (filter) { element = filter.dataset.teamElement || "all"; render(); }
+      else if (target.closest("[data-team-clear]")) commit([]);
+      else if (target.closest("[data-team-share]")) { const feedback = app.querySelector<HTMLElement>("[data-team-feedback]")!; try { await navigator.clipboard.writeText(location.href); feedback.textContent = "Link copied"; } catch { feedback.textContent = "Copy the page URL to share this team"; } feedback.hidden = false; setTimeout(() => feedback.hidden = true, 2400); }
+    });
+    app.addEventListener("dragstart", (event) => { const target = event.target as HTMLElement; const picker = target.closest<HTMLElement>("[data-team-picker]"); const slot = target.closest<HTMLElement>("[data-slot]"); if (picker) event.dataTransfer?.setData("application/x-aniimo-slug", picker.dataset.teamPicker || ""); else if (slot) dragged = Number(slot.dataset.slot); });
+    app.addEventListener("dragover", (event) => { if ((event.target as Element).closest("[data-slot]")) event.preventDefault(); });
+    app.addEventListener("drop", (event) => { const slot = (event.target as Element).closest<HTMLElement>("[data-slot]"); if (!slot) return; event.preventDefault(); const to = Number(slot.dataset.slot); const slug = event.dataTransfer?.getData("application/x-aniimo-slug"); if (slug && index.has(slug)) { if (!slots.includes(slug)) { const next = [...slots]; if (to >= next.length) next.push(slug); else next[to] = slug; commit(next); } } else if (dragged >= 0 && slots[to] && slots[dragged]) { const next = [...slots]; [next[dragged], next[to]] = [next[to], next[dragged]]; commit(next); } active = to; dragged = -1; render(); });
+    search.addEventListener("input", render);
+    render();
+  }
+</script>

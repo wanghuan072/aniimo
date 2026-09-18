@@ -1,0 +1,75 @@
+---
+import { navigation } from "@/config/site";
+import styles from "@/style/components/layout.module.css";
+import Brand from "./Brand.astro";
+import Icon from "./Icon.astro";
+const pathname = Astro.url.pathname;
+---
+<header class={styles.header} data-site-header>
+  <div class={`container ${styles.headerInner}`}>
+    <Brand compact />
+    <nav class={styles.desktopNav} aria-label="Primary navigation">
+      {navigation.map((item) => <div class={styles.navItem} data-nav-item>
+        <a href={item.href} class={item.href === "/" ? pathname === "/" ? styles.active : "" : pathname.startsWith(item.href) ? styles.active : ""} aria-expanded={item.children ? "false" : undefined}>{item.label}{item.children && <Icon name="chevron" />}</a>
+        {item.children && <div class={`${styles.dropdown} ${item.children.length > 6 ? styles.megaDropdown : ""}`} data-dropdown>{item.children.map((child) => <a href={child.href}>{child.label}<Icon name="arrow" /></a>)}</div>}
+      </div>)}
+    </nav>
+    <div class={styles.headerActions}>
+      <button class={styles.searchButton} type="button" data-open-search><Icon name="search" /><span>Search</span><kbd>/</kbd></button>
+      <button class={styles.menuButton} type="button" aria-expanded="false" aria-label="Toggle navigation" data-toggle-menu><Icon name="menu" /></button>
+    </div>
+  </div>
+  <nav class={styles.mobileNav} aria-label="Mobile navigation" data-mobile-nav hidden>
+    {navigation.map((item) => <div class={styles.mobileGroup}><a href={item.href}>{item.label}<Icon name="arrow" /></a>{item.children && <div>{item.children.map((child) => <a href={child.href}>{child.label}</a>)}</div>}</div>)}
+  </nav>
+</header>
+<div class={styles.searchOverlay} role="dialog" aria-modal="true" aria-label="Site search" data-search-overlay hidden>
+  <div class={styles.searchPanel}>
+    <div class={styles.searchInputWrap}><Icon name="search" /><input data-search-input placeholder="Search Aniimo, skills, items or habitats…" aria-label="Search" /><button type="button" data-close-search aria-label="Close search"><Icon name="close" /></button></div>
+    <div class={styles.searchCaption}><span data-search-caption>Popular destinations</span><span>Press Esc to close</span></div>
+    <div class={styles.searchResults} data-search-results></div>
+  </div>
+</div>
+<style is:global>[data-mobile-nav][hidden],[data-search-overlay][hidden]{display:none!important}</style>
+<script>
+  import styles from "@/style/components/layout.module.css";
+  import type { SearchRecord } from "@/types/content";
+  let records: SearchRecord[] = [];
+  let loaded = false;
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const overlay = document.querySelector<HTMLElement>('[data-search-overlay]');
+  const mobile = document.querySelector<HTMLElement>('[data-mobile-nav]');
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-toggle-menu]');
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]');
+  const results = document.querySelector<HTMLElement>('[data-search-results]');
+  const caption = document.querySelector<HTMLElement>('[data-search-caption]');
+  const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'} as Record<string, string>)[character]);
+  if (header && overlay && mobile && menuButton && input && results && caption) {
+  const searchOverlay = overlay;
+  const searchInput = input;
+  const searchResults = results;
+  const searchCaption = caption;
+  function updateResults() {
+    const needle = searchInput.value.trim().toLowerCase();
+    const matches = (needle ? records.filter((record) => `${record.title} ${record.subtitle} ${record.type}`.toLowerCase().includes(needle)) : records).slice(0, needle ? 10 : 8);
+    searchCaption.textContent = needle ? `${matches.length} best matches` : 'Popular destinations';
+    searchResults.innerHTML = matches.length ? matches.map((record) => `<a href="${escapeHtml(record.href)}"><span class="${record.image ? styles.searchThumb : styles.searchThumbFallback}">${record.image ? `<img src="${escapeHtml(record.image)}" alt="" width="48" height="48" loading="lazy">` : '✦'}</span><span><strong>${escapeHtml(record.title)}</strong><small>${escapeHtml(record.subtitle)}</small></span><em>${escapeHtml(record.type)}</em></a>`).join('') : `<p class="${styles.emptySearch}">No match yet. Try a creature, skill, item or habitat name.</p>`;
+  }
+  async function openSearch() { searchOverlay.hidden = false; searchInput.focus(); if (!loaded) { const mod = await import('@/lib/search-index'); records = mod.searchRecords; loaded = true; } updateResults(); }
+  function closeSearch() { searchOverlay.hidden = true; }
+  document.querySelector('[data-open-search]')?.addEventListener('click', openSearch);
+  document.querySelector('[data-close-search]')?.addEventListener('click', closeSearch);
+  overlay?.addEventListener('mousedown', (event) => { if (event.target === overlay) closeSearch(); });
+  input?.addEventListener('input', updateResults);
+  window.addEventListener('keydown', (event) => { if (event.key === '/' && overlay.hidden && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName || '')) { event.preventDefault(); openSearch(); } if (event.key === 'Escape') closeSearch(); });
+  menuButton.addEventListener('click', () => { mobile.hidden = !mobile.hidden; menuButton.setAttribute('aria-expanded', String(!mobile.hidden)); });
+  mobile.addEventListener('click', (event) => { if (event.target instanceof Element && event.target.closest('a')) { mobile.hidden = true; menuButton.setAttribute('aria-expanded','false'); } });
+  header.querySelectorAll('[data-nav-item]').forEach((item) => {
+    const dropdown = item.querySelector('[data-dropdown]'); if (!dropdown) return;
+    const toggle = (open: boolean) => { dropdown.classList.toggle('dropdown-open',open); item.querySelector('a')?.setAttribute('aria-expanded',String(open)); };
+    item.addEventListener('mouseenter', () => toggle(true)); item.addEventListener('mouseleave', () => toggle(false));
+    item.addEventListener('focusin', () => toggle(true)); item.addEventListener('focusout', (event) => { const next = (event as FocusEvent).relatedTarget; if (!(next instanceof Node) || !item.contains(next)) toggle(false); });
+  });
+  }
+</script>
+<style is:global>.dropdown-open{opacity:1!important;transform:translateY(0)!important;visibility:visible!important}</style>

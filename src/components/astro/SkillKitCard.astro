@@ -1,0 +1,18 @@
+---
+import type { AniimoSkill } from "@/types/content";
+import { skillStatChips } from "@/lib/skill-display";
+import Image from "./Image.astro";
+import styles from "@/style/page/detail.module.css";
+type Props = { skill: AniimoSkill };
+const { skill } = Astro.props;
+const extraEffects = (skill.effects || []).filter((effect) => !skill.description.includes(effect.text));
+const targeting = skill.targeting;
+const range = targeting ? [targeting.range ? { label: "Range", value: targeting.range } : null, targeting.hitCap ? { label: "Hit", value: targeting.hitCap } : null, targeting.interval ? { label: "Interval", value: targeting.interval } : null].filter((part): part is { label: string; value: string } => Boolean(part)) : [];
+const titleCase = (value: string) => value.replace(/\b\w/g, (char) => char.toUpperCase());
+---
+<article class={styles.skillCard}>
+  <header class={styles.skillHead}><span class={styles.abilityIcon}>{skill.iconUrl ? <Image src={skill.iconUrl} alt="" width={52} height={52} /> : <span aria-hidden="true">✦</span>}</span><div class={styles.skillIdentity}><h3>{skill.name}</h3><div class={styles.skillTags}>{skill.category && <span>{skill.category}</span>}{skill.elements.map((item) => <span>{titleCase(item)}</span>)}{skill.types.map((type) => <span>{type}</span>)}{skill.teamRole && <span>{skill.teamRole}</span>}{targeting?.shape && <span>{targeting.shape}</span>}</div></div></header>
+  <dl class={styles.skillHud}>{[...skillStatChips(skill), ...range].map((chip) => <div><dd>{chip.value}</dd><dt>{chip.label}</dt></div>)}</dl>
+  <p>{skill.description}</p>
+  {extraEffects.length > 0 && <ul class={styles.skillEffects}>{extraEffects.map((effect) => <li><em>{effect.kind}</em>{effect.text}</li>)}</ul>}
+</article>

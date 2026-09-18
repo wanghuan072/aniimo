@@ -1,0 +1,5 @@
+---
+import RichText from "./RichText.astro";
+const { chapter } = Astro.props;
+---
+<header><span>{chapter.label}</span><h2>{chapter.title}</h2>{chapter.lead && <p><RichText text={chapter.lead} /></p>}</header>

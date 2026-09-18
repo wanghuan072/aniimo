@@ -1,0 +1,6 @@
+---
+import styles from "@/style/components/content.module.css";
+const { stage } = Astro.props;
+const label = stage === 1 ? "Lumin" : stage === 2 ? "Gamma" : stage === 3 ? "Nova" : "Special";
+---
+<span class={`${styles.stageBadge} ${styles[`stage${stage}`]}`}>{label}</span>

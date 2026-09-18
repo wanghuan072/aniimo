@@ -1,0 +1,6 @@
+---
+import Link from "./Link.astro";
+import styles from "@/style/components/content.module.css";
+const { items } = Astro.props;
+---
+<nav class={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link>{items.map((item: { label: string; href?: string }) => <span><span aria-hidden="true">›</span>{item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}</span>)}</nav>

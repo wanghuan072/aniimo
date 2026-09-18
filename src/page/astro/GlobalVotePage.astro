@@ -1,0 +1,47 @@
+---
+import { aniimo, officialVote } from "@/lib/data";
+import { elementMeta, roleLabels } from "@/config/site";
+import { pageGuideCues } from "@/lib/guide-hub";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import HeroPanel from "@/components/astro/HeroPanel.astro";
+import GuideCue from "@/components/astro/GuideCue.astro";
+import Image from "@/components/astro/Image.astro";
+import Link from "@/components/astro/Link.astro";
+import Icon from "@/components/astro/Icon.astro";
+import styles from "@/style/page/content.module.css";
+import filterStyles from "@/style/components/explorer.module.css";
+const index = new Map(aniimo.map((entry) => [entry.slug, entry]));
+const podium = [officialVote.records[1], officialVote.records[0], officialVote.records[2]].filter(Boolean).map((record) => ({ ...record, entry: record.slug ? index.get(record.slug) : undefined }));
+const topTen = officialVote.records.slice(3, 10).map((record) => ({ ...record, entry: record.slug ? index.get(record.slug) : undefined }));
+const rest = officialVote.records.slice(10).map((record) => ({ ...record, entry: record.slug ? index.get(record.slug) : undefined }));
+const elements = [...new Set(aniimo.flatMap((entry) => entry.elements))].sort();
+const roles = [...new Set(aniimo.flatMap((entry) => entry.roles))].sort();
+---
+<section class={styles.compactHero}><div class="container"><Breadcrumb items={[{ label: "Tier List", href: "/tier-list" }, { label: "Global Vote 2026" }]} /><span class={styles.kicker}><Icon name="spark" /> Global Vote 2026</span><h1>Aniimo Global Vote 2026</h1><p>See the Aniimo players chose most often in the 2026 vote. This is a popularity ranking, so use the Tier List when you are choosing a team role.</p><HeroPanel label="Read the vote" items={["Vote count sets the order", "Top 3 lead the podium", "Open a profile for team details"]} /></div></section>
+<section class={styles.contentSection}><div class="container"><section class={styles.voteStage}><header><div><span>Global Vote 2026</span><h2>Player favorites: the top 3</h2></div><p>{officialVote.records.length} Aniimo received a place in this vote.</p></header><div class={styles.votePodium}>{podium.map(({ entry, rank, votes, name }) => entry && <Link href={`/aniimo/${entry.slug}`} class={rank === 1 ? styles.voteWinner : styles.votePodiumCard}><span class={styles.votePodiumRank}>#{rank}</span><span class={styles.votePodiumImage}><Image src={`/images/aniimo/vote/${entry.slug}.png`} alt="" fill sizes="210px" /></span><strong>{name}</strong><small>{votes.toLocaleString("en-US")} votes</small></Link>)}</div></section><section class={styles.voteTopTen}><header><span>Global Vote 2026</span><h2>Player favorites: ranks 4–10</h2></header><div>{topTen.map(({ entry, rank, votes, name }) => entry && <Link href={`/aniimo/${entry.slug}`}><span><b>#{rank}</b><Image src={`/images/aniimo/vote/${entry.slug}.png`} alt="" fill sizes="104px" /></span><strong>{name}</strong><small>{votes.toLocaleString("en-US")} votes</small></Link>)}</div></section>
+<div class={filterStyles.voteExplorer} data-vote-explorer><section class={filterStyles.voteFilterDeck} aria-label="Official vote filters"><div><span>Ranks 11–88</span><strong data-vote-count>{rest.length} ranked Aniimo</strong></div><label><span>Search</span><input data-vote-search placeholder="Search vote ranking…" /></label><nav class={filterStyles.voteFilterRows}><span>Element</span><div><button type="button" data-vote-element="all" class={filterStyles.voteFilterActive}>All</button>{elements.map((value) => <button type="button" data-vote-element={value} style={{ "--vote-filter": elementMeta[value]?.color || "#4f8cc8" }}>{elementMeta[value]?.symbol} {elementMeta[value]?.label}</button>)}</div><span>Role</span><div><button type="button" data-vote-role="all" class={filterStyles.voteFilterActive}>All</button>{roles.map((value) => <button type="button" data-vote-role={value}>{roleLabels[value] || value}</button>)}</div></nav></section><div class={filterStyles.voteSummary}><span>Ranked by official vote count</span><span>{rest.length} results in this section</span><span>Images use official Vote artwork</span></div><div class={filterStyles.voteBoard}>{rest.map((record, i) => { const body = <><span class={filterStyles.voteRank}>#{record.rank}</span>{record.entry ? <span class={filterStyles.voteImage}><Image src={`/images/aniimo/vote/${record.entry.slug}.png`} alt="" fill sizes="120px" /></span> : <span class={filterStyles.voteMissing}>?</span>}<div><strong>{record.name}</strong><small>{record.entry ? `${record.entry.elements.map((value) => elementMeta[value]?.label || value).join(" / ")} · ${record.entry.roles.map((value) => roleLabels[value] || value).join(" / ")}` : "Official vote record · profile pending"}</small></div><b>{record.votes.toLocaleString("en-US")}<i>votes</i></b></>; return record.entry ? <Link class={filterStyles.voteEntry} href={`/aniimo/${record.entry.slug}`} data-vote-record data-name={record.name.toLowerCase()} data-elements={record.entry.elements.join(" ")} data-roles={record.entry.roles.join(" ")} hidden={i >= 32}>{body}</Link> : <article class={filterStyles.voteEntry} data-vote-record data-name={record.name.toLowerCase()} hidden={i >= 32}>{body}</article>; })}</div><p class={filterStyles.voteLoading} data-vote-more>More official vote results load as you scroll.</p></div>
+<GuideCue title="A vote is not a team" items={pageGuideCues.tier} /><p class={styles.tierSourceLine}>The ranking keeps the published 2026 vote order. Momand (#29) is listed here, but its profile is not available yet.</p></div></section>
+<style is:global>[data-vote-record][hidden],[data-vote-more][hidden]{display:none!important}</style>
+<script>
+  import styles from "@/style/components/explorer.module.css";
+  const root = document.querySelector<HTMLElement>("[data-vote-explorer]");
+  if (root) {
+    const explorer = root;
+    const records = [...root.querySelectorAll<HTMLElement>("[data-vote-record]")];
+    const search = root.querySelector<HTMLInputElement>("[data-vote-search]")!;
+    let element = "all", role = "all", visible = 32;
+    function render() {
+      const query = search.value.trim().toLowerCase();
+      const matched = records.filter((record) => record.dataset.name?.includes(query) && (element === "all" || record.dataset.elements?.split(" ").includes(element)) && (role === "all" || record.dataset.roles?.split(" ").includes(role)));
+      records.forEach((record) => { record.hidden = !matched.includes(record) || matched.indexOf(record) >= visible; });
+      explorer.querySelector<HTMLElement>("[data-vote-count]")!.textContent = `${matched.length} ranked Aniimo`;
+      explorer.querySelector<HTMLElement>("[data-vote-more]")!.hidden = matched.length <= visible;
+      explorer.querySelectorAll<HTMLButtonElement>("[data-vote-element]").forEach((button) => button.classList.toggle(styles.voteFilterActive, button.dataset.voteElement === element));
+      explorer.querySelectorAll<HTMLButtonElement>("[data-vote-role]").forEach((button) => button.classList.toggle(styles.voteFilterActive, button.dataset.voteRole === role));
+    }
+    root.addEventListener("click", (event) => { const button = (event.target as Element).closest<HTMLButtonElement>("button"); if (!button) return; if (button.dataset.voteElement) element = button.dataset.voteElement; else if (button.dataset.voteRole) role = button.dataset.voteRole; else return; visible = 32; render(); });
+    search.addEventListener("input", () => { visible = 32; render(); });
+    window.addEventListener("scroll", () => { if (document.documentElement.scrollTop + innerHeight >= document.documentElement.scrollHeight - 320) { visible += 32; render(); } }, { passive: true });
+    render();
+  }
+</script>

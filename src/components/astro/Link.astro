@@ -1,0 +1,4 @@
+---
+const { href, children: _children, prefetch: _prefetch, ...attrs } = Astro.props;
+---
+<a href={href} {...attrs}><slot /></a>

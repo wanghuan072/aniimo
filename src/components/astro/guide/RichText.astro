@@ -1,0 +1,15 @@
+---
+import Link from "../Link.astro";
+const { text } = Astro.props as { text: string };
+const pattern = /\[\[([^\]|]+)\|([^\]]+)\]\]/g;
+const parts: Array<{ text: string; href?: string }> = [];
+let last = 0;
+for (const match of text.matchAll(pattern)) {
+  const index = match.index ?? 0;
+  if (index > last) parts.push({ text: text.slice(last, index) });
+  parts.push({ text: match[1], href: match[2] });
+  last = index + match[0].length;
+}
+if (last < text.length) parts.push({ text: text.slice(last) });
+---
+{parts.map((part) => part.href ? <Link href={part.href}>{part.text}</Link> : part.text)}

@@ -6,6 +6,10 @@ The site is not affiliated with, endorsed by, sponsored by, or connected to the 
 
 Visit [aniimo.cc](https://aniimo.cc) to browse the site.
 
+## Development
+
+This site uses Astro's static output. Run `npm install` and `npm run dev` locally. Before deployment, run `npm run check`, `npm run lint`, and `npm run build`; `npm run preview` serves the generated `dist/` directory. With the preview running at `http://127.0.0.1:4321`, `npm run test:smoke` checks the sitemap pages and core browser interactions. Vercel serves the static build and applies legacy URL redirects from `vercel.json`.
+
 ## What players can do here
 
 - Find a creature by element, role, stage, or form and open its connected records.

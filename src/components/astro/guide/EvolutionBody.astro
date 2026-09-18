@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [terms, family, gates, fit] = dossier.chapters;
+const [forms, branches] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={terms.id}><div class={styles.branchLine}><span>Emberpup</span><i>→</i><span>Flameruff</span><i>→</i><b>Scorchhowl</b><b>Inferlupa</b></div><SectionHead chapter={terms} /><Copy paragraphs={terms.paragraphs} /><Ledger chapter={terms} /><ChapterLinks chapter={terms} /></section>
+    <FieldSection section={forms} after={terms.title} />
+    <section id={family.id} class={styles.storySplit}><Artwork chapter={family} /><div><SectionHead chapter={family} /><Copy paragraphs={family.paragraphs} /><ChapterLinks chapter={family} /></div></section>
+    <FieldSection section={branches} after={family.title} />
+    <section id={gates.id} class={styles.gateBlock}><SectionHead chapter={gates} /><Copy paragraphs={gates.paragraphs} /><Steps chapter={gates} /><ChapterLinks chapter={gates} /></section>
+    <section id={fit.id}><SectionHead chapter={fit} /><Copy paragraphs={fit.paragraphs} /><Note chapter={fit} /><ChapterLinks chapter={fit} /></section>
+  </>

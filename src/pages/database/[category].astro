@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DatabaseCategoryPage from "@/page/astro/DatabaseCategoryPage.astro";
+import { databaseCategories, getDatabaseCategory } from "@/lib/data";
+import { categoryTdk } from "@/seo/tdk";
+export function getStaticPaths() {
+  return databaseCategories.map((category) => ({ params: { category: category.slug } }));
+}
+const category = getDatabaseCategory(Astro.params.category)!;
+---
+<BaseLayout metadata={categoryTdk(category)}><DatabaseCategoryPage slug={category.slug} /></BaseLayout>

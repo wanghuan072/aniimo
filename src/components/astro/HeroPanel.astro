@@ -1,0 +1,11 @@
+---
+import styles from "@/style/components/hero-panel.module.css";
+
+type Props = { label: string; items: string[] };
+const {  label, items  } = Astro.props;
+
+---
+<aside class={styles.heroPanel} aria-label={label}>
+    <span>{label}</span>
+    <ul>{items.map((item) => <li>{item}</li>)}</ul>
+  </aside>

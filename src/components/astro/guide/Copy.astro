@@ -1,0 +1,5 @@
+---
+import RichText from "./RichText.astro";
+const { paragraphs } = Astro.props as { paragraphs: string[] };
+---
+{paragraphs.map((paragraph) => <p><RichText text={paragraph} /></p>)}

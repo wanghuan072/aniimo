@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/about", "destination": "/legal/about-us", "statusCode": 308 },
+    { "source": "/contact", "destination": "/legal/contact-us", "statusCode": 308 },
+    { "source": "/privacy", "destination": "/legal/privacy-policy", "statusCode": 308 },
+    { "source": "/terms", "destination": "/legal/terms-of-service", "statusCode": 308 },
+    { "source": "/database/forms", "destination": "/aniimo", "statusCode": 308 },
+    { "source": "/tools/type-chart", "destination": "/database/elements#matchups", "statusCode": 308 },
+    { "source": "/guides/how-to-choose-your-first-aniimo", "destination": "/guides/aniimo-forms-and-evolution", "statusCode": 308 },
+    { "source": "/guides/aniimo-elements-and-roles-explained", "destination": "/guides/aniimo-combat-guide", "statusCode": 308 }
+  ]
+}

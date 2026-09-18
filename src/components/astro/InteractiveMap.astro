@@ -1,0 +1,117 @@
+---
+import type { MapAniimoProfile } from "@/lib/map-types";
+import { atlasIndex } from "@/lib/map-runtime";
+import Icon from "./Icon.astro";
+import styles from "@/style/components/map.module.css";
+import "leaflet/dist/leaflet.css";
+type Props = { profiles: Record<string, MapAniimoProfile> };
+const { profiles } = Astro.props;
+const short: Record<string, string> = { "breezy-plains": "Breezy", astra: "Astra", "whisperwake-isles": "Isles", "lost-islets": "Lost" };
+---
+<div class={styles.shell} data-map-app><aside class={styles.panel}><div class={styles.chrome}><div class={styles.panelHead}><div><p class={styles.kicker}>Field atlas</p><h2 data-atlas-name>Loading atlas…</h2><p class={styles.meta} data-atlas-meta></p></div><div class={styles.headActions}><button type="button" class={styles.ghost} data-map-reset>Reset</button><button type="button" class={styles.iconBtn} data-map-hide aria-label="Hide sidebar"><Icon name="close" /></button></div></div><nav class={styles.atlases} aria-label="Map atlases">{atlasIndex.map((entry) => <a href={entry.href} title={entry.name} data-atlas-link={entry.id}><img src={entry.thumb} alt="" width="72" height="54" /><strong>{short[entry.id] || entry.name}</strong></a>)}</nav><label class={styles.searchWrap}><Icon name="search" /><input class={styles.search} name="map-search" data-map-search autocomplete="off" spellcheck="false" placeholder="Search Aniimo, chests, or landmarks…" aria-label="Search map markers" /></label><div class={styles.hits} data-map-hits hidden></div><div class={styles.controls}><div class={styles.control}><span>Markers</span><div class={styles.seg} aria-label="Marker visibility"><button type="button" data-map-preset="essentials" aria-pressed="true">Key</button><button type="button" data-map-preset="all" aria-pressed="false">All</button><button type="button" data-map-preset="none" aria-pressed="false">Off</button></div></div><div class={styles.control} data-depth-control hidden><span>Depth</span><div class={styles.seg} role="radiogroup" aria-label="Depth"><button type="button" data-depth="all" role="radio" aria-checked="true">Both</button><button type="button" data-depth="surface" role="radio" aria-checked="false">Surface</button><button type="button" data-depth="underground" role="radio" aria-checked="false">Cave</button></div></div></div></div><div class={styles.scroll} data-map-layers><p class={styles.credit}>Basemap and markers from AniimoVerse, stored on this site.</p></div></aside><div class={styles.stage}><button type="button" class={styles.toggle} data-map-show><Icon name="list" /> Layers</button><div data-map-canvas style="width:100%;height:100%"></div><aside class={styles.card} aria-live="polite" data-map-card hidden></aside></div><script type="application/json" data-map-profiles set:html={JSON.stringify(profiles).replace(/</g, "\\u003c")} /></div>
+<style is:global>[data-map-hits][hidden],[data-map-card][hidden],[data-depth-control][hidden],[data-map-group-body][hidden]{display:none!important}</style>
+<script>
+  import type { Map as LeafletMap, MarkerClusterGroup } from "leaflet";
+  import type { MapAniimoProfile, MapAtlas, MapPoi } from "@/lib/map-types";
+  import { atlasFrame, atlasLoaders, atlasIndex, essentialsFor, findFocusPoi, regionColor, token } from "@/lib/map-runtime";
+  import { elementMeta, roleLabels } from "@/config/site";
+  import styles from "@/style/components/map.module.css";
+  const root = document.querySelector<HTMLElement>("[data-map-app]");
+  if (root) {
+    const app = root;
+    const profiles = JSON.parse(app.querySelector<HTMLScriptElement>("[data-map-profiles]")?.textContent || "{}") as Record<string, MapAniimoProfile>;
+    const params = new URLSearchParams(location.search);
+    const atlasId = atlasLoaders[params.get("atlas") || ""] ? params.get("atlas")! : "breezy-plains";
+    const marker = params.get("marker") || "";
+    const regionSlug = params.get("region") || "";
+    const payload = await atlasLoaders[atlasId]();
+    const atlas = payload.atlas;
+    const frame = atlasFrame(atlas);
+    const typeIndex = new Map(atlas.categories.flatMap((category) => category.types.map((type) => [type.slug, type] as const)));
+    const categoryIndex = new Map(atlas.categories.map((category) => [category.slug, category] as const));
+    const L = (await import("leaflet")).default;
+    (globalThis as typeof globalThis & { L: typeof L }).L = L;
+    await import("leaflet.markercluster");
+    let enabled = essentialsFor(atlas);
+    let depth = "all", showRegions = true, selected: MapPoi | null = null;
+    const query = app.querySelector<HTMLInputElement>("[data-map-search]")!;
+    const hits = app.querySelector<HTMLElement>("[data-map-hits]")!;
+    const card = app.querySelector<HTMLElement>("[data-map-card]")!;
+    const layers = app.querySelector<HTMLElement>("[data-map-layers]")!;
+    const map = L.map(app.querySelector<HTMLElement>("[data-map-canvas]")!, { crs: L.CRS.Simple, minZoom: -3, maxZoom: 5, zoomSnap: .25, zoomDelta: .5, zoomControl: false, attributionControl: false, maxBounds: frame.maxBounds, maxBoundsViscosity: .35 });
+    L.control.zoom({ position: "bottomright" }).addTo(map);
+    L.tileLayer(atlas.meta.tiles.template, { tileSize: atlas.meta.tiles.tileSize, minZoom: -3, maxZoom: 5, minNativeZoom: 0, maxNativeZoom: 0, bounds: frame.imageBounds, noWrap: true }).addTo(map);
+    app.style.background = atlas.backdrop;
+    app.querySelector<HTMLElement>("[data-atlas-name]")!.textContent = atlas.name;
+    app.querySelector<HTMLElement>("[data-atlas-meta]")!.textContent = `${atlas.tagline} · ${atlas.total.toLocaleString()} points`;
+    app.querySelector<HTMLAnchorElement>(`[data-atlas-link="${atlasId}"]`)?.setAttribute("aria-current", "page");
+    document.querySelectorAll<HTMLElement>("[data-atlas-brief]").forEach((brief) => brief.hidden = brief.dataset.atlasBrief !== atlasId);
+    document.querySelector<HTMLAnchorElement>(`[data-atlas-card="${atlasId}"]`)?.setAttribute("aria-current", "page");
+    app.querySelector<HTMLElement>("[data-depth-control]")!.hidden = atlas.underground === 0;
+    const regionTarget = atlas.regions.find((region) => region.slug === regionSlug || region.name === regionSlug);
+    if (regionTarget?.poly.length) map.fitBounds(L.latLngBounds(regionTarget.poly.map(([x, y]) => frame.toLatLng(x, y))), { maxZoom: 1.75, padding: [24, 24] });
+    else map.fitBounds(frame.contentBounds, { padding: [12, 12] });
+    const regionsLayer = L.layerGroup();
+    for (const region of atlas.regions) {
+      if (!region.poly.length) continue;
+      const color = regionColor(region.lvlMin);
+      L.polygon(region.poly.map(([x, y]) => frame.toLatLng(x, y)), { color, weight: 2, fillColor: color, fillOpacity: .12 }).bindTooltip(`${region.name}${region.lvlMin != null ? ` · Lv ${region.lvlMin}–${region.lvlMax}` : ""}`).on("click", () => map.fitBounds(L.latLngBounds(region.poly.map(([x, y]) => frame.toLatLng(x, y))), { maxZoom: 1.75 })).addTo(regionsLayer);
+    }
+    regionsLayer.addTo(map);
+    const groups = new Map<string, MarkerClusterGroup>();
+    for (const category of atlas.categories) groups.set(category.slug, L.markerClusterGroup({ chunkedLoading: true, showCoverageOnHover: false, spiderfyOnMaxZoom: true, removeOutsideVisibleBounds: true, maxClusterRadius: (zoom) => zoom >= 3 ? 1 : 44, iconCreateFunction: (cluster) => L.divIcon({ html: `<span class="map-cluster">${cluster.getChildCount()}</span>`, className: "", iconSize: [36, 36] }) }));
+    const icons = new Map<string, import("leaflet").DivIcon>();
+    const iconFor = (poi: MapPoi) => { const boss = poi.c === "bosses", ring = typeIndex.get(poi.t)?.ring, key = `${poi.ic}|${boss}|${ring || ""}`; if (icons.has(key)) return icons.get(key)!; const size = boss ? 32 : 26; const icon = L.divIcon({ className: "", html: `<span class="map-poi${boss ? " map-poi-boss" : ""}">${ring ? `<span style="position:absolute;inset:-2px;border:2px solid ${ring};border-radius:50%"></span>` : ""}<img src="${atlas.icons[poi.ic] || ""}" alt="" width="${size}" height="${size}"></span>`, iconSize: [size, size], iconAnchor: [size / 2, size / 2] }); icons.set(key, icon); return icon; };
+    const escape = (value: string) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" } as Record<string, string>)[char]);
+    function select(poi: MapPoi) {
+      selected = poi;
+      const type = typeIndex.get(poi.t);
+      const record = poi.entity || type?.entity;
+      const label = atlas.labels[poi.n] || "Map point";
+      const aniimoSlug = poi.c === "creatures" || poi.c === "aniimo" ? token(record?.slug || type?.label || label) : "";
+      const aniimo = profiles[aniimoSlug];
+      const desc = poi.d != null ? atlas.descriptions[poi.d] : aniimo?.description || record?.description;
+      const art = aniimo?.image || (record?.image?.startsWith("/images/") ? record.image : atlas.icons[poi.ic]);
+      const name = aniimo?.name || label;
+      card.setAttribute("aria-label", `${name} map details`);
+      card.innerHTML = `<button type="button" class="${styles.close}" data-map-close aria-label="Close map details">×</button>${art ? aniimo ? `<a class="${styles.cardArt}" href="/aniimo/${escape(aniimo.slug)}"><img src="${escape(art)}" alt="" width="280" height="196"></a>` : `<div class="${styles.cardArt}"><img src="${escape(art)}" alt="" width="280" height="196"></div>` : ""}<h2>${escape(name)}</h2>${aniimo ? `<div class="${styles.cardTags}">${aniimo.elements.map((element) => `<span>${escape(elementMeta[element]?.symbol || "")} ${escape(elementMeta[element]?.label || element)}</span>`).join("")}${aniimo.roles.map((role) => `<span>${escape(roleLabels[role] || role)}</span>`).join("")}<span>${escape(aniimo.form)} · Stage ${aniimo.stage}</span></div>` : ""}${desc ? `<p>${escape(desc)}</p>` : ""}${poi.ar ? `<p>${escape(poi.ar)}${poi.tm ? ` · ${escape(payload.vocabulary?.times?.[poi.tm]?.label || poi.tm)}` : ""}${poi.ug ? " · Underground" : ""}</p>` : ""}${aniimo?.stats ? `<div class="${styles.cardStats}"><span><small>HP</small><strong>${aniimo.stats.hp}</strong></span><span><small>P. ATK</small><strong>${aniimo.stats.physicalAttack}</strong></span><span><small>M. ATK</small><strong>${aniimo.stats.magicAttack}</strong></span></div>` : ""}${aniimo ? `<div class="${styles.cardRecord}">${aniimo.skills.length ? `<p><strong>Skills</strong>${aniimo.skills.map(escape).join(" · ")}</p>` : ""}${aniimo.evolution.length > 1 ? `<p><strong>Evolution</strong>${aniimo.evolution.map(escape).join(" → ")}</p>` : ""}</div><a class="${styles.cardLink}" href="/aniimo/${escape(aniimo.slug)}">Open full ${escape(aniimo.name)} profile →</a>` : ""}`;
+      card.hidden = false;
+      map.flyTo(frame.toLatLng(poi.x, poi.y), Math.max(map.getZoom(), 3.5), { duration: .5 });
+    }
+    let pending = 0;
+    function syncMarkers() {
+      if (pending) cancelAnimationFrame(pending);
+      pending = requestAnimationFrame(() => {
+        const bounds = map.getBounds().pad(.35);
+        for (const category of atlas.categories) { const group = groups.get(category.slug)!; group.clearLayers(); const selectedPoints = atlas.pois.filter((poi) => poi.c === category.slug && enabled.has(poi.t) && (depth === "all" || (depth === "underground" ? poi.ug : !poi.ug)) && bounds.contains(frame.toLatLng(poi.x, poi.y))); const markers = selectedPoints.map((poi) => { const title = atlas.labels[poi.n] || "Map point"; const pin = L.marker(frame.toLatLng(poi.x, poi.y), { icon: iconFor(poi), title, keyboard: true }); pin.bindTooltip(title, { direction: "top", offset: [0, -12] }); pin.on("click", () => select(poi)); return pin; }); group.addLayers(markers); if (markers.length && !map.hasLayer(group)) group.addTo(map); if (!markers.length && map.hasLayer(group)) map.removeLayer(group); }
+      });
+    }
+    map.on("moveend zoomend", syncMarkers);
+    function renderControls() {
+      app.querySelectorAll<HTMLButtonElement>("[data-map-preset]").forEach((button) => { const all = atlas.categories.flatMap((category) => category.types.map((type) => type.slug)); const essential = essentialsFor(atlas); const preset = enabled.size === 0 ? "none" : enabled.size === all.length ? "all" : enabled.size === essential.size && [...essential].every((slug) => enabled.has(slug)) ? "essentials" : ""; button.setAttribute("aria-pressed", String(button.dataset.mapPreset === preset)); });
+      app.querySelectorAll<HTMLButtonElement>("[data-depth]").forEach((button) => button.setAttribute("aria-checked", String(button.dataset.depth === depth)));
+      layers.querySelectorAll<HTMLButtonElement>("[data-map-category]").forEach((button) => { const category = categoryIndex.get(button.dataset.mapCategory || ""); if (!category) return; const on = category.types.some((type) => enabled.has(type.slug)); button.setAttribute("aria-pressed", String(on)); button.classList.toggle(styles.off, !on); });
+      layers.querySelectorAll<HTMLElement>("[data-map-group]").forEach((block) => { const categories = atlas.groups.find((group) => group.id === block.dataset.mapGroup)?.categories || []; const active = categories.filter((slug) => categoryIndex.get(slug)?.types.some((type) => enabled.has(type.slug))).length; const count = block.querySelector("[data-map-group-count]"); if (count) count.textContent = `${active}/${categories.length}`; });
+    }
+    layers.insertAdjacentHTML("afterbegin", atlas.groups.map((group) => `<section class="${styles.block}" data-map-group="${escape(group.id)}"><button type="button" class="${styles.groupHead}" data-map-group-toggle="${escape(group.id)}" aria-expanded="false"><span>⌄</span><strong>${escape(group.label)}</strong><b data-map-group-count>0/${group.categories.length}</b></button><div class="${styles.catList}" data-map-group-body="${escape(group.id)}" hidden>${group.categories.map((slug) => { const category = categoryIndex.get(slug); if (!category) return ""; return `<button type="button" class="${styles.cat}" data-map-category="${escape(slug)}"><img src="${escape(atlas.icons[category.ic] || "")}" alt=""><strong>${escape(category.label)}</strong><small>${category.count.toLocaleString()}</small></button>`; }).join("")}</div></section>`).join("") + `<section class="${styles.block}" data-map-group="regions"><div class="${styles.groupRow}"><button type="button" class="${styles.groupHead}" data-map-group-toggle="regions" aria-expanded="false"><span>⌄</span><strong>Regions</strong><b>${atlas.regions.length}</b></button><button type="button" class="${styles.iconBtn}" data-map-regions aria-pressed="true" aria-label="Hide region outlines">◉</button></div><div class="${styles.catList}" data-map-group-body="regions" hidden>${atlas.regions.map((region) => `<button type="button" class="${styles.cat}" data-map-region="${escape(region.slug)}"><span class="${styles.swatch}" style="background:${regionColor(region.lvlMin)}"></span><strong>${escape(region.name)}</strong>${region.lvlMin != null ? `<small>Lv ${region.lvlMin}–${region.lvlMax}</small>` : ""}</button>`).join("")}</div></section>`);
+    app.addEventListener("click", (event) => {
+      const target = event.target as Element;
+      const preset = target.closest<HTMLButtonElement>("[data-map-preset]"); const depthButton = target.closest<HTMLButtonElement>("[data-depth]"); const categoryButton = target.closest<HTMLButtonElement>("[data-map-category]"); const toggle = target.closest<HTMLButtonElement>("[data-map-group-toggle]"); const regionButton = target.closest<HTMLButtonElement>("[data-map-region]");
+      if (preset) { const value = preset.dataset.mapPreset; enabled = value === "none" ? new Set() : value === "all" ? new Set(atlas.categories.flatMap((category) => category.types.map((type) => type.slug))) : essentialsFor(atlas); syncMarkers(); renderControls(); }
+      else if (depthButton) { depth = depthButton.dataset.depth || "all"; syncMarkers(); renderControls(); }
+      else if (categoryButton) { const category = categoryIndex.get(categoryButton.dataset.mapCategory || ""); if (!category) return; const turnOn = !category.types.every((type) => enabled.has(type.slug)); category.types.forEach((type) => turnOn ? enabled.add(type.slug) : enabled.delete(type.slug)); syncMarkers(); renderControls(); }
+      else if (toggle) { const body = layers.querySelector<HTMLElement>(`[data-map-group-body="${toggle.dataset.mapGroupToggle}"]`); if (body) { body.hidden = !body.hidden; toggle.setAttribute("aria-expanded", String(!body.hidden)); } }
+      else if (regionButton) { const region = atlas.regions.find((entry) => entry.slug === regionButton.dataset.mapRegion); if (region?.poly.length) map.fitBounds(L.latLngBounds(region.poly.map(([x, y]) => frame.toLatLng(x, y))), { maxZoom: 1.75 }); }
+      else if (target.closest("[data-map-regions]")) { showRegions = !showRegions; if (showRegions) regionsLayer.addTo(map); else map.removeLayer(regionsLayer); const button = app.querySelector<HTMLButtonElement>("[data-map-regions]")!; button.setAttribute("aria-pressed", String(showRegions)); button.setAttribute("aria-label", showRegions ? "Hide region outlines" : "Show region outlines"); }
+      else if (target.closest("[data-map-reset]")) { enabled = essentialsFor(atlas); depth = "all"; query.value = ""; hits.hidden = true; card.hidden = true; map.fitBounds(frame.contentBounds, { padding: [12, 12] }); syncMarkers(); renderControls(); }
+      else if (target.closest("[data-map-hide]")) { app.classList.add(styles.closed); requestAnimationFrame(() => map.invalidateSize()); }
+      else if (target.closest("[data-map-show]")) { app.classList.remove(styles.closed); requestAnimationFrame(() => map.invalidateSize()); }
+      else if (target.closest("[data-map-close]")) { card.hidden = true; selected = null; }
+      else { const hit = target.closest<HTMLButtonElement>("[data-map-hit]"); if (hit) { const poi = atlas.pois[Number(hit.dataset.mapHit)]; if (poi) { enabled.add(poi.t); select(poi); syncMarkers(); renderControls(); hits.hidden = true; } } }
+    });
+    query.addEventListener("input", () => { const needle = query.value.trim().toLowerCase(); if (!needle) { hits.hidden = true; return; } const found: number[] = []; for (let i = 0; i < atlas.pois.length && found.length < 8; i++) { const poi = atlas.pois[i], type = typeIndex.get(poi.t); const text = `${atlas.labels[poi.n] || ""} ${type?.label || ""} ${type?.entity?.name || ""} ${poi.entity?.name || ""} ${poi.ar || ""}`.toLowerCase(); if (text.includes(needle)) found.push(i); } hits.innerHTML = found.map((i) => `<button type="button" data-map-hit="${i}"><img src="${escape(atlas.icons[atlas.pois[i].ic] || "")}" alt="" width="24" height="24"><span>${escape(atlas.labels[atlas.pois[i].n] || "Map point")}</span></button>`).join(""); hits.hidden = found.length === 0; });
+    if (marker) { const focus = findFocusPoi(atlas, marker, regionSlug); if (focus) { enabled.add(focus.t); select(focus); } }
+    syncMarkers(); renderControls(); requestAnimationFrame(() => map.invalidateSize());
+    if (regionSlug || marker) document.getElementById("atlas")?.scrollIntoView({ block: "start" });
+  }
+</script>

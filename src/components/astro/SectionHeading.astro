@@ -1,0 +1,7 @@
+---
+import Link from "./Link.astro";
+import Icon from "./Icon.astro";
+import styles from "@/style/components/content.module.css";
+const { eyebrow, title, description, action } = Astro.props;
+---
+<div class={styles.sectionHeading}><div>{eyebrow && <span class={styles.eyebrow}>{eyebrow}</span>}<h2>{title}</h2>{description && <p>{description}</p>}</div>{action && <Link class={styles.textLink} href={action.href}>{action.label}<Icon name="arrow" /></Link>}</div>

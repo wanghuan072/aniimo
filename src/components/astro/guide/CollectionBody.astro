@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [target, exact, route, complete] = dossier.chapters;
+const [controls, session] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={target.id}><div class={styles.collectionFlow}><span>Missing record</span><i>→</i><span>Verify version</span><i>→</i><span>Build route</span><i>→</i><span>Mark result</span></div><SectionHead chapter={target} /><Copy paragraphs={target.paragraphs} /><ChapterLinks chapter={target} /></section>
+    <FieldSection section={controls} after={target.title} />
+    <section id={exact.id} class={styles.storySplit}><Artwork chapter={exact} /><div><SectionHead chapter={exact} /><Copy paragraphs={exact.paragraphs} /><ChapterLinks chapter={exact} /></div></section>
+    <section id={route.id} class={styles.routeBlock}><SectionHead chapter={route} /><Copy paragraphs={route.paragraphs} /><Steps chapter={route} /><ChapterLinks chapter={route} /></section>
+    <FieldSection section={session} after={route.title} />
+    <section id={complete.id}><SectionHead chapter={complete} /><Copy paragraphs={complete.paragraphs} /><Ledger chapter={complete} /><ChapterLinks chapter={complete} /></section>
+  </>

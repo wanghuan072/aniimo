@@ -1,0 +1,17 @@
+---
+import Image from "./Image.astro";
+import Link from "./Link.astro";
+import Icon from "./Icon.astro";
+import StageBadge from "./StageBadge.astro";
+import { elementMeta, roleLabels } from "@/config/site";
+import styles from "@/style/components/content.module.css";
+const { entry, compact = false, list = false, ...attrs } = Astro.props;
+const cardColor = elementMeta[entry.elements[0]]?.color || "#4d83d9";
+---
+<article class={`${styles.aniimoCard} ${compact ? styles.compactCard : ""} ${list ? styles.listCard : ""}`} style={{ "--element-color": cardColor }} {...attrs}>
+  <Link href={`/aniimo/${entry.slug}`} class={styles.cardShell} aria-label={`View ${entry.name} profile`}>
+    <span class={styles.cardImage}><Image src={entry.voteImage || entry.image} alt={`${entry.name}, a ${entry.elements.join(" and ")} Aniimo`} fill sizes={compact ? "180px" : "(max-width: 650px) 50vw, (max-width: 1180px) 25vw, 220px"} /><span class={styles.cardNumber}>NO. {entry.entryId}</span><StageBadge stage={entry.stage} /><span class={styles.cardElements}>{entry.elements.map((element: string) => { const meta = elementMeta[element]; return <i title={meta?.label || element} style={{ "--badge-color": meta?.color || cardColor }}>{meta?.symbol || "✦"}</i>; })}</span></span>
+    <span class={styles.cardBody}><span class={styles.cardTitleRow}><h3>{entry.name}</h3><Icon name="arrow" /></span><span class={styles.cardMeta}><strong>{entry.roles.map((role: string) => roleLabels[role] || role).join(" · ")}</strong><span>{entry.form}</span></span><span class={styles.cardDescription} data-description hidden={!list}>{entry.description}</span></span>
+  </Link>
+</article>
+<style is:global>[data-description][hidden]{display:none!important}</style>

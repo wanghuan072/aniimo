@@ -1,0 +1,8 @@
+---
+import RichText from "./RichText.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+import type { DossierFaq } from "@/data/editorial/guide-dossiers";
+type Props = { items: DossierFaq[] };
+const { items } = Astro.props;
+---
+{items.length > 0 && <section id="questions" class={styles.faq}><header><span>Questions</span><h2>Quick answers</h2></header>{items.map((item) => <details><summary>{item.question}</summary><p><RichText text={item.answer} /></p></details>)}</section>}

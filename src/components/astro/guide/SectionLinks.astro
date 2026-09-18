@@ -1,0 +1,8 @@
+---
+import Link from "../Link.astro";
+import { mergeGuideLinks } from "@/lib/guide-hub";
+import styles from "@/style/page/guide-dossier.module.css";
+const { id, own } = Astro.props;
+const items = mergeGuideLinks(id, own);
+---
+{items.length > 0 && <div class={styles.sectionLinks}>{items.map((item) => <Link href={item.href}>{item.label}<span aria-hidden="true">→</span></Link>)}</div>}

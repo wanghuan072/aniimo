@@ -1,0 +1,31 @@
+---
+import { guides } from "@/lib/data";
+import { guideTopics } from "@/lib/guide-topics";
+import Breadcrumb from "@/components/astro/Breadcrumb.astro";
+import GuideCard from "@/components/astro/GuideCard.astro";
+import Icon from "@/components/astro/Icon.astro";
+import styles from "@/style/page/content.module.css";
+---
+<section class={styles.guideLibraryHero}><div class="container"><Breadcrumb items={[{ label: "Guides" }]} /><span class={styles.kicker}><Icon name="book" /> Practical player guides</span><h1>Aniimo Guides — Catching, Teams, Maps, and Progression</h1><p>Nine field guides. Use a tag to narrow the list, or leave All selected to keep every page in view.</p></div></section>
+<section class={styles.guideLibrary} data-guides-library><div class="container"><div class={styles.guideLibraryHeading}><span data-guide-count>{guides.length} guides</span><p>Click a tag to switch the list. All keeps every guide on the page.</p></div><div class={styles.guideTopicTags} aria-label="Guide categories"><button type="button" data-topic-button="all" aria-pressed="true">All</button>{guideTopics.map((item) => <button type="button" id={item.id} data-topic-button={item.id} aria-pressed="false">{item.label}</button>)}</div><div class={styles.guideFeatureGrid}>{guides.map((guide) => <GuideCard guide={guide} />)}</div></div></section>
+<style is:global>[data-guide-card][hidden]{display:none!important}</style>
+<script>
+  const library = document.querySelector('[data-guides-library]');
+  if (library) {
+    const guideLibrary = library;
+    const buttons = [...library.querySelectorAll<HTMLButtonElement>('[data-topic-button]')];
+    const cards = [...library.querySelectorAll<HTMLElement>('[data-guide-card]')];
+    const ids = new Set(buttons.map((button) => button.dataset.topicButton));
+    function select(id: string, writeUrl = false) {
+      const topic = ids.has(id) ? id : 'all';
+      let count = 0;
+      for (const card of cards) { card.hidden = topic !== 'all' && card.dataset.topic !== topic; if (!card.hidden) count++; }
+      for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.topicButton === topic));
+      guideLibrary.querySelector<HTMLElement>('[data-guide-count]')!.textContent = `${count} ${count === 1 ? 'guide' : 'guides'}`;
+      if (writeUrl) history.replaceState(null, '', topic === 'all' ? '/guides' : `/guides#${topic}`);
+    }
+    library.addEventListener('click', (event) => { const button = (event.target as Element).closest<HTMLButtonElement>('[data-topic-button]'); if (button) select(button.dataset.topicButton || 'all', true); });
+    window.addEventListener('hashchange', () => select(location.hash.slice(1)));
+    select(location.hash.slice(1));
+  }
+</script>

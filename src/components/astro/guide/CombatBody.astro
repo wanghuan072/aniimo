@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [matchup, loop, ep, rebuild] = dossier.chapters;
+const [skills, rotation] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={matchup.id}><SectionHead chapter={matchup} /><Copy paragraphs={matchup.paragraphs} /><Ledger chapter={matchup} /><ChapterLinks chapter={matchup} /></section>
+    <FieldSection section={skills} after={matchup.title} />
+    <section id={loop.id} class={styles.pressureBlock}><SectionHead chapter={loop} /><Copy paragraphs={loop.paragraphs} /><Steps chapter={loop} /><Note chapter={loop} /><ChapterLinks chapter={loop} /></section>
+    <section id={ep.id}><SectionHead chapter={ep} /><Copy paragraphs={ep.paragraphs} /><Ledger chapter={ep} /><ChapterLinks chapter={ep} /></section>
+    <FieldSection section={rotation} after={ep.title} />
+    <section id={rebuild.id}><SectionHead chapter={rebuild} /><Copy paragraphs={rebuild.paragraphs} /><Ledger chapter={rebuild} /><Artwork chapter={rebuild} /><ChapterLinks chapter={rebuild} /></section>
+  </>

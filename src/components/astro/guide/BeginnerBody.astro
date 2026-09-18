@@ -1,0 +1,24 @@
+---
+import Image from "@/components/astro/Image.astro";
+import SectionHead from "@/components/astro/guide/SectionHead.astro";
+import Copy from "@/components/astro/guide/Copy.astro";
+import Steps from "@/components/astro/guide/Steps.astro";
+import Ledger from "@/components/astro/guide/Ledger.astro";
+import Note from "@/components/astro/guide/Note.astro";
+import Artwork from "@/components/astro/guide/Artwork.astro";
+import ChapterLinks from "@/components/astro/guide/ChapterLinks.astro";
+import FieldSection from "@/components/astro/guide/FieldSection.astro";
+import { getGuideFieldNotes } from "@/data/editorial/guide-field-notes";
+import styles from "@/style/page/guide-dossier.module.css";
+const { dossier } = Astro.props;
+const [hours, starter, twining, team] = dossier.chapters;
+const [fieldRoute, fieldRoster] = getGuideFieldNotes(dossier.slug);
+---
+<>
+    <section id={hours.id} class={styles.storySplit}><div><SectionHead chapter={hours} /><Copy paragraphs={hours.paragraphs} /><Steps chapter={hours} /><ChapterLinks chapter={hours} /></div><Artwork chapter={hours} /></section>
+    <FieldSection section={fieldRoute} after={hours.title} />
+    <section id={starter.id} class={styles.routeBlock}><SectionHead chapter={starter} /><Copy paragraphs={starter.paragraphs} /><Ledger chapter={starter} /><ChapterLinks chapter={starter} /></section>
+    <section id={twining.id} class={styles.darkNote}><SectionHead chapter={twining} /><Copy paragraphs={twining.paragraphs} /><Note chapter={twining} /><ChapterLinks chapter={twining} /></section>
+    <section id={team.id}><SectionHead chapter={team} /><Copy paragraphs={team.paragraphs} /><Ledger chapter={team} /><ChapterLinks chapter={team} /></section>
+    <FieldSection section={fieldRoster} after={team.title} />
+  </>

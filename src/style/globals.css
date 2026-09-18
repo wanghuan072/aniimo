@@ -1,4 +1,7 @@
 :root {
+  --font-game-display: "Baloo 2 Variable";
+  --font-game-body: "Nunito Sans Variable";
+  --font-game-ui: "Oxanium Variable";
   --blue-950: #092c56;
   --blue-900: #123e70;
   --blue-800: #165896;

@@ -1,0 +1,7 @@
+---
+import { elementMeta } from "@/config/site";
+import styles from "@/style/components/content.module.css";
+const { element } = Astro.props;
+const meta = elementMeta[element] || { label: element, symbol: "✦", color: "#4d83d9" };
+---
+<span class={styles.elementBadge} style={{ "--element-color": meta.color }}><span aria-hidden="true">{meta.symbol}</span>{meta.label}</span>

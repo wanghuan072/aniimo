@@ -1,0 +1,6 @@
+---
+import RichText from "./RichText.astro";
+import styles from "@/style/page/guide-dossier.module.css";
+const { chapter } = Astro.props;
+---
+{chapter.note && <aside class={styles.note}><b>{chapter.note.title}</b><p><RichText text={chapter.note.body} /></p></aside>}

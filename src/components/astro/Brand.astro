@@ -1,0 +1,10 @@
+---
+import Link from "./Link.astro";
+import Image from "./Image.astro";
+import styles from "@/style/components/content.module.css";
+const { label = "ANIIMO" } = Astro.props;
+---
+<Link href="/" class={styles.brand} aria-label="Aniimo home">
+  <span class={styles.brandMark}><Image src="/images/logo.png" alt="" width={34} height={34} priority /></span>
+  <span>{label === "ANIIMO" ? <Fragment>AN<span class={styles.brandDoubleI}>II</span>MO</Fragment> : label}</span>
+</Link>

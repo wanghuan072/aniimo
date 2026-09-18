@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import UpdatesPage from "@/page/astro/UpdatesPage.astro";
+import ToolsPage from "@/page/astro/ToolsPage.astro";
+import TeamTemplatesPage from "@/page/astro/TeamTemplatesPage.astro";
+import SourcesPage from "@/page/astro/SourcesPage.astro";
+import DatabasePage from "@/page/astro/DatabasePage.astro";
+import AboutPage from "@/page/astro/legal/about-us.astro";
+import ContactPage from "@/page/astro/legal/contact-us.astro";
+import CopyrightPage from "@/page/astro/legal/copyright.astro";
+import PrivacyPage from "@/page/astro/legal/privacy-policy.astro";
+import TermsPage from "@/page/astro/legal/terms-of-service.astro";
+import { tdk } from "@/seo/tdk";
+
+const staticPages = {
+  updates: { component: UpdatesPage, metadata: tdk.updates },
+  tools: { component: ToolsPage, metadata: tdk.tools },
+  "team-builder/templates": { component: TeamTemplatesPage, metadata: tdk.teamTemplates },
+  sources: { component: SourcesPage, metadata: tdk.howItWorks },
+  database: { component: DatabasePage, metadata: tdk.database },
+  "legal/about-us": { component: AboutPage, metadata: tdk.about },
+  "legal/contact-us": { component: ContactPage, metadata: tdk.contact },
+  "legal/copyright": { component: CopyrightPage, metadata: tdk.copyright },
+  "legal/privacy-policy": { component: PrivacyPage, metadata: tdk.privacy },
+  "legal/terms-of-service": { component: TermsPage, metadata: tdk.terms },
+};
+export function getStaticPaths() {
+  return ["updates", "tools", "team-builder/templates", "sources", "database", "legal/about-us", "legal/contact-us", "legal/copyright", "legal/privacy-policy", "legal/terms-of-service"].map((slug) => ({ params: { slug } }));
+}
+const route = staticPages[Astro.params.slug as keyof typeof staticPages];
+const Page = route.component;
+---
+<BaseLayout metadata={route.metadata}><Page /></BaseLayout>
