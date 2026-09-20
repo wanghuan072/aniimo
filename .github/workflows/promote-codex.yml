@@ -1,0 +1,70 @@
+name: Validate and promote Codex changes
+
+on:
+  push:
+    branches:
+      - "codex/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-codex-to-main
+  cancel-in-progress: false
+
+jobs:
+  validate-and-promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out the pushed commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Astro project
+        run: npm run check
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Run route and interaction smoke tests
+        shell: bash
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/aniimo-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          curl --fail --silent http://127.0.0.1:4321/ > /dev/null || {
+            cat /tmp/aniimo-preview.log
+            exit 1
+          }
+          npm run test:smoke
+
+      - name: Merge the validated commit into main
+        env:
+          PUSHED_COMMIT: ${{ github.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          git merge --no-ff --no-edit "$PUSHED_COMMIT"
+          git push origin main
