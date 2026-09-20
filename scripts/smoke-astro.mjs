@@ -47,6 +47,7 @@ try {
   for (const slug of ["squarrel", "squashel", "irisalis", "sparkelf", "lunara", "hexxin"]) {
     assert.ok(await page.locator(`[data-card][data-name="${slug}"]`).count() > 0, `${slug} missing from index`);
   }
+  await page.locator('details[class*="moreFilters"] summary').click();
   await page.locator('[data-filter="stage"][data-value="4"]').click();
   assert.ok(await page.locator('[data-card][data-name="irisalis"]').isVisible());
   await page.locator('[data-filter="stage"][data-value="all"]').click();

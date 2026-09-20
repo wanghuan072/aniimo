@@ -1,11 +1,11 @@
 ---
 import Link from "@/components/astro/Link.astro";
+import Image from "@/components/astro/Image.astro";
 import { aniimo } from "@/lib/data";
 import AniimoExplorer from "@/components/astro/AniimoExplorer.astro";
 import Breadcrumb from "@/components/astro/Breadcrumb.astro";
 import GuideCue from "@/components/astro/GuideCue.astro";
 import { pageGuideCues } from "@/lib/guide-hub";
-import HeroPanel from "@/components/astro/HeroPanel.astro";
 import Icon from "@/components/astro/Icon.astro";
 import UnreleasedAniimo from "@/components/astro/UnreleasedAniimo.astro";
 import styles from "@/style/page/content.module.css";
@@ -26,6 +26,7 @@ const explorerEntries = aniimo.map((entry) => ({
 const novaCount = aniimo.filter((entry) => entry.stage === 3).length;
 const electricCount = aniimo.filter((entry) => entry.elements.includes("electric")).length;
 const newest = [...aniimo].sort((a, b) => Number(b.entryId) - Number(a.entryId)).slice(0, 4);
+const heroAniimo = ["glacy", "leafy", "geoclaw"].map((slug) => aniimo.find((entry) => entry.slug === slug)).filter(Boolean);
 ---
 
     <>
@@ -33,11 +34,12 @@ const newest = [...aniimo].sort((a, b) => Number(b.entryId) - Number(a.entryId))
         <div class={`container ${styles.listHeroInner}`}>
           <div class={styles.listHeroCopy}>
             <Breadcrumb items={[{ label: "Aniimo" }]} />
+            <span class={styles.listEyebrow}>Discover · collect · learn</span>
             <h1><span>✦</span> Aniimo Creatures — Browse the Current Index <span>✦</span></h1>
             <p>Filter by element, role and stage, then open a profile to see skills, traits, forms, habitats and evolution paths in one place.</p>
           </div>
-          <HeroPanel label="Find an Aniimo" items={["Filter by role or element", "Open forms and evolution paths", "Compare a real shortlist"]} />
-          <div class={styles.countBubble}><i>✦</i><strong>{aniimo.length}</strong><span>Aniimo to explore</span></div>
+          <div class={styles.heroCreatures}>{heroAniimo.map((entry, index) => entry && <Image src={entry.voteImage || entry.image} alt={entry.name} width={250} height={250} style={{ "--creature-index": index }} />)}</div>
+          <div class={styles.countBubble}><strong>{aniimo.length}</strong><span>Aniimo</span></div>
         </div>
       </section>
       <section class={styles.listContent}>
