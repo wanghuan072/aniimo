@@ -48,11 +48,11 @@ export const guideConnections: Record<string, {
     related: [
       { href: "/guides/aniimo-catching-guide", title: "Catching: which Aniipod to throw", description: "Spend the cheapest pod that solves the miss." },
       { href: "/guides/aniimo-combat-guide", title: "Combat: BREAK and EP", description: "What the first three jobs are actually for." },
-      { href: "/team-builder", title: "Team Builder", description: "Drop Helion or Fennelun in a slot and test the missing job." },
+      { href: "/team-builder", title: "Team Builder", description: "Drop Helion or Lunara in a slot and test the missing job." },
     ],
     tools: [
       { href: "/aniimo/helion", label: "Helion’s profile" },
-      { href: "/aniimo/fennelun", label: "Fennelun’s profile" },
+      { href: "/aniimo/lunara", label: "Lunara’s profile" },
       { href: "/map", label: "Nimbus Fields on the map" },
     ],
   },

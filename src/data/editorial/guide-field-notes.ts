@@ -223,7 +223,7 @@ export const guideFieldNotes: Record<string, [GuideFieldSection, GuideFieldSecti
       tone: "records",
       paragraphs: [
         "[[Emberpup|/aniimo/emberpup]]'s Scorching Flames is easy to test: it grants 15% more damage against enemies weak to the element. The [[chart|/tools/type-chart]] tells you where the condition exists, and a familiar target tells you whether the bonus supports the fights you run. If you rarely attack a weakness, the trait is not giving you its headline value consistently.",
-        "Other traits ask for a team habit. [[Tubster|/aniimo/tubster]]'s Victory Concerto improves BREAK efficiency while shielded and adds team effects after BREAK and multiple Movement buffs. [[Leafy|/aniimo/leafy]]'s Power of Nature works from off field after the active teammate uses three skills. [[Witchin|/aniimo/witchin]]'s Prank operates on an 18-second cycle and rewards Dark basic attacks against the cursed target. Those are rotation instructions hiding inside [[trait records|/database/traits]].",
+        "Other traits ask for a team habit. [[Tubster|/aniimo/tubster]]'s Victory Concerto improves BREAK efficiency while shielded and adds team effects after BREAK and multiple Movement buffs. [[Leafy|/aniimo/leafy]]'s Power of Nature works from off field after the active teammate uses three skills. [[Hexxin|/aniimo/hexxin]]'s Prank operates on an 18-second cycle and rewards Dark basic attacks against the cursed target. Those are rotation instructions hiding inside [[trait records|/database/traits]].",
         "[[Glacy|/aniimo/glacy]]'s Water Spirit is terrain-bound, while [[Blazen|/aniimo/blazen]]'s Power Sustain counts skill critical hits before entering an Overcharged state. Neither should be rated from the last sentence alone. First ask how often your route supplies the terrain or your build supplies the critical events; then decide whether the reward is reliable enough for your team."
       ],
       image: { src: "/images/aniimo/tubster.png", alt: "Tubster Aniimo artwork", caption: "Victory Concerto is not simply a BREAK bonus: shields, BREAK timing, and Movement buffs determine how much of the trait the team actually receives." },
@@ -235,7 +235,7 @@ export const guideFieldNotes: Record<string, [GuideFieldSection, GuideFieldSecti
           ["Victory Concerto · Tubster", "Shielded state, BREAK trigger, and Movement buffs", "Watch whether shield uptime overlaps the pressure window"],
           ["Water Spirit · Glacy", "Water terrain; skill EP cost reduced by 10%", "Compare the same rotation in and out of water terrain"],
           ["Power of Nature · Leafy", "Off field; teammate uses three skills", "Count skills and look for the grass creation timing"],
-          ["Prank · Witchin", "18s cycle; curse, then Dark basic attacks", "Check whether the party can exploit the curse before it expires"],
+          ["Prank · Hexxin", "18s cycle; curse, then Dark basic attacks", "Check whether the party can exploit the curse before it expires"],
           ["Power Sustain · Blazen", "Six skill critical hits; six-second Overcharged state", "Measure how often the build reaches the state in a normal fight"]
         ]
       },
@@ -249,7 +249,7 @@ export const guideFieldNotes: Record<string, [GuideFieldSection, GuideFieldSecti
       scene: { src: "/images/guides/official/traits-battle.avif", alt: "Pathfinder and Aniimo using a fiery skill during a rainy encounter", caption: "A trait earns its slot in the messy part of a real encounter, where its trigger has to fit positioning, timing, and the rest of the rotation." },
       paragraphs: [
         "Pick an encounter you already know and run it once without trying to force the trait. This gives you the normal rhythm: how often skills are pressed, when shields appear, and whether the fight lasts long enough for an 18-second or six-crit condition. A trigger that never appears in the baseline is already telling you something.",
-        "On the second run, create the condition deliberately. Keep Tubster shielded before working toward BREAK, leave Leafy off field while the active teammate reaches three skills, or hold Dark basics for Witchin's curse. If the setup makes the rest of the rotation clumsy, include that cost in the verdict. [[Combat|/guides/aniimo-combat-guide]] is the loop this test sits inside.",
+        "On the second run, create the condition deliberately. Keep Tubster shielded before working toward BREAK, leave Leafy off field while the active teammate reaches three skills, or hold Dark basics for Hexxin's curse. If the setup makes the rest of the rotation clumsy, include that cost in the verdict. [[Combat|/guides/aniimo-combat-guide]] is the loop this test sits inside.",
         "The third run is the honest one: play normally again, but now recognize the cue. A good fit should appear naturally often enough that you notice its reward without turning the whole fight into maintenance. Record the trigger, the recipient, and the moment it changed. ‘Strong passive’ is not a useful field note; ‘saved 10% EP on the water route’ is."
       ],
       image: { src: "/images/aniimo/glacy.png", alt: "Glacy Aniimo artwork", caption: "Glacy's Water Spirit is a clean test case because terrain decides whether the EP reduction is active." },

@@ -4,6 +4,7 @@ import { applyAniimoForm } from "@/lib/aniimo-form";
 import { getAniimoSpawns, mapHref } from "@/lib/map-atlas";
 import { roleLabels, siteConfig } from "@/config/site";
 import type { Aniimo } from "@/types/content";
+import progressionData from "@/data/research/progression.json";
 
 const normalizeLocation = (value: string) => value.replace(/[.]$/, "").trim().toLowerCase();
 const titleCase = (value: string) => value.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -25,6 +26,7 @@ function mapLinkFor(habitats: string[], slug: string) {
 
 function habitatNoteFor(view: Aniimo, hasSpawns: boolean) {
   if (view.habitats.length) return null;
+  if (view.sourceSpawnCount) return { text: `The community source lists ${view.sourceSpawnCount} field ${view.sourceSpawnCount === 1 ? "spawn" : "spawns"}. Coordinates have not been imported into this site's map.`, href: view.sourceUrl || "/sources", label: "Open source record" };
   const omega = omegaBosses.find((boss) => boss.slug === view.slug);
   if (omega) return { text: `Quest boss in ${omega.region}. No wild habitat is listed.`, href: `/database/bosses#${view.slug}`, label: "Open World Bosses" };
   if ((alphaBossSlugs as readonly string[]).includes(view.slug)) return { text: "Alpha field boss. No wild habitat is listed.", href: `/database/bosses#${view.slug}`, label: "Open World Bosses" };
@@ -52,6 +54,7 @@ export function getAniimoPageData(entry: Aniimo) {
   });
   return {
     entry,
+    progression: (progressionData.entries as Record<string, (typeof progressionData.entries)[keyof typeof progressionData.entries]>)[entry.slug] || null,
     formViews,
     spawnAtlases,
     evolutionTree: entry.evolutionTree ? decorateEvolutionTree(entry.evolutionTree) : null,

@@ -91,7 +91,7 @@ export const guideDossiers: GuideDossier[] = [
         steps: [
           { title: "Create the Wayfarer", body: "This screen is about the explorer, not the team. Combat stats come from Aniimo you catch later." },
           { title: "Land the first catch", body: "Read the percentage beside the target before you throw. That habit matters more than the tutorial Aniipod. See [[Catching|/guides/aniimo-catching-guide]]." },
-          { title: "Pick Helion or Lunara", body: "Both are Holy. Choose close-range pressure ([[Helion|/aniimo/helion]]) or a longer, self-sustaining fight ([[Fennelun|/aniimo/fennelun]] is the later moon-side record)." },
+          { title: "Pick Helion or Lunara", body: "Both are Holy. Choose close-range pressure ([[Helion|/aniimo/helion]]) or Lunara's longer, self-sustaining ranged fight ([[Lunara|/aniimo/lunara]] can temporarily become Fennelun)." },
           { title: "Use Command, then Twine", body: "Command keeps you on the field while an Aniimo attacks. Twining puts you in the creature’s kit and is also how you cross later terrain." },
           { title: "Finish Institute initiation", body: "Membership, the first badge beat, and the function-menu prompt happen here. Then the transporter sends you into Idyll." },
           { title: "Enter Nimbus Fields", body: "Keep one extra catch in mind. [[Emberpup|/aniimo/emberpup]], [[Chirpi|/aniimo/chirpi]], and [[Skippy|/aniimo/skippy]] are close enough to compare without emptying the region." }
@@ -106,7 +106,7 @@ export const guideDossiers: GuideDossier[] = [
         paragraphs: [
           "The opening screen puts Helion and Lunara side by side. Both use Holy, so the choice is how the first fights feel, not which element you ‘should’ main.",
           "[[Helion|/aniimo/helion]] stays close. Light Bombardment costs 20 EP and hits for 62 power; Solar Grace adds 20% damage when the attack is not already super-effective, and every four basic attacks charge the next skill. Pick Helion if you like committing to one target.",
-          "Lunara fights at range and can recover during longer encounters. This index lists [[Fennelun|/aniimo/fennelun]] as the moon-side record: Moon Impact is a 15 EP magic hit, and Moon-Washed restores 20 EP. Lunara’s Ultimate temporarily becomes Fennelun; Helion’s matching Ultimate becomes Soleon. You are not picking Fennelun on the opening screen.",
+          "Lunara fights at range and can recover during longer encounters. Its [[profile|/aniimo/lunara]] lists Moon Impact as a 15 EP magic hit, and Moon-Washed restores 20 EP. Lunara’s Ultimate temporarily becomes Fennelun; Helion’s matching Ultimate becomes Soleon. You are not picking Fennelun on the opening screen.",
           "Your next catches should cover what the starter does not: another element, a Heal or BREAK job, or a field skill. Two Holy DPS records do not make a team. See [[Catching|/guides/aniimo-catching-guide]] when the first wild target appears."
         ],
         table: {
@@ -117,7 +117,7 @@ export const guideDossiers: GuideDossier[] = [
             ["Lunara → Fennelun", "Holy / DPS", "Ranged magic and EP recovery; Moon Impact 15 EP, Moon-Washed restores 20 EP", "A close fighter, BREAK, or a different element"]
           ]
         },
-        link: { label: "Compare Fennelun", href: "/aniimo/fennelun" }
+        link: { label: "Compare Lunara", href: "/aniimo/lunara" }
       },
       {
         id: "twining",
@@ -679,7 +679,7 @@ export const guideDossiers: GuideDossier[] = [
     heroAlt: "Helgon Aniimo artwork",
     theme: "tide",
     deck: "Pick one missing record, check its form and habitat, then run a route that still has a second job if the catch does not appear.",
-    thesis: "One missing Aniimo plus a backup objective is a session. A list of 94 blanks is not.",
+    thesis: "One missing Aniimo plus a backup objective is a session. A long list of blanks is not.",
     chapters: [
       {
         id: "one-target",

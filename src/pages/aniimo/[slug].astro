@@ -4,16 +4,18 @@ import AniimoDetailPage from "@/page/astro/AniimoDetailPage.astro";
 import JsonLd from "@/components/astro/JsonLd.astro";
 import { breadcrumbJsonLd } from "@/seo/schema";
 import { aniimoTdk } from "@/seo/tdk";
-import { aniimo, getAniimo } from "@/lib/data";
+import { aniimo, getAniimo, legacyAniimoSlugs } from "@/lib/data";
 import { getAniimoPageData } from "@/lib/aniimo-page-data";
 import { siteConfig } from "@/config/site";
 export function getStaticPaths() {
-  return aniimo.map((entry) => ({ params: { slug: entry.slug } }));
+  return [...aniimo.map((entry) => entry.slug), ...legacyAniimoSlugs].map((slug) => ({ params: { slug } }));
 }
 const entry = getAniimo(Astro.params.slug)!;
 const data = getAniimoPageData(entry);
+const metadata = aniimoTdk(entry);
+if (Astro.params.slug !== entry.slug || entry.slug === "fennelun") metadata.noIndex = true;
 ---
-<BaseLayout metadata={aniimoTdk(entry)}>
+<BaseLayout metadata={metadata}>
   <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Aniimo", href: "/aniimo" }, { name: entry.name, href: `/aniimo/${entry.slug}` }], siteConfig.url)} />
   <AniimoDetailPage {...data} />
 </BaseLayout>

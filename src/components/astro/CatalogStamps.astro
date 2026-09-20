@@ -2,7 +2,7 @@
 import Link from "./Link.astro";
 import Image from "./Image.astro";
 import styles from "@/style/page/content.module.css";
-type Props = { entries: Array<{ slug: string; name: string; image: string }> };
+type Props = { entries: Array<{ slug: string; name: string; image: string; href?: string }> };
 const { entries } = Astro.props;
 ---
-<div class={styles.stampSheet}>{entries.map((entry) => <Link href={`/aniimo/${entry.slug}`} title={entry.name} aria-label={`Open ${entry.name}`}><Image src={entry.image} alt="" fill sizes="44px" /></Link>)}</div>
+<div class={styles.stampSheet}>{entries.map((entry) => <Link href={entry.href || `/aniimo/${entry.slug}`} title={entry.name} aria-label={`Open ${entry.name}`}><Image src={entry.image} alt="" fill sizes="44px" /></Link>)}</div>

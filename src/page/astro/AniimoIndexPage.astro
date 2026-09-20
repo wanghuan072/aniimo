@@ -7,6 +7,7 @@ import GuideCue from "@/components/astro/GuideCue.astro";
 import { pageGuideCues } from "@/lib/guide-hub";
 import HeroPanel from "@/components/astro/HeroPanel.astro";
 import Icon from "@/components/astro/Icon.astro";
+import UnreleasedAniimo from "@/components/astro/UnreleasedAniimo.astro";
 import styles from "@/style/page/content.module.css";
 const explorerEntries = aniimo.map((entry) => ({
   slug: entry.slug,
@@ -32,7 +33,7 @@ const newest = [...aniimo].sort((a, b) => Number(b.entryId) - Number(a.entryId))
         <div class={`container ${styles.listHeroInner}`}>
           <div class={styles.listHeroCopy}>
             <Breadcrumb items={[{ label: "Aniimo" }]} />
-            <h1><span>✦</span> All Aniimo Creatures — Browse the Full Roster <span>✦</span></h1>
+            <h1><span>✦</span> Aniimo Creatures — Browse the Current Index <span>✦</span></h1>
             <p>Filter by element, role and stage, then open a profile to see skills, traits, forms, habitats and evolution paths in one place.</p>
           </div>
           <HeroPanel label="Find an Aniimo" items={["Filter by role or element", "Open forms and evolution paths", "Compare a real shortlist"]} />
@@ -49,6 +50,7 @@ const newest = [...aniimo].sort((a, b) => Number(b.entryId) - Number(a.entryId))
             <aside><span>✦ Choosing between two?</span><p>Filter by the job your team needs first, then compare the skills and fields that affect that choice.</p><Link href="/tools/compare">Compare Aniimo <Icon name="arrow" /></Link></aside>
           </div>
           <GuideCue title="Related guides" items={pageGuideCues.aniimoIndex} />
+          <UnreleasedAniimo />
         </div>
       </section>
     </>

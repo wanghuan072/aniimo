@@ -11,7 +11,7 @@ import Icon from "@/components/astro/Icon.astro";
 import pageStyles from "@/style/page/tools.module.css";
 import styles from "@/style/components/tools.module.css";
 const elements = [...new Set(aniimo.flatMap((entry) => entry.elements))].sort();
-const clientData = aniimo.map((entry) => ({ slug: entry.slug, name: entry.name, image: entry.voteImage || entry.image, elements: entry.elements, roles: entry.roles, stats: entry.stats ? { hp: entry.stats.hp, physicalAttack: entry.stats.physicalAttack, magicAttack: entry.stats.magicAttack, physicalDefense: entry.stats.physicalDefense, magicDefense: entry.stats.magicDefense } : null }));
+const clientData = aniimo.map((entry) => ({ slug: entry.slug, name: entry.name, image: entry.voteImage || entry.image, elements: entry.elements, roles: entry.roles, stats: entry.referenceStats }));
 ---
 <section class={pageStyles.toolHeader}><div class="container"><Breadcrumb items={[{ label: "Team Builder" }]} /><span class={pageStyles.kicker}><Icon name="team" /> Team planning</span><h1>Aniimo Team Builder — Build Your Four-Aniimo Team</h1><p>Choose a party, adjust the order, then use role, element and base-field coverage to decide what to try next.</p><HeroPanel label="Build in four slots" items={["Choose a first Aniimo", "Fill the jobs you are missing", "Review each member's base fields"]} /><GuideCue title="Guides for building a team" items={pageGuideCues.team} /></div></section>
 <section class={pageStyles.toolContent}><div class="container"><div class={pageStyles.appSpacing}><div class={styles.teamBuilder} data-team-builder><div class={styles.teamBuilderMain}><section class={styles.teamDeck} aria-label="Your team"><header class={styles.teamDeckHeader}><div><span>Your four-slot party</span><h2>Build Your Four-Aniimo Team</h2></div><div class={styles.deckActions}><Link href="/team-builder/templates">Player templates</Link><button type="button" data-team-clear disabled>Clear</button><button type="button" data-team-share disabled><Icon name="share" /> Share team</button></div></header><div class={styles.teamSlotsGrid} data-team-slots>{[0, 1, 2, 3].map((index) => <article class={`${styles.builderSlot} ${index === 0 ? styles.builderSlotActive : ""} ${styles.builderSlotEmpty}`} data-slot={index} draggable="false"><button type="button" class={styles.slotSelect} data-select-slot={index} aria-label={`Select slot ${index + 1}`}><span>Slot {index + 1}</span>{index === 0 && <b>Picking</b>}</button><div class={styles.slotEmptyCopy}><span>+</span><p>Select an Aniimo below</p></div></article>)}</div><p class={styles.shareFeedback} data-team-feedback hidden></p></section>
@@ -26,11 +26,11 @@ const clientData = aniimo.map((entry) => ({ slug: entry.slug, name: entry.name, 
   const root = document.querySelector<HTMLElement>("[data-team-builder]");
   if (root) {
     const app = root;
-    type Entry = { slug: string; name: string; image: string; elements: string[]; roles: string[]; stats: { hp: number; physicalAttack: number; magicAttack: number; physicalDefense: number; magicDefense: number } | null };
+    type Entry = { slug: string; name: string; image: string; elements: string[]; roles: string[]; stats: { hp: number; attack: number; physicalDefense: number; magicDefense: number; break: number; regen: number; total: number } | null };
     const data = JSON.parse(app.querySelector<HTMLScriptElement>("[data-team-data]")?.textContent || "{}") as { entries: Entry[]; elements: Record<string, { symbol: string; label: string; color: string }>; roles: Record<string, string> };
     const index = new Map(data.entries.map((entry) => [entry.slug, entry]));
     const params = new URLSearchParams(location.search);
-    let slots = [...new Set((params.get("team") || "").split(",").filter((slug) => index.has(slug)))].slice(0, 4);
+    let slots = [...new Set((params.get("team") || "").split(",").map((slug) => slug === "witchin" ? "hexxin" : slug === "fennelun" ? "lunara" : slug).filter((slug) => index.has(slug)))].slice(0, 4);
     let active = Math.min(slots.length, 3), element = "all", dragged = -1;
     const search = app.querySelector<HTMLInputElement>("[data-team-search]")!;
     const slotHost = app.querySelector<HTMLElement>("[data-team-slots]")!;
@@ -55,7 +55,7 @@ const clientData = aniimo.map((entry) => ({ slug: entry.slug, name: entry.name, 
       if (team.length > 1 && allElements.length < 3) missing.push("Element coverage is narrow");
       app.querySelector<HTMLElement>("[data-team-gaps]")!.innerHTML = missing.length ? `<section class="${styles.reviewGaps}"><h3>Consider next</h3>${missing.map((item) => `<p><span>!</span>${item}</p>`).join("")}</section>` : "";
       const existing = app.querySelector(`.${reviewStyles.reviewRoster}`); existing?.remove();
-      if (team.length) app.querySelector("[data-team-review] header")!.insertAdjacentHTML("afterend", `<section class="${reviewStyles.reviewRoster}"><h3>Selected Aniimo</h3>${team.map((entry) => `<a href="/aniimo/${escape(entry.slug)}" class="${reviewStyles.reviewMember}"><span><img src="${escape(entry.image)}" alt="" loading="lazy"></span><div><strong>${escape(entry.name)}</strong><small>${entry.roles.map((role) => escape(data.roles[role] || role)).join(" / ")}</small></div>${entry.stats ? `<em><b>HP ${entry.stats.hp}</b><b>ATK ${Math.max(entry.stats.physicalAttack, entry.stats.magicAttack)}</b><b>DEF ${Math.round((entry.stats.physicalDefense + entry.stats.magicDefense) / 2)}</b></em>` : "<i>Stats not listed</i>"}</a>`).join("")}</section>`);
+      if (team.length) app.querySelector("[data-team-review] header")!.insertAdjacentHTML("afterend", `<section class="${reviewStyles.reviewRoster}"><h3>Selected Aniimo · current base fields</h3>${team.map((entry) => `<a href="/aniimo/${escape(entry.slug)}" class="${reviewStyles.reviewMember}"><span><img src="${escape(entry.image)}" alt="" loading="lazy"></span><div><strong>${escape(entry.name)}</strong><small>${entry.roles.map((role) => escape(data.roles[role] || role)).join(" / ")}</small></div>${entry.stats ? `<em><b>HP ${entry.stats.hp}</b><b>ATK ${entry.stats.attack}</b><b>DEF ${Math.round((entry.stats.physicalDefense + entry.stats.magicDefense) / 2)}</b></em>` : "<i>Stats not listed</i>"}</a>`).join("")}</section>`);
     }
     app.addEventListener("click", async (event) => {
       const target = event.target as Element;

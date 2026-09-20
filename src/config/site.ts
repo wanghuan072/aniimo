@@ -26,6 +26,7 @@ export const navigation = [
       { label: "Habitats", href: "/database/habitats" },
       { label: "Evolutions", href: "/database/evolutions" },
       { label: "Mobility", href: "/database/mobility" },
+      { label: "Work Abilities", href: "/database/work-abilities" },
       { label: "Materials", href: "/database/materials" },
       { label: "World Bosses", href: "/database/bosses" },
       { label: "Achievements", href: "/database/achievements" },

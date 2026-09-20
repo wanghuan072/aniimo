@@ -1,0 +1,50 @@
+---
+import Link from "@/components/astro/Link.astro";
+import { aniimo } from "@/lib/data";
+import unreleased from "@/data/research/unreleased-aniimo.json";
+import styles from "@/style/page/content.module.css";
+
+const knownSlugs = new Set(aniimo.map((entry) => entry.slug));
+const internalFormCount = unreleased.species.reduce((sum, entry) => sum + entry.alternateForms.length, 0);
+const formHref = (href: string) => {
+  const slug = href.split("/").at(-1);
+  return slug && knownSlugs.has(slug) ? `/aniimo/${slug}` : `https://www.aniimoverse.com${href}`;
+};
+---
+
+<section class={styles.unreleasedSection} aria-labelledby="unreleased-heading">
+  <div class={styles.unreleasedIntro}>
+    <span>Client file discoveries · source reviewed {unreleased.reviewedAt}</span>
+    <h2 id="unreleased-heading">Unreleased Aniimo found in the game files</h2>
+    <p>Client files contain portraits for {unreleased.species.length} unreleased Aniimo entries and {internalFormCount} additional forms of these entries. They have no confirmed journal stats, skills or spawn records. The names and relationships below are provisional, and these cards are excluded from the playable roster count above.</p>
+  </div>
+  <div class={styles.unreleasedGrid}>
+    {unreleased.species.map((entry) => <article class={styles.unreleasedCard}>
+      <div class={styles.unreleasedPortrait}><img src={entry.image} alt={`${entry.name} compendium portrait, client file ID ${entry.id}`} width="512" height="840" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+      <div class={styles.unreleasedCardCopy}>
+        <h3>{entry.name}</h3>
+        <span class={styles.unreleasedId}>Client ID {entry.id}</span>
+        <p>{entry.note}</p>
+        {entry.alternateForms.length > 0 && <div class={styles.unreleasedVariants} aria-label={`${entry.name} additional forms`}>
+          {entry.alternateForms.map((form) => <figure><img src={form.image} alt={`${entry.name} alternate form ${form.id}`} width="512" height="840" loading="lazy" decoding="async" referrerpolicy="no-referrer" /><figcaption>{form.id}</figcaption></figure>)}
+        </div>}
+        <small>{entry.assetStatus}</small>
+      </div>
+    </article>)}
+  </div>
+  <div class={styles.unreleasedIntro}>
+    <h2>Unreleased forms of known Aniimo</h2>
+    <p>These {unreleased.forms.length} additional portraits belong to Aniimo named in the journal. Their appearance in client files does not confirm how or when a player can obtain them.</p>
+  </div>
+  <div class={styles.unreleasedGrid}>
+    {unreleased.forms.map((form) => <article class={styles.unreleasedCard}>
+      <div class={styles.unreleasedPortrait}><img src={form.image} alt={`Unreleased ${form.name} form portrait, client file ID ${form.id}`} width="512" height="840" loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+      <div class={styles.unreleasedCardCopy}>
+        <h3><Link href={formHref(form.href)}>{form.name}</Link></h3>
+        <span class={styles.unreleasedId}>Form ID {form.id}</span>
+        <small>Client portrait · availability unconfirmed</small>
+      </div>
+    </article>)}
+  </div>
+  <p class={styles.unreleasedSource}>Source: <a href={unreleased.sourceUrl} target="_blank" rel="noopener noreferrer">AniimoVerse Aniilog</a>. These are file discoveries, not release announcements.</p>
+</section>

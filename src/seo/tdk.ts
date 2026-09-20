@@ -30,7 +30,7 @@ export const tdk = {
     lastModified: released,
   },
   aniimo: {
-    title: "All Aniimo Creatures — Forms, Skills & Habitats",
+    title: "Aniimo Creature Index — Forms, Skills & Habitats",
     description: "Browse the Aniimo roster by element, role, stage, and form. Open each creature profile to compare stats, skills, traits, evolution paths, and habitats.",
     pathname: "/aniimo",
     lastModified: released,
@@ -152,7 +152,7 @@ export function aniimoTdk(entry: Aniimo): TdkEntry {
     title: `${entry.name} — Aniimo Skills, Forms, Stats & Evolution`,
     description: fitDescription(`Explore ${entry.name}'s ${entry.elements.join(" and ")} element, ${entry.roles.join(" and ")} role, published stats, skills, traits, ${forms}, habitats, and evolution path in Aniimo. Plan ahead.`),
     pathname: `/aniimo/${entry.slug}`,
-    lastModified: released,
+    lastModified: entry.sourceKind === "community-launch" ? "2026-09-18" : released,
     image: entry.image,
   };
 }

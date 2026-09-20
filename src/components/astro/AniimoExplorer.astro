@@ -7,7 +7,7 @@ const { entries } = Astro.props;
 const preferredElements = ["holy", "fire", "ice", "dark", "electric", "grass", "water", "rock", "wind"];
 const elements = preferredElements.filter((value) => entries.some((entry: any) => entry.elements.includes(value)));
 const roles = [...new Set(entries.flatMap((entry: any) => entry.roles))].sort() as string[];
-const stageOptions = [{ value: "all", label: "All", symbol: "✦" }, { value: "1", label: "Lumin", symbol: "●" }, { value: "2", label: "Gamma", symbol: "◆" }, { value: "3", label: "Nova", symbol: "✹" }, { value: "0", label: "Special", symbol: "◇" }];
+const stageOptions = [{ value: "all", label: "All", symbol: "✦" }, { value: "1", label: "Lumin", symbol: "●" }, { value: "2", label: "Gamma", symbol: "◆" }, { value: "3", label: "Nova", symbol: "✹" }, { value: "4", label: "Legendary", symbol: "★" }, { value: "0", label: "Special", symbol: "◇" }];
 const roleSymbols: Record<string, string> = { dps: "⚔", heal: "✚", sup: "♥", break: "✊", regen: "◉", energy: "ϟ" };
 const sortOptions = [{ value: "number", label: "Official No." }, { value: "name", label: "A–Z" }, { value: "views", label: "Most Viewed" }];
 const countBy = (type: "element" | "role" | "stage", value: string) => entries.filter((entry: any) => type === "element" ? entry.elements.includes(value) : type === "role" ? entry.roles.includes(value) : entry.stage === Number(value)).length;

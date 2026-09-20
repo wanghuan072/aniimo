@@ -7,7 +7,7 @@ type Props = { node: AniimoEvolutionView; currentName: string };
 const { node, currentName } = Astro.props;
 const current = node.name === currentName;
 const portrait = node.portrait || node.imageUrl;
-const stageLabel = (stage: number) => stage === 1 ? "Lumin" : stage === 2 ? "Gamma" : stage === 3 ? "Nova" : "Special";
+const stageLabel = (stage: number) => stage === 1 ? "Lumin" : stage === 2 ? "Gamma" : stage === 3 ? "Nova" : stage === 4 ? "Legendary" : "Special";
 const className = `${styles.evoCard} ${current ? styles.evoCurrent : ""}`;
 ---
 <div class={styles.evoLane}>

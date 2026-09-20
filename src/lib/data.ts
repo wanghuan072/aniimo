@@ -9,6 +9,9 @@ import communityTierData from "@/data/research/community-tier-snapshot.json";
 import officialVoteData from "@/data/research/official-vote-2026.json";
 import communityDatabaseData from "@/data/research/community-database.json";
 import skillExtrasData from "@/data/research/skill-extras.json";
+import rosterAdditions from "@/data/research/roster-additions.json";
+import rosterAudit from "@/data/research/roster-audit.json";
+import currentProfileKits from "@/data/research/current-profile-kits.json";
 import { applyAniimoForm } from "@/lib/aniimo-form";
 import type { Aniimo, AniimoEvolutionNode, AniimoEvolutionView, AniimoFormRecord, AniimoSkill, CommunityRecord, DatabaseCategory, Guide, MapLocation } from "@/types/content";
 
@@ -23,6 +26,63 @@ type SkillExtraRecord = {
 
 const voteImageSlugs = new Set(officialVoteData.records.flatMap((record) => record.slug ? [record.slug] : []));
 const skillExtrasByName = new Map((skillExtrasData.records as SkillExtraRecord[]).map((record) => [record.name, record]));
+const currentProfileBySlug = new Map(currentProfileKits.profiles.map((profile) => [profile.slug, profile]));
+
+function formPath(slug: string, label: string) {
+  return `/aniilog/${slug}/${label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+}
+
+function currentFormLabel(slug: string, label: string) {
+  if (slug === "thornblade" && label === "Rainstorm Form") return "Thunderstorm Form";
+  if (slug === "lunara" && label === "Basic Form") return "Base Form";
+  return label;
+}
+
+function currentSkill(skill: (typeof currentProfileKits.profiles)[number]["skills"][number]): AniimoSkill {
+  return { name: skill.name, description: skill.description, category: skill.category, elements: skill.elements,
+    types: skill.types, iconUrl: skill.iconUrl, cost: skill.cost, power: skill.power };
+}
+
+function applyCurrentProfileKit(entry: Aniimo): Aniimo {
+  const profile = currentProfileBySlug.get(entry.slug);
+  if (!profile) throw new Error(`Missing current profile kit for ${entry.slug}`);
+  const skills: AniimoSkill[] = profile.skills.map(currentSkill);
+  const formRecords: AniimoFormRecord[] = profile.forms.map((form, index) => {
+    const old = entry.formRecords.find((record) => currentFormLabel(entry.slug, record.form) === form.label);
+    const id = old?.id || `reference-${entry.slug}-${form.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+    const base = old || entry.formRecords[0];
+    const paths = [formPath(entry.slug, form.label)];
+    if (entry.slug === "thornblade" && form.label === "Thunderstorm Form") paths.push(formPath(entry.slug, "Rainstorm Form"));
+    const selectedSkills = profile.skills.filter((skill) => !skill.unlockFormPaths.length || skill.unlockFormPaths.some((path) => paths.includes(path)))
+      .map(currentSkill);
+    return {
+      ...base,
+      id, form: form.label, image: form.image,
+      description: form.description || (index === 0 ? profile.description : base.description),
+      elements: form.elements.length ? form.elements : base.elements,
+      stats: old?.stats ?? null,
+      habitats: old?.habitats ?? [],
+      homelandAbilities: old?.homelandAbilities ?? [],
+      mobility: old?.mobility ?? [],
+      pathfinding: old?.pathfinding ?? [],
+      traits: old?.traits ?? [],
+      skills: selectedSkills,
+      evolution: old?.evolution ?? [],
+      evolutionTree: old?.evolutionTree ?? null,
+      viewCount: old?.viewCount ?? null,
+    };
+  });
+  return {
+    ...entry, name: profile.name, description: profile.description, image: profile.forms[0].image,
+    form: profile.forms[0].label,
+    elements: formRecords[0].elements,
+    skills,
+    forms: formRecords.map((record, index) => ({ id: record.id, label: record.form, isCurrent: index === 0 })),
+    formRecords,
+    referenceStats: profile.referenceStats,
+    sourceUrl: profile.sourceUrl,
+  };
+}
 
 function withSkillExtras(skill: AniimoSkill): AniimoSkill {
   const extra = skillExtrasByName.get(skill.name);
@@ -49,7 +109,37 @@ function decorateAniimo(entry: Aniimo): Aniimo {
   };
 }
 
-export const aniimo = (aniimoData.entries as Aniimo[]).map(decorateAniimo);
+function currentName(name: string) { return name === "Witchin" ? "Hexxin" : name; }
+function updateEvolutionTree(node: AniimoEvolutionNode): AniimoEvolutionNode {
+  return { ...node, name: currentName(node.name), children: node.children.map(updateEvolutionTree) };
+}
+function currentEntry(entry: Aniimo): Aniimo {
+  const slug = entry.slug === "witchin" ? "hexxin" : entry.slug;
+  return {
+    ...entry,
+    slug,
+    entryId: (rosterAudit.referenceNumbers as Record<string, string>)[slug] || entry.entryId,
+    name: currentName(entry.name),
+    evolution: entry.evolution.map((node) => ({ ...node, name: currentName(node.name) })),
+    evolutionTree: entry.evolutionTree ? updateEvolutionTree(entry.evolutionTree) : null,
+    formRecords: entry.formRecords.map((record) => ({ ...record,
+      evolution: record.evolution.map((node) => ({ ...node, name: currentName(node.name) })),
+      evolutionTree: record.evolutionTree ? updateEvolutionTree(record.evolutionTree) : null,
+    })),
+  };
+}
+
+const legacyFennelun = decorateAniimo((aniimoData.entries as Aniimo[]).find((entry) => entry.slug === "fennelun")!);
+const officialRoster = (aniimoData.entries as Aniimo[]).filter((entry) => entry.slug !== "fennelun").map((entry) => decorateAniimo(applyCurrentProfileKit(currentEntry(entry))));
+const additions = (rosterAdditions.entries as Aniimo[]).map((entry) => {
+  const withLegacyForm = entry.slug === "lunara" ? {
+    ...entry,
+    formRecords: [...entry.formRecords, { ...legacyFennelun.formRecords[0], form: "Fennelun · temporary evolution", stats: null }],
+  } : entry;
+  return decorateAniimo(applyCurrentProfileKit(withLegacyForm));
+});
+export const aniimo = [...officialRoster, ...additions].sort((a, b) => Number(a.entryId) - Number(b.entryId));
+export const legacyAniimoSlugs = ["witchin", "fennelun"];
 
 export const officialSource = aniimoData.source;
 export const guides = [...(guidesData as Guide[]), ...(guideExpansionData as Guide[])];
@@ -59,7 +149,12 @@ export const researchSources = sourcesData;
 export const typeChart = typeChartData;
 export const communityTier = communityTierData;
 export const officialVote = officialVoteData;
-export const communityDatabase = communityDatabaseData as Record<string, CommunityRecord[]>;
+export const communityDatabase = Object.fromEntries(Object.entries(communityDatabaseData as Record<string, CommunityRecord[]>).map(([category, records]) => [category,
+  records.filter((record) => !/placeholder/i.test(`${record.slug} ${record.name}`)).map((record) => ({
+    ...record,
+    description: /^\s*(?:\[placeholder\]|placeholder for world lore description)\s*$/i.test(record.description) ? "" : record.description,
+  })),
+])) as Record<string, CommunityRecord[]>;
 
 export const elements = [...new Set(aniimo.flatMap((entry) => entry.elements))].sort();
 export const roles = [...new Set(aniimo.flatMap((entry) => entry.roles))].sort();
@@ -67,6 +162,8 @@ export const forms = [...new Set(aniimo.map((entry) => entry.form))].sort();
 export const habitats = [...new Set(aniimo.flatMap((entry) => entry.habitats))].sort();
 
 export function getAniimo(slug: string) {
+  if (slug === "witchin") return aniimo.find((entry) => entry.slug === "hexxin");
+  if (slug === "fennelun") return legacyFennelun;
   return aniimo.find((entry) => entry.slug === slug);
 }
 
@@ -186,7 +283,7 @@ export function getTypeMatchups(elements: string[]) {
 
 export function getAniimoNeighbors(entry: Aniimo) {
   const roster = [...aniimo].sort((left, right) => Number(left.entryId) - Number(right.entryId));
-  const index = roster.findIndex((item) => item.slug === entry.slug);
+  const index = Math.max(0, roster.findIndex((item) => item.slug === (entry.slug === "fennelun" ? "lunara" : entry.slug)));
   const pick = (item: Aniimo) => ({ slug: item.slug, name: item.name, entryId: item.entryId });
   return {
     prev: pick(roster[(index - 1 + roster.length) % roster.length]),

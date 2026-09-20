@@ -121,6 +121,10 @@ export type Aniimo = {
   traits: Array<{ name: string; description: string; iconUrl: string }>;
   skills: AniimoSkill[];
   viewCount: number | null;
+  sourceKind?: "community-launch";
+  sourceUrl?: string;
+  referenceStats?: { hp: number; attack: number; physicalDefense: number; magicDefense: number; break: number; regen: number; total: number };
+  sourceSpawnCount?: number;
 };
 
 export type GuideLink = {

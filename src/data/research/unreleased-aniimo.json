@@ -1,0 +1,410 @@
+{
+  "sourceUrl": "https://www.aniimoverse.com/aniilog",
+  "reviewedAt": "2026-09-18",
+  "species": [
+    {
+      "id": "10013",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Celestis and Stellarys line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10013/list.webp"
+    },
+    {
+      "id": "10144",
+      "name": "Unnamed Aniimo",
+      "note": "Fourth member of the Bulbly, Veilfloat and Luminelle line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10144/list.webp"
+    },
+    {
+      "id": "10193",
+      "name": "Unnamed Aniimo",
+      "note": "Alternate branch of the Shelly line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10193/list.webp"
+    },
+    {
+      "id": "10195",
+      "name": "Unnamed Aniimo",
+      "note": "Alternate branch of the Shelly line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10195/list.webp"
+    },
+    {
+      "id": "10223",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Bolty and Blazen line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10223/list.webp"
+    },
+    {
+      "id": "10391",
+      "name": "Saws family",
+      "note": "First member of the Saws family",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10391/list.webp"
+    },
+    {
+      "id": "10393",
+      "name": "Saws family",
+      "note": "Second member of the Saws family",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10393/list.webp"
+    },
+    {
+      "id": "10401",
+      "name": "Prawnch family",
+      "note": "First member of the Prawnch family",
+      "alternateForms": [
+        {
+          "id": "1040101",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1040101.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10401/list.webp"
+    },
+    {
+      "id": "10403",
+      "name": "Jabster",
+      "note": "Third member of the Prawnch family",
+      "alternateForms": [
+        {
+          "id": "1040301",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1040301.webp"
+        }
+      ],
+      "assetStatus": "Full 3D model",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10403/list.webp"
+    },
+    {
+      "id": "10241",
+      "name": "Morphling",
+      "note": "Shapeshifter used by the Morphling mode dungeons",
+      "alternateForms": [],
+      "assetStatus": "Full 3D model",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10241/list.webp"
+    },
+    {
+      "id": "10434",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Cozite and Bailite line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10434/list.webp"
+    },
+    {
+      "id": "10444",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Eko and Eklue line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10444/list.webp"
+    },
+    {
+      "id": "10464",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Cheekie and Wavwal line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10464/list.webp"
+    },
+    {
+      "id": "10491",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10491/list.webp"
+    },
+    {
+      "id": "10493",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10493/list.webp"
+    },
+    {
+      "id": "10513",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of the Squarrel and Squashel line",
+      "alternateForms": [
+        {
+          "id": "1051301",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1051301.webp"
+        },
+        {
+          "id": "1051302",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1051302.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10513/list.webp"
+    },
+    {
+      "id": "10541",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [
+        {
+          "id": "1054101",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1054101.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10541/list.webp"
+    },
+    {
+      "id": "10543",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new line with no released Aniimo",
+      "alternateForms": [
+        {
+          "id": "1054301",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1054301.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10543/list.webp"
+    },
+    {
+      "id": "10561",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new mushroom line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10561/list.webp"
+    },
+    {
+      "id": "10563",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new mushroom line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10563/list.webp"
+    },
+    {
+      "id": "10564",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of a new mushroom line",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10564/list.webp"
+    },
+    {
+      "id": "10591",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [
+        {
+          "id": "1059101",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1059101.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10591/list.webp"
+    },
+    {
+      "id": "10593",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new line with no released Aniimo",
+      "alternateForms": [
+        {
+          "id": "1059301",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1059301.webp"
+        },
+        {
+          "id": "1059302",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1059302.webp"
+        }
+      ],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10593/list.webp"
+    },
+    {
+      "id": "10594",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10594/list.webp"
+    },
+    {
+      "id": "10601",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10601/list.webp"
+    },
+    {
+      "id": "10603",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10603/list.webp"
+    },
+    {
+      "id": "10604",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10604/list.webp"
+    },
+    {
+      "id": "10611",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [
+        {
+          "id": "1061101",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1061101.webp"
+        }
+      ],
+      "assetStatus": "Model parts only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10611/list.webp"
+    },
+    {
+      "id": "10613",
+      "name": "Unnamed Aniimo",
+      "note": "Second member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Model parts only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10613/list.webp"
+    },
+    {
+      "id": "10614",
+      "name": "Unnamed Aniimo",
+      "note": "Third member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10614/list.webp"
+    },
+    {
+      "id": "10651",
+      "name": "Unnamed Aniimo",
+      "note": "First member of a new line with no released Aniimo",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/10651/list.webp"
+    },
+    {
+      "id": "20211",
+      "name": "Unnamed Aniimo",
+      "note": "Iris-styled entry with only a portrait and journal icon",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/20211/list.webp"
+    },
+    {
+      "id": "20212",
+      "name": "Unnamed Aniimo",
+      "note": "Iris-styled entry with only a portrait and journal icon",
+      "alternateForms": [],
+      "assetStatus": "Artwork only",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/20212/list.webp"
+    }
+  ],
+  "forms": [
+    {
+      "id": "1038101",
+      "name": "Reefish",
+      "href": "/aniilog/reefish",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1038101.webp"
+    },
+    {
+      "id": "1038102",
+      "name": "Reefish",
+      "href": "/aniilog/reefish",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1038102.webp"
+    },
+    {
+      "id": "1038301",
+      "name": "Coraliz",
+      "href": "/aniilog/coraliz",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1038301.webp"
+    },
+    {
+      "id": "1042101",
+      "name": "Malangel",
+      "href": "/aniilog/malangel",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1042101.webp"
+    },
+    {
+      "id": "1042301",
+      "name": "Malevsera",
+      "href": "/aniilog/malevsera",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1042301.webp"
+    },
+    {
+      "id": "1044101",
+      "name": "Eko",
+      "href": "/aniilog/eko",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1044101.webp"
+    },
+    {
+      "id": "1044102",
+      "name": "Eko",
+      "href": "/aniilog/eko",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1044102.webp"
+    },
+    {
+      "id": "1044301",
+      "name": "Eklue",
+      "href": "/aniilog/eklue",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1044301.webp"
+    },
+    {
+      "id": "1044302",
+      "name": "Eklue",
+      "href": "/aniilog/eklue",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1044302.webp"
+    },
+    {
+      "id": "1046101",
+      "name": "Cheekie",
+      "href": "/aniilog/cheekie",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1046101.webp"
+    },
+    {
+      "id": "1047401",
+      "name": "Dazmand",
+      "href": "/aniilog/dazmand",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1047401.webp"
+    },
+    {
+      "id": "1051101",
+      "name": "Squarrel",
+      "href": "/aniilog/squarrel",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1051101.webp"
+    },
+    {
+      "id": "1051102",
+      "name": "Squarrel",
+      "href": "/aniilog/squarrel",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1051102.webp"
+    },
+    {
+      "id": "1062101",
+      "name": "Popapus",
+      "href": "/aniilog/popapus",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1062101.webp"
+    },
+    {
+      "id": "1062301",
+      "name": "Gachapus",
+      "href": "/aniilog/gachapus",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/unreleased/forms/1062301.webp"
+    }
+  ]
+}

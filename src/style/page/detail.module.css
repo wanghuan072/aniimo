@@ -186,6 +186,7 @@
 .formPill { background: #eef6fb; border-color: #c9dce8; color: #355f80; }
 .stagePill[data-stage="2"] { background: #eef3f8; border-color: #c9d6e2; color: #4d657c; }
 .stagePill[data-stage="3"] { background: #fff0d4; border-color: #e8c57a; color: #a07010; }
+.stagePill[data-stage="4"] { background:#fff0c7;border-color:#dcb963;color:#865a08; }
 .rolePill { background: #f3edff; border-color: #d8c8f2; color: #6248a4; }
 .rolePill svg { width: 14px; }
 
@@ -1911,3 +1912,5 @@
 @media (prefers-reduced-motion: reduce) {
   .relatedCards a { transition: none; }
 }
+.referenceStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:16px 0}.referenceStats>div{display:flex;justify-content:space-between;gap:10px;padding:9px 11px;border:1px solid #dbe8ef;border-radius:9px;background:#f6fbfe}.referenceStats dt{color:#60778a;font-size:12px;font-weight:800}.referenceStats dd{margin:0;color:#1f567d;font-size:15px;font-weight:900}
+.referenceOverview{grid-template-columns:1fr}

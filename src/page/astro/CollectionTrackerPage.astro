@@ -20,7 +20,12 @@ import styles from "@/style/components/tools.module.css";
     const entries = [...root.querySelectorAll<HTMLElement>("[data-collection-entry]")];
     const search = root.querySelector<HTMLInputElement>("[data-collection-search]")!;
     let owned = new Set<string>();
-    try { owned = new Set(JSON.parse(localStorage.getItem("aniimo-collection") || "[]") as string[]); } catch { owned = new Set(); }
+    try {
+      const saved = JSON.parse(localStorage.getItem("aniimo-collection") || "[]") as string[];
+      const valid = new Set(entries.map((entry) => entry.dataset.collectionEntry || ""));
+      owned = new Set(saved.map((slug) => slug === "witchin" ? "hexxin" : slug === "fennelun" ? "lunara" : slug).filter((slug) => valid.has(slug)));
+      if (owned.size !== saved.length || saved.some((slug) => !owned.has(slug))) localStorage.setItem("aniimo-collection", JSON.stringify([...owned]));
+    } catch { owned = new Set(); }
     let mode = "all";
     function render() {
       let visible = 0;

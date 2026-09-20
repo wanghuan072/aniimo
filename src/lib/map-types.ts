@@ -94,7 +94,7 @@ export type MapAniimoProfile = {
   form: string;
   elements: string[];
   roles: string[];
-  stats: { hp: number; physicalAttack: number; magicAttack: number } | null;
+  stats: { hp: number; attack: number; break: number } | null;
   skills: string[];
   evolution: string[];
 };

@@ -1,0 +1,197 @@
+{
+  "checkedAt": "2026-09-20",
+  "sourceUrl": "https://www.aniimoverse.com/aniilog",
+  "scope": "Current profile descriptions, skill names/descriptions/costs/power/unlock links, form labels and seven-field base blocks are compared with live AniimoVerse pages. Legacy wiki snapshot differences are reported separately.",
+  "profilesChecked": 98,
+  "changedCount": 0,
+  "changed": [],
+  "legacySnapshotChangedCount": 20,
+  "legacySnapshotChanged": [
+    {
+      "slug": "inferlupa",
+      "missingSnapshot": [
+        "Blazing Wolf Assault"
+      ],
+      "absentReference": []
+    },
+    {
+      "slug": "celestis",
+      "missingSnapshot": [
+        "Shooting Stars"
+      ],
+      "absentReference": [
+        "Shooting Star Bombs"
+      ]
+    },
+    {
+      "slug": "tromber",
+      "missingSnapshot": [
+        "March"
+      ],
+      "absentReference": []
+    },
+    {
+      "slug": "tubster",
+      "missingSnapshot": [
+        "Resting Whirlwind",
+        "Truce"
+      ],
+      "absentReference": [
+        "Pause Gust",
+        "〔主译〕Lay down arms 〔备选〕Cease hostilities"
+      ]
+    },
+    {
+      "slug": "leafy",
+      "missingSnapshot": [
+        "Vitality Blooms"
+      ],
+      "absentReference": [
+        "Blooms of Vigor"
+      ]
+    },
+    {
+      "slug": "hexxin",
+      "missingSnapshot": [
+        "Malicious Outburst"
+      ],
+      "absentReference": [
+        "Malice Burst"
+      ]
+    },
+    {
+      "slug": "tuckin",
+      "missingSnapshot": [
+        "Draw Nourishment",
+        "Noisy Strikes"
+      ],
+      "absentReference": [
+        "Nutrient Absorption",
+        "Gravel Strike"
+      ]
+    },
+    {
+      "slug": "shrubclaw",
+      "missingSnapshot": [
+        "Charged Blow"
+      ],
+      "absentReference": [
+        "Charged Strike"
+      ]
+    },
+    {
+      "slug": "gracewing",
+      "missingSnapshot": [
+        "Phantomfly"
+      ],
+      "absentReference": [
+        "Phantomflutter"
+      ]
+    },
+    {
+      "slug": "melloblum",
+      "missingSnapshot": [
+        "Sparkling Rose"
+      ],
+      "absentReference": []
+    },
+    {
+      "slug": "fragrancier",
+      "missingSnapshot": [
+        "Secret Fragrance Mark"
+      ],
+      "absentReference": [
+        "Fragrance Marking"
+      ]
+    },
+    {
+      "slug": "waleetle",
+      "missingSnapshot": [
+        "Darkwheel Slash"
+      ],
+      "absentReference": []
+    },
+    {
+      "slug": "helmut",
+      "missingSnapshot": [
+        "Ballistic Guard"
+      ],
+      "absentReference": [
+        "Defense Mode"
+      ]
+    },
+    {
+      "slug": "infergon",
+      "missingSnapshot": [
+        "Gale Charge"
+      ],
+      "absentReference": []
+    },
+    {
+      "slug": "minespine",
+      "missingSnapshot": [
+        "Meteor Shower"
+      ],
+      "absentReference": [
+        "Meteors"
+      ]
+    },
+    {
+      "slug": "cozite",
+      "missingSnapshot": [
+        "Shielding Smoke",
+        "Rolling Mud Ball"
+      ],
+      "absentReference": [
+        "Smoke Screen",
+        "Roll Out"
+      ]
+    },
+    {
+      "slug": "bailite",
+      "missingSnapshot": [
+        "Shielding Smoke",
+        "Cannon Mode",
+        "Cozite Nest Sentry",
+        "Devastation Cannon"
+      ],
+      "absentReference": [
+        "Smoke Screen",
+        "Turret Mode",
+        "Ant Nest Sentinel",
+        "Annihilation Barrage"
+      ]
+    },
+    {
+      "slug": "luminelle",
+      "missingSnapshot": [
+        "Lightning Surge"
+      ],
+      "absentReference": [
+        "Spotlight Moment"
+      ]
+    },
+    {
+      "slug": "popapus",
+      "missingSnapshot": [
+        "Rigged Draw",
+        "Everything Must Go"
+      ],
+      "absentReference": [
+        "Rigged Odds",
+        "Clearance Sale"
+      ]
+    },
+    {
+      "slug": "gachapus",
+      "missingSnapshot": [
+        "Everything Must Go",
+        "Rigged Draw"
+      ],
+      "absentReference": [
+        "Clearance Sale",
+        "Rigged Odds"
+      ]
+    }
+  ]
+}

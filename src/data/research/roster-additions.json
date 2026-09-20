@@ -1,0 +1,1402 @@
+{
+  "sourceUrl": "https://www.aniimoverse.com/aniilog",
+  "reviewedAt": "2026-09-18",
+  "entries": [
+    {
+      "slug": "squarrel",
+      "entryId": "047",
+      "stage": 1,
+      "elements": [
+        "fire"
+      ],
+      "roles": [
+        "break"
+      ],
+      "id": "reference-squarrel",
+      "name": "Squarrel",
+      "description": "Squarrel has a large, fist-shaped tail. When its greasy tail fur is rubbed even slightly, it can burst into flames. Anyone who eyes its stockpiled pinecones will get a taste of its scorching fire fists.",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+      "officialImageUrl": "",
+      "illustrationUrl": "",
+      "form": "Basic Form",
+      "gender": [],
+      "weight": {
+        "min": null,
+        "max": null
+      },
+      "stats": null,
+      "forms": [
+        {
+          "id": "reference-squarrel",
+          "label": "Basic Form",
+          "isCurrent": true
+        }
+      ],
+      "habitats": [],
+      "homelandAbilities": [],
+      "mobility": [],
+      "pathfinding": [],
+      "evolution": [
+        {
+          "name": "Squarrel",
+          "stage": 1,
+          "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+          "isVariant": false
+        },
+        {
+          "name": "Squashel",
+          "stage": 3,
+          "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+          "isVariant": false
+        }
+      ],
+      "evolutionTree": {
+        "name": "Squarrel",
+        "stage": 1,
+        "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+        "isVariant": false,
+        "children": [
+          {
+            "name": "Squashel",
+            "stage": 3,
+            "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+            "isVariant": false,
+            "children": []
+          }
+        ]
+      },
+      "traits": [
+        {
+          "name": "Raging Fire",
+          "description": "After using a skill, the next basic attack used within 10s will directly release the final hit of the basic attack, and its Might is increased from 4 to 25.",
+          "iconUrl": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Pinecone Bomb",
+          "description": "Throws a flaming pinecone that bursts on impact, scattering an additional 3 pinecone fragments in all directions. Targets hit are marked with Pinecone.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_bullet01.webp",
+          "cost": "15",
+          "power": "38"
+        },
+        {
+          "name": "Heavy Tail Strike",
+          "description": "Throws a punch forward. If the target hit has a Pinecone Mark, consumes the Mark to deal 50% more damage, launch the target, and stuns it for Stun2.5s.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_punch01.webp",
+          "cost": "20",
+          "power": "40"
+        },
+        {
+          "name": "ATK",
+          "description": "(BREAK) Wields the power of fire to attack targets at close range.",
+          "category": "Innate",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+          "cost": "0",
+          "power": "6"
+        }
+      ],
+      "viewCount": null,
+      "referenceStats": {
+        "hp": 53,
+        "attack": 80,
+        "physicalDefense": 79,
+        "magicDefense": 72,
+        "break": 94,
+        "regen": 77,
+        "total": 455
+      },
+      "sourceSpawnCount": 21,
+      "sourceUrl": "https://www.aniimoverse.com/aniilog/squarrel",
+      "sourceKind": "community-launch",
+      "formRecords": [
+        {
+          "id": "reference-squarrel",
+          "description": "Squarrel has a large, fist-shaped tail. When its greasy tail fur is rubbed even slightly, it can burst into flames. Anyone who eyes its stockpiled pinecones will get a taste of its scorching fire fists.",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Basic Form",
+          "stage": 1,
+          "roles": [
+            "break"
+          ],
+          "elements": [
+            "fire"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [
+            {
+              "name": "Squarrel",
+              "stage": 1,
+              "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+              "isVariant": false
+            },
+            {
+              "name": "Squashel",
+              "stage": 3,
+              "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+              "isVariant": false
+            }
+          ],
+          "evolutionTree": {
+            "name": "Squarrel",
+            "stage": 1,
+            "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+            "isVariant": false,
+            "children": [
+              {
+                "name": "Squashel",
+                "stage": 3,
+                "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+                "isVariant": false,
+                "children": []
+              }
+            ]
+          },
+          "traits": [
+            {
+              "name": "Raging Fire",
+              "description": "After using a skill, the next basic attack used within 10s will directly release the final hit of the basic attack, and its Might is increased from 4 to 25.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Pinecone Bomb",
+              "description": "Throws a flaming pinecone that bursts on impact, scattering an additional 3 pinecone fragments in all directions. Targets hit are marked with Pinecone.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_bullet01.webp",
+              "cost": "15",
+              "power": "38"
+            },
+            {
+              "name": "Heavy Tail Strike",
+              "description": "Throws a punch forward. If the target hit has a Pinecone Mark, consumes the Mark to deal 50% more damage, launch the target, and stuns it for Stun2.5s.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_punch01.webp",
+              "cost": "20",
+              "power": "40"
+            },
+            {
+              "name": "ATK",
+              "description": "(BREAK) Wields the power of fire to attack targets at close range.",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+              "cost": "0",
+              "power": "6"
+            }
+          ],
+          "viewCount": null
+        }
+      ]
+    },
+    {
+      "slug": "squashel",
+      "entryId": "048",
+      "stage": 3,
+      "elements": [
+        "fire"
+      ],
+      "roles": [
+        "break"
+      ],
+      "id": "reference-squashel",
+      "name": "Squashel",
+      "description": "Squashel has twin fist-like tails, giving its power a super-boost. Pinecones thrown with that force strike like cannonballs. Not to be underestimated.",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+      "officialImageUrl": "",
+      "illustrationUrl": "",
+      "form": "Basic Form",
+      "gender": [],
+      "weight": {
+        "min": null,
+        "max": null
+      },
+      "stats": null,
+      "forms": [
+        {
+          "id": "reference-squashel",
+          "label": "Basic Form",
+          "isCurrent": true
+        }
+      ],
+      "habitats": [],
+      "homelandAbilities": [],
+      "mobility": [],
+      "pathfinding": [],
+      "evolution": [
+        {
+          "name": "Squarrel",
+          "stage": 1,
+          "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+          "isVariant": false
+        },
+        {
+          "name": "Squashel",
+          "stage": 3,
+          "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+          "isVariant": false
+        }
+      ],
+      "evolutionTree": {
+        "name": "Squarrel",
+        "stage": 1,
+        "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+        "isVariant": false,
+        "children": [
+          {
+            "name": "Squashel",
+            "stage": 3,
+            "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+            "isVariant": false,
+            "children": []
+          }
+        ]
+      },
+      "traits": [
+        {
+          "name": "Raging Fire",
+          "description": "After using a skill, the next basic attack used within 10s will directly release the final hit of the basic attack, and its Might is increased from 4 to 25.",
+          "iconUrl": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Pinecone Bomb",
+          "description": "Throws a flaming pinecone that bursts on impact, scattering an additional 3 pinecone fragments in all directions. Targets hit are marked with Pinecone.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_bullet01.webp",
+          "cost": "15",
+          "power": "38"
+        },
+        {
+          "name": "Heavy Tail Strike",
+          "description": "Throws a punch forward. If the target hit has a Pinecone Mark, consumes the Mark to deal 50% more damage, launch the target, and stuns it for Stun2.5s.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_punch01.webp",
+          "cost": "20",
+          "power": "40"
+        },
+        {
+          "name": "Blazing Fist Barrage",
+          "description": "Throws a two-hit punch forward. If the target hit carries the Pinecone mark, consumes the mark and empowers the next basic attack into Punch Rush. Punch Rush: Continuously throws punches forward, dealing damage equal to 60 Might.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_shot01.webp",
+          "cost": "30",
+          "power": "42"
+        },
+        {
+          "name": "ATK",
+          "description": "(BREAK) Wields the power of fire to attack targets at close range.",
+          "category": "Innate",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+          "cost": "0",
+          "power": "6"
+        },
+        {
+          "name": "Blazing Rush",
+          "description": "Squashel’s tail sparks with fire, whipping up cascading flames from the ground to deal heavy damage to the target.",
+          "category": "Innate",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Physical"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_ex01.webp",
+          "cost": "100",
+          "power": "209"
+        }
+      ],
+      "viewCount": null,
+      "referenceStats": {
+        "hp": 110,
+        "attack": 82,
+        "physicalDefense": 80,
+        "magicDefense": 80,
+        "break": 108,
+        "regen": 88,
+        "total": 548
+      },
+      "sourceSpawnCount": 1,
+      "sourceUrl": "https://www.aniimoverse.com/aniilog/squashel",
+      "sourceKind": "community-launch",
+      "formRecords": [
+        {
+          "id": "reference-squashel",
+          "description": "Squashel has twin fist-like tails, giving its power a super-boost. Pinecones thrown with that force strike like cannonballs. Not to be underestimated.",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Basic Form",
+          "stage": 3,
+          "roles": [
+            "break"
+          ],
+          "elements": [
+            "fire"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [
+            {
+              "name": "Squarrel",
+              "stage": 1,
+              "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+              "isVariant": false
+            },
+            {
+              "name": "Squashel",
+              "stage": 3,
+              "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+              "isVariant": false
+            }
+          ],
+          "evolutionTree": {
+            "name": "Squarrel",
+            "stage": 1,
+            "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squarrel/list.webp",
+            "isVariant": false,
+            "children": [
+              {
+                "name": "Squashel",
+                "stage": 3,
+                "imageUrl": "https://cdn.aniimoverse.com/v1/aniimo-20260915/squashel/list.webp",
+                "isVariant": false,
+                "children": []
+              }
+            ]
+          },
+          "traits": [
+            {
+              "name": "Raging Fire",
+              "description": "After using a skill, the next basic attack used within 10s will directly release the final hit of the basic attack, and its Might is increased from 4 to 25.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Pinecone Bomb",
+              "description": "Throws a flaming pinecone that bursts on impact, scattering an additional 3 pinecone fragments in all directions. Targets hit are marked with Pinecone.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_bullet01.webp",
+              "cost": "15",
+              "power": "38"
+            },
+            {
+              "name": "Heavy Tail Strike",
+              "description": "Throws a punch forward. If the target hit has a Pinecone Mark, consumes the Mark to deal 50% more damage, launch the target, and stuns it for Stun2.5s.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_punch01.webp",
+              "cost": "20",
+              "power": "40"
+            },
+            {
+              "name": "Blazing Fist Barrage",
+              "description": "Throws a two-hit punch forward. If the target hit carries the Pinecone mark, consumes the mark and empowers the next basic attack into Punch Rush. Punch Rush: Continuously throws punches forward, dealing damage equal to 60 Might.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_shot01.webp",
+              "cost": "30",
+              "power": "42"
+            },
+            {
+              "name": "ATK",
+              "description": "(BREAK) Wields the power of fire to attack targets at close range.",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+              "cost": "0",
+              "power": "6"
+            },
+            {
+              "name": "Blazing Rush",
+              "description": "Squashel’s tail sparks with fire, whipping up cascading flames from the ground to deal heavy damage to the target.",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Physical"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_ex01.webp",
+              "cost": "100",
+              "power": "209"
+            }
+          ],
+          "viewCount": null
+        }
+      ]
+    },
+    {
+      "slug": "irisalis",
+      "entryId": "10001",
+      "stage": 4,
+      "elements": [
+        "grass"
+      ],
+      "roles": [
+        "dps"
+      ],
+      "id": "reference-irisalis",
+      "name": "Irisalis",
+      "description": "They absorb the world’s colors as floral raiment, bringing colorful vitality to nature. If petals wither, they can bloom again by returning to the earth’s embrace.",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/list.webp",
+      "officialImageUrl": "",
+      "illustrationUrl": "",
+      "form": "Prismana Form",
+      "gender": [],
+      "weight": {
+        "min": null,
+        "max": null
+      },
+      "stats": null,
+      "forms": [
+        {
+          "id": "reference-irisalis",
+          "label": "Prismana Form",
+          "isCurrent": true
+        }
+      ],
+      "habitats": [],
+      "homelandAbilities": [],
+      "mobility": [],
+      "pathfinding": [],
+      "evolution": [],
+      "evolutionTree": null,
+      "traits": [
+        {
+          "name": "Bloom Cluster",
+          "description": "When casting Whirling Blossom Rain or landing the final hit of a basic attack, all Irisalis clones fire floral beams at the target, each with 15 Might. If an Irisalis clone’s attack hits, this Aniimo gains 1 Dance Power. After accumulating 9 Dance Power, the next skill cast costs 50% less EP. When Fainted, it turns back into a flower and blooms again, restoring vitality. Can trigger once every 180s.",
+          "iconUrl": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Whirling Blossom Rain",
+          "description": "Spins and dashes in the chosen direction, firing multiple homing bolts in succession. Also activates all Iris clones to fire floral light beams.",
+          "category": "Combat",
+          "elements": [
+            "grass"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-whirling-blossom-rain.webp",
+          "cost": "20",
+          "power": "60"
+        },
+        {
+          "name": "Irisalis Shadow",
+          "description": "After Iris Shot hits a target, summons 1 Iris Clone for 30s. The clone immediately fires a Floral Gleam Beam at the target. Casting the skill again resets the clones.",
+          "category": "Combat",
+          "elements": [
+            "grass"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-irisalis-shadow.webp",
+          "cost": "40",
+          "power": "90"
+        },
+        {
+          "name": "ATK",
+          "description": "Wields the power of grass to attack targets from a distance.",
+          "category": "Innate",
+          "elements": [
+            "grass"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-atk.webp",
+          "cost": "0",
+          "power": "6"
+        },
+        {
+          "name": "Florae Descent",
+          "description": "Condenses energy into a massive phantom that dives down and slams into the ground, dealing area damage and leaving 1 Irisalis clone that lasts 30s. This clone can coexist with the clone summoned by Irisalis Shadow. Recasting the Ultimate resets the clone.",
+          "category": "Innate",
+          "elements": [
+            "grass"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-florae-descent.webp",
+          "cost": "200",
+          "power": "240"
+        }
+      ],
+      "viewCount": null,
+      "referenceStats": {
+        "hp": 90,
+        "attack": 130,
+        "physicalDefense": 78,
+        "magicDefense": 78,
+        "break": 56,
+        "regen": 108,
+        "total": 540
+      },
+      "sourceSpawnCount": 0,
+      "sourceUrl": "https://www.aniimoverse.com/aniilog/irisalis",
+      "sourceKind": "community-launch",
+      "formRecords": [
+        {
+          "id": "reference-irisalis",
+          "description": "They absorb the world’s colors as floral raiment, bringing colorful vitality to nature. If petals wither, they can bloom again by returning to the earth’s embrace.",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/list.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Prismana Form",
+          "stage": 4,
+          "roles": [
+            "dps"
+          ],
+          "elements": [
+            "grass"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [],
+          "evolutionTree": null,
+          "traits": [
+            {
+              "name": "Bloom Cluster",
+              "description": "When casting Whirling Blossom Rain or landing the final hit of a basic attack, all Irisalis clones fire floral beams at the target, each with 15 Might. If an Irisalis clone’s attack hits, this Aniimo gains 1 Dance Power. After accumulating 9 Dance Power, the next skill cast costs 50% less EP. When Fainted, it turns back into a flower and blooms again, restoring vitality. Can trigger once every 180s.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Whirling Blossom Rain",
+              "description": "Spins and dashes in the chosen direction, firing multiple homing bolts in succession. Also activates all Iris clones to fire floral light beams.",
+              "category": "Combat",
+              "elements": [
+                "grass"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-whirling-blossom-rain.webp",
+              "cost": "20",
+              "power": "60"
+            },
+            {
+              "name": "Irisalis Shadow",
+              "description": "After Iris Shot hits a target, summons 1 Iris Clone for 30s. The clone immediately fires a Floral Gleam Beam at the target. Casting the skill again resets the clones.",
+              "category": "Combat",
+              "elements": [
+                "grass"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-irisalis-shadow.webp",
+              "cost": "40",
+              "power": "90"
+            },
+            {
+              "name": "ATK",
+              "description": "Wields the power of grass to attack targets from a distance.",
+              "category": "Innate",
+              "elements": [
+                "grass"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-atk.webp",
+              "cost": "0",
+              "power": "6"
+            },
+            {
+              "name": "Florae Descent",
+              "description": "Condenses energy into a massive phantom that dives down and slams into the ground, dealing area damage and leaving 1 Irisalis clone that lasts 30s. This clone can coexist with the clone summoned by Irisalis Shadow. Recasting the Ultimate resets the clone.",
+              "category": "Innate",
+              "elements": [
+                "grass"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/irisalis/skill-florae-descent.webp",
+              "cost": "200",
+              "power": "240"
+            }
+          ],
+          "viewCount": null
+        }
+      ]
+    },
+    {
+      "slug": "sparkelf",
+      "entryId": "11001",
+      "stage": 3,
+      "elements": [
+        "fire"
+      ],
+      "roles": [
+        "sup"
+      ],
+      "id": "reference-sparkelf",
+      "name": "Sparkelf",
+      "description": "Sparkelves from the SylphIsle can draw energy from interactions with humans and Aniimo. The livelier and more joyful the gathering, the more energized they become.",
+      "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/sparkelf/list.webp",
+      "officialImageUrl": "",
+      "illustrationUrl": "",
+      "form": "Basic Form",
+      "gender": [],
+      "weight": {
+        "min": null,
+        "max": null
+      },
+      "stats": null,
+      "forms": [
+        {
+          "id": "reference-sparkelf",
+          "label": "Basic Form",
+          "isCurrent": true
+        },
+        {
+          "id": "reference-sparkelf-prismana",
+          "label": "Prismana Form",
+          "isCurrent": false
+        }
+      ],
+      "habitats": [],
+      "homelandAbilities": [],
+      "mobility": [],
+      "pathfinding": [],
+      "evolution": [],
+      "evolutionTree": null,
+      "traits": [
+        {
+          "name": "Reliable Fire Companion",
+          "description": "When in a party, increases party 15%–18% Fire Elemental Boost. When Energy is above 40, the effect increases to 20%–24%. Gains 0.38% per 100 ATK. Gains 0.50% per 100 ATK.",
+          "iconUrl": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Inspiration",
+          "description": "Ignites flames to inspire the whole team, increasing Fire Elemental Boost by 12%. At the end, restores 10% of Energy consumed during the effect (up to 10 points), lasting 12s.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Support"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebuff.webp",
+          "cost": "0",
+          "power": "0"
+        },
+        {
+          "name": "Treat Feed",
+          "description": "Pulls out food to heal the team for 8% of the Sparkelf’s HP. If the unit’s HP is below 50%/25%, instead heals them for 12%/16% of the Sparkelf’s HP.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Support"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_feed.webp",
+          "cost": "30",
+          "power": "0"
+        },
+        {
+          "name": "Spark Energy",
+          "description": "Hurls an empowered fireball that explodes on impact, dealing area damage and inflicting 2 stacks of Fire Debuff.",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+          "cost": "20",
+          "power": "50"
+        },
+        {
+          "name": "Leaping Sparks",
+          "description": "Throw an empowered fireball that explodes on hit, dealing area Damage and causing the target to take an additional 100% Damage while Shielded for 20 seconds",
+          "category": "Combat",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+          "cost": "20",
+          "power": "55"
+        },
+        {
+          "name": "ATK",
+          "description": "Wields the power of fire to attack targets from a distance.",
+          "category": "Innate",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+          "cost": "0",
+          "power": "6"
+        },
+        {
+          "name": "Keep the Fire Bolt Going!",
+          "description": "Passion Heats Up, dealing AoE Damage and increasing nearby allied units' Fire Elemental Boost by 25% for 30 seconds",
+          "category": "Innate",
+          "elements": [
+            "fire"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_spark.webp",
+          "cost": "100",
+          "power": "90"
+        }
+      ],
+      "viewCount": null,
+      "referenceStats": {
+        "hp": 107,
+        "attack": 113,
+        "physicalDefense": 60,
+        "magicDefense": 88,
+        "break": 50,
+        "regen": 99,
+        "total": 517
+      },
+      "sourceSpawnCount": 0,
+      "sourceUrl": "https://www.aniimoverse.com/aniilog/sparkelf",
+      "sourceKind": "community-launch",
+      "formRecords": [
+        {
+          "id": "reference-sparkelf",
+          "description": "Sparkelves from the SylphIsle can draw energy from interactions with humans and Aniimo. The livelier and more joyful the gathering, the more energized they become.",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/sparkelf/list.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Basic Form",
+          "stage": 3,
+          "roles": [
+            "sup"
+          ],
+          "elements": [
+            "fire"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [],
+          "evolutionTree": null,
+          "traits": [
+            {
+              "name": "Reliable Fire Companion",
+              "description": "When in a party, increases party 15%–18% Fire Elemental Boost. When Energy is above 40, the effect increases to 20%–24%. Gains 0.38% per 100 ATK. Gains 0.50% per 100 ATK.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Inspiration",
+              "description": "Ignites flames to inspire the whole team, increasing Fire Elemental Boost by 12%. At the end, restores 10% of Energy consumed during the effect (up to 10 points), lasting 12s.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Support"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebuff.webp",
+              "cost": "0",
+              "power": "0"
+            },
+            {
+              "name": "Treat Feed",
+              "description": "Pulls out food to heal the team for 8% of the Sparkelf’s HP. If the unit’s HP is below 50%/25%, instead heals them for 12%/16% of the Sparkelf’s HP.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Support"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_feed.webp",
+              "cost": "30",
+              "power": "0"
+            },
+            {
+              "name": "Spark Energy",
+              "description": "Hurls an empowered fireball that explodes on impact, dealing area damage and inflicting 2 stacks of Fire Debuff.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+              "cost": "20",
+              "power": "50"
+            },
+            {
+              "name": "Leaping Sparks",
+              "description": "Throw an empowered fireball that explodes on hit, dealing area Damage and causing the target to take an additional 100% Damage while Shielded for 20 seconds",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+              "cost": "20",
+              "power": "55"
+            },
+            {
+              "name": "ATK",
+              "description": "Wields the power of fire to attack targets from a distance.",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+              "cost": "0",
+              "power": "6"
+            },
+            {
+              "name": "Keep the Fire Bolt Going!",
+              "description": "Passion Heats Up, dealing AoE Damage and increasing nearby allied units' Fire Elemental Boost by 25% for 30 seconds",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_spark.webp",
+              "cost": "100",
+              "power": "90"
+            }
+          ],
+          "viewCount": null
+        },
+        {
+          "id": "reference-sparkelf-prismana",
+          "description": "Sparkelves from the SylphIsle can draw energy from interactions with humans and Aniimo. The livelier and more joyful the gathering, the more energized they become.",
+          "image": "https://cdn.aniimoverse.com/v1/aniimo-20260915/sparkelf/forms/prismana/list.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Prismana Form",
+          "stage": 3,
+          "roles": [
+            "sup"
+          ],
+          "elements": [
+            "fire"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [],
+          "evolutionTree": null,
+          "traits": [
+            {
+              "name": "Reliable Fire Companion",
+              "description": "When in a party, increases party 15%–18% Fire Elemental Boost. When Energy is above 40, the effect increases to 20%–24%. Gains 0.38% per 100 ATK. Gains 0.50% per 100 ATK.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Inspiration",
+              "description": "Ignites flames to inspire the whole team, increasing Fire Elemental Boost by 12%. At the end, restores 10% of Energy consumed during the effect (up to 10 points), lasting 12s.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Support"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebuff.webp",
+              "cost": "0",
+              "power": "0"
+            },
+            {
+              "name": "Treat Feed",
+              "description": "Pulls out food to heal the team for 8% of the Sparkelf’s HP. If the unit’s HP is below 50%/25%, instead heals them for 12%/16% of the Sparkelf’s HP.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Support"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_feed.webp",
+              "cost": "30",
+              "power": "0"
+            },
+            {
+              "name": "Spark Energy",
+              "description": "Hurls an empowered fireball that explodes on impact, dealing area damage and inflicting 2 stacks of Fire Debuff.",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+              "cost": "20",
+              "power": "50"
+            },
+            {
+              "name": "Leaping Sparks",
+              "description": "Throw an empowered fireball that explodes on hit, dealing area Damage and causing the target to take an additional 100% Damage while Shielded for 20 seconds",
+              "category": "Combat",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_firebomb.webp",
+              "cost": "20",
+              "power": "55"
+            },
+            {
+              "name": "ATK",
+              "description": "Wields the power of fire to attack targets from a distance.",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_2.webp",
+              "cost": "0",
+              "power": "6"
+            },
+            {
+              "name": "Keep the Fire Bolt Going!",
+              "description": "Passion Heats Up, dealing AoE Damage and increasing nearby allied units' Fire Elemental Boost by 25% for 30 seconds",
+              "category": "Innate",
+              "elements": [
+                "fire"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_fire_spark.webp",
+              "cost": "100",
+              "power": "90"
+            }
+          ],
+          "viewCount": null
+        }
+      ]
+    },
+    {
+      "slug": "lunara",
+      "entryId": "99996",
+      "stage": 0,
+      "elements": [
+        "holy"
+      ],
+      "roles": [
+        "dps"
+      ],
+      "id": "reference-lunara",
+      "name": "Lunara",
+      "description": "Their eyes shimmer with the deep blue light of the moon, and mysterious patterns appear when they wield their power.",
+      "image": "https://cdn.aniimoverse.com/v1/systems/homeland/lunara.webp",
+      "officialImageUrl": "",
+      "illustrationUrl": "",
+      "form": "Basic Form",
+      "gender": [],
+      "weight": {
+        "min": null,
+        "max": null
+      },
+      "stats": null,
+      "forms": [
+        {
+          "id": "reference-lunara",
+          "label": "Basic Form",
+          "isCurrent": true
+        }
+      ],
+      "habitats": [],
+      "homelandAbilities": [],
+      "mobility": [],
+      "pathfinding": [],
+      "evolution": [],
+      "evolutionTree": null,
+      "traits": [
+        {
+          "name": "Lunar Power",
+          "description": "When not attacking with an advantageous element, final damage increases by 30%. Casting a skill or Ultimate grants 4 stacks of [Silver Moon Mark]. Each basic attack hit consumes 1 stack, deals 100% extra damage, and restores 0.5% HP.",
+          "iconUrl": ""
+        }
+      ],
+      "skills": [
+        {
+          "name": "Moon Impact",
+          "description": "Drops a full moon onto the target, triggering an explosion and dealing damage. If it hits a target with Fox Mark, deals additional small-area damage around the target equal to 10%.",
+          "category": "Combat",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-moon-impact.webp",
+          "cost": "15",
+          "power": "45"
+        },
+        {
+          "name": "Lumin Bolts",
+          "description": "Fires 3 Light missiles at targets, prioritizing different targets. Applies Fox Mark to targets hit, reducing their Light Resistance by 5%. Stacks up to 3 times and lasts 10s.",
+          "category": "Combat",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-lumin-bolts.webp",
+          "cost": "20",
+          "power": "55"
+        },
+        {
+          "name": "Lunar Eclipse",
+          "description": "Pours the power of moonlight onto the target, dealing massive additional BREAK damage based on the Aniimo’s level.",
+          "category": "Combat",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-lunar-eclipse.webp",
+          "cost": "20",
+          "power": "60"
+        },
+        {
+          "name": "Moon-Washed",
+          "description": "Bathes in moonlight and recovers 20 EP.",
+          "category": "Combat",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Support"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_holy_moonembrace.webp",
+          "cost": "0",
+          "power": "0"
+        },
+        {
+          "name": "ATK",
+          "description": "Wields the power of light to attack targets from a distance.",
+          "category": "Innate",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-atk.webp",
+          "cost": "0",
+          "power": "6"
+        },
+        {
+          "name": "Selene's Judgment",
+          "description": "Unleashes Selene’s Judgment on nearby targets, dealing massive damage, evolves into Fennelun, and increases its Damage Amp by 15% until combat ends. Also gains 4 stacks of Silvermoon Mark.",
+          "category": "Innate",
+          "elements": [
+            "holy"
+          ],
+          "types": [
+            "Magic"
+          ],
+          "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-selenes-judgment.webp",
+          "cost": "100",
+          "power": "167"
+        }
+      ],
+      "viewCount": null,
+      "referenceStats": {
+        "hp": 100,
+        "attack": 116,
+        "physicalDefense": 72,
+        "magicDefense": 72,
+        "break": 64,
+        "regen": 90,
+        "total": 514
+      },
+      "sourceSpawnCount": 0,
+      "sourceUrl": "https://www.aniimoverse.com/aniilog/lunara",
+      "sourceKind": "community-launch",
+      "formRecords": [
+        {
+          "id": "reference-lunara",
+          "description": "Their eyes shimmer with the deep blue light of the moon, and mysterious patterns appear when they wield their power.",
+          "image": "https://cdn.aniimoverse.com/v1/systems/homeland/lunara.webp",
+          "officialImageUrl": "",
+          "illustrationUrl": "",
+          "form": "Basic Form",
+          "stage": 0,
+          "roles": [
+            "dps"
+          ],
+          "elements": [
+            "holy"
+          ],
+          "gender": [],
+          "weight": {
+            "min": null,
+            "max": null
+          },
+          "stats": null,
+          "habitats": [],
+          "homelandAbilities": [],
+          "mobility": [],
+          "pathfinding": [],
+          "evolution": [],
+          "evolutionTree": null,
+          "traits": [
+            {
+              "name": "Lunar Power",
+              "description": "When not attacking with an advantageous element, final damage increases by 30%. Casting a skill or Ultimate grants 4 stacks of [Silver Moon Mark]. Each basic attack hit consumes 1 stack, deals 100% extra damage, and restores 0.5% HP.",
+              "iconUrl": ""
+            }
+          ],
+          "skills": [
+            {
+              "name": "Moon Impact",
+              "description": "Drops a full moon onto the target, triggering an explosion and dealing damage. If it hits a target with Fox Mark, deals additional small-area damage around the target equal to 10%.",
+              "category": "Combat",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-moon-impact.webp",
+              "cost": "15",
+              "power": "45"
+            },
+            {
+              "name": "Lumin Bolts",
+              "description": "Fires 3 Light missiles at targets, prioritizing different targets. Applies Fox Mark to targets hit, reducing their Light Resistance by 5%. Stacks up to 3 times and lasts 10s.",
+              "category": "Combat",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-lumin-bolts.webp",
+              "cost": "20",
+              "power": "55"
+            },
+            {
+              "name": "Lunar Eclipse",
+              "description": "Pours the power of moonlight onto the target, dealing massive additional BREAK damage based on the Aniimo’s level.",
+              "category": "Combat",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-lunar-eclipse.webp",
+              "cost": "20",
+              "power": "60"
+            },
+            {
+              "name": "Moon-Washed",
+              "description": "Bathes in moonlight and recovers 20 EP.",
+              "category": "Combat",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Support"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/skills/current/ui_skillicon_holy_moonembrace.webp",
+              "cost": "0",
+              "power": "0"
+            },
+            {
+              "name": "ATK",
+              "description": "Wields the power of light to attack targets from a distance.",
+              "category": "Innate",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-atk.webp",
+              "cost": "0",
+              "power": "6"
+            },
+            {
+              "name": "Selene's Judgment",
+              "description": "Unleashes Selene’s Judgment on nearby targets, dealing massive damage, evolves into Fennelun, and increases its Damage Amp by 15% until combat ends. Also gains 4 stacks of Silvermoon Mark.",
+              "category": "Innate",
+              "elements": [
+                "holy"
+              ],
+              "types": [
+                "Magic"
+              ],
+              "iconUrl": "https://cdn.aniimoverse.com/v1/aniimo/fennelun/skill-selenes-judgment.webp",
+              "cost": "100",
+              "power": "167"
+            }
+          ],
+          "viewCount": null
+        }
+      ]
+    }
+  ]
+}

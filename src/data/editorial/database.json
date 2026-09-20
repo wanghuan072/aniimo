@@ -5,8 +5,9 @@
   {"slug":"habitats","name":"Habitats","icon":"map","description":"Choose a region, see its associated Aniimo and plan a more focused route.","status":"verified"},
   {"slug":"evolutions","name":"Evolution Paths","icon":"branch","description":"Follow stage relationships and branching paths across connected Aniimo.","status":"verified"},
   {"slug":"mobility","name":"Mobility","icon":"map","description":"Find movement and pathfinding abilities, then see the Aniimo that have them.","status":"verified"},
-  {"slug":"items","name":"Items","icon":"bag","description":"Browse item categories, their uses and the activities they belong to.","status":"community"},
-  {"slug":"materials","name":"Materials","icon":"crystal","description":"Find materials, their crafting connections and the places they are used.","status":"community"},
+  {"slug":"work-abilities","name":"Work Abilities","icon":"tools","description":"Find Aniimo forms by Homeland work ability and compare their listed levels.","status":"tracking"},
+  {"slug":"items","name":"Items","icon":"bag","description":"Browse indexed items by category. Selected progression items include sourced acquisition and shop details.","status":"community"},
+  {"slug":"materials","name":"Materials","icon":"crystal","description":"Browse indexed material names and rarity while detailed sources are being verified.","status":"community"},
   {"slug":"bosses","name":"World Bosses","icon":"crown","description":"Review named encounters, their locations and the records connected to them.","status":"community"},
-  {"slug":"achievements","name":"Achievements","icon":"crown","description":"Browse achievement goals and the milestones they help you keep track of.","status":"community"}
+  {"slug":"achievements","name":"Achievements","icon":"crown","description":"Browse badge lines, paths and tier names from community detail records.","status":"community"}
 ]

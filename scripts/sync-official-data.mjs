@@ -323,6 +323,10 @@ async function main() {
 
   const indexPayload = decodeNuxtPayload(await fetchText(WIKI_URL));
   const list = indexPayload.data["aniimo-wiki-list-en"];
+  if (process.argv.includes("--list-only")) {
+    console.log(JSON.stringify((list || []).map((item) => ({ id: String(item.id), entryId: item.searchKey?.entryId, name: item.searchKey?.name })), null, 2));
+    return;
+  }
   if (!Array.isArray(list) || list.length < 90) {
     throw new Error(`Expected at least 90 official records, received ${list?.length || 0}`);
   }
