@@ -187,3 +187,7 @@
   .textLink svg,
   .cardLink svg { transition: none; }
 }
+
+/* Compact six-column Aniimo catalogue card. */
+.aniimoCard{border-radius:11px;box-shadow:0 4px 12px rgba(31,73,100,.055);contain-intrinsic-size:224px}.aniimoCard:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(31,73,100,.12)}.cardImage{aspect-ratio:1.2/.88}.cardImage::before{inset:6px;border-radius:8px 8px 32% 8px}.cardImage::after{right:-34px;bottom:-44px}.cardImage img{padding:7px 3px 0}.cardNumber{top:7px;left:7px;padding:3px 5px;border-radius:5px;font-size:10px}.stageBadge{top:7px;right:7px;padding:3px 5px;border-radius:6px;font-size:10px}.cardElements{right:7px;bottom:6px;gap:3px}.cardElements i{width:21px;height:21px;border-width:1px;font-size:10px}.cardBody{padding:8px 9px 9px;border-top-width:2px}.cardTitleRow h3{font-size:14px}.cardTitleRow svg{width:14px}.cardMeta{margin-top:5px;font-size:10px}.cardDescription{font-size:12px}.listCard .cardShell{grid-template-columns:125px minmax(0,1fr)}.listCard .cardImage{min-height:132px}.listCard .cardBody{border-left-width:2px}
+@media(max-width:768px){.cardImage{aspect-ratio:1.08/.92}.cardBody{padding:7px 8px 8px}.cardTitleRow h3{font-size:13px}.cardMeta{align-items:flex-start;flex-direction:column;gap:3px}.stageBadge{font-size:9px}.listCard .cardShell{grid-template-columns:100px 1fr}.listCard .cardImage{min-height:120px}}
