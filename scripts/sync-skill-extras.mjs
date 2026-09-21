@@ -111,22 +111,11 @@ async function mapConcurrent(items, limit, mapper) {
 }
 
 const aniimo = JSON.parse(await readFile(ANIIMO_FILE, "utf8"));
-const kits = JSON.parse(await readFile(path.join(ROOT, "src", "data", "research", "current-profile-kits.json"), "utf8"));
-let previousRecords = [];
-try {
-  previousRecords = JSON.parse(await readFile(DATA_FILE, "utf8")).records || [];
-} catch {
-  previousRecords = [];
-}
-const previousByName = new Map(previousRecords.map((record) => [record.name, record]));
 const limit = Number(process.argv.find((argument) => argument.startsWith("--limit="))?.split("=")[1] || 0);
-const names = [...new Set([
-  ...aniimo.entries.flatMap((entry) => [
-    ...entry.skills.map((skill) => skill.name),
-    ...(entry.formRecords || []).flatMap((record) => (record.skills || []).map((skill) => skill.name)),
-  ]),
-  ...kits.profiles.flatMap((profile) => profile.skills.map((skill) => skill.name)),
-])].sort((a, b) => a.localeCompare(b));
+const names = [...new Set(aniimo.entries.flatMap((entry) => [
+  ...entry.skills.map((skill) => skill.name),
+  ...(entry.formRecords || []).flatMap((record) => (record.skills || []).map((skill) => skill.name)),
+]))].sort((a, b) => a.localeCompare(b));
 const targets = limit ? names.slice(0, limit) : names;
 
 const records = (await mapConcurrent(targets, 6, async (name, index) => {
@@ -134,18 +123,7 @@ const records = (await mapConcurrent(targets, 6, async (name, index) => {
   process.stdout.write(`\rSkill extras ${index + 1}/${targets.length} ${slug.padEnd(28).slice(0, 28)}`);
   const { status, html } = await fetchText(`${INDEX_URL}/${slug}`);
   if (status === 404) return { name, slug, missing: true };
-  const parsed = parseSkillPage(html, name, slug);
-  const previous = previousByName.get(name);
-  if (!parsed && !previous) return { name, slug, empty: true };
-  return {
-    name,
-    slug,
-    cooldown: parsed?.cooldown || previous?.cooldown || "",
-    break: parsed?.break || previous?.break || "",
-    teamRole: parsed?.teamRole || previous?.teamRole || "",
-    effects: parsed?.effects?.length ? parsed.effects : previous?.effects || [],
-    targeting: parsed?.targeting || previous?.targeting || null,
-  };
+  return parseSkillPage(html, name, slug) || { name, slug, empty: true };
 })).filter((record) => record && !record.missing && !record.empty);
 
 process.stdout.write("\n");
