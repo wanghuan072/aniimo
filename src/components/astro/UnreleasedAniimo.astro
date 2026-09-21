@@ -5,7 +5,6 @@ import unreleased from "@/data/research/unreleased-aniimo.json";
 import styles from "@/style/page/content.module.css";
 
 const knownSlugs = new Set(aniimo.map((entry) => entry.slug));
-const internalFormCount = unreleased.species.reduce((sum, entry) => sum + entry.alternateForms.length, 0);
 const formHref = (href: string) => {
   const slug = href.split("/").at(-1);
   return slug && knownSlugs.has(slug) ? `/aniimo/${slug}` : `https://www.aniimoverse.com${href}`;
@@ -16,7 +15,7 @@ const formHref = (href: string) => {
   <div class={styles.unreleasedIntro}>
     <span>Client file discoveries · source reviewed {unreleased.reviewedAt}</span>
     <h2 id="unreleased-heading">Unreleased Aniimo found in the game files</h2>
-    <p>Client files contain portraits for {unreleased.species.length} unreleased Aniimo entries and {internalFormCount} additional forms of these entries. They have no confirmed journal stats, skills or spawn records. The names and relationships below are provisional, and these cards are excluded from the playable roster count above.</p>
+    <p>Client files contain portraits for {unreleased.species.length} unreleased Aniimo entries. They have no confirmed journal stats, skills or spawn records. The names and relationships below are provisional, and these cards are excluded from the playable roster count above.</p>
   </div>
   <div class={styles.unreleasedGrid}>
     {unreleased.species.map((entry) => <article class={styles.unreleasedCard}>
@@ -25,9 +24,6 @@ const formHref = (href: string) => {
         <h3>{entry.name}</h3>
         <span class={styles.unreleasedId}>Client ID {entry.id}</span>
         <p>{entry.note}</p>
-        {entry.alternateForms.length > 0 && <div class={styles.unreleasedVariants} aria-label={`${entry.name} additional forms`}>
-          {entry.alternateForms.map((form) => <figure><img src={form.image} alt={`${entry.name} alternate form ${form.id}`} width="512" height="840" loading="lazy" decoding="async" referrerpolicy="no-referrer" /><figcaption>{form.id}</figcaption></figure>)}
-        </div>}
         <small>{entry.assetStatus}</small>
       </div>
     </article>)}
