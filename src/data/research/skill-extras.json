@@ -3,12 +3,21 @@
     "name": "AniimoVerse",
     "url": "https://www.aniimoverse.com/skills",
     "grade": "community",
-    "syncedAt": "2026-09-04T03:27:07.151Z",
+    "syncedAt": "2026-09-21T02:33:15.698Z",
     "note": "Cooldown, BREAK, team role, parsed effects and targeting come from AniimoVerse skill pages. Official Wiki does not publish these fields. EP cost and power stay on the official records."
   },
-  "requested": 263,
-  "count": 262,
+  "requested": 297,
+  "count": 296,
   "records": [
+    {
+      "name": "〔主译〕Lay down arms 〔备选〕Cease hostilities",
+      "slug": "lay-down-arms-cease-hostilities",
+      "cooldown": "8s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
     {
       "name": "Annihilation Barrage",
       "slug": "annihilation-barrage",
@@ -56,7 +65,7 @@
     {
       "name": "Aqua Defense",
       "slug": "aqua-defense",
-      "cooldown": "6s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Self only",
       "effects": [
@@ -102,7 +111,7 @@
     {
       "name": "Arc Strike",
       "slug": "arc-strike",
-      "cooldown": "10s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -226,7 +235,7 @@
       "name": "Ballistic Guard",
       "slug": "ballistic-guard",
       "cooldown": "1s",
-      "break": "150%",
+      "break": "100%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -300,10 +309,37 @@
       "targeting": null
     },
     {
+      "name": "Blazing Fist Barrage",
+      "slug": "blazing-fist-barrage",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Blazing Rush",
+      "slug": "blazing-rush",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Blazing Wolf Assault",
+      "slug": "blazing-wolf-assault",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Blooms of Vigor",
       "slug": "blooms-of-vigor",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [
         {
@@ -448,7 +484,7 @@
       "name": "Bubbles",
       "slug": "bubbles",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -516,7 +552,7 @@
       "name": "Butterfly Dance",
       "slug": "butterfly-dance",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Unresolved scope",
       "effects": [
         {
@@ -527,10 +563,28 @@
       "targeting": null
     },
     {
+      "name": "Cannon Mode",
+      "slug": "cannon-mode",
+      "cooldown": "5s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Charged Blow",
+      "slug": "charged-blow",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Charged Geyser",
       "slug": "charged-geyser",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [],
       "targeting": null
@@ -675,7 +729,7 @@
       "name": "Cloud Shield",
       "slug": "cloud-shield",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [],
       "targeting": null
@@ -684,7 +738,7 @@
       "name": "Collectible Drop",
       "slug": "collectible-drop",
       "cooldown": "8s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Unresolved scope",
       "effects": [
         {
@@ -772,10 +826,19 @@
       "targeting": null
     },
     {
+      "name": "Cozite Nest Sentry",
+      "slug": "cozite-nest-sentry",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Crazy Bubbles",
       "slug": "crazy-bubbles",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -856,7 +919,7 @@
     {
       "name": "Dark Claw",
       "slug": "dark-claw",
-      "cooldown": "1s",
+      "cooldown": "15s",
       "break": "150%",
       "teamRole": "Direct offense",
       "effects": [
@@ -890,7 +953,7 @@
     {
       "name": "Dark Energy Surge",
       "slug": "dark-energy-surge",
-      "cooldown": "5s",
+      "cooldown": "18s",
       "break": "150%",
       "teamRole": "Direct offense",
       "effects": [
@@ -933,7 +996,7 @@
       "name": "Dark Tide",
       "slug": "dark-tide",
       "cooldown": "1s",
-      "break": "",
+      "break": "100%",
       "teamRole": "Team-wide support",
       "effects": [
         {
@@ -945,6 +1008,15 @@
           "text": "Absorbs up to 4 puddles at once."
         }
       ],
+      "targeting": null
+    },
+    {
+      "name": "Darkwheel Slash",
+      "slug": "darkwheel-slash",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
       "targeting": null
     },
     {
@@ -1010,7 +1082,7 @@
       "name": "Detect Weakness",
       "slug": "detect-weakness",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -1025,6 +1097,15 @@
       "targeting": {
         "range": "2"
       }
+    },
+    {
+      "name": "Devastation Cannon",
+      "slug": "devastation-cannon",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Dimension Rupture",
@@ -1061,6 +1142,15 @@
         "hitCap": "3",
         "interval": "0.08s"
       }
+    },
+    {
+      "name": "Draw Nourishment",
+      "slug": "draw-nourishment",
+      "cooldown": "15s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Dream Blast",
@@ -1157,7 +1247,7 @@
     {
       "name": "Electricity Shock",
       "slug": "electricity-shock",
-      "cooldown": "10s",
+      "cooldown": "12s",
       "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -1255,7 +1345,7 @@
       "name": "Enhanced Light Blade",
       "slug": "enhanced-light-blade",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -1269,7 +1359,7 @@
       "name": "Enhanced Lightning Blade",
       "slug": "enhanced-lightning-blade",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -1283,7 +1373,7 @@
       "name": "Ethereal Light Wave",
       "slug": "ethereal-light-wave",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [],
       "targeting": null
@@ -1292,6 +1382,15 @@
       "name": "Euphoric Sonic Blast",
       "slug": "euphoric-sonic-blast",
       "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Everything Must Go",
+      "slug": "everything-must-go",
+      "cooldown": "1s",
       "break": "100%",
       "teamRole": "",
       "effects": [],
@@ -1489,6 +1588,15 @@
       }
     },
     {
+      "name": "Florae Descent",
+      "slug": "florae-descent",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Floral Storm",
       "slug": "floral-storm",
       "cooldown": "1s",
@@ -1564,7 +1672,7 @@
       "name": "Fragrance Bomb",
       "slug": "fragrance-bomb",
       "cooldown": "8s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [
         {
@@ -1598,8 +1706,7 @@
         }
       ],
       "targeting": {
-        "shape": "circular",
-        "range": "3.5"
+        "interval": "0.5s"
       }
     },
     {
@@ -1676,6 +1783,15 @@
       }
     },
     {
+      "name": "Gale Charge",
+      "slug": "gale-charge",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Gale Guard",
       "slug": "gale-guard",
       "cooldown": "15s",
@@ -1699,7 +1815,7 @@
     {
       "name": "Glimmer Shot",
       "slug": "glimmer-shot",
-      "cooldown": "0s",
+      "cooldown": "1s",
       "break": "100%",
       "teamRole": "Team-wide support",
       "effects": [
@@ -1824,7 +1940,7 @@
       "name": "Healing Dance",
       "slug": "healing-dance",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": {
@@ -1858,7 +1974,7 @@
       "name": "Healing Water",
       "slug": "healing-water",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": null
@@ -1881,6 +1997,15 @@
       }
     },
     {
+      "name": "Heavy Tail Strike",
+      "slug": "heavy-tail-strike",
+      "cooldown": "12s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Helios' Judgment",
       "slug": "helios-judgment",
       "cooldown": "8s",
@@ -1898,7 +2023,7 @@
       "name": "Help! Gracewing!",
       "slug": "help-gracewing",
       "cooldown": "8s",
-      "break": "",
+      "break": "100%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": null
@@ -1906,8 +2031,8 @@
     {
       "name": "Here Comes the Bubble",
       "slug": "here-comes-the-bubble",
-      "cooldown": "1s",
-      "break": "",
+      "cooldown": "15s",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [
         {
@@ -2045,7 +2170,7 @@
     {
       "name": "Hypnotic Spores",
       "slug": "hypnotic-spores",
-      "cooldown": "15s",
+      "cooldown": "18s",
       "break": "100%",
       "teamRole": "Direct offense",
       "effects": [
@@ -2074,7 +2199,7 @@
     {
       "name": "Ice Arc Strike",
       "slug": "ice-arc-strike",
-      "cooldown": "10s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -2110,7 +2235,7 @@
     {
       "name": "Ice Orb",
       "slug": "ice-orb",
-      "cooldown": "1s",
+      "cooldown": "12s",
       "break": "100%",
       "teamRole": "Direct offense",
       "effects": [
@@ -2158,7 +2283,7 @@
     {
       "name": "Ice Spikes",
       "slug": "ice-spikes",
-      "cooldown": "5s",
+      "cooldown": "12s",
       "break": "150%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -2254,6 +2379,24 @@
       }
     },
     {
+      "name": "Inspiration",
+      "slug": "inspiration",
+      "cooldown": "10s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Irisalis Shadow",
+      "slug": "irisalis-shadow",
+      "cooldown": "3s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Ironclad Armament",
       "slug": "ironclad-armament",
       "cooldown": "8s",
@@ -2288,6 +2431,15 @@
         "range": "2",
         "interval": "0.3s"
       }
+    },
+    {
+      "name": "Keep the Fire Bolt Going!",
+      "slug": "keep-the-fire-bolt-going",
+      "cooldown": "8s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Lava Breath",
@@ -2326,7 +2478,7 @@
     {
       "name": "Leaf Slash",
       "slug": "leaf-slash",
-      "cooldown": "15s",
+      "cooldown": "8s",
       "break": "150%",
       "teamRole": "Self only",
       "effects": [
@@ -2370,6 +2522,15 @@
       }
     },
     {
+      "name": "Leaping Sparks",
+      "slug": "leaping-sparks",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Light Bombardment",
       "slug": "light-bombardment",
       "cooldown": "1s",
@@ -2381,7 +2542,7 @@
     {
       "name": "Lightning Blade Impact",
       "slug": "lightning-blade-impact",
-      "cooldown": "10s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Unresolved scope",
       "effects": [
@@ -2489,7 +2650,7 @@
     {
       "name": "Lightning Discharge",
       "slug": "lightning-discharge",
-      "cooldown": "1s",
+      "cooldown": "10s",
       "break": "100%",
       "teamRole": "Nearby ally support",
       "effects": [],
@@ -2564,7 +2725,7 @@
     {
       "name": "Lightning Splitter",
       "slug": "lightning-splitter",
-      "cooldown": "1s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Self only",
       "effects": [
@@ -2613,10 +2774,19 @@
       }
     },
     {
+      "name": "Lightning Surge",
+      "slug": "lightning-surge",
+      "cooldown": "18s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Lotus Bloom",
       "slug": "lotus-bloom",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": null
@@ -2656,7 +2826,7 @@
     {
       "name": "Magma Surge",
       "slug": "magma-surge",
-      "cooldown": "5s",
+      "cooldown": "18s",
       "break": "150%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -2681,7 +2851,7 @@
     {
       "name": "Malice Burst",
       "slug": "malice-burst",
-      "cooldown": "1s",
+      "cooldown": "25s",
       "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [],
@@ -2691,10 +2861,19 @@
       }
     },
     {
+      "name": "Malicious Outburst",
+      "slug": "malicious-outburst",
+      "cooldown": "25s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "March",
       "slug": "march",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -2706,6 +2885,15 @@
           "text": "With 3 movement-series buffs active, all effects from those buffs are increased by 30%."
         }
       ],
+      "targeting": null
+    },
+    {
+      "name": "Meteor Shower",
+      "slug": "meteor-shower",
+      "cooldown": "8s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
       "targeting": null
     },
     {
@@ -2739,7 +2927,7 @@
       "name": "Moon-Washed",
       "slug": "moon-washed",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Unresolved scope",
       "effects": [
         {
@@ -2770,14 +2958,13 @@
         }
       ],
       "targeting": {
-        "shape": "circular",
-        "range": "10"
+        "shape": "circular"
       }
     },
     {
       "name": "Night Slash",
       "slug": "night-slash",
-      "cooldown": "1s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Direct offense",
       "effects": [
@@ -2795,7 +2982,7 @@
       "name": "Nightmare Devourer",
       "slug": "nightmare-devourer",
       "cooldown": "1s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [
         {
@@ -2850,10 +3037,19 @@
       }
     },
     {
+      "name": "Noisy Strikes",
+      "slug": "noisy-strikes",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Nutrient Absorption",
       "slug": "nutrient-absorption",
       "cooldown": "15s",
-      "break": "150%",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [],
       "targeting": {
@@ -2881,7 +3077,7 @@
     {
       "name": "Oozing Malice",
       "slug": "oozing-malice",
-      "cooldown": "1s",
+      "cooldown": "25s",
       "break": "100%",
       "teamRole": "Team-wide support",
       "effects": [],
@@ -2975,7 +3171,7 @@
       "name": "Phantom Dance",
       "slug": "phantom-dance",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -3011,8 +3207,26 @@
       "name": "Phantomflutter",
       "slug": "phantomflutter",
       "cooldown": "1s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Nearby ally support",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Phantomfly",
+      "slug": "phantomfly",
+      "cooldown": "1s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Pinecone Bomb",
+      "slug": "pinecone-bomb",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
       "effects": [],
       "targeting": null
     },
@@ -3075,7 +3289,7 @@
       "name": "Purifying Dance",
       "slug": "purifying-dance",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -3127,7 +3341,7 @@
     {
       "name": "Radiant Dart",
       "slug": "radiant-dart",
-      "cooldown": "5s",
+      "cooldown": "10s",
       "break": "100%",
       "teamRole": "Self only",
       "effects": [
@@ -3139,6 +3353,15 @@
       "targeting": {
         "range": "1.5"
       }
+    },
+    {
+      "name": "Resting Whirlwind",
+      "slug": "resting-whirlwind",
+      "cooldown": "1s",
+      "break": "150%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Rhythm Combo",
@@ -3164,10 +3387,19 @@
       }
     },
     {
+      "name": "Rigged Draw",
+      "slug": "rigged-draw",
+      "cooldown": "1s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Rigged Odds",
       "slug": "rigged-odds",
       "cooldown": "1s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -3279,10 +3511,19 @@
       }
     },
     {
+      "name": "Rolling Mud Ball",
+      "slug": "rolling-mud-ball",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Rose Garden",
       "slug": "rose-garden",
       "cooldown": "8s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [
         {
@@ -3375,6 +3616,17 @@
       "targeting": null
     },
     {
+      "name": "Secret Fragrance Mark",
+      "slug": "secret-fragrance-mark",
+      "cooldown": "18s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": {
+        "interval": "0.5s"
+      }
+    },
+    {
       "name": "Seismic Wave",
       "slug": "seismic-wave",
       "cooldown": "1s",
@@ -3387,7 +3639,6 @@
         }
       ],
       "targeting": {
-        "range": "5",
         "interval": "1s"
       }
     },
@@ -3447,7 +3698,7 @@
       "name": "Shadow Magic",
       "slug": "shadow-magic",
       "cooldown": "1s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [],
       "targeting": null
@@ -3455,7 +3706,7 @@
     {
       "name": "Shard Impact",
       "slug": "shard-impact",
-      "cooldown": "1s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Direct offense",
       "effects": [],
@@ -3463,6 +3714,15 @@
         "shape": "circular",
         "range": "3"
       }
+    },
+    {
+      "name": "Shielding Smoke",
+      "slug": "shielding-smoke",
+      "cooldown": "20s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Shooting Star Bombs",
@@ -3541,7 +3801,7 @@
       "name": "Smoke Screen",
       "slug": "smoke-screen",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Unresolved scope",
       "effects": [
         {
@@ -3555,7 +3815,7 @@
       "name": "Sonar Attack",
       "slug": "sonar-attack",
       "cooldown": "1s",
-      "break": "",
+      "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -3589,6 +3849,24 @@
         "shape": "circular",
         "range": "4"
       }
+    },
+    {
+      "name": "Spark Energy",
+      "slug": "spark-energy",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
+      "name": "Sparkling Rose",
+      "slug": "sparkling-rose",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
     },
     {
       "name": "Spiral Blade",
@@ -3639,7 +3917,7 @@
       "name": "Spotlight Moment",
       "slug": "spotlight-moment",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "",
       "effects": [],
       "targeting": null
@@ -3648,7 +3926,7 @@
       "name": "Spring of Life",
       "slug": "spring-of-life",
       "cooldown": "8s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Nearby ally support",
       "effects": [
         {
@@ -3725,7 +4003,7 @@
       "name": "Sun-Kissed",
       "slug": "sun-kissed",
       "cooldown": "18s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Unresolved scope",
       "effects": [
         {
@@ -3752,7 +4030,7 @@
     {
       "name": "Surf",
       "slug": "surf",
-      "cooldown": "1s",
+      "cooldown": "15s",
       "break": "100%",
       "teamRole": "Self only",
       "effects": [],
@@ -3765,7 +4043,7 @@
       "name": "Surge",
       "slug": "surge",
       "cooldown": "1s",
-      "break": "",
+      "break": "100%",
       "teamRole": "Team-wide support",
       "effects": [
         {
@@ -3803,7 +4081,7 @@
       "name": "Target Weakness",
       "slug": "target-weakness",
       "cooldown": "8s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Enemy debuff",
       "effects": [
         {
@@ -3822,7 +4100,7 @@
     {
       "name": "The Luminus Gust",
       "slug": "the-luminus-gust",
-      "cooldown": "1s",
+      "cooldown": "8s",
       "break": "150%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -3924,7 +4202,7 @@
     {
       "name": "Thunder Bolt",
       "slug": "thunder-bolt",
-      "cooldown": "1s",
+      "cooldown": "8s",
       "break": "100%",
       "teamRole": "Self only",
       "effects": [
@@ -4164,6 +4442,15 @@
       }
     },
     {
+      "name": "Treat Feed",
+      "slug": "treat-feed",
+      "cooldown": "18s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Trick Fire Ring",
       "slug": "trick-fire-ring",
       "cooldown": "1s",
@@ -4258,6 +4545,15 @@
       }
     },
     {
+      "name": "Vitality Blooms",
+      "slug": "vitality-blooms",
+      "cooldown": "20s",
+      "break": "0%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Vortex of Petals",
       "slug": "vortex-of-petals",
       "cooldown": "1s",
@@ -4275,7 +4571,7 @@
       "name": "Waltz",
       "slug": "waltz",
       "cooldown": "15s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Self only",
       "effects": [
         {
@@ -4292,7 +4588,7 @@
     {
       "name": "Water Arc Strike",
       "slug": "water-arc-strike",
-      "cooldown": "10s",
+      "cooldown": "5s",
       "break": "100%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -4311,7 +4607,7 @@
       "name": "Water Cannon",
       "slug": "water-cannon",
       "cooldown": "1s",
-      "break": "2",
+      "break": "3",
       "teamRole": "",
       "effects": [],
       "targeting": null
@@ -4368,7 +4664,7 @@
     {
       "name": "Water Rush",
       "slug": "water-rush",
-      "cooldown": "1s",
+      "cooldown": "10s",
       "break": "100%",
       "teamRole": "Nearby ally support",
       "effects": [],
@@ -4451,6 +4747,15 @@
       }
     },
     {
+      "name": "Whirling Blossom Rain",
+      "slug": "whirling-blossom-rain",
+      "cooldown": "1s",
+      "break": "100%",
+      "teamRole": "",
+      "effects": [],
+      "targeting": null
+    },
+    {
       "name": "Wild Dance",
       "slug": "wild-dance",
       "cooldown": "0s",
@@ -4510,7 +4815,7 @@
     {
       "name": "Wind Counter",
       "slug": "wind-counter",
-      "cooldown": "10s",
+      "cooldown": "15s",
       "break": "150%",
       "teamRole": "Enemy debuff",
       "effects": [
@@ -4532,7 +4837,7 @@
       "name": "Wind of Regeneration",
       "slug": "wind-of-regeneration",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": {
@@ -4545,7 +4850,7 @@
       "name": "Wind of Rejuvenation",
       "slug": "wind-of-rejuvenation",
       "cooldown": "20s",
-      "break": "",
+      "break": "0%",
       "teamRole": "Team-wide support",
       "effects": [],
       "targeting": {

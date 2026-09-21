@@ -1,6 +1,80 @@
 {
-  "reviewedAt": "2026-09-18",
+  "reviewedAt": "2026-09-21",
   "entries": {
+    "gargantuan-claw": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gargantuan-claw?id=553001",
+      "methods": [
+        "Defeat Alphas",
+        "Chest — Explore Idyll and open chests"
+      ],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "blaze-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/blaze-stone?id=540001",
+      "methods": [
+        "Defeat Alphas"
+      ],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×40,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
+    "ferocious-fang": {
+      "sourceUrl": "https://www.aniimoverse.com/items/ferocious-fang?id=553002",
+      "methods": [
+        "Defeat Alphas",
+        "Chest — Explore Idyll and open chests"
+      ],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "night-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/night-stone?id=540011",
+      "methods": [
+        "Defeat Alphas"
+      ],
+      "shops": [
+        {
+          "name": "Black Truffle Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Mutant Truffle×2"
+          ],
+          "limit": "Purchase limit: 5 total."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×40,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
     "breezy-plains-dewdrop-crystal": {
       "sourceUrl": "https://www.aniimoverse.com/items/breezy-plains-dewdrop-crystal?id=533001",
       "methods": [
@@ -57,39 +131,6 @@
         }
       ]
     },
-    "blaze-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/blaze-stone?id=540001",
-      "methods": [
-        "Defeat Alphas"
-      ],
-      "shops": [
-        {
-          "name": "Mysterious Vendor",
-          "quantity": "Quantity 1",
-          "price": [
-            "Credits×40,000"
-          ],
-          "limit": "Purchase limit: 5 per day."
-        }
-      ]
-    },
-    "ferocious-fang": {
-      "sourceUrl": "https://www.aniimoverse.com/items/ferocious-fang?id=553002",
-      "methods": [
-        "Defeat Alphas",
-        "Chest — Explore Idyll and open chests"
-      ],
-      "shops": [
-        {
-          "name": "Pawprint Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Paw Coin×250"
-          ],
-          "limit": ""
-        }
-      ]
-    },
     "flux-crystal": {
       "sourceUrl": "https://www.aniimoverse.com/items/flux-crystal?id=540000",
       "methods": [
@@ -124,23 +165,14 @@
             "Windborn Stamps×30"
           ],
           "limit": "Purchase limit: 5 per week."
-        }
-      ]
-    },
-    "gargantuan-claw": {
-      "sourceUrl": "https://www.aniimoverse.com/items/gargantuan-claw?id=553001",
-      "methods": [
-        "Defeat Alphas",
-        "Chest — Explore Idyll and open chests"
-      ],
-      "shops": [
+        },
         {
-          "name": "Pawprint Shop",
+          "name": "Mysterious Vendor",
           "quantity": "Quantity 1",
           "price": [
-            "Paw Coin×250"
+            "Credits×48,000"
           ],
-          "limit": ""
+          "limit": "Purchase limit: 5 per day."
         }
       ]
     },
@@ -161,30 +193,6 @@
         }
       ]
     },
-    "night-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/night-stone?id=540011",
-      "methods": [
-        "Defeat Alphas"
-      ],
-      "shops": [
-        {
-          "name": "Black Truffle Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Mutant Truffle×2"
-          ],
-          "limit": "Purchase limit: 5 total."
-        },
-        {
-          "name": "Mysterious Vendor",
-          "quantity": "Quantity 1",
-          "price": [
-            "Credits×40,000"
-          ],
-          "limit": "Purchase limit: 5 per day."
-        }
-      ]
-    },
     "auspicious-bell": {
       "sourceUrl": "https://www.aniimoverse.com/items/auspicious-bell?id=553016",
       "methods": [
@@ -202,32 +210,25 @@
         }
       ]
     },
-    "sprout-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/sprout-stone?id=540010",
+    "spirited-feather": {
+      "sourceUrl": "https://www.aniimoverse.com/items/spirited-feather?id=553004",
       "methods": [
-        "Defeat Alphas"
+        "Defeat Alphas",
+        "Chest — Explore Idyll and open chests"
       ],
       "shops": [
         {
-          "name": "Black Truffle Shop",
+          "name": "Pawprint Shop",
           "quantity": "Quantity 1",
           "price": [
-            "Mutant Truffle×2"
+            "Paw Coin×250"
           ],
-          "limit": "Purchase limit: 5 total."
-        },
-        {
-          "name": "Mysterious Vendor",
-          "quantity": "Quantity 1",
-          "price": [
-            "Credits×40,000"
-          ],
-          "limit": "Purchase limit: 5 per day."
+          "limit": ""
         }
       ]
     },
-    "spirited-feather": {
-      "sourceUrl": "https://www.aniimoverse.com/items/spirited-feather?id=553004",
+    "miraculous-fleece": {
+      "sourceUrl": "https://www.aniimoverse.com/items/miraculous-fleece?id=553017",
       "methods": [
         "Defeat Alphas",
         "Chest — Explore Idyll and open chests"
@@ -259,20 +260,27 @@
         }
       ]
     },
-    "miraculous-fleece": {
-      "sourceUrl": "https://www.aniimoverse.com/items/miraculous-fleece?id=553017",
+    "sprout-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sprout-stone?id=540010",
       "methods": [
-        "Defeat Alphas",
-        "Chest — Explore Idyll and open chests"
+        "Defeat Alphas"
       ],
       "shops": [
         {
-          "name": "Pawprint Shop",
+          "name": "Black Truffle Shop",
           "quantity": "Quantity 1",
           "price": [
-            "Paw Coin×250"
+            "Mutant Truffle×2"
           ],
-          "limit": ""
+          "limit": "Purchase limit: 5 total."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×40,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
         }
       ]
     },
@@ -357,14 +365,6 @@
         }
       ]
     },
-    "fragment-besauce": {
-      "sourceUrl": "https://www.aniimoverse.com/items/fragment-besauce?id=101221",
-      "methods": [
-        "Pathfinder Challenge",
-        "Elite Pathfinder Challenge"
-      ],
-      "shops": []
-    },
     "whisperwake-isles-dewdrop-crystal": {
       "sourceUrl": "https://www.aniimoverse.com/items/whisperwake-isles-dewdrop-crystal?id=533002",
       "methods": [
@@ -381,6 +381,14 @@
         }
       ]
     },
+    "fragment-besauce": {
+      "sourceUrl": "https://www.aniimoverse.com/items/fragment-besauce?id=101221",
+      "methods": [
+        "Pathfinder Challenge",
+        "Elite Pathfinder Challenge"
+      ],
+      "shops": []
+    },
     "light-stone": {
       "sourceUrl": "https://www.aniimoverse.com/items/light-stone?id=540012",
       "methods": [
@@ -393,7 +401,7 @@
       "methods": [
         "Elite Training — Complete the Elite Training program quests.",
         "Elite Pathfinder Challenge",
-        "Stamp Rush Shop — Open Stamp Rush Shop",
+        "Stamp Shop — Redeemable from the Season Hub’s Stamp Shop.",
         "Companion Handbook — Available from the Companion Handbook Standard Edition.",
         "Upgrade Level — Claim when you reach the required level"
       ],

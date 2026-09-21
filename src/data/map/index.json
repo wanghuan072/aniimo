@@ -4,7 +4,7 @@
       "id": "breezy-plains",
       "name": "Breezy Plains",
       "tagline": "Starting region",
-      "total": 9827,
+      "total": 9987,
       "href": "/map",
       "thumb": "/images/map/tiles/breezy-plains/base.webp"
     },
@@ -20,7 +20,7 @@
       "id": "whisperwake-isles",
       "name": "Whisperwake Isles",
       "tagline": "Archipelago",
-      "total": 625,
+      "total": 570,
       "href": "/map?atlas=whisperwake-isles",
       "thumb": "/images/map/tiles/whisperwake-isles/base.webp"
     },
