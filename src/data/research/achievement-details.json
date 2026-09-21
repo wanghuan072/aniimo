@@ -1,6 +1,45 @@
 {
-  "reviewedAt": "2026-09-18",
+  "reviewedAt": "2026-09-21",
   "entries": {
+    "seeker-in-the-mist": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/seeker-in-the-mist",
+      "path": "Path of Twining",
+      "section": "Breezy Plains",
+      "element": "light",
+      "rarity": "prismatic",
+      "tiers": [
+        "Seeker in the Mist",
+        "Seeker in the Mist",
+        "Seeker in the Mist",
+        "Ghostfog Wayfinder"
+      ]
+    },
+    "windchaser": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/windchaser",
+      "path": "Path of Twining",
+      "section": "Breezy Plains",
+      "element": "light",
+      "rarity": "prismatic",
+      "tiers": [
+        "Windchaser",
+        "Windchaser",
+        "Windchaser",
+        "Windspeaker of the Plains"
+      ]
+    },
+    "skypasture": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/skypasture",
+      "path": "Path of Twining",
+      "section": "Breezy Plains",
+      "element": "light",
+      "rarity": "prismatic",
+      "tiers": [
+        "Skypasture",
+        "Skypasture",
+        "Skypasture",
+        "Cloudherder"
+      ]
+    },
     "where-gulls-sing": {
       "sourceUrl": "https://www.aniimoverse.com/achievements/where-gulls-sing",
       "path": "Path of Twining",
@@ -27,71 +66,6 @@
         "Voltstrider"
       ]
     },
-    "skypasture": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/skypasture",
-      "path": "Path of Twining",
-      "section": "Breezy Plains",
-      "element": "light",
-      "rarity": "prismatic",
-      "tiers": [
-        "Skypasture",
-        "Skypasture",
-        "Skypasture",
-        "Cloudherder"
-      ]
-    },
-    "windchaser": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/windchaser",
-      "path": "Path of Twining",
-      "section": "Breezy Plains",
-      "element": "light",
-      "rarity": "prismatic",
-      "tiers": [
-        "Windchaser",
-        "Windchaser",
-        "Windchaser",
-        "Windspeaker of the Plains"
-      ]
-    },
-    "flower-dance": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/flower-dance",
-      "path": "Path of Twining",
-      "section": "Breezy Plains",
-      "element": "light",
-      "rarity": "prismatic",
-      "tiers": [
-        "Flower Dance",
-        "Flower Dance",
-        "Flower Dance",
-        "Fragrant Dancer"
-      ]
-    },
-    "seeker-in-the-mist": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/seeker-in-the-mist",
-      "path": "Path of Twining",
-      "section": "Breezy Plains",
-      "element": "light",
-      "rarity": "prismatic",
-      "tiers": [
-        "Seeker in the Mist",
-        "Seeker in the Mist",
-        "Seeker in the Mist",
-        "Ghostfog Wayfinder"
-      ]
-    },
-    "stargazer": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/stargazer",
-      "path": "Path of Twining",
-      "section": "Breezy Plains",
-      "element": "light",
-      "rarity": "prismatic",
-      "tiers": [
-        "Stargazer",
-        "Stargazer",
-        "Stargazer",
-        "Meteor Catcher"
-      ]
-    },
     "primal-breath": {
       "sourceUrl": "https://www.aniimoverse.com/achievements/primal-breath",
       "path": "Path of Twining",
@@ -116,6 +90,19 @@
         "Azure Echoes",
         "Azure Echoes",
         "Deepsea Singer"
+      ]
+    },
+    "stargazer": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/stargazer",
+      "path": "Path of Twining",
+      "section": "Breezy Plains",
+      "element": "light",
+      "rarity": "prismatic",
+      "tiers": [
+        "Stargazer",
+        "Stargazer",
+        "Stargazer",
+        "Meteor Catcher"
       ]
     },
     "tides-rise-flowers-fall": {
@@ -157,17 +144,17 @@
         "Wings of the Snowfields"
       ]
     },
-    "path-of-the-brave": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/path-of-the-brave",
+    "flower-dance": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/flower-dance",
       "path": "Path of Twining",
       "section": "Breezy Plains",
       "element": "light",
       "rarity": "prismatic",
       "tiers": [
-        "Path of the Brave",
-        "Path of the Brave",
-        "Path of the Brave",
-        "Heroes and Dragons"
+        "Flower Dance",
+        "Flower Dance",
+        "Flower Dance",
+        "Fragrant Dancer"
       ]
     },
     "flower-guardian": {
@@ -181,6 +168,19 @@
         "Flower Guardian",
         "Flower Guardian",
         "Thorns and Roses"
+      ]
+    },
+    "path-of-the-brave": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/path-of-the-brave",
+      "path": "Path of Twining",
+      "section": "Breezy Plains",
+      "element": "light",
+      "rarity": "prismatic",
+      "tiers": [
+        "Path of the Brave",
+        "Path of the Brave",
+        "Path of the Brave",
+        "Heroes and Dragons"
       ]
     },
     "through-the-hills-and-vales": {
@@ -261,16 +261,6 @@
         "Bursting Fist"
       ]
     },
-    "darknight-star": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/darknight-star",
-      "path": "Path of Victory",
-      "section": "Elite Pathfinder Challenge",
-      "element": "fire",
-      "rarity": "gold",
-      "tiers": [
-        "Darknight Star"
-      ]
-    },
     "stinging-thorns": {
       "sourceUrl": "https://www.aniimoverse.com/achievements/stinging-thorns",
       "path": "Path of Victory",
@@ -281,14 +271,14 @@
         "Stinging Thorns"
       ]
     },
-    "sonata-of-the-wind": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/sonata-of-the-wind",
+    "darknight-star": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/darknight-star",
       "path": "Path of Victory",
       "section": "Elite Pathfinder Challenge",
       "element": "fire",
       "rarity": "gold",
       "tiers": [
-        "Sonata of the Wind"
+        "Darknight Star"
       ]
     },
     "cleaving-waves": {
@@ -299,6 +289,16 @@
       "rarity": "gold",
       "tiers": [
         "Cleaving Waves"
+      ]
+    },
+    "treasure-hunter": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/treasure-hunter",
+      "path": "Path of Victory",
+      "section": "Combat Challenge",
+      "element": "fire",
+      "rarity": "",
+      "tiers": [
+        "Treasure Hunter"
       ]
     },
     "egg-heist-newcomer": {
@@ -313,16 +313,6 @@
         "Eggfield Dominator"
       ]
     },
-    "treasure-hunter": {
-      "sourceUrl": "https://www.aniimoverse.com/achievements/treasure-hunter",
-      "path": "Path of Victory",
-      "section": "Combat Challenge",
-      "element": "fire",
-      "rarity": "",
-      "tiers": [
-        "Treasure Hunter"
-      ]
-    },
     "emblem-of-endless-trials": {
       "sourceUrl": "https://www.aniimoverse.com/achievements/emblem-of-endless-trials",
       "path": "Path of Victory",
@@ -331,6 +321,16 @@
       "rarity": "gold",
       "tiers": [
         "Emblem of Endless Trials"
+      ]
+    },
+    "sonata-of-the-wind": {
+      "sourceUrl": "https://www.aniimoverse.com/achievements/sonata-of-the-wind",
+      "path": "Path of Victory",
+      "section": "Elite Pathfinder Challenge",
+      "element": "fire",
+      "rarity": "gold",
+      "tiers": [
+        "Sonata of the Wind"
       ]
     },
     "emblem-of-allied-triumph": {
