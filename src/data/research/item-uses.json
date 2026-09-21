@@ -1,6 +1,84 @@
 {
-  "reviewedAt": "2026-09-18",
+  "reviewedAt": "2026-09-21",
   "entries": {
+    "explosive-gloves": {
+      "sourceUrl": "https://www.aniimoverse.com/items/explosive-gloves?id=553012",
+      "methods": [
+        "Defeat Alphas",
+        "Chest — Explore Idyll and open chests"
+      ],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "blaze-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/blaze-stone?id=540001",
+      "methods": [
+        "Defeat Alphas"
+      ],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×40,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
+    "flux-crystal": {
+      "sourceUrl": "https://www.aniimoverse.com/items/flux-crystal?id=540000",
+      "methods": [
+        "Elite Training — Complete the Elite Training program quests.",
+        "Upgrade Level — Claim when you reach the required level",
+        "Companion Handbook — Available from the Companion Handbook Standard Edition.",
+        "Shop",
+        "Chest — Explore Idyll and open chests",
+        "Holo-Battle Sim — Participate in Holo-Battle Sim"
+      ],
+      "shops": [
+        {
+          "name": "Coilstrike Club",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×30"
+          ],
+          "limit": "Purchase limit: 20 total."
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×30"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×30"
+          ],
+          "limit": "Purchase limit: 5 per week."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×48,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
     "breezy-plains-dewdrop-crystal": {
       "sourceUrl": "https://www.aniimoverse.com/items/breezy-plains-dewdrop-crystal?id=533001",
       "methods": [
@@ -57,95 +135,8 @@
         }
       ]
     },
-    "blaze-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/blaze-stone?id=540001",
-      "methods": [
-        "Defeat Alphas"
-      ],
-      "shops": [
-        {
-          "name": "Mysterious Vendor",
-          "quantity": "Quantity 1",
-          "price": [
-            "Credits×40,000"
-          ],
-          "limit": "Purchase limit: 5 per day."
-        }
-      ]
-    },
     "ferocious-fang": {
       "sourceUrl": "https://www.aniimoverse.com/items/ferocious-fang?id=553002",
-      "methods": [
-        "Defeat Alphas",
-        "Chest — Explore Idyll and open chests"
-      ],
-      "shops": [
-        {
-          "name": "Pawprint Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Paw Coin×250"
-          ],
-          "limit": ""
-        }
-      ]
-    },
-    "flux-crystal": {
-      "sourceUrl": "https://www.aniimoverse.com/items/flux-crystal?id=540000",
-      "methods": [
-        "Elite Training — Complete the Elite Training program quests.",
-        "Upgrade Level — Claim when you reach the required level",
-        "Companion Handbook — Available from the Companion Handbook Standard Edition.",
-        "Shop",
-        "Chest — Explore Idyll and open chests",
-        "Holo-Battle Sim — Participate in Holo-Battle Sim"
-      ],
-      "shops": [
-        {
-          "name": "Coilstrike Club",
-          "quantity": "Quantity 1",
-          "price": [
-            "Voxel Coin×30"
-          ],
-          "limit": "Purchase limit: 20 total."
-        },
-        {
-          "name": "Pawprint Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Paw Coin×30"
-          ],
-          "limit": ""
-        },
-        {
-          "name": "Badge Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Windborn Stamps×30"
-          ],
-          "limit": "Purchase limit: 5 per week."
-        }
-      ]
-    },
-    "gargantuan-claw": {
-      "sourceUrl": "https://www.aniimoverse.com/items/gargantuan-claw?id=553001",
-      "methods": [
-        "Defeat Alphas",
-        "Chest — Explore Idyll and open chests"
-      ],
-      "shops": [
-        {
-          "name": "Pawprint Shop",
-          "quantity": "Quantity 1",
-          "price": [
-            "Paw Coin×250"
-          ],
-          "limit": ""
-        }
-      ]
-    },
-    "explosive-gloves": {
-      "sourceUrl": "https://www.aniimoverse.com/items/explosive-gloves?id=553012",
       "methods": [
         "Defeat Alphas",
         "Chest — Explore Idyll and open chests"
@@ -185,8 +176,8 @@
         }
       ]
     },
-    "auspicious-bell": {
-      "sourceUrl": "https://www.aniimoverse.com/items/auspicious-bell?id=553016",
+    "gargantuan-claw": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gargantuan-claw?id=553001",
       "methods": [
         "Defeat Alphas",
         "Chest — Explore Idyll and open chests"
@@ -202,32 +193,25 @@
         }
       ]
     },
-    "sprout-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/sprout-stone?id=540010",
+    "spirited-feather": {
+      "sourceUrl": "https://www.aniimoverse.com/items/spirited-feather?id=553004",
       "methods": [
-        "Defeat Alphas"
+        "Defeat Alphas",
+        "Chest — Explore Idyll and open chests"
       ],
       "shops": [
         {
-          "name": "Black Truffle Shop",
+          "name": "Pawprint Shop",
           "quantity": "Quantity 1",
           "price": [
-            "Mutant Truffle×2"
+            "Paw Coin×250"
           ],
-          "limit": "Purchase limit: 5 total."
-        },
-        {
-          "name": "Mysterious Vendor",
-          "quantity": "Quantity 1",
-          "price": [
-            "Credits×40,000"
-          ],
-          "limit": "Purchase limit: 5 per day."
+          "limit": ""
         }
       ]
     },
-    "spirited-feather": {
-      "sourceUrl": "https://www.aniimoverse.com/items/spirited-feather?id=553004",
+    "auspicious-bell": {
+      "sourceUrl": "https://www.aniimoverse.com/items/auspicious-bell?id=553016",
       "methods": [
         "Defeat Alphas",
         "Chest — Explore Idyll and open chests"
@@ -249,6 +233,30 @@
         "Defeat Alphas"
       ],
       "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×40,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
+    "sprout-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sprout-stone?id=540010",
+      "methods": [
+        "Defeat Alphas"
+      ],
+      "shops": [
+        {
+          "name": "Black Truffle Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Mutant Truffle×2"
+          ],
+          "limit": "Purchase limit: 5 total."
+        },
         {
           "name": "Mysterious Vendor",
           "quantity": "Quantity 1",
@@ -381,19 +389,12 @@
         }
       ]
     },
-    "light-stone": {
-      "sourceUrl": "https://www.aniimoverse.com/items/light-stone?id=540012",
-      "methods": [
-        "Upgrade Level — Claim when you reach the required level"
-      ],
-      "shops": []
-    },
     "omnisource-crystal": {
       "sourceUrl": "https://www.aniimoverse.com/items/omnisource-crystal?id=152100",
       "methods": [
         "Elite Training — Complete the Elite Training program quests.",
         "Elite Pathfinder Challenge",
-        "Stamp Rush Shop — Open Stamp Rush Shop",
+        "Stamp Shop — Redeemable from the Season Hub’s Stamp Shop.",
         "Companion Handbook — Available from the Companion Handbook Standard Edition.",
         "Upgrade Level — Claim when you reach the required level"
       ],
@@ -413,6 +414,3677 @@
             "Credits×5,000,000"
           ],
           "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "light-stone": {
+      "sourceUrl": "https://www.aniimoverse.com/items/light-stone?id=540012",
+      "methods": [
+        "Upgrade Level — Claim when you reach the required level"
+      ],
+      "shops": []
+    },
+    "adventure-backpack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/adventure-backpack-5920004",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×60,000"
+          ],
+          "limit": "Purchase limit: 2 per week."
+        },
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×60,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod-ultra": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-ultra",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Aniipod Ultra Voucher×20"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×400,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "besauce": {
+      "sourceUrl": "https://www.aniimoverse.com/items/besauce",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Fragment - Besauce×40"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "agave-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/agave-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×97"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "apple-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/apple-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×21"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "bitter-orange-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/bitter-orange-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×122"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "energy-bites": {
+      "sourceUrl": "https://www.aniimoverse.com/items/energy-bites",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Aniimo Food",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×30"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "capability-fruit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/capability-fruit",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Capaseed×20"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×2,000,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "credits": {
+      "sourceUrl": "https://www.aniimoverse.com/items/credits",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×1"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Homeland Gift Pack",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×10,000"
+          ],
+          "limit": "Purchase limit: 100 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×20"
+          ],
+          "limit": "Purchase limit: 50 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×40"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "dragonsbreath-mocha": {
+      "sourceUrl": "https://www.aniimoverse.com/items/dragonsbreath-mocha-7000105",
+      "methods": [],
+      "shops": [
+        {
+          "name": "ChillBeanz",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "blue-essence": {
+      "sourceUrl": "https://www.aniimoverse.com/items/blue-essence-5901003",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Purple Essence×1"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "super-egg-voucher": {
+      "sourceUrl": "https://www.aniimoverse.com/items/super-egg-voucher",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×20,000"
+          ],
+          "limit": "Purchase limit: 20 per day."
+        }
+      ]
+    },
+    "pawshake-supply-pack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/pawshake-supply-pack",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Primegy×50"
+          ],
+          "limit": "Purchase limit: 3 per day."
+        }
+      ]
+    },
+    "butterfly-tie": {
+      "sourceUrl": "https://www.aniimoverse.com/items/butterfly-tie",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "common-carried-item-core": {
+      "sourceUrl": "https://www.aniimoverse.com/items/common-carried-item-core",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×32,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×80"
+          ],
+          "limit": "Purchase limit: 5 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×160"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×20"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "dark-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/dark-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "earth-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/earth-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "dance": {
+      "sourceUrl": "https://www.aniimoverse.com/items/dance",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Star-Crossed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "gilded-key": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gilded-key",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Black Market",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×150,000"
+          ],
+          "limit": "Purchase limit: 2 per scene."
+        },
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×100,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "giant-rubber-duck": {
+      "sourceUrl": "https://www.aniimoverse.com/items/giant-rubber-duck",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×6,000"
+          ],
+          "limit": "Purchase limit: 200 per week."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×240,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "home-girl-socks": {
+      "sourceUrl": "https://www.aniimoverse.com/items/home-girl-socks",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×1"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "home-girl-shoes": {
+      "sourceUrl": "https://www.aniimoverse.com/items/home-girl-shoes",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×1"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "home-girl-hair-accessory": {
+      "sourceUrl": "https://www.aniimoverse.com/items/home-girl-hair-accessory",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×2"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "home-girl-gloves": {
+      "sourceUrl": "https://www.aniimoverse.com/items/home-girl-gloves",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×1"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "growth-agaric": {
+      "sourceUrl": "https://www.aniimoverse.com/items/growth-agaric",
+      "methods": [],
+      "shops": [
+        {
+          "name": "FunTown",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×20,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "fire-sprout-biscuit-1105": {
+      "sourceUrl": "https://www.aniimoverse.com/items/fire-sprout-biscuit-1105",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Blaze Stone×1"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "gloomy-bloom": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gloomy-bloom",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "gift-of-affection": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gift-of-affection",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mementos",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×28"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "gift-of-celebration": {
+      "sourceUrl": "https://www.aniimoverse.com/items/gift-of-celebration",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mementos",
+          "quantity": "Quantity 1",
+          "price": [
+            "Glimmer×88"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "fire-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/fire-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "grass-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/grass-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "glimmering-mirage": {
+      "sourceUrl": "https://www.aniimoverse.com/items/glimmering-mirage",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Redeem",
+          "quantity": "Quantity 1",
+          "price": [
+            "Irisalis Petal×2"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "ginseng-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/ginseng-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×56"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "grape-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/grape-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×56"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "flintgrass-kebab": {
+      "sourceUrl": "https://www.aniimoverse.com/items/flintgrass-kebab",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Wolfie’s",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "pearl-cascade": {
+      "sourceUrl": "https://www.aniimoverse.com/items/pearl-cascade",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×50"
+          ],
+          "limit": "Purchase limit: 4 per week."
+        }
+      ]
+    },
+    "iced-blastcap": {
+      "sourceUrl": "https://www.aniimoverse.com/items/iced-blastcap-7000104",
+      "methods": [],
+      "shops": [
+        {
+          "name": "ChillBeanz",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "growth-bud": {
+      "sourceUrl": "https://www.aniimoverse.com/items/growth-bud",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×800"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "growth-flower": {
+      "sourceUrl": "https://www.aniimoverse.com/items/growth-flower",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×4,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "growth-fruit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/growth-fruit",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×20,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×10"
+          ],
+          "limit": "Purchase limit: 20 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×20"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×8,000"
+          ],
+          "limit": "Purchase limit: 30 per day."
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×3"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "hammer-strike": {
+      "sourceUrl": "https://www.aniimoverse.com/items/hammer-strike",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×1"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "home-girl-top": {
+      "sourceUrl": "https://www.aniimoverse.com/items/home-girl-top",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Dream Spark Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Dream Spark×3"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "holo-bouncy-pad": {
+      "sourceUrl": "https://www.aniimoverse.com/items/holo-bouncy-pad",
+      "methods": [],
+      "shops": [
+        {
+          "name": "FunTown",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×200,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        }
+      ]
+    },
+    "heavy-duty-backpack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/heavy-duty-backpack-5920005",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×200,000"
+          ],
+          "limit": "Purchase limit: 1 per week."
+        }
+      ]
+    },
+    "ice-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/ice-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "heartseeker-pendant": {
+      "sourceUrl": "https://www.aniimoverse.com/items/heartseeker-pendant",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "heritage-amulet": {
+      "sourceUrl": "https://www.aniimoverse.com/items/heritage-amulet",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "lavender-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/lavender-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×32"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "lemon-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/lemon-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×8"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "head-pat": {
+      "sourceUrl": "https://www.aniimoverse.com/items/head-pat",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Star-Crossed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "prismana-orb": {
+      "sourceUrl": "https://www.aniimoverse.com/items/prismana-orb",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×900"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×7,500,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "off-road-body": {
+      "sourceUrl": "https://www.aniimoverse.com/items/off-road-body",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Black Market",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×200,000"
+          ],
+          "limit": "Purchase limit: 1 per scene."
+        }
+      ]
+    },
+    "load-unit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/load-unit",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Black Market",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×100,000"
+          ],
+          "limit": "Purchase limit: 1 per scene."
+        }
+      ]
+    },
+    "perk-me-up-cup": {
+      "sourceUrl": "https://www.aniimoverse.com/items/perk-me-up-cup",
+      "methods": [],
+      "shops": [
+        {
+          "name": "ChillBeanz",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "shimmering-reverie": {
+      "sourceUrl": "https://www.aniimoverse.com/items/shimmering-reverie",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Coilstrike Club",
+          "quantity": "Quantity 1",
+          "price": [
+            "Transmog Essence×1"
+          ],
+          "limit": "Purchase limit: 5 per week."
+        }
+      ]
+    },
+    "little-rubber-duck": {
+      "sourceUrl": "https://www.aniimoverse.com/items/little-rubber-duck",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×1,500"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "quick-training-pass": {
+      "sourceUrl": "https://www.aniimoverse.com/items/quick-training-pass",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×40"
+          ],
+          "limit": "Purchase limit: 5 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×150"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "level-5-rv-welcome-pack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/level-5-rv-welcome-pack",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Homeland Gift Pack",
+          "quantity": "Quantity 1",
+          "price": [
+            "Bud Ticket×3,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "level-8-rv-welcome-pack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/level-8-rv-welcome-pack",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Homeland Gift Pack",
+          "quantity": "Quantity 1",
+          "price": [
+            "Bud Ticket×20,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "prismana-crystal": {
+      "sourceUrl": "https://www.aniimoverse.com/items/prismana-crystal",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Homeland Gift Pack",
+          "quantity": "Quantity 1",
+          "price": [
+            "Bud Ticket×200,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "prismatic-stone-fenmane": {
+      "sourceUrl": "https://www.aniimoverse.com/items/prismatic-stone-fenmane",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Homeland Gift Pack",
+          "quantity": "Quantity 1",
+          "price": [
+            "Bud Ticket×80,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "lightning-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/lightning-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "maple-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/maple-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×21"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "palm-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/palm-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×47"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "potato-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/potato-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×1"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "please": {
+      "sourceUrl": "https://www.aniimoverse.com/items/please",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Star-Crossed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×100"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "rusted-iron-key": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rusted-iron-key",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Black Market",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×20,000"
+          ],
+          "limit": "Purchase limit: 2 per scene."
+        },
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×10,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "silver-plated-key": {
+      "sourceUrl": "https://www.aniimoverse.com/items/silver-plated-key",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Black Market",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×80,000"
+          ],
+          "limit": "Purchase limit: 2 per scene."
+        },
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "star-dust": {
+      "sourceUrl": "https://www.aniimoverse.com/items/star-dust",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Coilstrike Club",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×4"
+          ],
+          "limit": "Purchase limit: 50 total."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×20"
+          ],
+          "limit": "Purchase limit: 10 per week."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×6,400"
+          ],
+          "limit": "Purchase limit: 20 per day."
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×40"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "star-sand": {
+      "sourceUrl": "https://www.aniimoverse.com/items/star-sand",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Coilstrike Club",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×20"
+          ],
+          "limit": "Purchase limit: 20 total."
+        },
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Star Dust×5"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×32,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×100"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "simple-backpack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/simple-backpack-5920002",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×1,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×1,000"
+          ],
+          "limit": "Purchase limit: 3 per week."
+        }
+      ]
+    },
+    "shrinkstool": {
+      "sourceUrl": "https://www.aniimoverse.com/items/shrinkstool",
+      "methods": [],
+      "shops": [
+        {
+          "name": "FunTown",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×20,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "sparkling-cube": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sparkling-cube",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Sparkling Crystal×1,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×3,000,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "sparkling-chapter": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sparkling-chapter",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Sparkling Sigil×5"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "star-essence": {
+      "sourceUrl": "https://www.aniimoverse.com/items/star-essence",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Item Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Star Shard×10"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×600,000"
+          ],
+          "limit": "Purchase limit: 2 per day."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×100"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×150"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "sailor-cap": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sailor-cap",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "sailor-suit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sailor-suit",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "silver-helm-mask": {
+      "sourceUrl": "https://www.aniimoverse.com/items/silver-helm-mask",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "silver-helm-visor": {
+      "sourceUrl": "https://www.aniimoverse.com/items/silver-helm-visor",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Lumen / Shanel / Voxel Coin Display",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×300"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "rice-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rice-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×12"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "rose-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rose-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×21"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "rubber-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rubber-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×75"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "soybean-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/soybean-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×12"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "scorch-glazed-pork-ribs": {
+      "sourceUrl": "https://www.aniimoverse.com/items/scorch-glazed-pork-ribs",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Wolfie’s",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "sizzling-pan-special": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sizzling-pan-special",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Wolfie’s",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×50,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "starwish-coin": {
+      "sourceUrl": "https://www.aniimoverse.com/items/starwish-coin",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Capsule Machine Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×100"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "twin-star-special": {
+      "sourceUrl": "https://www.aniimoverse.com/items/twin-star-special",
+      "methods": [],
+      "shops": [
+        {
+          "name": "ChillBeanz",
+          "quantity": "Quantity 1",
+          "price": [
+            "Voxel Coin×20"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "tumbler": {
+      "sourceUrl": "https://www.aniimoverse.com/items/tumbler",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×200,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×80,000"
+          ],
+          "limit": "Purchase limit: 5 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×100,000"
+          ],
+          "limit": "Purchase limit: 5 per week."
+        }
+      ]
+    },
+    "vein-essence": {
+      "sourceUrl": "https://www.aniimoverse.com/items/vein-essence",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×210,000"
+          ],
+          "limit": "Purchase limit: 2 per day."
+        },
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×50"
+          ],
+          "limit": "Purchase limit: 10 per week."
+        }
+      ]
+    },
+    "water-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/water-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "wind-shard": {
+      "sourceUrl": "https://www.aniimoverse.com/items/wind-shard",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Nurture",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "starlight-festival-avatar": {
+      "sourceUrl": "https://www.aniimoverse.com/items/starlight-festival-avatar",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×360"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "supreme-elixir": {
+      "sourceUrl": "https://www.aniimoverse.com/items/supreme-elixir",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "vanguards-whistle": {
+      "sourceUrl": "https://www.aniimoverse.com/items/vanguards-whistle",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×3,500"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×2,000"
+          ],
+          "limit": "Purchase limit: 100 per week."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×1,400"
+          ],
+          "limit": "Purchase limit: 120 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×3,500"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod-mega": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-mega",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×10,500"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×6,000"
+          ],
+          "limit": "Purchase limit: 100 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×60"
+          ],
+          "limit": "Purchase limit: 20 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×120"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×4,200"
+          ],
+          "limit": "Purchase limit: 40 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×10,500"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod-pro": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-pro",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×7,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Credits",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×4,000"
+          ],
+          "limit": "Purchase limit: 100 per week."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×2,800"
+          ],
+          "limit": "Purchase limit: 60 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×7,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "basic-capacity-expansion-chip": {
+      "sourceUrl": "https://www.aniimoverse.com/items/basic-capacity-expansion-chip-5930701",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×20,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "mk-iii-energizing-bracer": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-energizing-bracer",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-fervor-mask": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-fervor-mask",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-flamewreath-armor": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-flamewreath-armor",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-predictive-dice": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-predictive-dice",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-reflective-barrier": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-reflective-barrier",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-repair-matrix": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-repair-matrix",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mk-iii-surge-engine": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mk-iii-surge-engine",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×2,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "accumulative-power": {
+      "sourceUrl": "https://www.aniimoverse.com/items/accumulative-power",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "adversity-charge": {
+      "sourceUrl": "https://www.aniimoverse.com/items/adversity-charge",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "adversity-parry": {
+      "sourceUrl": "https://www.aniimoverse.com/items/adversity-parry",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "adversity-surge": {
+      "sourceUrl": "https://www.aniimoverse.com/items/adversity-surge",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "bastion-of-iron": {
+      "sourceUrl": "https://www.aniimoverse.com/items/bastion-of-iron",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "best-offense-is-defense": {
+      "sourceUrl": "https://www.aniimoverse.com/items/best-offense-is-defense",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "blessing-of-protection": {
+      "sourceUrl": "https://www.aniimoverse.com/items/blessing-of-protection",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "advanced-carried-item-core": {
+      "sourceUrl": "https://www.aniimoverse.com/items/advanced-carried-item-core",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×200"
+          ],
+          "limit": "Purchase limit: 3 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×400"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×50"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod-ultra-voucher": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-ultra-voucher",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×40"
+          ],
+          "limit": "Purchase limit: 30 total."
+        }
+      ]
+    },
+    "basic-carried-item-core": {
+      "sourceUrl": "https://www.aniimoverse.com/items/basic-carried-item-core",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×40"
+          ],
+          "limit": "Purchase limit: 10 per week."
+        },
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×80"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×10"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "aniipod-hyper": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-hyper",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": "Purchase limit: 40 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×7,200"
+          ],
+          "limit": "Purchase limit: 20 per week."
+        }
+      ]
+    },
+    "aniipod-trace": {
+      "sourceUrl": "https://www.aniimoverse.com/items/aniipod-trace",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×5,000"
+          ],
+          "limit": "Purchase limit: 40 per day."
+        },
+        {
+          "name": "Super Claw",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×7,200"
+          ],
+          "limit": "Purchase limit: 20 per week."
+        }
+      ]
+    },
+    "ambushers-cloak": {
+      "sourceUrl": "https://www.aniimoverse.com/items/ambushers-cloak",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "avenging-gear": {
+      "sourceUrl": "https://www.aniimoverse.com/items/avenging-gear",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "body-of-iron": {
+      "sourceUrl": "https://www.aniimoverse.com/items/body-of-iron",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "boiling-blood": {
+      "sourceUrl": "https://www.aniimoverse.com/items/boiling-blood",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "bounce-amplifier": {
+      "sourceUrl": "https://www.aniimoverse.com/items/bounce-amplifier",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "bounty-hunter": {
+      "sourceUrl": "https://www.aniimoverse.com/items/bounty-hunter",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "breaking-strike": {
+      "sourceUrl": "https://www.aniimoverse.com/items/breaking-strike",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "calm-fighter": {
+      "sourceUrl": "https://www.aniimoverse.com/items/calm-fighter",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "charging-shield": {
+      "sourceUrl": "https://www.aniimoverse.com/items/charging-shield",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "clos-call": {
+      "sourceUrl": "https://www.aniimoverse.com/items/clos-call",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "close-range-charge": {
+      "sourceUrl": "https://www.aniimoverse.com/items/close-range-charge",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "wealth-siphon": {
+      "sourceUrl": "https://www.aniimoverse.com/items/wealth-siphon",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "compound-interest": {
+      "sourceUrl": "https://www.aniimoverse.com/items/compound-interest",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "consecutive-strikes": {
+      "sourceUrl": "https://www.aniimoverse.com/items/consecutive-strikes",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "converging-sense": {
+      "sourceUrl": "https://www.aniimoverse.com/items/converging-sense",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "treasure-accumulation": {
+      "sourceUrl": "https://www.aniimoverse.com/items/treasure-accumulation",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "defense-training": {
+      "sourceUrl": "https://www.aniimoverse.com/items/defense-training",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "delayed-pain": {
+      "sourceUrl": "https://www.aniimoverse.com/items/delayed-pain",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "desperate-potential": {
+      "sourceUrl": "https://www.aniimoverse.com/items/desperate-potential",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "desperation-surge": {
+      "sourceUrl": "https://www.aniimoverse.com/items/desperation-surge",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "dulling-field": {
+      "sourceUrl": "https://www.aniimoverse.com/items/dulling-field",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "elemental-erosion": {
+      "sourceUrl": "https://www.aniimoverse.com/items/elemental-erosion",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "emergency-treatment": {
+      "sourceUrl": "https://www.aniimoverse.com/items/emergency-treatment",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "energy-expansion": {
+      "sourceUrl": "https://www.aniimoverse.com/items/energy-expansion",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "destiny-carried-item-pack": {
+      "sourceUrl": "https://www.aniimoverse.com/items/destiny-carried-item-pack",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Points×400"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "capacitous-battery": {
+      "sourceUrl": "https://www.aniimoverse.com/items/capacitous-battery",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "destinys-dice": {
+      "sourceUrl": "https://www.aniimoverse.com/items/destinys-dice",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "echoing-grimoire": {
+      "sourceUrl": "https://www.aniimoverse.com/items/echoing-grimoire",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "cherry-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/cherry-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×21"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "chestnut-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/chestnut-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×47"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "cacoa-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/cacoa-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×122"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "coconut-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/coconut-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×75"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "cotton-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/cotton-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×21"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "cranberry-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/cranberry-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×97"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "bamboo-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/bamboo-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×8"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "expand-element": {
+      "sourceUrl": "https://www.aniimoverse.com/items/expand-element",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "final-stand": {
+      "sourceUrl": "https://www.aniimoverse.com/items/final-stand",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "flawless-defense": {
+      "sourceUrl": "https://www.aniimoverse.com/items/flawless-defense",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "focused-impact": {
+      "sourceUrl": "https://www.aniimoverse.com/items/focused-impact",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "focused-strike": {
+      "sourceUrl": "https://www.aniimoverse.com/items/focused-strike",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "free-money": {
+      "sourceUrl": "https://www.aniimoverse.com/items/free-money",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "finisher-bell": {
+      "sourceUrl": "https://www.aniimoverse.com/items/finisher-bell",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "giant-tortoise-shell": {
+      "sourceUrl": "https://www.aniimoverse.com/items/giant-tortoise-shell",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "hard-earned-money": {
+      "sourceUrl": "https://www.aniimoverse.com/items/hard-earned-money",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "healing-supply": {
+      "sourceUrl": "https://www.aniimoverse.com/items/healing-supply",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "heavy-bomb": {
+      "sourceUrl": "https://www.aniimoverse.com/items/heavy-bomb",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "hyper-sense": {
+      "sourceUrl": "https://www.aniimoverse.com/items/hyper-sense",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "increase-in-value": {
+      "sourceUrl": "https://www.aniimoverse.com/items/increase-in-value",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "indestructible": {
+      "sourceUrl": "https://www.aniimoverse.com/items/indestructible",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "intense-training": {
+      "sourceUrl": "https://www.aniimoverse.com/items/intense-training",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "iron-clad": {
+      "sourceUrl": "https://www.aniimoverse.com/items/iron-clad",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "last-bastion": {
+      "sourceUrl": "https://www.aniimoverse.com/items/last-bastion",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "layered-strength": {
+      "sourceUrl": "https://www.aniimoverse.com/items/layered-strength",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-agave": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-agave",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-cotton": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-cotton",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-ginseng": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-ginseng",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-lavender": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-lavender",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-potato": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-potato",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-rice": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-rice",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-rose": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-rose",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-soybean": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-soybean",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-strawberry": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-strawberry",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-sugarcane": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-sugarcane",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-wheat": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-wheat",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "huge-colorful-sparkling-grapes": {
+      "sourceUrl": "https://www.aniimoverse.com/items/huge-colorful-sparkling-grapes",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mutated Plant Exchange",
+          "quantity": "Quantity 1",
+          "price": [
+            "Waxing Moondew×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "low-grade-lighting-chip": {
+      "sourceUrl": "https://www.aniimoverse.com/items/low-grade-lighting-chip-5930310",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×20,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "low-level-resistance-chip": {
+      "sourceUrl": "https://www.aniimoverse.com/items/low-level-resistance-chip-5930501",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×20,000"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "protective-unit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/protective-unit-5930101",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Equip",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×10,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Eggshell Coin×10,000"
+          ],
+          "limit": "Purchase limit: 3 per week."
+        }
+      ]
+    },
+    "lossless-power-supply": {
+      "sourceUrl": "https://www.aniimoverse.com/items/lossless-power-supply",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "matrix-enhancement": {
+      "sourceUrl": "https://www.aniimoverse.com/items/matrix-enhancement",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "membership-discount": {
+      "sourceUrl": "https://www.aniimoverse.com/items/membership-discount",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "no-retreat": {
+      "sourceUrl": "https://www.aniimoverse.com/items/no-retreat",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "overcharged-shield": {
+      "sourceUrl": "https://www.aniimoverse.com/items/overcharged-shield",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "protective-healing": {
+      "sourceUrl": "https://www.aniimoverse.com/items/protective-healing",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "mysterious-prismana-egg": {
+      "sourceUrl": "https://www.aniimoverse.com/items/mysterious-prismana-egg-5911201",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Prismana Shell Shard×400,000"
+          ],
+          "limit": ""
+        },
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Prismana Shell Shard×400,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "purple-essence": {
+      "sourceUrl": "https://www.aniimoverse.com/items/purple-essence-5901001",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Hot",
+          "quantity": "Quantity 1",
+          "price": [
+            "Gold Essence×1"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "alpha-mark": {
+      "sourceUrl": "https://www.aniimoverse.com/items/alpha-mark",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×210,000"
+          ],
+          "limit": "Purchase limit: 2 per day."
+        }
+      ]
+    },
+    "primegy-battery": {
+      "sourceUrl": "https://www.aniimoverse.com/items/primegy-battery",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×250,000"
+          ],
+          "limit": "Purchase limit: 2 per day."
+        },
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×60"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "psyche-fruit": {
+      "sourceUrl": "https://www.aniimoverse.com/items/psyche-fruit",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×140,000"
+          ],
+          "limit": "Purchase limit: 3 per day."
+        }
+      ]
+    },
+    "lightning-needle": {
+      "sourceUrl": "https://www.aniimoverse.com/items/lightning-needle",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "marching-flask": {
+      "sourceUrl": "https://www.aniimoverse.com/items/marching-flask",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "natures-breath": {
+      "sourceUrl": "https://www.aniimoverse.com/items/natures-breath",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "pearl-of-the-sea": {
+      "sourceUrl": "https://www.aniimoverse.com/items/pearl-of-the-sea",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "sparkling-egg": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sparkling-egg-560321",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Badge Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Windborn Stamps×200"
+          ],
+          "limit": "Purchase limit: 1 total."
+        },
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×2,000,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "reckless": {
+      "sourceUrl": "https://www.aniimoverse.com/items/reckless",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "refined-steel": {
+      "sourceUrl": "https://www.aniimoverse.com/items/refined-steel",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "sturdy-physique": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sturdy-physique",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "resolute-defense": {
+      "sourceUrl": "https://www.aniimoverse.com/items/resolute-defense",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "rest-and-recover": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rest-and-recover",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "rising-heat": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rising-heat",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "scorching-hot": {
+      "sourceUrl": "https://www.aniimoverse.com/items/scorching-hot",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "shattering-strike": {
+      "sourceUrl": "https://www.aniimoverse.com/items/shattering-strike",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "spreading-flames": {
+      "sourceUrl": "https://www.aniimoverse.com/items/spreading-flames",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "stable-charging": {
+      "sourceUrl": "https://www.aniimoverse.com/items/stable-charging",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "stable-supply": {
+      "sourceUrl": "https://www.aniimoverse.com/items/stable-supply",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "sparkling-mark": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sparkling-mark",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Mysterious Vendor",
+          "quantity": "Quantity 1",
+          "price": [
+            "Credits×1,000,000"
+          ],
+          "limit": "Purchase limit: 1 per day."
+        }
+      ]
+    },
+    "rekindling-feather": {
+      "sourceUrl": "https://www.aniimoverse.com/items/rekindling-feather",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "seeds-of-spring": {
+      "sourceUrl": "https://www.aniimoverse.com/items/seeds-of-spring",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Pawprint Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Paw Coin×250"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "stay-ready": {
+      "sourceUrl": "https://www.aniimoverse.com/items/stay-ready",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "unyielding-will": {
+      "sourceUrl": "https://www.aniimoverse.com/items/unyielding-will",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "vengeance": {
+      "sourceUrl": "https://www.aniimoverse.com/items/vengeance",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "vigor-of-life": {
+      "sourceUrl": "https://www.aniimoverse.com/items/vigor-of-life",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "vitality-boost": {
+      "sourceUrl": "https://www.aniimoverse.com/items/vitality-boost",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "voucher-fragment-i": {
+      "sourceUrl": "https://www.aniimoverse.com/items/voucher-fragment-i",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "voucher-fragment-ii": {
+      "sourceUrl": "https://www.aniimoverse.com/items/voucher-fragment-ii",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×500"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "zero-cost": {
+      "sourceUrl": "https://www.aniimoverse.com/items/zero-cost",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Holo-gizmo Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Training Coin×1,000"
+          ],
+          "limit": "Purchase limit: 1 total."
+        }
+      ]
+    },
+    "strawberry-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/strawberry-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×32"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "sugarcane-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/sugarcane-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×32"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "walnut-tree-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/walnut-tree-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×47"
+          ],
+          "limit": ""
+        }
+      ]
+    },
+    "wheat-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/wheat-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×0"
+          ],
+          "limit": "Purchase limit: 15,000 per day."
+        }
+      ]
+    },
+    "willow-seed": {
+      "sourceUrl": "https://www.aniimoverse.com/items/willow-seed",
+      "methods": [],
+      "shops": [
+        {
+          "name": "Seed Shop",
+          "quantity": "Quantity 1",
+          "price": [
+            "Home Coin×1"
+          ],
+          "limit": ""
         }
       ]
     }

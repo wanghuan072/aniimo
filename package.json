@@ -16,6 +16,8 @@
     "sync:progression": "node scripts/sync-reference-progression.mjs",
     "sync:achievements": "node scripts/sync-reference-achievements.mjs",
     "sync:item-uses": "node scripts/sync-reference-item-uses.mjs",
+    "sync:items": "node scripts/sync-community-items.mjs",
+    "sync:vendors": "node scripts/sync-reference-vendors.mjs",
     "audit:roster": "node scripts/audit-reference-roster.mjs",
     "audit:skills": "node scripts/audit-reference-skills.mjs",
     "sync:profile-kits": "node scripts/sync-reference-profile-kits.mjs",

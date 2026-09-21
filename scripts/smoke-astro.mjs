@@ -57,7 +57,7 @@ try {
   assert.ok(await page.getByRole("heading", { name: "Unreleased Aniimo found in the game files" }).count() === 1);
   assert.ok(await page.getByRole("heading", { name: "Unreleased forms of known Aniimo" }).count() === 1);
   assert.equal(await page.locator('article[class*="unreleasedCard"]').count(), 48);
-  assert.equal(await page.locator('[class*="unreleasedVariants"] img').count(), 10);
+  assert.equal(await page.locator('[class*="unreleasedVariants"]').count(), 0);
   assert.match(await page.locator('[class*="unreleasedPortrait"] img').first().getAttribute("src"), /^https:\/\/cdn\.aniimoverse\.com\/v1\/aniimo\/unreleased\//);
   await page.goto(`${base}/aniimo/squarrel`, { waitUntil: "domcontentloaded" });
   assert.ok(await page.getByRole("heading", { name: "Evolution Path" }).isVisible());
