@@ -1,143 +1,195 @@
 ---
 import Image from "@/components/astro/Image.astro";
 import Link from "@/components/astro/Link.astro";
-import { aniimo, databaseCategories, elements, getAniimo, guides, habitats } from "@/lib/data";
+import FaqList from "@/components/astro/FaqList.astro";
+import Icon from "@/components/astro/Icon.astro";
+import JsonLd from "@/components/astro/JsonLd.astro";
+import { aniimo, elements, getAniimo, guides, habitats } from "@/lib/data";
 import atlasIndexData from "@/data/map/index.json";
 import { getGuideDossier } from "@/data/editorial/guide-dossiers";
 import { getGuideTopic } from "@/lib/guide-topics";
-import FaqList from "@/components/astro/FaqList.astro";
-import Icon from "@/components/astro/Icon.astro";
-import { elementMeta, roleLabels } from "@/config/site";
-import JsonLd from "@/components/astro/JsonLd.astro";
+import { events, resetSchedules, type EventEntry, type ServerRegion } from "@/data/editorial/updates";
 import { faqJsonLd } from "@/seo/schema";
 import styles from "@/style/page/home.module.css";
-const pick = (slug: string) => getAniimo(slug)!;
-const latestGuides = [...guides]
-  .sort((a, b) => {
-    const byUpdated = b.updated.localeCompare(a.updated);
-    if (byUpdated) return byUpdated;
-    const byPublished = b.published.localeCompare(a.published);
-    if (byPublished) return byPublished;
-    return guides.indexOf(b) - guides.indexOf(a);
-  })
-  .slice(0, 3);
 
-const showcase = [pick("emberpup"), pick("celestis"), pick("leafy")];
-const trending = [...aniimo].sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0)).slice(0, 5);
-const teamChoices = [pick("stellarys"), pick("emberpup"), pick("eklue")];
+const pick = (slug: string) => getAniimo(slug)!;
+const aniimoImage = (slug: string) => `/images/aniimo/${slug === "lunara" ? "fennelun" : slug}.png`;
+const latestGuides = [...guides]
+  .sort((a, b) => b.updated.localeCompare(a.updated) || b.published.localeCompare(a.published) || guides.indexOf(b) - guides.indexOf(a))
+  .slice(0, 5);
+const guideArtwork = (index: number) => {
+  const guide = latestGuides[index] || latestGuides[0];
+  const dossier = guide ? getGuideDossier(guide.slug) : undefined;
+  return dossier?.heroImage || guide?.coverImage || "/images/home/aniimo-world-hero-v2-960.webp";
+};
+
 const uniqueTraits = new Set(aniimo.flatMap((entry) => entry.traits.map((trait) => trait.name))).size;
 const uniqueSkills = new Set(aniimo.flatMap((entry) => entry.skills.map((skill) => skill.name))).size;
 const atlasIndex = atlasIndexData.index;
-const databaseShowcase = ["skills", "habitats", "traits", "bosses"].map((slug) => databaseCategories.find((category) => category.slug === slug)!);
 const homepageStats: Array<{ value: number; label: string; href: string; tone: string; image?: string; icon?: "spark" | "water" | "trait" | "pin" }> = [
-    { value: aniimo.length, label: "Aniimo", href: "/aniimo", tone: "creature", image: pick("glacy").image },
-    { value: uniqueSkills, label: "Unique Skills", href: "/database/skills", tone: "gold", icon: "spark" },
-    { value: elements.length, label: "Elements", href: "/database/elements", tone: "water", icon: "water" },
-    { value: uniqueTraits, label: "Traits", href: "/database/traits", tone: "purple", icon: "trait" },
-    { value: habitats.length, label: "Habitats", href: "/map", tone: "green", icon: "pin" },
-  ];
+  { value: aniimo.length, label: "Aniimo", href: "/aniimo", tone: "creature", image: aniimoImage("glacy") },
+  { value: uniqueSkills, label: "Unique Skills", href: "/database/skills", tone: "gold", icon: "spark" },
+  { value: elements.length, label: "Elements", href: "/database/elements", tone: "water", icon: "water" },
+  { value: uniqueTraits, label: "Traits", href: "/database/traits", tone: "purple", icon: "trait" },
+  { value: habitats.length, label: "Habitats", href: "/map", tone: "green", icon: "pin" },
+];
+
+const quickLinks = [
+  { label: "Aniimo", href: "/aniimo", icon: "book", tone: "blue" },
+  { label: "Map", href: "/map", icon: "map", tone: "green" },
+  { label: "Team Builder", href: "/team-builder", icon: "team", tone: "gold" },
+  { label: "Guides", href: "/guides", icon: "list", tone: "purple" },
+] as const;
+
+const startLinks = [
+  { title: "Browse the Aniilog", body: "Explore every Aniimo, element, role and backstory.", href: "/aniimo", icon: "book", tone: "blue" },
+  { title: "Find a spawn", body: "Search the interactive atlas for regions and resources.", href: "/map", icon: "pin", tone: "cyan" },
+  { title: "Build your first team", body: "Choose four Aniimo and review team coverage.", href: "/team-builder", icon: "team", tone: "purple" },
+  { title: "Compare Aniimo", body: "Check fields, elements and traits side by side.", href: "/tools/compare", icon: "copy", tone: "blue" },
+  { title: "Check the tier list", body: "Browse role placements and community popularity.", href: "/tier-list", icon: "list", tone: "gold" },
+  { title: "Read beginner guides", body: "Learn the basics and plan your first hours.", href: "/guides/aniimo-beginners-guide", icon: "book", tone: "teal" },
+] as const;
+
+const toolLinks = [
+  { title: "Aniilog", body: "Complete profiles and forms", href: "/aniimo", image: "/images/home/features/aniimo-directory.webp" },
+  { title: "Interactive Map", body: "Explore Idyll with local atlases", href: "/map", image: "/images/home/features/interactive-map.webp" },
+  { title: "Team Builder", body: "Plan roles and element coverage", href: "/team-builder", image: "/images/home/features/team-builder.webp" },
+  { title: "Tier List", body: "See role rankings and Global Vote", href: "/tier-list", image: "/images/home/features/tier-list.webp" },
+  { title: "Database", body: "Skills, traits, habitats and more", href: "/database", image: "/images/home/features/database.webp" },
+  { title: "Guides", body: "Practical routes and walkthroughs", href: "/guides", image: "/images/home/features/guides.webp" },
+] as const;
+
+const rosterShowcase = ["helion", "lunara", "nimbi", "fentuft", "celestis", "glacy", "pebbling", "melloblum", "infergon", "stellarys"].map(pick);
+const defaultRegion: ServerRegion = "apac";
+const buildNow = Date.now();
+const statusAt = (event: EventEntry, region: ServerRegion, now = buildNow) => {
+  const window = event.windows[region];
+  const start = Date.parse(window.startsAt);
+  const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY;
+  if (now < start) return "upcoming";
+  if (now >= end) return "expired";
+  return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live";
+};
+const homeEvents = events
+  .filter((event) => Object.values(event.windows).some((window) => !window.endsAt || Date.parse(window.endsAt) > buildNow))
+  .sort((a, b) => Date.parse(a.windows[defaultRegion].endsAt || "2999-01-01") - Date.parse(b.windows[defaultRegion].endsAt || "2999-01-01"));
+
+const siteJourney = [
+  { step: "01", label: "Find", title: "Choose an Aniimo", body: "Search the Aniilog by name, element or role.", action: "Open Aniilog", href: "/aniimo", icon: "search", tone: "blue" },
+  { step: "02", label: "Understand", title: "Read the full profile", body: "Check forms, skills, traits and linked records.", action: "Browse database", href: "/database", icon: "database", tone: "purple" },
+  { step: "03", label: "Locate", title: "Open its field markers", body: "Move from the profile to the matching atlas region.", action: "Open map", href: "/map", icon: "pin", tone: "cyan" },
+  { step: "04", label: "Plan", title: "Shape your team", body: "Review roles and element coverage with four Aniimo.", action: "Build a team", href: "/team-builder", icon: "team", tone: "gold" },
+  { step: "05", label: "Learn", title: "Take the next step", body: "Use a focused guide for catching, combat or growth.", action: "Read guides", href: "/guides", icon: "book", tone: "green" },
+] as const;
 const faq = [
-    { question: "What can I look up on Aniimo?", answer: "Use the roster and database for Aniimo, skills, traits, forms, habitats, and items. The guides then tell you what to do with those records: catching, combat, forms, eggs, and collection routes." },
-    { question: "How does the map connect to creature pages?", answer: "Aniimo profiles, habitat cards and boss encounters open the atlas on the matching spawn or area. Marker cards that name a creature still return to this site's profile. Collection and materials guides explain how to turn a pin into a session." },
-    { question: "Is the Global Vote a strength ranking?", answer: "No. It reflects player votes. Use profiles, Compare, and the combat or type-matchup guides when you want roles, elements, and base fields for a specific choice." },
-    { question: "How do I start building a team?", answer: "Read First hours for Helion or Lunara, then put four Aniimo into Team Builder. Combat: BREAK and EP is the next guide if the lineup looks complete but the fight still feels slow." },
-  ];
+  { question: "What can I look up on Aniimo?", answer: "Use the roster and database for Aniimo, skills, traits, forms, habitats, and items. The guides then tell you what to do with those records: catching, combat, forms, eggs, and collection routes." },
+  { question: "How does the map connect to creature pages?", answer: "Aniimo profiles, habitat cards and boss encounters open the atlas on the matching spawn or area. Marker cards that name a creature still return to this site's profile." },
+  { question: "Is the Global Vote a strength ranking?", answer: "No. It reflects player votes. Use profiles, Compare, and the combat or type-matchup guides when you want roles, elements, and base fields for a specific choice." },
+  { question: "How do I start building a team?", answer: "Read First hours for Helion or Lunara, then put four Aniimo into Team Builder. Combat: BREAK and EP is the next guide if the lineup looks complete but the fight still feels slow." },
+];
 ---
 
-    <>
-      <JsonLd data={faqJsonLd(faq)} />
-      <section class={styles.hero}>
-        <Image src="/images/home/aniimo-world-hero-v2-960.webp" alt="An explorer and fantasy companions overlooking the world of Aniimo" fill preload fetchPriority="high" unoptimized sizes="100vw" />
-        <div class={styles.heroWash} />
-        <div class={`container ${styles.heroInner}`}>
-          <div class={styles.heroCopy}>
-            <h1><span class={styles.worldLine}>Explore the world of <i aria-hidden="true">✦</i></span><span class={styles.aniimoTitle}>Aniimo</span></h1>
-            <p class={styles.heroText}>Find the Aniimo you are looking for, open their field markers on the atlas, and plan what to try next in Idyll.</p>
-            <div class={styles.heroActions}>
-              <Link href="/aniimo" class="button-primary">Explore Aniimo <Icon name="arrow" /></Link>
-              <Link href="/guides/aniimo-beginners-guide" class="button-secondary">First hours</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class={`container ${styles.statStrip}`}>
-        {homepageStats.map((stat) => (
-          <Link href={stat.href} class={styles.statItem} data-tone={stat.tone}>
-            <i class={styles.statIcon}>{stat.image ? <Image src={stat.image} alt="" fill sizes="58px" /> : <Icon name={stat.icon!} />}</i>
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
-          </Link>
-        ))}
+<>
+  <JsonLd data={faqJsonLd(faq)} />
+  <section class={styles.hero} data-home-hero>
+    <Image src="/images/home/aniimo-world-hero-v2-960.webp" alt="An explorer and fantasy companions overlooking the world of Aniimo" fill preload fetchPriority="high" unoptimized sizes="100vw" />
+    <div class={styles.heroWash} />
+    <div class={`container ${styles.heroInner}`}>
+      <div class={styles.heroCopy}>
+        <h1><span class={styles.worldLine}>Explore the world of <i aria-hidden="true">✦</i></span><span class={styles.aniimoTitle}>Aniimo</span></h1>
+        <p class={styles.heroText}>Find the Aniimo you are looking for, open their field markers on the atlas, and plan what to try next in Idyll.</p>
+        <div class={styles.heroActions}><Link href="/aniimo" class="button-primary">Explore Aniimo <Icon name="arrow" /></Link><Link href="/guides/aniimo-beginners-guide" class="button-secondary">First hours</Link></div>
       </div>
+    </div>
+  </section>
 
-      <section class={styles.homeBody}>
-        <div class="container">
-          <div class={styles.dashboardGrid}>
-            <article class={`${styles.featureCard} ${styles.aniimoFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>🐾 Aniimo</h2><p>Browse the roster by element, role and stage, then open the details that matter to your next choice.</p><Link href="/aniimo">Browse Aniimo <Icon name="arrow" /></Link></div>
-              <div class={styles.creatureFan}>{showcase.map((entry, index) => <Link href={`/aniimo/${entry.slug}`} style={{ "--fan-index": index } as any}><Image src={entry.image} alt={entry.name} fill sizes="(max-width: 760px) 130px, 150px" /><span>{entry.name}</span></Link>)}</div>
-            </article>
+  <div class={`container ${styles.commandStrip}`} data-home-stats>
+    <div class={styles.statList}>
+      {homepageStats.map((stat) => <Link href={stat.href} class={styles.statItem} data-tone={stat.tone}><i>{stat.image ? <Image src={stat.image} alt="" fill sizes="44px" /> : <Icon name={stat.icon!} />}</i><span><strong>{stat.value}</strong><small>{stat.label}</small></span></Link>)}
+    </div>
+    <nav class={styles.quickLinks} aria-label="Homepage shortcuts">{quickLinks.map((item) => <Link href={item.href} data-tone={item.tone}><i><Icon name={item.icon} /></i><span>{item.label}</span></Link>)}</nav>
+  </div>
 
-            <article class={`${styles.featureCard} ${styles.databaseFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>▣ Database</h2><p>Check {uniqueSkills} unique skills, {uniqueTraits} traits, habitats and boss encounters without losing the link to the Aniimo that use them.</p><Link href="/database">Open database <Icon name="arrow" /></Link></div>
-              <div class={styles.iconTiles}>{databaseShowcase.map((category, index) => <Link href={`/database/${category.slug}`}><i><Icon name={(["spark", "map", "trait", "boss"] as const)[index]} /></i><span>{category.name}</span></Link>)}</div>
-            </article>
-
-            <article class={`${styles.featureCard} ${styles.tierFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>♛ Tier List</h2><p>Browse placements by the job your team still needs. Global Vote is a popularity chart, not a power ranking.</p><Link href="/tier-list">Open tier list <Icon name="arrow" /></Link></div>
-              <div class={styles.tierPreview}>
-                {[{ tier: "S", slugs: ["infergon", "gachapus", "helgon", "coraliz", "geoclaw"] }, { tier: "A", slugs: ["leafy", "sherro", "blazen", "glacy"] }, { tier: "B", slugs: ["stellarys", "eklue", "flameruff"] }].map((row) => (
-                  <div>
-                    <b>{row.tier}</b>
-                    <span>{row.slugs.map((slug) => { const entry = pick(slug); return <Link href={`/aniimo/${entry.slug}`} title={entry.name} aria-label={entry.name}><Image src={entry.image} alt="" fill sizes="48px" /></Link>; })}</span>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article class={`${styles.featureCard} ${styles.buildFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>⚔ Team Builder</h2><p>Choose four Aniimo and review role and element coverage for your next team.</p><Link href="/team-builder">Build a Team <Icon name="arrow" /></Link></div>
-              <div class={styles.buildPreview}>{teamChoices.map((entry) => <Link href={`/aniimo/${entry.slug}`}><span><Image src={entry.image} alt={entry.name} fill sizes="110px" /></span><strong>{entry.name}</strong><small>{elementMeta[entry.elements[0]]?.symbol} {roleLabels[entry.roles[0]] || entry.roles[0]}</small></Link>)}</div>
-            </article>
-
-            <article class={`${styles.featureCard} ${styles.mapFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>⌖ Map</h2><p>Four local atlases cover Breezy Plains, Astra, Whisperwake Isles and The Lost Islets. Profiles and boss encounters jump to the matching marker.</p><Link href="/map">Open atlas <Icon name="arrow" /></Link></div>
-              <div class={styles.mapAtlases}>
-                {atlasIndex.map((entry) => (
-                  <Link href={entry.href} data-atlas={entry.id}>
-                    <Image src={entry.thumb} alt={`${entry.name} atlas`} fill sizes="220px" />
-                    <b>{entry.name}</b>
-                  </Link>
-                ))}
-              </div>
-            </article>
-
-            <section class={styles.guideFeature} aria-labelledby="home-guides-title">
-              <header><div><span>Guides</span><h2 id="home-guides-title">Latest Aniimo Guides</h2><p>Three recent field notes. Catching, combat, forms, and the rest stay on the Guides page.</p></div><Link href="/guides">Browse all guides <Icon name="arrow" /></Link></header>
-              <div class={styles.homeGuideCards}>{latestGuides.map((guide) => {
-                const dossier = getGuideDossier(guide.slug);
-                return <Link href={`/guides/${guide.slug}`}><span><Image src={dossier?.heroImage || guide.coverImage} alt={dossier?.heroAlt || guide.coverAlt} fill sizes="(max-width: 760px) 84px, 88px" /></span><div><small>{getGuideTopic(guide.topic)?.label || guide.category} · {dossier?.readTime || `${guide.readTime} read`}</small><strong>{dossier?.title || guide.title}</strong><em>Read guide <Icon name="arrow" /></em></div></Link>;
-              })}</div>
-            </section>
-
-            <article class={`${styles.featureCard} ${styles.toolsFeature}`}>
-              <div class={styles.cardCopy}><h2 class={styles.cardKicker}>⚒ Tools</h2><p>Compare a shortlist or keep a checklist of the Aniimo you still want to find.</p></div>
-              <div class={styles.toolLinks}>
-                {[
-                  ["Compare", "Put your candidates side by side", "/tools/compare", pick("stellarys").image],
-                  ["Collection Tracker", `Track all ${aniimo.length} entries`, "/tools/collection-tracker", pick("emberpup").image],
-                ].map(([title, text, href, image]) => <Link href={href}><i class={styles.toolArt}><Image src={image} alt="" fill sizes="100px" /></i><span><strong>{title}</strong><small>{text}</small></span><Icon name="arrow" /></Link>)}
-              </div>
-            </article>
-          </div>
-
-          <div class={styles.lowerGrid}>
-            <article><p class={styles.cardKicker}>🔥 Popular right now</p>{trending.map((entry) => <Link href={`/aniimo/${entry.slug}`}><span><Image src={entry.image} alt="" fill sizes="30px" /></span><strong>{entry.name}</strong><em>{entry.viewCount?.toLocaleString("en-US")}</em></Link>)}</article>
-            <article class={styles.updateCard}><p class={styles.cardKicker}>✦ What changed</p><div><strong>Global launch dates</strong><small>PC & console: September 16 · Mobile: September 23</small></div><div><strong>Player tier list</strong><small>See role placements, then open Global Vote for popularity</small></div><div><strong>Interactive atlas</strong><small>Four local maps, with profile links to matching markers</small></div><Link href="/updates">Open updates <Icon name="arrow" /></Link></article>
-            <article class={styles.sourceCard}><div class={styles.sourceMascot}><Image src={pick("leafy").image} alt="" fill sizes="170px" /></div><p class={styles.cardKicker}>◉ The game</p><h2>What Is Aniimo?</h2><p>A creature-collection adventure in Idyll: catch companions, Twin a four-member party, and explore habitats through action combat. This independent site is a player companion, not an official game page.</p><Link href="/guides/aniimo-beginners-guide">Read the beginner guide <Icon name="arrow" /></Link></article>
-          </div>
-          <section class={styles.homeGuide} aria-labelledby="home-guide-title"><div><span>Choose your next route</span><h2 id="home-guide-title">Plan Your Next Aniimo Session</h2><p>Looking for a teammate, a form or a habitat? Open the profile, jump to its map marker, then use a guide when the next decision is catching, combat, or evolution.</p><div class={styles.homeGuideLinks}><Link href="/aniimo">Find an Aniimo <Icon name="arrow" /></Link><Link href="/map">Open the atlas <Icon name="arrow" /></Link><Link href="/team-builder">Build a team <Icon name="arrow" /></Link><Link href="/guides">Read a guide <Icon name="arrow" /></Link></div></div><div class={styles.homeFaq}><span>Aniimo FAQ</span><FaqList items={faq} /></div></section>
+  <main class={styles.homeBody} data-home-app data-region={defaultRegion}>
+    <div class="container">
+      <section class={styles.startPanel} aria-labelledby="start-here-title" data-home-section="start">
+        <header class={styles.sectionHeading}><div><span>Start here</span><h2 id="start-here-title">Everything you need to begin your Aniimo journey.</h2></div><p>New to Aniimo? These quick links will get you started.</p></header>
+        <div class={styles.startGrid}>
+          {startLinks.map((item) => <Link href={item.href} class={styles.startCard} data-tone={item.tone}><i class={styles.startIcon}><Icon name={item.icon} /></i><span class={styles.startCopy}><strong>{item.title}</strong><small>{item.body}</small></span><Icon name="arrow" /></Link>)}
         </div>
       </section>
-    </>
+
+      <section class={styles.toolsPanel} aria-labelledby="home-tools-title" data-home-section="tools">
+        <header class={styles.sectionHeading}><div><span>Explore Aniimo.cc</span><h2 id="home-tools-title">A connected toolkit for every journey</h2></div><Link href="/tools">All tools <Icon name="arrow" /></Link></header>
+        <div class={styles.toolRail}>{toolLinks.map((item) => <Link href={item.href}><span><Image src={item.image} alt="" fill sizes="220px" /></span><div><strong>{item.title}</strong><small>{item.body}</small></div><i><Icon name="arrow" /></i></Link>)}</div>
+      </section>
+
+      <section class={styles.liveGrid} aria-label="Current Aniimo activity" data-home-section="live">
+        <article class={styles.livePanel}>
+          <header class={styles.darkHeading}><div><span>Live companion</span><h2>Resets &amp; events</h2></div><div class={styles.regionTabs} role="group" aria-label="Choose game server">{resetSchedules.map((server) => <button type="button" data-home-region={server.region} aria-pressed={server.region === defaultRegion}>{server.label}</button>)}</div></header>
+          <div class={styles.resetRow}><div data-home-reset="daily"><span>Daily reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div><div data-home-reset="weekly"><span>Weekly reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div></div>
+          <div class={styles.eventGrid} data-home-events>
+            {homeEvents.map((event, index) => { const state = statusAt(event, defaultRegion); return <article class={styles.eventCard} data-home-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={state} data-position={index === 0 ? "featured" : "secondary"} hidden={index >= 3}><div><span>{event.category}</span><b data-home-event-status>{state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"}</b></div><h3>{event.title}</h3><p>{event.summary}</p><small data-home-event-time>Checking APAC time…</small><Link href="/updates#events">View event details <Icon name="arrow" /></Link></article>; })}
+            <p class={styles.liveEmpty} data-home-event-empty hidden>No current or upcoming events are recorded for this server.</p>
+          </div>
+          <footer><Link href="/updates#resets">All timers <Icon name="arrow" /></Link><Link href="/updates#events">All events <Icon name="arrow" /></Link></footer>
+        </article>
+
+        <article class={styles.rosterPanel}>
+          <header class={styles.darkHeading}><div><span>Field index</span><h2>Explore Aniimo</h2></div><Link href="/aniimo">View all <Icon name="arrow" /></Link></header>
+          <div class={styles.rosterList}>{rosterShowcase.map((entry) => <Link href={`/aniimo/${entry.slug}`}><b>NO. {entry.entryId}</b><span><Image src={aniimoImage(entry.slug)} alt="" fill sizes="54px" /></span><strong>{entry.name}</strong><Icon name="arrow" /></Link>)}</div>
+          <div class={styles.rosterSummary}><span><b>{aniimo.length}</b> profiles</span><span><b>{elements.length}</b> elements</span><span><b>{uniqueSkills}</b> skills</span></div>
+        </article>
+      </section>
+
+      <section class={styles.editorialGrid} aria-label="Latest Aniimo coverage" data-home-section="editorial">
+        <article class={styles.latestPanel}><header><h2>About this site</h2><Link href="/legal/about-us">Learn more <Icon name="arrow" /></Link></header><Link class={styles.latestStory} href="/legal/about-us"><span><Image src="/images/home/features/guides.webp" alt="An illustrated field guide representing Aniimo.cc" fill sizes="(max-width: 760px) 100vw, 520px" /></span><div><small>Aniimo.cc · Independent fan guide</small><h3>One connected place to find, understand and plan around Aniimo</h3><p>Profiles, atlas markers, team tools, reference data and practical guides are linked so every lookup leads to a useful next step.</p><b>About Aniimo.cc <Icon name="arrow" /></b></div></Link></article>
+        <article class={styles.guidesPanel}><header><h2>Newest guides</h2><Link href="/guides">All guides <Icon name="arrow" /></Link></header><div>{latestGuides.map((guide) => { const dossier = getGuideDossier(guide.slug); return <Link href={`/guides/${guide.slug}`}><span><Image src={dossier?.heroImage || guide.coverImage} alt="" fill sizes="56px" /></span><div><strong>{dossier?.title || guide.title}</strong><small>{getGuideTopic(guide.topic)?.label || guide.category} · {dossier?.readTime || `${guide.readTime} read`}</small></div><Icon name="arrow" /></Link>; })}</div></article>
+        <article class={styles.trailerPanel}><header><h2>How data is handled</h2></header><Link href="/sources"><span><Image src="/images/home/features/database.webp" alt="An illustrated database field journal" fill sizes="(max-width: 760px) 100vw, 360px" /><i aria-hidden="true">✓</i></span><strong>Clear sources and a practical structure</strong><small>See how the site verifies and organizes information <Icon name="arrow" /></small></Link></article>
+      </section>
+
+      <section class={styles.storiesPanel} aria-labelledby="home-stories-title" data-home-section="stories">
+        <header class={styles.sectionHeading}><div><span>How Aniimo.cc works</span><h2 id="home-stories-title">One lookup, one connected route</h2></div><p>Move through the site in five clear steps, from discovery to your next in-game decision.</p></header>
+        <ol class={styles.journeyFlow} data-home-journey>
+          {siteJourney.map((item) => <li><Link href={item.href} data-tone={item.tone}><span class={styles.journeyNode}><Icon name={item.icon} /></span><span class={styles.journeyCopy}><small>{item.step} · {item.label}</small><strong>{item.title}</strong><p>{item.body}</p><b>{item.action} <Icon name="arrow" /></b></span></Link></li>)}
+        </ol>
+      </section>
+
+      <section class={styles.nextPanel} aria-labelledby="home-guide-title" data-home-section="next">
+        <div><span>Choose your next route</span><h2 id="home-guide-title">Plan Your Next Aniimo Session</h2><p>Looking for a teammate, a form or a habitat? Open the profile, jump to its map marker, then use a guide when the next decision is catching, combat, or evolution.</p><div class={styles.nextLinks}><Link href="/aniimo">Find an Aniimo <Icon name="arrow" /></Link><Link href="/map">Open the atlas <Icon name="arrow" /></Link><Link href="/team-builder">Build a team <Icon name="arrow" /></Link><Link href="/guides">Read a guide <Icon name="arrow" /></Link></div></div>
+        <div class={styles.homeFaq}><span>Aniimo FAQ</span><FaqList items={faq} /></div>
+      </section>
+    </div>
+    <script type="application/json" data-home-reset-schedules set:html={JSON.stringify(resetSchedules).replace(/</g, "\\u003c")} />
+  </main>
+</>
+
+<script>
+  type Region = "america" | "europe" | "apac";
+  type WindowRecord = { startsAt: string; endsAt: string | null };
+  type ResetRecord = { region: Region; label: string; utcOffsetMinutes: number; dailyHour: number; weeklyDay: number; weeklyHour: number };
+  const app = document.querySelector<HTMLElement>("[data-home-app]");
+  if (app) {
+    const schedules = JSON.parse(app.querySelector<HTMLScriptElement>("[data-home-reset-schedules]")?.textContent || "[]") as ResetRecord[];
+    let region = (app.dataset.region || "apac") as Region;
+    const pad = (value: number) => String(value).padStart(2, "0");
+    const countdown = (target: number, now: number) => { const remaining = Math.max(0, target - now); const days = Math.floor(remaining / 86400000); const hours = Math.floor((remaining % 86400000) / 3600000); const minutes = Math.floor((remaining % 3600000) / 60000); return `${days}d ${pad(hours)}h ${pad(minutes)}m`; };
+    const nextReset = (schedule: ResetRecord, weekly: boolean, now: number) => { const shiftedNow = new Date(now + schedule.utcOffsetMinutes * 60000); const target = new Date(shiftedNow.getTime()); target.setUTCHours(weekly ? schedule.weeklyHour : schedule.dailyHour, 0, 0, 0); if (weekly) { let days = (schedule.weeklyDay - shiftedNow.getUTCDay() + 7) % 7; if (days === 0 && target.getTime() <= shiftedNow.getTime()) days = 7; target.setUTCDate(target.getUTCDate() + days); } else if (target.getTime() <= shiftedNow.getTime()) target.setUTCDate(target.getUTCDate() + 1); return target.getTime() - schedule.utcOffsetMinutes * 60000; };
+    const serverDate = (timestamp: number, offset: number) => new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(timestamp + offset * 60000));
+    const eventState = (window: WindowRecord, now: number) => { const start = Date.parse(window.startsAt); const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; if (!Number.isFinite(start) || Number.isNaN(end)) return "invalid"; if (now < start) return "upcoming"; if (now >= end) return "expired"; return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live"; };
+    const render = () => {
+      const now = Date.now(); const schedule = schedules.find((entry) => entry.region === region) || schedules[0]; if (!schedule) return;
+      app.dataset.region = region;
+      app.querySelectorAll<HTMLButtonElement>("[data-home-region]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.homeRegion === region)));
+      app.querySelectorAll<HTMLElement>("[data-home-reset]").forEach((card) => { const target = nextReset(schedule, card.dataset.homeReset === "weekly", now); const clock = card.querySelector<HTMLElement>("[data-home-countdown]"); const time = card.querySelector<HTMLElement>("[data-home-reset-time]"); if (clock) clock.textContent = countdown(target, now); if (time) time.textContent = `${serverDate(target, schedule.utcOffsetMinutes)} · ${schedule.label}`; });
+      const visible: Array<{ card: HTMLElement; target: number; state: string; window: WindowRecord }> = [];
+      app.querySelectorAll<HTMLElement>("[data-home-event]").forEach((card) => { try { const windows = JSON.parse(card.dataset.windows || "{}") as Record<Region, WindowRecord>; const window = windows[region]; const state = window ? eventState(window, now) : "invalid"; const target = state === "upcoming" ? Date.parse(window.startsAt) : window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; if (state !== "expired" && state !== "invalid") visible.push({ card, target, state, window }); } catch { card.hidden = true; } });
+      visible.sort((a, b) => a.target - b.target);
+      app.querySelectorAll<HTMLElement>("[data-home-event]").forEach((card) => { card.hidden = true; delete card.dataset.position; });
+      visible.slice(0, 3).forEach((entry, index) => { entry.card.hidden = false; entry.card.dataset.position = index === 0 ? "featured" : "secondary"; entry.card.dataset.state = entry.state; const status = entry.card.querySelector<HTMLElement>("[data-home-event-status]"); const time = entry.card.querySelector<HTMLElement>("[data-home-event-time]"); if (status) status.textContent = entry.state === "ending" ? "Ending soon" : entry.state === "live" ? "Live" : "Starts soon"; if (time) time.textContent = `${entry.state === "upcoming" ? "Starts" : "Ends"} ${serverDate(entry.target, schedule.utcOffsetMinutes)} · ${schedule.label}`; });
+      const empty = app.querySelector<HTMLElement>("[data-home-event-empty]"); if (empty) empty.hidden = visible.length > 0;
+    };
+    app.addEventListener("click", (event) => { const regionButton = (event.target as Element).closest<HTMLButtonElement>("[data-home-region]"); if (regionButton) { region = regionButton.dataset.homeRegion as Region; render(); } });
+    render(); window.setInterval(render, 30000);
+  }
+</script>
