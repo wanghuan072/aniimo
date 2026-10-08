@@ -26,13 +26,13 @@ const statusAt = (event: EventEntry, region: ServerRegion, now = buildNow) => {
   if (now >= end) return "expired";
   return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live";
 };
-const visibleEvents = events
-  .filter((event) => Object.values(event.windows).some((window) => !window.endsAt || Date.parse(window.endsAt) > buildNow))
+const eventEntries = [...events]
   .sort((a, b) => Date.parse(a.windows[defaultRegion].endsAt || "2999-01-01") - Date.parse(b.windows[defaultRegion].endsAt || "2999-01-01"))
   .slice(0, 8);
+const initiallyVisibleEvents = eventEntries.filter((event) => statusAt(event, defaultRegion) !== "expired");
 const availableCodes = rewardCodes.filter((entry) => entry.status !== "expired" && (!entry.expiresAt || Date.parse(entry.expiresAt) > buildNow));
 const expiredCodes = rewardCodes.filter((entry) => !availableCodes.includes(entry));
-const activeEventCount = visibleEvents.filter((event) => ["live", "ending"].includes(statusAt(event, defaultRegion))).length;
+const activeEventCount = eventEntries.filter((event) => ["live", "ending"].includes(statusAt(event, defaultRegion))).length;
 const latestUpdate = [...updateEntries].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))[0];
 const archiveEntries = [...updateEntries].filter((entry) => entry.slug !== latestUpdate.slug).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 const reviewedLabel = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${updatesReviewedAt}T00:00:00Z`));
@@ -64,7 +64,7 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
       <header class={updatesStyles.sectionHeader}><div><span>Right now</span><h2 id="now-title">Your current Idyll checklist</h2></div><p>APAC is selected first. Switch server once and every event and reset time updates together.</p></header>
       <div class={updatesStyles.nowCards}>
         <article><span class={updatesStyles.nowIcon}>◷</span><div><small>Next daily reset</small><strong data-now-daily>Calculating…</strong><p data-now-daily-local>Your local time</p></div></article>
-        <article><span class={updatesStyles.nowIcon}>⌛</span><div><small>Closing first</small><strong data-now-event>{visibleEvents[0]?.title || "No timed event"}</strong><p data-now-event-time>Checking selected server…</p></div></article>
+        <article><span class={updatesStyles.nowIcon}>⌛</span><div><small>Closing first</small><strong data-now-event>{initiallyVisibleEvents[0]?.title || "No timed event"}</strong><p data-now-event-time>Checking selected server…</p></div></article>
         <article><span class={updatesStyles.nowIcon}>✦</span><div><small>Newest listed code</small><strong>{availableCodes[0]?.code || "No current code"}</strong><p>{availableCodes[0]?.rewards.slice(0, 2).join(" · ")}</p></div></article>
       </div>
     </section>
@@ -77,9 +77,9 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
         </header>
         <p class={updatesStyles.panelIntro}>Times below use the selected server clock. The second line converts each deadline to this device’s local time.</p>
         <div class={updatesStyles.eventList} data-event-list>
-          {visibleEvents.map((event) => {
+          {eventEntries.map((event) => {
             const initialStatus = statusAt(event, defaultRegion);
-            return <article class={updatesStyles.eventCard} data-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={initialStatus}>
+            return <article class={updatesStyles.eventCard} data-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={initialStatus} hidden={initialStatus === "expired"}>
               <div class={updatesStyles.eventTop}><span>{event.category}</span><b data-event-status>{initialStatus === "ending" ? "Ending soon" : initialStatus === "live" ? "Live" : "Starts soon"}</b></div>
               <h3>{event.title}</h3><p>{event.summary}</p>
               <div class={updatesStyles.eventTime}><strong data-event-server-time>Loading server window…</strong><small data-event-local-time>Loading your time…</small></div>

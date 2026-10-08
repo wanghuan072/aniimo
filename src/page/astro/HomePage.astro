@@ -70,8 +70,7 @@ const statusAt = (event: EventEntry, region: ServerRegion, now = buildNow) => {
   if (now >= end) return "expired";
   return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live";
 };
-const homeEvents = events
-  .filter((event) => Object.values(event.windows).some((window) => !window.endsAt || Date.parse(window.endsAt) > buildNow))
+const homeEvents = [...events]
   .sort((a, b) => Date.parse(a.windows[defaultRegion].endsAt || "2999-01-01") - Date.parse(b.windows[defaultRegion].endsAt || "2999-01-01"));
 
 const siteJourney = [
@@ -129,7 +128,7 @@ const faq = [
           <header class={styles.darkHeading}><div><span>Live companion</span><h2>Resets &amp; events</h2></div><div class={styles.regionTabs} role="group" aria-label="Choose game server">{resetSchedules.map((server) => <button type="button" data-home-region={server.region} aria-pressed={server.region === defaultRegion}>{server.label}</button>)}</div></header>
           <div class={styles.resetRow}><div data-home-reset="daily"><span>Daily reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div><div data-home-reset="weekly"><span>Weekly reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div></div>
           <div class={styles.eventGrid} data-home-events>
-            {homeEvents.map((event, index) => { const state = statusAt(event, defaultRegion); return <article class={styles.eventCard} data-home-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={state} data-position={index === 0 ? "featured" : "secondary"} hidden={index >= 3}><div><span>{event.category}</span><b data-home-event-status>{state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"}</b></div><h3>{event.title}</h3><p>{event.summary}</p><small data-home-event-time>Checking APAC time…</small><Link href="/updates#events">View event details <Icon name="arrow" /></Link></article>; })}
+            {homeEvents.map((event, index) => { const state = statusAt(event, defaultRegion); return <article class={styles.eventCard} data-home-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={state} data-position={index === 0 ? "featured" : "secondary"} hidden={state === "expired" || index >= 3}><div><span>{event.category}</span><b data-home-event-status>{state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"}</b></div><h3>{event.title}</h3><p>{event.summary}</p><small data-home-event-time>Checking APAC time…</small><Link href="/updates#events">View event details <Icon name="arrow" /></Link></article>; })}
             <p class={styles.liveEmpty} data-home-event-empty hidden>No current or upcoming events are recorded for this server.</p>
           </div>
           <footer><Link href="/updates#resets">All timers <Icon name="arrow" /></Link><Link href="/updates#events">All events <Icon name="arrow" /></Link></footer>
