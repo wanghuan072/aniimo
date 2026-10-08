@@ -1,9 +1,44 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { extname, join, normalize, resolve } from "node:path";
 import { chromium } from "@playwright/test";
 import { load } from "cheerio";
 
 const base = process.env.ASTRO_TEST_URL || "http://127.0.0.1:4321";
+const staticRoot = process.env.ASTRO_TEST_STATIC_DIR ? resolve(process.env.ASTRO_TEST_STATIC_DIR) : "";
+const contentTypes = new Map([
+  [".html", "text/html; charset=utf-8"], [".css", "text/css; charset=utf-8"],
+  [".js", "text/javascript; charset=utf-8"], [".json", "application/json"],
+  [".png", "image/png"], [".webp", "image/webp"], [".avif", "image/avif"],
+  [".svg", "image/svg+xml"], [".woff2", "font/woff2"], [".ico", "image/x-icon"],
+]);
+const staticFileFor = (value) => {
+  const pathname = decodeURIComponent(new URL(value, base).pathname);
+  let relative = pathname.replace(/^\/+/, "");
+  if (!relative) relative = "index.html";
+  else if (!extname(relative)) relative += ".html";
+  const file = normalize(join(staticRoot, relative));
+  return file.startsWith(normalize(staticRoot)) ? file : "";
+};
+const readStaticResponse = async (value) => {
+  const file = staticFileFor(value);
+  if (!file) return { status: 403, body: Buffer.from("Forbidden"), contentType: "text/plain" };
+  try { return { status: 200, body: await readFile(file), contentType: contentTypes.get(extname(file)) || "application/octet-stream" }; }
+  catch { return { status: 404, body: Buffer.from("Not found"), contentType: "text/plain" }; }
+};
+if (staticRoot) {
+  globalThis.fetch = async (input) => {
+    const result = await readStaticResponse(typeof input === "string" || input instanceof URL ? input : input.url);
+    return new Response(result.body, { status: result.status, headers: { "content-type": result.contentType } });
+  };
+}
+const routeStaticFiles = async (page) => {
+  if (!staticRoot) return;
+  await page.route(`${base}/**`, async (route) => {
+    const result = await readStaticResponse(route.request().url());
+    await route.fulfill(result);
+  });
+};
 const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
 const currentProfiles = JSON.parse(await readFile(new URL("../src/data/research/current-profile-kits.json", import.meta.url), "utf8")).profiles;
@@ -35,9 +70,27 @@ for (const path of urls) {
 
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+await routeStaticFiles(page);
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
 try {
+  await page.clock.install({ time: new Date("2026-09-30T12:00:00Z") });
+  await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });
+  assert.equal((await page.locator("h1").innerText()).replace("✦", "").replace(/\s+/g, " ").trim(), "Explore the world of Aniimo");
+  assert.match(await page.locator("[data-home-hero] img").getAttribute("src"), /aniimo-world-hero-v2-960\.webp$/);
+  assert.equal(await page.locator('[data-home-section="start"] a').count(), 6);
+  for (const section of ["live", "tools", "editorial", "stories", "next"]) assert.equal(await page.locator(`[data-home-section="${section}"]`).count(), 1, `home is missing ${section}`);
+  assert.match(await page.locator("[data-home-stats]").innerText(), /98\s+Aniimo/);
+  assert.equal(await page.locator("[data-home-region]").count(), 3);
+  await page.locator('[data-home-region="america"]').click();
+  assert.equal(await page.locator('[data-home-region="america"]').getAttribute("aria-pressed"), "true");
+  assert.match(await page.locator("[data-home-event-time]").first().innerText(), /America/);
+  assert.equal(await page.locator("[data-home-journey] a").count(), 5);
+  for (const href of ["/aniimo", "/database", "/map", "/team-builder", "/guides"]) assert.ok(await page.locator(`[data-home-journey] a[href="${href}"]`).count() === 1);
+  assert.equal(await page.locator('a[href^="http"]').count(), 0);
+  assert.ok(await page.locator('a[href="/legal/about-us"]').count() >= 1);
+  assert.ok(await page.locator('a[href="/sources"]').count() >= 1);
+
   await page.goto(`${base}/aniimo`, { waitUntil: "domcontentloaded" });
   assert.equal(await page.locator("[data-card]").count(), 98);
   await page.locator("[data-open-search]").click();
@@ -111,6 +164,27 @@ try {
   await page.locator("[data-achievement-tiers] summary").first().click();
   assert.match(await page.locator("[data-achievement-tiers] ol").first().innerText(), /Tier 4: Windspeaker of the Plains/);
 
+  const updatesPage = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  await routeStaticFiles(updatesPage);
+  updatesPage.on("pageerror", (error) => errors.push(`updates: ${error.message}`));
+  await updatesPage.clock.install({ time: new Date("2026-09-30T12:00:00Z") });
+  await updatesPage.goto(`${base}/updates`, { waitUntil: "domcontentloaded" });
+  assert.equal(await updatesPage.locator("h1").innerText(), "Aniimo Updates");
+  for (const anchor of ["now", "events", "codes", "resets", "archive"]) assert.equal(await updatesPage.locator(`#${anchor}`).count(), 1, `updates is missing #${anchor}`);
+  assert.ok(await updatesPage.locator('[data-event][data-state="live"], [data-event][data-state="ending"]').count() >= 4);
+  assert.ok(await updatesPage.locator('[data-copy-code]').count() >= 1);
+  assert.ok(await updatesPage.locator('a[href="https://aniimo.com/newslist/detail/100147"]').count() >= 1);
+  await updatesPage.locator('[data-server="america"]').click();
+  assert.match(await updatesPage.locator('[data-selected-server]').innerText(), /America/);
+  assert.equal(await updatesPage.locator('[data-server="america"]').getAttribute("aria-pressed"), "true");
+  await updatesPage.locator('[data-copy-code]').first().click();
+  assert.equal(await updatesPage.locator('[data-copy-code]').first().locator('span').innerText(), "Copied");
+  const updatesUrl = updatesPage.url();
+  await updatesPage.locator('[data-update-filter="patch"]').click();
+  assert.equal(await updatesPage.locator('[data-update-entry]:visible').count(), 1);
+  assert.equal(updatesPage.url(), updatesUrl);
+  await updatesPage.close();
+
   await page.goto(`${base}/team-builder?team=witchin,fennelun`, { waitUntil: "domcontentloaded" });
   assert.match(await page.locator("[data-team-slots]").innerText(), /Hexxin/);
   assert.match(await page.locator("[data-team-slots]").innerText(), /Lunara/);
@@ -158,8 +232,9 @@ try {
   assert.match(await page.locator("[data-map-card]:visible").innerText(), /BREAK/);
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 2 });
+  await routeStaticFiles(mobile);
   mobile.on("pageerror", (error) => errors.push(`mobile: ${error.message}`));
-  for (const path of ["/", "/aniimo", "/aniimo/emberpup", "/database/skills", "/guides/aniimo-catching-guide", "/team-builder", "/map", "/tools/compare"]) {
+  for (const path of ["/", "/aniimo", "/aniimo/emberpup", "/database/skills", "/guides/aniimo-catching-guide", "/team-builder", "/map", "/tools/compare", "/updates"]) {
     await mobile.goto(new URL(path, base).href, { waitUntil: "domcontentloaded" });
     assert.equal(await mobile.locator("h1:visible").count(), 1, `${path} has an unexpected visible mobile H1 count`);
     const width = await mobile.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: window.innerWidth }));

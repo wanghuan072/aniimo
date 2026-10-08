@@ -9,7 +9,7 @@ export const siteConfig = {
   author: "Frontline Pathfinder",
   contactEmail: "wyong@aniimo.cc",
   officialWiki: "https://wiki.aniimo.com/en",
-  releaseNote: "PC and console: September 16, 2026 · Mobile: September 23, 2026",
+  releaseNote: "Now available on PC, PlayStation 5, Xbox, iOS, and Android with cross-platform progression on the same account and server.",
 };
 
 export const navigation = [
