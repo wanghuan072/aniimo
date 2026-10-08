@@ -8,31 +8,26 @@ import {
   events,
   resetSchedules,
   rewardCodes,
-  seasonBoundary,
+  seasonBoundaries,
   updateEntries,
   updatesReviewedAt,
   updatesSources,
-  type EventEntry,
   type ServerRegion,
 } from "@/data/editorial/updates";
+import { compareRelevantEvents, getCurrentSeasonBoundary, getRelevantEventPeriod } from "@/lib/update-schedule";
 
 const buildNow = Date.now();
 const defaultRegion: ServerRegion = "apac";
-const statusAt = (event: EventEntry, region: ServerRegion, now = buildNow) => {
-  const window = event.windows[region];
-  const start = Date.parse(window.startsAt);
-  const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY;
-  if (now < start) return "upcoming";
-  if (now >= end) return "expired";
-  return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live";
-};
-const eventEntries = [...events]
-  .sort((a, b) => Date.parse(a.windows[defaultRegion].endsAt || "2999-01-01") - Date.parse(b.windows[defaultRegion].endsAt || "2999-01-01"))
-  .slice(0, 8);
-const initiallyVisibleEvents = eventEntries.filter((event) => statusAt(event, defaultRegion) !== "expired");
+const eventEntries = events
+  .map((event) => ({ event, relevant: getRelevantEventPeriod(event, defaultRegion, buildNow) }))
+  .filter((entry) => entry.relevant !== null)
+  .map((entry) => ({ event: entry.event, relevant: entry.relevant! }))
+  .sort(compareRelevantEvents);
+const initiallyVisibleEvents = eventEntries.slice(0, 8);
 const availableCodes = rewardCodes.filter((entry) => entry.status !== "expired" && (!entry.expiresAt || Date.parse(entry.expiresAt) > buildNow));
 const expiredCodes = rewardCodes.filter((entry) => !availableCodes.includes(entry));
-const activeEventCount = eventEntries.filter((event) => ["live", "ending"].includes(statusAt(event, defaultRegion))).length;
+const activeEventCount = eventEntries.filter(({ relevant }) => ["live", "ending"].includes(relevant.state)).length;
+const initialSeason = getCurrentSeasonBoundary(seasonBoundaries, buildNow);
 const latestUpdate = [...updateEntries].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))[0];
 const archiveEntries = [...updateEntries].filter((entry) => entry.slug !== latestUpdate.slug).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 const reviewedLabel = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${updatesReviewedAt}T00:00:00Z`));
@@ -64,7 +59,7 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
       <header class={updatesStyles.sectionHeader}><div><span>Right now</span><h2 id="now-title">Your current Idyll checklist</h2></div><p>APAC is selected first. Switch server once and every event and reset time updates together.</p></header>
       <div class={updatesStyles.nowCards}>
         <article><span class={updatesStyles.nowIcon}>◷</span><div><small>Next daily reset</small><strong data-now-daily>Calculating…</strong><p data-now-daily-local>Your local time</p></div></article>
-        <article><span class={updatesStyles.nowIcon}>⌛</span><div><small>Closing first</small><strong data-now-event>{initiallyVisibleEvents[0]?.title || "No timed event"}</strong><p data-now-event-time>Checking selected server…</p></div></article>
+        <article><span class={updatesStyles.nowIcon}>⌛</span><div><small>Closing first</small><strong data-now-event>{initiallyVisibleEvents[0]?.event.title || "No timed event"}</strong><p data-now-event-time>Checking selected server…</p></div></article>
         <article><span class={updatesStyles.nowIcon}>✦</span><div><small>Newest listed code</small><strong>{availableCodes[0]?.code || "No current code"}</strong><p>{availableCodes[0]?.rewards.slice(0, 2).join(" · ")}</p></div></article>
       </div>
     </section>
@@ -77,10 +72,11 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
         </header>
         <p class={updatesStyles.panelIntro}>Times below use the selected server clock. The second line converts each deadline to this device’s local time.</p>
         <div class={updatesStyles.eventList} data-event-list>
-          {eventEntries.map((event) => {
-            const initialStatus = statusAt(event, defaultRegion);
-            return <article class={updatesStyles.eventCard} data-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={initialStatus} hidden={initialStatus === "expired"}>
-              <div class={updatesStyles.eventTop}><span>{event.category}</span><b data-event-status>{initialStatus === "ending" ? "Ending soon" : initialStatus === "live" ? "Live" : "Starts soon"}</b></div>
+          {events.map((event) => {
+            const relevant = getRelevantEventPeriod(event, defaultRegion, buildNow);
+            const initialStatus = relevant?.state || "expired";
+            return <article class={updatesStyles.eventCard} data-event data-periods={JSON.stringify(event.periods)} data-priority={event.priority} data-category={event.category} data-title={event.title} data-state={initialStatus} hidden={!relevant || !initiallyVisibleEvents.some((entry) => entry.event.slug === event.slug)}>
+              <div class={updatesStyles.eventTop}><span data-event-category>{event.category}{relevant ? ` · ${relevant.period.label}` : ""}</span><b data-event-status>{initialStatus === "ending" ? "Ending soon" : initialStatus === "live" ? "Live" : "Starts soon"}</b></div>
               <h3>{event.title}</h3><p>{event.summary}</p>
               <div class={updatesStyles.eventTime}><strong data-event-server-time>Loading server window…</strong><small data-event-local-time>Loading your time…</small></div>
               <a href={event.source.href} target="_blank" rel="noopener noreferrer"><span class={updatesStyles.sourceKind} data-kind={event.source.kind}>{event.source.kind === "official" ? "Official" : "Community source"}</span>{event.source.label}<Icon name="external" /></a>
@@ -96,9 +92,9 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
         <div class={updatesStyles.resetList}>
           <article data-reset="daily"><span>Daily</span><strong data-countdown>--d --h --m --s</strong><p><b data-reset-utc>04:00 server time</b><small data-reset-local>Your time</small></p></article>
           <article data-reset="weekly"><span>Weekly</span><strong data-countdown>--d --h --m --s</strong><p><b data-reset-utc>Monday 04:00</b><small data-reset-local>Your time</small></p></article>
-          <article data-reset="season"><span>Season part</span><strong data-countdown>--d --h --m --s</strong><p><b>{seasonBoundary.label}</b><small data-reset-local>Your time</small></p></article>
+          <article data-reset="season"><span>Season part</span><strong data-countdown>--d --h --m --s</strong><p><b data-season-label>{initialSeason?.boundary.label || "Next season date not published"}</b><small data-reset-local>{initialSeason ? "Your time" : "Check official notices for the next schedule"}</small></p></article>
         </div>
-        <a class={updatesStyles.panelSource} href={seasonBoundary.source.href} target="_blank" rel="noopener noreferrer"><span class={updatesStyles.sourceKind} data-kind="community">Community source</span> Reset rules and season boundary <Icon name="external" /></a>
+        <a class={updatesStyles.panelSource} href={seasonBoundaries[0].source.href} target="_blank" rel="noopener noreferrer"><span class={updatesStyles.sourceKind} data-kind="community">Community source</span> Reset rules and season boundary <Icon name="external" /></a>
       </section>
     </div>
 
@@ -133,37 +129,144 @@ const dateLabel = (date: string) => new Intl.DateTimeFormat("en-US", { month: "s
     </section>
   </div>
   <script type="application/json" data-reset-schedules set:html={JSON.stringify(resetSchedules).replace(/</g, "\\u003c")} />
-  <script type="application/json" data-season-boundary set:html={JSON.stringify(seasonBoundary).replace(/</g, "\\u003c")} />
+  <script type="application/json" data-season-boundaries set:html={JSON.stringify(seasonBoundaries).replace(/</g, "\\u003c")} />
 </main>
 
 <script>
-  type Region = "america" | "europe" | "apac";
-  type WindowRecord = { startsAt: string; endsAt: string | null };
-  type ResetRecord = { region: Region; label: string; utcOffsetMinutes: number; dailyHour: number; weeklyDay: number; weeklyHour: number };
+  import { compareRelevantEvents, getCurrentSeasonBoundary, getNextReset, getRelevantEventPeriod, type EventPeriod, type ResetScheduleRecord, type SeasonBoundaryRecord, type ServerRegion } from "@/lib/update-schedule";
+
   const app = document.querySelector<HTMLElement>("[data-updates-app]");
   if (app) {
-    const schedules = JSON.parse(app.querySelector<HTMLScriptElement>("[data-reset-schedules]")?.textContent || "[]") as ResetRecord[];
-    const season = JSON.parse(app.querySelector<HTMLScriptElement>("[data-season-boundary]")?.textContent || "{}") as { endsAt: string };
-    let region = (app.dataset.region || "apac") as Region;
+    const schedules = JSON.parse(app.querySelector<HTMLScriptElement>("[data-reset-schedules]")?.textContent || "[]") as ResetScheduleRecord[];
+    const boundaries = JSON.parse(app.querySelector<HTMLScriptElement>("[data-season-boundaries]")?.textContent || "[]") as SeasonBoundaryRecord[];
+    let region = (app.dataset.region || "apac") as ServerRegion;
     const pad = (value: number) => String(value).padStart(2, "0");
-    const countdown = (target: number, now: number) => { const remaining = Math.max(0, target - now); const days = Math.floor(remaining / 86400000); const hours = Math.floor((remaining % 86400000) / 3600000); const minutes = Math.floor((remaining % 3600000) / 60000); const seconds = Math.floor((remaining % 60000) / 1000); return `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`; };
-    const localDateTime = (timestamp: number) => new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(new Date(timestamp));
-    const utcDateTime = (timestamp: number) => new Intl.DateTimeFormat("en-GB", { weekday: "short", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "UTC", hour12: false }).format(new Date(timestamp)) + " UTC";
-    const serverDateTime = (timestamp: number, offset: number) => new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(timestamp + offset * 60000));
-    const nextReset = (schedule: ResetRecord, weekly: boolean, now: number) => { const shiftedNow = new Date(now + schedule.utcOffsetMinutes * 60000); const target = new Date(shiftedNow.getTime()); target.setUTCHours(weekly ? schedule.weeklyHour : schedule.dailyHour, 0, 0, 0); if (weekly) { let days = (schedule.weeklyDay - shiftedNow.getUTCDay() + 7) % 7; if (days === 0 && target.getTime() <= shiftedNow.getTime()) days = 7; target.setUTCDate(target.getUTCDate() + days); } else if (target.getTime() <= shiftedNow.getTime()) target.setUTCDate(target.getUTCDate() + 1); return target.getTime() - schedule.utcOffsetMinutes * 60000; };
-    const eventState = (window: WindowRecord, now: number) => { const start = Date.parse(window.startsAt); const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; if (!Number.isFinite(start) || Number.isNaN(end)) return "invalid"; if (now < start) return "upcoming"; if (now >= end) return "expired"; return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live"; };
-    const render = () => {
-      const now = Date.now(); const schedule = schedules.find((entry) => entry.region === region) || schedules[0]; if (!schedule) return; app.dataset.region = region;
-      app.querySelectorAll<HTMLButtonElement>("[data-server]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.server === region)));
-      const sign = schedule.utcOffsetMinutes >= 0 ? "+" : "−"; const offset = `${sign}${Math.abs(schedule.utcOffsetMinutes / 60)}`; const selected = app.querySelector<HTMLElement>("[data-selected-server]"); if (selected) selected.textContent = `${schedule.label} · UTC${offset}`;
-      const daily = nextReset(schedule, false, now); const weekly = nextReset(schedule, true, now); const seasonEnd = Date.parse(season.endsAt); const resetTargets = { daily, weekly, season: seasonEnd };
-      app.querySelectorAll<HTMLElement>("[data-reset]").forEach((card) => { const key = card.dataset.reset as keyof typeof resetTargets; const target = resetTargets[key]; const clock = card.querySelector<HTMLElement>("[data-countdown]"); const utc = card.querySelector<HTMLElement>("[data-reset-utc]"); const local = card.querySelector<HTMLElement>("[data-reset-local]"); if (clock) clock.textContent = Number.isFinite(target) ? countdown(target, now) : "Date unavailable"; if (utc) utc.textContent = utcDateTime(target); if (local) local.textContent = `Your time · ${localDateTime(target)}`; });
-      const nowDaily = app.querySelector<HTMLElement>("[data-now-daily]"); const nowDailyLocal = app.querySelector<HTMLElement>("[data-now-daily-local]"); if (nowDaily) nowDaily.textContent = countdown(daily, now); if (nowDailyLocal) nowDailyLocal.textContent = localDateTime(daily);
-      let active = 0; let firstClosingTitle = ""; let firstClosingTarget = Number.POSITIVE_INFINITY; let shown = 0;
-      app.querySelectorAll<HTMLElement>("[data-event]").forEach((card) => { let windows: Record<Region, WindowRecord>; try { windows = JSON.parse(card.dataset.windows || "{}"); } catch { card.hidden = true; return; } const window = windows[region]; if (!window) { card.hidden = true; return; } const state = eventState(window, now); card.dataset.state = state; card.hidden = state === "expired" || state === "invalid"; if (card.hidden) return; shown++; if (state === "live" || state === "ending") active++; const status = card.querySelector<HTMLElement>("[data-event-status]"); if (status) status.textContent = state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"; const start = Date.parse(window.startsAt); const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; const serverTime = card.querySelector<HTMLElement>("[data-event-server-time]"); const localTime = card.querySelector<HTMLElement>("[data-event-local-time]"); if (serverTime) serverTime.textContent = window.endsAt ? `${serverDateTime(start, schedule.utcOffsetMinutes)} – ${serverDateTime(end, schedule.utcOffsetMinutes)} · ${schedule.label}` : `From ${serverDateTime(start, schedule.utcOffsetMinutes)} · ${schedule.label}`; if (localTime) localTime.textContent = window.endsAt ? `Your time · ends ${localDateTime(end)}` : `Your time · starts ${localDateTime(start)}`; if (state !== "upcoming" && Number.isFinite(end) && end < firstClosingTarget) { firstClosingTitle = card.dataset.title || "Timed event"; firstClosingTarget = end; } });
-      const hasClosingEvent = Number.isFinite(firstClosingTarget); const activeCount = document.querySelector<HTMLElement>("[data-active-event-count]"); if (activeCount) activeCount.textContent = String(active); const empty = app.querySelector<HTMLElement>("[data-event-empty]"); if (empty) empty.hidden = shown > 0; const nowEvent = app.querySelector<HTMLElement>("[data-now-event]"); const nowEventTime = app.querySelector<HTMLElement>("[data-now-event-time]"); if (nowEvent) nowEvent.textContent = hasClosingEvent ? firstClosingTitle : "No active deadline"; if (nowEventTime) nowEventTime.textContent = hasClosingEvent ? `${countdown(firstClosingTarget, now)} remaining` : "Check upcoming events below";
+    const countdown = (target: number, now: number) => {
+      const remaining = Math.max(0, target - now);
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      const seconds = Math.floor((remaining % 60000) / 1000);
+      return `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
     };
-    app.addEventListener("click", async (event) => { const target = event.target as Element; const server = target.closest<HTMLButtonElement>("[data-server]"); const filter = target.closest<HTMLButtonElement>("[data-update-filter]"); const copy = target.closest<HTMLButtonElement>("[data-copy-code]"); if (server) { region = server.dataset.server as Region; render(); } if (filter) { const value = filter.dataset.updateFilter || "all"; app.querySelectorAll<HTMLButtonElement>("[data-update-filter]").forEach((button) => button.setAttribute("aria-pressed", String(button === filter))); let visible = 0; app.querySelectorAll<HTMLElement>("[data-update-entry]").forEach((entry) => { entry.hidden = value !== "all" && entry.dataset.kind !== value; if (!entry.hidden) visible++; }); const empty = app.querySelector<HTMLElement>("[data-archive-empty]"); if (empty) empty.hidden = visible > 0; } if (copy) { const value = copy.dataset.copyCode || ""; try { await navigator.clipboard.writeText(value); } catch { const area = document.createElement("textarea"); area.value = value; area.style.position = "fixed"; area.style.opacity = "0"; document.body.append(area); area.select(); document.execCommand("copy"); area.remove(); } const label = copy.querySelector("span"); if (label) label.textContent = "Copied"; copy.dataset.copied = "true"; window.setTimeout(() => { if (label) label.textContent = "Copy code"; delete copy.dataset.copied; }, 1600); } });
-    render(); window.setInterval(render, 1000);
+    const safeFormat = (timestamp: number, formatter: Intl.DateTimeFormat) => Number.isFinite(timestamp) ? formatter.format(new Date(timestamp)) : "Date unavailable";
+    const localFormatter = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+    const utcFormatter = new Intl.DateTimeFormat("en-GB", { weekday: "short", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "UTC", hour12: false });
+    const localDateTime = (timestamp: number) => safeFormat(timestamp, localFormatter);
+    const utcDateTime = (timestamp: number) => `${safeFormat(timestamp, utcFormatter)} UTC`;
+    const serverDateTime = (timestamp: number, offset: number) => safeFormat(timestamp + offset * 60000, new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }));
+
+    const render = () => {
+      const now = Date.now();
+      const schedule = schedules.find((entry) => entry.region === region) || schedules[0];
+      if (!schedule) return;
+      app.dataset.region = region;
+      app.querySelectorAll<HTMLButtonElement>("[data-server]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.server === region)));
+      const sign = schedule.utcOffsetMinutes >= 0 ? "+" : "-";
+      const selected = app.querySelector<HTMLElement>("[data-selected-server]");
+      if (selected) selected.textContent = `${schedule.label} / UTC${sign}${Math.abs(schedule.utcOffsetMinutes / 60)}`;
+      const daily = getNextReset(schedule, false, now);
+      const weekly = getNextReset(schedule, true, now);
+      for (const [key, target] of Object.entries({ daily, weekly })) {
+        const card = app.querySelector<HTMLElement>(`[data-reset="${key}"]`);
+        const clock = card?.querySelector<HTMLElement>("[data-countdown]");
+        const utc = card?.querySelector<HTMLElement>("[data-reset-utc]");
+        const local = card?.querySelector<HTMLElement>("[data-reset-local]");
+        if (clock) clock.textContent = Number.isFinite(target) ? countdown(target, now) : "Date unavailable";
+        if (utc) utc.textContent = utcDateTime(target);
+        if (local) local.textContent = `Your time / ${localDateTime(target)}`;
+      }
+      const seasonCard = app.querySelector<HTMLElement>('[data-reset="season"]');
+      const season = getCurrentSeasonBoundary(boundaries, now);
+      const seasonClock = seasonCard?.querySelector<HTMLElement>("[data-countdown]");
+      const seasonLabel = seasonCard?.querySelector<HTMLElement>("[data-season-label]");
+      const seasonLocal = seasonCard?.querySelector<HTMLElement>("[data-reset-local]");
+      if (season) {
+        if (seasonClock) seasonClock.textContent = countdown(season.target, now);
+        if (seasonLabel) seasonLabel.textContent = season.boundary.label;
+        if (seasonLocal) seasonLocal.textContent = `Your time / ${localDateTime(season.target)}`;
+      } else {
+        if (seasonClock) seasonClock.textContent = "Schedule unavailable";
+        if (seasonLabel) seasonLabel.textContent = "Next season date not published";
+        if (seasonLocal) seasonLocal.textContent = "Check official notices for the next schedule";
+      }
+      const nowDaily = app.querySelector<HTMLElement>("[data-now-daily]");
+      const nowDailyLocal = app.querySelector<HTMLElement>("[data-now-daily-local]");
+      if (nowDaily) nowDaily.textContent = countdown(daily, now);
+      if (nowDailyLocal) nowDailyLocal.textContent = localDateTime(daily);
+
+      const candidates: Array<{ card: HTMLElement; event: { priority: "today" | "week" | "season"; periods: EventPeriod[] }; relevant: NonNullable<ReturnType<typeof getRelevantEventPeriod>> }> = [];
+      app.querySelectorAll<HTMLElement>("[data-event]").forEach((card) => {
+        try {
+          const event = { priority: (card.dataset.priority || "week") as "today" | "week" | "season", periods: JSON.parse(card.dataset.periods || "[]") as EventPeriod[] };
+          const relevant = getRelevantEventPeriod(event, region, now);
+          if (relevant) candidates.push({ card, event, relevant });
+        } catch {
+          card.hidden = true;
+          card.dataset.state = "invalid";
+        }
+      });
+      candidates.sort(compareRelevantEvents);
+      const eventList = app.querySelector<HTMLElement>("[data-event-list]");
+      app.querySelectorAll<HTMLElement>("[data-event]").forEach((card) => { card.hidden = true; });
+      candidates.slice(0, 8).forEach(({ card, relevant }) => {
+        card.hidden = false;
+        card.dataset.state = relevant.state;
+        eventList?.append(card);
+        const status = card.querySelector<HTMLElement>("[data-event-status]");
+        const category = card.querySelector<HTMLElement>("[data-event-category]");
+        const serverTime = card.querySelector<HTMLElement>("[data-event-server-time]");
+        const localTime = card.querySelector<HTMLElement>("[data-event-local-time]");
+        const start = Date.parse(relevant.window.startsAt);
+        const end = relevant.window.endsAt ? Date.parse(relevant.window.endsAt) : Number.POSITIVE_INFINITY;
+        if (status) status.textContent = relevant.state === "ending" ? "Ending soon" : relevant.state === "live" ? "Live" : "Starts soon";
+        if (category) category.textContent = `${card.dataset.category} / ${relevant.period.label}`;
+        if (serverTime) serverTime.textContent = relevant.window.endsAt ? `${serverDateTime(start, schedule.utcOffsetMinutes)} - ${serverDateTime(end, schedule.utcOffsetMinutes)} / ${schedule.label}` : `From ${serverDateTime(start, schedule.utcOffsetMinutes)} / ${schedule.label}`;
+        if (localTime) localTime.textContent = relevant.window.endsAt ? `Your time / ends ${localDateTime(end)}` : `Your time / starts ${localDateTime(start)}`;
+      });
+      const active = candidates.filter(({ relevant }) => relevant.state === "live" || relevant.state === "ending");
+      const closing = active.filter(({ relevant }) => Number.isFinite(relevant.target)).sort((a, b) => a.relevant.target - b.relevant.target)[0];
+      const activeCount = document.querySelector<HTMLElement>("[data-active-event-count]");
+      const empty = app.querySelector<HTMLElement>("[data-event-empty]");
+      const nowEvent = app.querySelector<HTMLElement>("[data-now-event]");
+      const nowEventTime = app.querySelector<HTMLElement>("[data-now-event-time]");
+      if (activeCount) activeCount.textContent = String(active.length);
+      if (empty) empty.hidden = candidates.length > 0;
+      if (nowEvent) nowEvent.textContent = closing?.card.dataset.title || "No active deadline";
+      if (nowEventTime) nowEventTime.textContent = closing ? `${countdown(closing.relevant.target, now)} remaining` : "Check upcoming events below";
+    };
+
+    app.addEventListener("click", async (event) => {
+      const target = event.target as Element;
+      const server = target.closest<HTMLButtonElement>("[data-server]");
+      const filter = target.closest<HTMLButtonElement>("[data-update-filter]");
+      const copy = target.closest<HTMLButtonElement>("[data-copy-code]");
+      if (server) { region = server.dataset.server as ServerRegion; render(); }
+      if (filter) {
+        const value = filter.dataset.updateFilter || "all";
+        app.querySelectorAll<HTMLButtonElement>("[data-update-filter]").forEach((button) => button.setAttribute("aria-pressed", String(button === filter)));
+        let visible = 0;
+        app.querySelectorAll<HTMLElement>("[data-update-entry]").forEach((entry) => { entry.hidden = value !== "all" && entry.dataset.kind !== value; if (!entry.hidden) visible++; });
+        const empty = app.querySelector<HTMLElement>("[data-archive-empty]");
+        if (empty) empty.hidden = visible > 0;
+      }
+      if (copy) {
+        const code = copy.dataset.copyCode || "";
+        try { await navigator.clipboard.writeText(code); }
+        catch {
+          const input = document.createElement("textarea");
+          input.value = code;
+          document.body.append(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+        const label = copy.querySelector("span");
+        if (label) label.textContent = "Copied";
+        window.setTimeout(() => { if (label) label.textContent = "Copy code"; }, 1800);
+      }
+    });
+    render();
+    window.setInterval(render, 1000);
   }
 </script>
