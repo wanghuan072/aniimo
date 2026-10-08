@@ -8,7 +8,8 @@ import { aniimo, elements, getAniimo, guides, habitats } from "@/lib/data";
 import atlasIndexData from "@/data/map/index.json";
 import { getGuideDossier } from "@/data/editorial/guide-dossiers";
 import { getGuideTopic } from "@/lib/guide-topics";
-import { events, resetSchedules, type EventEntry, type ServerRegion } from "@/data/editorial/updates";
+import { events, resetSchedules, type ServerRegion } from "@/data/editorial/updates";
+import { compareRelevantEvents, getRelevantEventPeriod } from "@/lib/update-schedule";
 import { faqJsonLd } from "@/seo/schema";
 import styles from "@/style/page/home.module.css";
 
@@ -62,16 +63,11 @@ const toolLinks = [
 const rosterShowcase = ["helion", "lunara", "nimbi", "fentuft", "celestis", "glacy", "pebbling", "melloblum", "infergon", "stellarys"].map(pick);
 const defaultRegion: ServerRegion = "apac";
 const buildNow = Date.now();
-const statusAt = (event: EventEntry, region: ServerRegion, now = buildNow) => {
-  const window = event.windows[region];
-  const start = Date.parse(window.startsAt);
-  const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY;
-  if (now < start) return "upcoming";
-  if (now >= end) return "expired";
-  return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live";
-};
-const homeEvents = [...events]
-  .sort((a, b) => Date.parse(a.windows[defaultRegion].endsAt || "2999-01-01") - Date.parse(b.windows[defaultRegion].endsAt || "2999-01-01"));
+const homeEvents = events
+  .map((event) => ({ event, relevant: getRelevantEventPeriod(event, defaultRegion, buildNow) }))
+  .filter((entry) => entry.relevant !== null)
+  .map((entry) => ({ event: entry.event, relevant: entry.relevant! }))
+  .sort(compareRelevantEvents);
 
 const siteJourney = [
   { step: "01", label: "Find", title: "Choose an Aniimo", body: "Search the Aniilog by name, element or role.", action: "Open Aniilog", href: "/aniimo", icon: "search", tone: "blue" },
@@ -128,7 +124,7 @@ const faq = [
           <header class={styles.darkHeading}><div><span>Live companion</span><h2>Resets &amp; events</h2></div><div class={styles.regionTabs} role="group" aria-label="Choose game server">{resetSchedules.map((server) => <button type="button" data-home-region={server.region} aria-pressed={server.region === defaultRegion}>{server.label}</button>)}</div></header>
           <div class={styles.resetRow}><div data-home-reset="daily"><span>Daily reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div><div data-home-reset="weekly"><span>Weekly reset</span><strong data-home-countdown>--d --h --m</strong><small data-home-reset-time>Calculating…</small></div></div>
           <div class={styles.eventGrid} data-home-events>
-            {homeEvents.map((event, index) => { const state = statusAt(event, defaultRegion); return <article class={styles.eventCard} data-home-event data-windows={JSON.stringify(event.windows)} data-title={event.title} data-state={state} data-position={index === 0 ? "featured" : "secondary"} hidden={state === "expired" || index >= 3}><div><span>{event.category}</span><b data-home-event-status>{state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"}</b></div><h3>{event.title}</h3><p>{event.summary}</p><small data-home-event-time>Checking APAC time…</small><Link href="/updates#events">View event details <Icon name="arrow" /></Link></article>; })}
+            {events.map((event) => { const relevant = getRelevantEventPeriod(event, defaultRegion, buildNow); const state = relevant?.state || "expired"; const index = homeEvents.findIndex((entry) => entry.event.slug === event.slug); return <article class={styles.eventCard} data-home-event data-periods={JSON.stringify(event.periods)} data-priority={event.priority} data-category={event.category} data-title={event.title} data-state={state} data-position={index === 0 ? "featured" : "secondary"} hidden={!relevant || index < 0 || index >= 3}><div><span data-home-event-category>{event.category}{relevant ? ` · ${relevant.period.label}` : ""}</span><b data-home-event-status>{state === "ending" ? "Ending soon" : state === "live" ? "Live" : "Starts soon"}</b></div><h3>{event.title}</h3><p>{event.summary}</p><small data-home-event-time>Checking APAC time…</small><Link href="/updates#events">View event details <Icon name="arrow" /></Link></article>; })}
             <p class={styles.liveEmpty} data-home-event-empty hidden>No current or upcoming events are recorded for this server.</p>
           </div>
           <footer><Link href="/updates#resets">All timers <Icon name="arrow" /></Link><Link href="/updates#events">All events <Icon name="arrow" /></Link></footer>
@@ -164,31 +160,71 @@ const faq = [
 </>
 
 <script>
-  type Region = "america" | "europe" | "apac";
-  type WindowRecord = { startsAt: string; endsAt: string | null };
-  type ResetRecord = { region: Region; label: string; utcOffsetMinutes: number; dailyHour: number; weeklyDay: number; weeklyHour: number };
+  import { compareRelevantEvents, getNextReset, getRelevantEventPeriod, type EventPeriod, type ResetScheduleRecord, type ServerRegion } from "@/lib/update-schedule";
+
   const app = document.querySelector<HTMLElement>("[data-home-app]");
   if (app) {
-    const schedules = JSON.parse(app.querySelector<HTMLScriptElement>("[data-home-reset-schedules]")?.textContent || "[]") as ResetRecord[];
-    let region = (app.dataset.region || "apac") as Region;
+    const schedules = JSON.parse(app.querySelector<HTMLScriptElement>("[data-home-reset-schedules]")?.textContent || "[]") as ResetScheduleRecord[];
+    let region = (app.dataset.region || "apac") as ServerRegion;
     const pad = (value: number) => String(value).padStart(2, "0");
-    const countdown = (target: number, now: number) => { const remaining = Math.max(0, target - now); const days = Math.floor(remaining / 86400000); const hours = Math.floor((remaining % 86400000) / 3600000); const minutes = Math.floor((remaining % 3600000) / 60000); return `${days}d ${pad(hours)}h ${pad(minutes)}m`; };
-    const nextReset = (schedule: ResetRecord, weekly: boolean, now: number) => { const shiftedNow = new Date(now + schedule.utcOffsetMinutes * 60000); const target = new Date(shiftedNow.getTime()); target.setUTCHours(weekly ? schedule.weeklyHour : schedule.dailyHour, 0, 0, 0); if (weekly) { let days = (schedule.weeklyDay - shiftedNow.getUTCDay() + 7) % 7; if (days === 0 && target.getTime() <= shiftedNow.getTime()) days = 7; target.setUTCDate(target.getUTCDate() + days); } else if (target.getTime() <= shiftedNow.getTime()) target.setUTCDate(target.getUTCDate() + 1); return target.getTime() - schedule.utcOffsetMinutes * 60000; };
-    const serverDate = (timestamp: number, offset: number) => new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(timestamp + offset * 60000));
-    const eventState = (window: WindowRecord, now: number) => { const start = Date.parse(window.startsAt); const end = window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; if (!Number.isFinite(start) || Number.isNaN(end)) return "invalid"; if (now < start) return "upcoming"; if (now >= end) return "expired"; return end - now <= 72 * 60 * 60 * 1000 ? "ending" : "live"; };
+    const countdown = (target: number, now: number) => {
+      const remaining = Math.max(0, target - now);
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      return `${days}d ${pad(hours)}h ${pad(minutes)}m`;
+    };
+    const serverDate = (timestamp: number, offset: number) => Number.isFinite(timestamp)
+      ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(timestamp + offset * 60000))
+      : "Date unavailable";
+
     const render = () => {
-      const now = Date.now(); const schedule = schedules.find((entry) => entry.region === region) || schedules[0]; if (!schedule) return;
+      const now = Date.now();
+      const schedule = schedules.find((entry) => entry.region === region) || schedules[0];
+      if (!schedule) return;
       app.dataset.region = region;
       app.querySelectorAll<HTMLButtonElement>("[data-home-region]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.homeRegion === region)));
-      app.querySelectorAll<HTMLElement>("[data-home-reset]").forEach((card) => { const target = nextReset(schedule, card.dataset.homeReset === "weekly", now); const clock = card.querySelector<HTMLElement>("[data-home-countdown]"); const time = card.querySelector<HTMLElement>("[data-home-reset-time]"); if (clock) clock.textContent = countdown(target, now); if (time) time.textContent = `${serverDate(target, schedule.utcOffsetMinutes)} · ${schedule.label}`; });
-      const visible: Array<{ card: HTMLElement; target: number; state: string; window: WindowRecord }> = [];
-      app.querySelectorAll<HTMLElement>("[data-home-event]").forEach((card) => { try { const windows = JSON.parse(card.dataset.windows || "{}") as Record<Region, WindowRecord>; const window = windows[region]; const state = window ? eventState(window, now) : "invalid"; const target = state === "upcoming" ? Date.parse(window.startsAt) : window.endsAt ? Date.parse(window.endsAt) : Number.POSITIVE_INFINITY; if (state !== "expired" && state !== "invalid") visible.push({ card, target, state, window }); } catch { card.hidden = true; } });
-      visible.sort((a, b) => a.target - b.target);
+      app.querySelectorAll<HTMLElement>("[data-home-reset]").forEach((card) => {
+        const target = getNextReset(schedule, card.dataset.homeReset === "weekly", now);
+        const clock = card.querySelector<HTMLElement>("[data-home-countdown]");
+        const time = card.querySelector<HTMLElement>("[data-home-reset-time]");
+        if (clock) clock.textContent = Number.isFinite(target) ? countdown(target, now) : "Date unavailable";
+        if (time) time.textContent = `${serverDate(target, schedule.utcOffsetMinutes)} / ${schedule.label}`;
+      });
+
+      const visible: Array<{ card: HTMLElement; event: { priority: "today" | "week" | "season"; periods: EventPeriod[] }; relevant: NonNullable<ReturnType<typeof getRelevantEventPeriod>> }> = [];
+      app.querySelectorAll<HTMLElement>("[data-home-event]").forEach((card) => {
+        try {
+          const event = { priority: (card.dataset.priority || "week") as "today" | "week" | "season", periods: JSON.parse(card.dataset.periods || "[]") as EventPeriod[] };
+          const relevant = getRelevantEventPeriod(event, region, now);
+          if (relevant) visible.push({ card, event, relevant });
+        } catch {
+          card.hidden = true;
+          card.dataset.state = "invalid";
+        }
+      });
+      visible.sort(compareRelevantEvents);
       app.querySelectorAll<HTMLElement>("[data-home-event]").forEach((card) => { card.hidden = true; delete card.dataset.position; });
-      visible.slice(0, 3).forEach((entry, index) => { entry.card.hidden = false; entry.card.dataset.position = index === 0 ? "featured" : "secondary"; entry.card.dataset.state = entry.state; const status = entry.card.querySelector<HTMLElement>("[data-home-event-status]"); const time = entry.card.querySelector<HTMLElement>("[data-home-event-time]"); if (status) status.textContent = entry.state === "ending" ? "Ending soon" : entry.state === "live" ? "Live" : "Starts soon"; if (time) time.textContent = `${entry.state === "upcoming" ? "Starts" : "Ends"} ${serverDate(entry.target, schedule.utcOffsetMinutes)} · ${schedule.label}`; });
-      const empty = app.querySelector<HTMLElement>("[data-home-event-empty]"); if (empty) empty.hidden = visible.length > 0;
+      visible.slice(0, 3).forEach(({ card, relevant }, index) => {
+        card.hidden = false;
+        card.dataset.position = index === 0 ? "featured" : "secondary";
+        card.dataset.state = relevant.state;
+        const status = card.querySelector<HTMLElement>("[data-home-event-status]");
+        const category = card.querySelector<HTMLElement>("[data-home-event-category]");
+        const time = card.querySelector<HTMLElement>("[data-home-event-time]");
+        if (status) status.textContent = relevant.state === "ending" ? "Ending soon" : relevant.state === "live" ? "Live" : "Starts soon";
+        if (category) category.textContent = `${card.dataset.category} / ${relevant.period.label}`;
+        if (time) time.textContent = `${relevant.state === "upcoming" ? "Starts" : "Ends"} ${serverDate(relevant.target, schedule.utcOffsetMinutes)} / ${schedule.label}`;
+      });
+      const empty = app.querySelector<HTMLElement>("[data-home-event-empty]");
+      if (empty) empty.hidden = visible.length > 0;
     };
-    app.addEventListener("click", (event) => { const regionButton = (event.target as Element).closest<HTMLButtonElement>("[data-home-region]"); if (regionButton) { region = regionButton.dataset.homeRegion as Region; render(); } });
-    render(); window.setInterval(render, 30000);
+
+    app.addEventListener("click", (event) => {
+      const button = (event.target as Element).closest<HTMLButtonElement>("[data-home-region]");
+      if (button) { region = button.dataset.homeRegion as ServerRegion; render(); }
+    });
+    render();
+    window.setInterval(render, 30000);
   }
 </script>

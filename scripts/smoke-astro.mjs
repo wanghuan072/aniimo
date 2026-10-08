@@ -85,6 +85,8 @@ try {
   await page.locator('[data-home-region="america"]').click();
   assert.equal(await page.locator('[data-home-region="america"]').getAttribute("aria-pressed"), "true");
   assert.match(await page.locator("[data-home-event-time]").first().innerText(), /America/);
+  assert.ok(await page.locator("[data-home-event]:visible").count() <= 3, "home must show at most three events");
+  assert.equal(await page.locator('[data-home-event] a[href="/updates#events"]').count(), await page.locator("[data-home-event]").count());
   assert.equal(await page.locator("[data-home-journey] a").count(), 5);
   for (const href of ["/aniimo", "/database", "/map", "/team-builder", "/guides"]) assert.ok(await page.locator(`[data-home-journey] a[href="${href}"]`).count() === 1);
   assert.equal(await page.locator('a[href^="http"]').count(), 0);
@@ -167,16 +169,47 @@ try {
   const updatesPage = await browser.newPage({ viewport: { width: 1365, height: 900 } });
   await routeStaticFiles(updatesPage);
   updatesPage.on("pageerror", (error) => errors.push(`updates: ${error.message}`));
-  await updatesPage.clock.install({ time: new Date("2026-09-30T12:00:00Z") });
+  await updatesPage.clock.install({ time: new Date("2026-10-08T12:00:00Z") });
   await updatesPage.goto(`${base}/updates`, { waitUntil: "domcontentloaded" });
   assert.equal(await updatesPage.locator("h1").innerText(), "Aniimo Updates");
+  const updatesWidth = await updatesPage.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: window.innerWidth }));
+  assert.ok(updatesWidth.scroll <= updatesWidth.viewport + 2, `updates overflows desktop viewport: ${updatesWidth.scroll} > ${updatesWidth.viewport}`);
   for (const anchor of ["now", "events", "codes", "resets", "archive"]) assert.equal(await updatesPage.locator(`#${anchor}`).count(), 1, `updates is missing #${anchor}`);
   assert.ok(await updatesPage.locator('[data-event][data-state="live"], [data-event][data-state="ending"]').count() >= 4);
+  assert.ok(await updatesPage.locator("[data-event]:visible").count() <= 8, "updates must show at most eight events");
+  assert.match(await updatesPage.locator('[data-event][data-title="Vein Abundance"] [data-event-category]').innerText(), /Berylline Vale/i);
   assert.ok(await updatesPage.locator('[data-copy-code]').count() >= 1);
   assert.ok(await updatesPage.locator('a[href="https://aniimo.com/newslist/detail/100147"]').count() >= 1);
   await updatesPage.locator('[data-server="america"]').click();
   assert.match(await updatesPage.locator('[data-selected-server]').innerText(), /America/);
   assert.equal(await updatesPage.locator('[data-server="america"]').getAttribute("aria-pressed"), "true");
+  assert.match(await updatesPage.locator('[data-event]:visible [data-event-server-time]').first().innerText(), /America/);
+
+  await updatesPage.clock.setFixedTime(new Date("2026-10-09T00:00:00Z"));
+  await updatesPage.locator('[data-server="apac"]').click();
+  assert.match(await updatesPage.locator('[data-event][data-title="Glamour Star"]').getAttribute("data-state"), /live|ending/);
+  assert.match(await updatesPage.locator('[data-event][data-title="Hatch Haste"]').getAttribute("data-state"), /live|ending/);
+
+  await updatesPage.clock.setFixedTime(new Date("2026-10-14T12:00:00Z"));
+  await updatesPage.locator('[data-server="europe"]').click();
+  assert.match(await updatesPage.locator('[data-event][data-title="Who’s That Aniimo?"] [data-event-category]').innerText(), /Round 3/i);
+  assert.match(await updatesPage.locator('[data-event][data-title="Holo-Battle Interlink"] [data-event-category]').innerText(), /10\/15/);
+
+  await updatesPage.clock.setFixedTime(new Date("2026-10-29T12:00:00Z"));
+  await updatesPage.locator('[data-server="america"]').click();
+  assert.equal(await updatesPage.locator("[data-season-label]").innerText(), "Part Two ends");
+  assert.doesNotMatch(await updatesPage.locator('[data-reset="season"] [data-countdown]').innerText(), /^0d 00h 00m 00s$/);
+
+  await updatesPage.clock.setFixedTime(new Date("2026-12-10T12:00:00Z"));
+  await updatesPage.locator('[data-server="europe"]').click();
+  assert.equal(await updatesPage.locator("[data-season-label]").innerText(), "Next season date not published");
+  assert.equal(await updatesPage.locator('[data-reset="season"] [data-countdown]').innerText(), "Schedule unavailable");
+
+  const invalidEvent = updatesPage.locator("[data-event]").first();
+  await invalidEvent.evaluate((element) => { element.dataset.periods = "invalid-json"; });
+  await updatesPage.locator('[data-server="apac"]').click();
+  assert.equal(await invalidEvent.getAttribute("data-state"), "invalid");
+  assert.ok(await updatesPage.locator("[data-event]:visible").count() <= 8);
   await updatesPage.locator('[data-copy-code]').first().click();
   assert.equal(await updatesPage.locator('[data-copy-code]').first().locator('span').innerText(), "Copied");
   const updatesUrl = updatesPage.url();
