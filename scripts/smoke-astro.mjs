@@ -1,9 +1,44 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { extname, join, normalize, resolve } from "node:path";
 import { chromium } from "@playwright/test";
 import { load } from "cheerio";
 
 const base = process.env.ASTRO_TEST_URL || "http://127.0.0.1:4321";
+const staticRoot = process.env.ASTRO_TEST_STATIC_DIR ? resolve(process.env.ASTRO_TEST_STATIC_DIR) : "";
+const contentTypes = new Map([
+  [".html", "text/html; charset=utf-8"], [".css", "text/css; charset=utf-8"],
+  [".js", "text/javascript; charset=utf-8"], [".json", "application/json"],
+  [".png", "image/png"], [".webp", "image/webp"], [".avif", "image/avif"],
+  [".svg", "image/svg+xml"], [".woff2", "font/woff2"], [".ico", "image/x-icon"],
+]);
+const staticFileFor = (value) => {
+  const pathname = decodeURIComponent(new URL(value, base).pathname);
+  let relative = pathname.replace(/^\/+/, "");
+  if (!relative) relative = "index.html";
+  else if (!extname(relative)) relative += ".html";
+  const file = normalize(join(staticRoot, relative));
+  return file.startsWith(normalize(staticRoot)) ? file : "";
+};
+const readStaticResponse = async (value) => {
+  const file = staticFileFor(value);
+  if (!file) return { status: 403, body: Buffer.from("Forbidden"), contentType: "text/plain" };
+  try { return { status: 200, body: await readFile(file), contentType: contentTypes.get(extname(file)) || "application/octet-stream" }; }
+  catch { return { status: 404, body: Buffer.from("Not found"), contentType: "text/plain" }; }
+};
+if (staticRoot) {
+  globalThis.fetch = async (input) => {
+    const result = await readStaticResponse(typeof input === "string" || input instanceof URL ? input : input.url);
+    return new Response(result.body, { status: result.status, headers: { "content-type": result.contentType } });
+  };
+}
+const routeStaticFiles = async (page) => {
+  if (!staticRoot) return;
+  await page.route(`${base}/**`, async (route) => {
+    const result = await readStaticResponse(route.request().url());
+    await route.fulfill(result);
+  });
+};
 const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
 const currentProfiles = JSON.parse(await readFile(new URL("../src/data/research/current-profile-kits.json", import.meta.url), "utf8")).profiles;
@@ -35,6 +70,7 @@ for (const path of urls) {
 
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+await routeStaticFiles(page);
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
 try {
@@ -129,6 +165,7 @@ try {
   assert.match(await page.locator("[data-achievement-tiers] ol").first().innerText(), /Tier 4: Windspeaker of the Plains/);
 
   const updatesPage = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  await routeStaticFiles(updatesPage);
   updatesPage.on("pageerror", (error) => errors.push(`updates: ${error.message}`));
   await updatesPage.clock.install({ time: new Date("2026-09-30T12:00:00Z") });
   await updatesPage.goto(`${base}/updates`, { waitUntil: "domcontentloaded" });
@@ -195,6 +232,7 @@ try {
   assert.match(await page.locator("[data-map-card]:visible").innerText(), /BREAK/);
 
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 2 });
+  await routeStaticFiles(mobile);
   mobile.on("pageerror", (error) => errors.push(`mobile: ${error.message}`));
   for (const path of ["/", "/aniimo", "/aniimo/emberpup", "/database/skills", "/guides/aniimo-catching-guide", "/team-builder", "/map", "/tools/compare", "/updates"]) {
     await mobile.goto(new URL(path, base).href, { waitUntil: "domcontentloaded" });
