@@ -41,19 +41,13 @@ const image = new URL(imagePath, siteConfig.url).toString();
     <JsonLd data={websiteJsonLd(siteConfig.name, siteConfig.url, siteConfig.description)} />
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-frame"><Header /><main id="main-content" class="page-main"><slot /></main><Footer /></div>
-    <script>
-      window.setTimeout(() => {
-        if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-E01MQKVEZ4"]')) return;
-        const win = window as typeof window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
-        win.dataLayer = win.dataLayer || [];
-        win.gtag = (...args) => win.dataLayer!.push(args);
-        win.gtag('js', new Date());
-        win.gtag('config', 'G-E01MQKVEZ4');
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4';
-        document.head.appendChild(script);
-      }, 10000);
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-E01MQKVEZ4"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E01MQKVEZ4');
     </script>
   </body>
 </html>
