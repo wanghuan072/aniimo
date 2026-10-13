@@ -1,0 +1,132 @@
+---
+---
+
+<script is:inline>
+  (() => {
+    const main = document.querySelector("#main-content");
+    if (!main) return;
+
+    const createSlot = (format, placement) => {
+      const slot = document.createElement("aside");
+      slot.className = "affiliate-ad affiliate-ad--automatic";
+      slot.dataset.affiliateAd = format;
+      slot.dataset.adPlacement = placement;
+      slot.setAttribute("aria-label", "Advertisement");
+      slot.innerHTML = '<div class="affiliate-ad__host" data-ad-host></div>';
+      return slot;
+    };
+
+    const placeInnerAds = () => {
+      if (document.body.dataset.pageType === "home") return;
+
+      const mainRect = main.getBoundingClientRect();
+      const pageHeight = Math.max(main.scrollHeight, mainRect.height);
+      const wanted = pageHeight >= 5200 ? 4 : pageHeight >= 2600 ? 3 : 2;
+      const h1 = main.querySelector("h1");
+      const hero = h1?.closest("section") || main.firstElementChild;
+      const lastBlock = [...main.children].reverse().find((element) => !["SCRIPT", "STYLE"].includes(element.tagName));
+      const candidates = [...main.querySelectorAll("section")].filter((section) => {
+        if (section === hero || section === lastBlock || section.contains(h1)) return false;
+        if (section.closest("[hidden]")) return false;
+        const rect = section.getBoundingClientRect();
+        return rect.height >= 220 && rect.width >= Math.min(620, mainRect.width * 0.72);
+      });
+
+      const middleAnchors = [];
+      const heroBottom = hero?.getBoundingClientRect().bottom || mainRect.top;
+      const contentBottom = lastBlock?.getBoundingClientRect().bottom || mainRect.bottom;
+      const middleTargets = wanted === 4
+        ? [heroBottom + (contentBottom - heroBottom) / 3, heroBottom + (contentBottom - heroBottom) * 2 / 3]
+        : wanted === 3
+          ? [heroBottom + (contentBottom - heroBottom) / 2]
+          : [];
+
+      for (const target of middleTargets) {
+        const previousBottom = middleAnchors.length
+          ? middleAnchors[middleAnchors.length - 1].getBoundingClientRect().bottom
+          : heroBottom;
+        const eligible = candidates
+          .filter((section) => !middleAnchors.includes(section))
+          .map((section) => ({ section, rect: section.getBoundingClientRect() }))
+          .filter(({ rect }) => rect.bottom - previousBottom >= 640 && contentBottom - rect.bottom >= 640)
+          .sort((a, b) => Math.abs(a.rect.bottom - target) - Math.abs(b.rect.bottom - target));
+        const choice = eligible[0];
+        if (!choice) continue;
+        middleAnchors.push(choice.section);
+      }
+
+      // 内页固定首尾广告，中间只在有足够正文距离时增加，避免广告挤在同一标题附近。
+      if (hero) hero.insertAdjacentElement("afterend", createSlot("native", "inner-after-hero"));
+      middleAnchors.forEach((anchor, index) => {
+        anchor.insertAdjacentElement("afterend", createSlot("display", `inner-middle-${index + 1}`));
+      });
+      if (lastBlock && lastBlock !== hero) {
+        lastBlock.insertAdjacentElement("afterend", createSlot("display", "inner-after-content"));
+      }
+    };
+
+    const loadNative = (slot) => {
+      if (document.querySelector('[data-native-ad-loaded="true"]')) {
+        slot.hidden = true;
+        return;
+      }
+      const host = slot.querySelector("[data-ad-host]");
+      if (!host) return;
+      const container = document.createElement("div");
+      container.id = "container-34be976eaf35a21c48577a133e65526d";
+      host.appendChild(container);
+      const script = document.createElement("script");
+      script.async = true;
+      script.dataset.cfasync = "false";
+      script.src = "https://pl31790144.profitableratecpmnetwork.com/34be976eaf35a21c48577a133e65526d/invoke.js";
+      host.appendChild(script);
+      slot.dataset.nativeAdLoaded = "true";
+      slot.dataset.adLoaded = "true";
+    };
+
+    const loadDisplay = (slot) => {
+      const host = slot.querySelector("[data-ad-host]");
+      if (!host) return;
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+      const size = mobile
+        ? { width: 300, height: 250, key: "c8f9fc493d92dadf542b2c70b19dcc6b" }
+        : { width: 728, height: 90, key: "29a1e76fd8ca69b39eaabcfe1d339e79" };
+      const frame = document.createElement("iframe");
+      frame.title = "Advertisement";
+      frame.width = String(size.width);
+      frame.height = String(size.height);
+      frame.loading = "lazy";
+      frame.scrolling = "no";
+      frame.setAttribute("frameborder", "0");
+      frame.srcdoc = `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;overflow:hidden"><script>atOptions={'key':'${size.key}','format':'iframe','height':${size.height},'width':${size.width},'params':{}};<\/script><script src="https://www.highrevenueformat.com/${size.key}/invoke.js"><\/script></body></html>`;
+      host.appendChild(frame);
+      slot.dataset.adLoaded = "true";
+      slot.dataset.adSize = `${size.width}x${size.height}`;
+    };
+
+    placeInnerAds();
+    const slots = [...document.querySelectorAll("[data-affiliate-ad]")];
+    const load = (slot) => {
+      if (slot.dataset.adLoaded === "true") return;
+      if (slot.dataset.affiliateAd === "native") loadNative(slot);
+      else loadDisplay(slot);
+    };
+
+    // 只在广告位接近可视区域时加载，避免隐藏广告和不必要的网络请求。
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          load(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "700px 0px" });
+      slots.forEach((slot) => observer.observe(slot));
+    } else {
+      slots.forEach(load);
+    }
+  })();
+</script>
+
+<!-- 联盟广告：全站只加载一次 Popunder 代码。 -->
+<script is:inline src="https://pl31790143.profitableratecpmnetwork.com/55/89/7e/55897ec788b3a68b55efca7c59e565c1.js"></script>

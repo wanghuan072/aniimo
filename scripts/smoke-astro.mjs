@@ -34,6 +34,10 @@ if (staticRoot) {
 }
 const routeStaticFiles = async (page) => {
   if (!staticRoot) return;
+  // 测试环境屏蔽真实联盟广告请求，只验证广告位、响应式尺寸和页面行为。
+  await page.route(/https:\/\/(?:[^/]+\.)?(?:profitableratecpmnetwork\.com|highrevenueformat\.com)\//, async (route) => {
+    await route.fulfill({ status: 200, contentType: "text/javascript; charset=utf-8", body: "/* affiliate ad stub */" });
+  });
   await page.route(`${base}/**`, async (route) => {
     const result = await readStaticResponse(route.request().url());
     await route.fulfill(result);
@@ -57,6 +61,8 @@ for (const path of urls) {
   assert.ok(canonical, `${path} has no canonical`);
   assert.equal(new URL(canonical[1]).pathname, path, `${path} has a mismatched canonical`);
   assert.doesNotMatch(html, /\/_next\//, `${path} still includes Next assets`);
+  assert.equal([...html.matchAll(/googletagmanager\.com\/gtag\/js\?id=G-E01MQKVEZ4/g)].length, 1, `${path} must load GA once`);
+  assert.equal([...html.matchAll(/pl31790143\.profitableratecpmnetwork\.com\/55\/89\/7e\/55897ec788b3a68b55efca7c59e565c1\.js/g)].length, 1, `${path} must load the popunder script once`);
   const profile = profileByPath.get(path);
   if (profile) {
     const $ = load(html);
@@ -92,8 +98,18 @@ try {
   assert.equal(await page.locator('a[href^="http"]').count(), 0);
   assert.ok(await page.locator('a[href="/legal/about-us"]').count() >= 1);
   assert.ok(await page.locator('a[href="/sources"]').count() >= 1);
+  assert.equal(await page.locator("[data-affiliate-ad]").count(), 4, "home must contain four spaced ad placements");
+  assert.equal(await page.locator('[data-ad-placement="home-after-hero"]').count(), 1, "home must contain an ad below the hero");
+  assert.equal(await page.locator('[data-affiliate-ad="native"]').count(), 1, "home must contain one native ad placement");
+  const desktopAd = page.locator('[data-affiliate-ad="display"]').first();
+  await desktopAd.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector('[data-affiliate-ad="display"]')?.getAttribute("data-ad-size") === "728x90");
 
   await page.goto(`${base}/aniimo`, { waitUntil: "domcontentloaded" });
+  const innerAds = await page.locator(".affiliate-ad--automatic").count();
+  assert.ok(innerAds >= 2 && innerAds <= 4, `inner page must contain two to four ad placements, found ${innerAds}`);
+  assert.equal(await page.locator('[data-ad-placement="inner-after-hero"]').count(), 1, "inner page must contain an ad below the hero");
+  assert.equal(await page.locator('[data-ad-placement="inner-after-content"]').count(), 1, "inner page must contain an ad after the content");
   assert.equal(await page.locator("[data-card]").count(), 98);
   await page.locator("[data-open-search]").click();
   await page.locator("[data-search-input]").fill("Squarrel");
@@ -264,16 +280,46 @@ try {
   assert.ok(await page.locator('[data-map-card]:visible a[href="/aniimo/emberpup"]').count() > 0);
   assert.match(await page.locator("[data-map-card]:visible").innerText(), /BREAK/);
 
+  const navigationPage = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  await routeStaticFiles(navigationPage);
+  navigationPage.on("pageerror", (error) => errors.push(`navigation: ${error.message}`));
+  const expectFullNavigation = async (locator, expectedPath) => {
+    await navigationPage.evaluate(() => { window.__fullNavigationProbe = "old-document"; });
+    await Promise.all([
+      navigationPage.waitForNavigation({ waitUntil: "domcontentloaded" }),
+      locator.click(),
+    ]);
+    assert.equal(new URL(navigationPage.url()).pathname, expectedPath);
+    assert.equal(await navigationPage.evaluate(() => window.__fullNavigationProbe), undefined, `${expectedPath} reused the previous document`);
+    assert.equal(await navigationPage.locator('script[src*="pl31790143.profitableratecpmnetwork.com"]').count(), 1, `${expectedPath} did not reinitialize the popunder script once`);
+  };
+  await navigationPage.goto(`${base}/`, { waitUntil: "domcontentloaded" });
+  await expectFullNavigation(navigationPage.locator('nav[aria-label="Primary navigation"] a[href="/aniimo"]'), "/aniimo");
+  await expectFullNavigation(navigationPage.locator('[data-card][data-name="emberpup"]'), "/aniimo/emberpup");
+  await expectFullNavigation(navigationPage.locator('footer a[href="/guides"]').first(), "/guides");
+  await navigationPage.close();
+
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 2 });
   await routeStaticFiles(mobile);
   mobile.on("pageerror", (error) => errors.push(`mobile: ${error.message}`));
   for (const path of ["/", "/aniimo", "/aniimo/emberpup", "/database/skills", "/guides/aniimo-catching-guide", "/team-builder", "/map", "/tools/compare", "/updates"]) {
     await mobile.goto(new URL(path, base).href, { waitUntil: "domcontentloaded" });
     assert.equal(await mobile.locator("h1:visible").count(), 1, `${path} has an unexpected visible mobile H1 count`);
+    const adCount = await mobile.locator("[data-affiliate-ad]").count();
+    assert.ok(path === "/" ? adCount === 4 : adCount >= 2 && adCount <= 4, `${path} has an unexpected mobile ad count: ${adCount}`);
+    if (path !== "/") {
+      assert.equal(await mobile.locator('[data-ad-placement="inner-after-hero"]').count(), 1, `${path} is missing its mobile hero ad`);
+      assert.equal(await mobile.locator('[data-ad-placement="inner-after-content"]').count(), 1, `${path} is missing its mobile ending ad`);
+    }
+    assert.equal(await mobile.locator("[data-affiliate-ad] + [data-affiliate-ad]").count(), 0, `${path} contains adjacent ad placements`);
     const width = await mobile.evaluate(() => ({ scroll: document.documentElement.scrollWidth, viewport: window.innerWidth }));
     assert.ok(width.scroll <= width.viewport + 2, `${path} overflows mobile viewport: ${width.scroll} > ${width.viewport}`);
   }
   await mobile.goto(new URL("/", base).href, { waitUntil: "domcontentloaded" });
+  assert.equal(await mobile.locator("[data-affiliate-ad]").count(), 4, "mobile home must retain four spaced ad placements");
+  const mobileAd = mobile.locator('[data-affiliate-ad="display"]').first();
+  await mobileAd.scrollIntoViewIfNeeded();
+  await mobile.waitForFunction(() => document.querySelector('[data-affiliate-ad="display"]')?.getAttribute("data-ad-size") === "300x250");
   await mobile.locator("[data-toggle-menu]").click();
   assert.equal(await mobile.locator("[data-toggle-menu]").getAttribute("aria-expanded"), "true");
   assert.ok(await mobile.locator("[data-mobile-nav]:visible").count() > 0);

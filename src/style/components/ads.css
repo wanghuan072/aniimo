@@ -1,0 +1,54 @@
+.affiliate-ad {
+  display: grid;
+  width: min(100%, 1120px);
+  min-height: 126px;
+  margin: 10px auto;
+  padding: 10px 12px 14px;
+  place-items: center;
+  align-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(41, 105, 166, 0.13);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.62);
+  contain: layout paint;
+}
+
+.affiliate-ad__host {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  place-items: center;
+}
+
+.affiliate-ad__host iframe {
+  display: block;
+  max-width: 100%;
+  border: 0;
+}
+
+.affiliate-ad[data-affiliate-ad="native"] {
+  min-height: 190px;
+}
+
+.affiliate-ad--automatic {
+  width: min(calc(100% - 32px), 1180px);
+}
+
+@media (max-width: 767px) {
+  .affiliate-ad {
+    width: min(100%, 340px);
+    min-height: 294px;
+    margin-block: 10px;
+    padding-inline: 8px;
+    border-radius: 14px;
+  }
+
+  .affiliate-ad[data-affiliate-ad="native"] {
+    width: min(calc(100% - 24px), 390px);
+    min-height: 220px;
+  }
+
+  .affiliate-ad--automatic {
+    width: min(calc(100% - 24px), 340px);
+  }
+}
