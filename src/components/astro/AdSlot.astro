@@ -1,0 +1,13 @@
+---
+interface Props {
+  format?: "display" | "native";
+  placement: string;
+}
+
+const { format = "display", placement } = Astro.props;
+---
+
+<!-- 联盟广告位：广告脚本由全站广告管理器按设备与可见范围加载。 -->
+<aside class="affiliate-ad" data-affiliate-ad={format} data-ad-placement={placement} aria-label="Advertisement">
+  <div class="affiliate-ad__host" data-ad-host></div>
+</aside>

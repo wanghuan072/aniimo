@@ -4,6 +4,7 @@ import Link from "@/components/astro/Link.astro";
 import FaqList from "@/components/astro/FaqList.astro";
 import Icon from "@/components/astro/Icon.astro";
 import JsonLd from "@/components/astro/JsonLd.astro";
+import AdSlot from "@/components/astro/AdSlot.astro";
 import { aniimo, elements, getAniimo, guides, habitats } from "@/lib/data";
 import atlasIndexData from "@/data/map/index.json";
 import { getGuideDossier } from "@/data/editorial/guide-dossiers";
@@ -105,6 +106,8 @@ const faq = [
     <nav class={styles.quickLinks} aria-label="Homepage shortcuts">{quickLinks.map((item) => <Link href={item.href} data-tone={item.tone}><i><Icon name={item.icon} /></i><span>{item.label}</span></Link>)}</nav>
   </div>
 
+  <AdSlot placement="home-after-hero" />
+
   <main class={styles.homeBody} data-home-app data-region={defaultRegion}>
     <div class="container">
       <section class={styles.startPanel} aria-labelledby="start-here-title" data-home-section="start">
@@ -118,6 +121,8 @@ const faq = [
         <header class={styles.sectionHeading}><div><span>Explore Aniimo.cc</span><h2 id="home-tools-title">A connected toolkit for every journey</h2></div><Link href="/tools">All tools <Icon name="arrow" /></Link></header>
         <div class={styles.toolRail}>{toolLinks.map((item) => <Link href={item.href}><span><Image src={item.image} alt="" fill sizes="220px" /></span><div><strong>{item.title}</strong><small>{item.body}</small></div><i><Icon name="arrow" /></i></Link>)}</div>
       </section>
+
+      <AdSlot format="native" placement="home-after-tools" />
 
       <section class={styles.liveGrid} aria-label="Current Aniimo activity" data-home-section="live">
         <article class={styles.livePanel}>
@@ -143,6 +148,8 @@ const faq = [
         <article class={styles.trailerPanel}><header><h2>How data is handled</h2></header><Link href="/sources"><span><Image src="/images/home/features/database.webp" alt="An illustrated database field journal" fill sizes="(max-width: 760px) 100vw, 360px" /><i aria-hidden="true">✓</i></span><strong>Clear sources and a practical structure</strong><small>See how the site verifies and organizes information <Icon name="arrow" /></small></Link></article>
       </section>
 
+      <AdSlot placement="home-after-editorial" />
+
       <section class={styles.storiesPanel} aria-labelledby="home-stories-title" data-home-section="stories">
         <header class={styles.sectionHeading}><div><span>How Aniimo.cc works</span><h2 id="home-stories-title">One lookup, one connected route</h2></div><p>Move through the site in five clear steps, from discovery to your next in-game decision.</p></header>
         <ol class={styles.journeyFlow} data-home-journey>
@@ -154,6 +161,8 @@ const faq = [
         <div><span>Choose your next route</span><h2 id="home-guide-title">Plan Your Next Aniimo Session</h2><p>Looking for a teammate, a form or a habitat? Open the profile, jump to its map marker, then use a guide when the next decision is catching, combat, or evolution.</p><div class={styles.nextLinks}><Link href="/aniimo">Find an Aniimo <Icon name="arrow" /></Link><Link href="/map">Open the atlas <Icon name="arrow" /></Link><Link href="/team-builder">Build a team <Icon name="arrow" /></Link><Link href="/guides">Read a guide <Icon name="arrow" /></Link></div></div>
         <div class={styles.homeFaq}><span>Aniimo FAQ</span><FaqList items={faq} /></div>
       </section>
+
+      <AdSlot placement="home-after-next" />
     </div>
     <script type="application/json" data-home-reset-schedules set:html={JSON.stringify(resetSchedules).replace(/</g, "\\u003c")} />
   </main>
